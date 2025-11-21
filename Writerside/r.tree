@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE instance-profile
+        SYSTEM "https://resources.jetbrains.com/writerside/1.0/product-profile.dtd">
+
+<instance-profile id="r"
+                 name="React"
+                 start-page="Default-topic.md">
+
+    <toc-element topic="Default-topic.md"/>
+    <toc-element topic="002-module-02.md"/>
+    <toc-element topic="003-module-03.md"/>
+    <toc-element topic="004-module-04.md"/>
+    <toc-element topic="005-module-05.md"/>
+    <toc-element topic="006-module-06.md"/>
+    <toc-element topic="007-module-07.md"/>
+    <toc-element topic="008-module-08.md"/>
+    <toc-element topic="009-module-09.md"/>
+    <toc-element topic="010-module-10.md"/>
+    <toc-element topic="011-conclusion.md"/>
+    <toc-element topic="012-projet.md"/>
+</instance-profile>

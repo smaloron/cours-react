@@ -1,0 +1,352 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-11-21T15:37:45.346615"><title>Module 4 : Gestion de l'&Eacute;tat Global | React</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs Pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"pourquoi-ce-module-est-il-important","level":0,"title":"Pourquoi ce module est-il important ?","anchor":"#pourquoi-ce-module-est-il-important"},{"id":"comp-tences-du-r-f-rentiel-reac","level":0,"title":"Compétences du Référentiel (REAC)","anchor":"#comp-tences-du-r-f-rentiel-reac"},{"id":"1-usecontext-usereducer-une-alternative-native","level":0,"title":"1. useContext + useReducer : Une alternative native","anchor":"#1-usecontext-usereducer-une-alternative-native"},{"id":"2-introduction-redux","level":0,"title":"2. Introduction à Redux","anchor":"#2-introduction-redux"},{"id":"3-alternatives-redux","level":0,"title":"3. Alternatives à Redux","anchor":"#3-alternatives-redux"},{"id":"tp-un-panier-d-achat-complet-avec-redux-toolkit","level":0,"title":"TP : Un panier d\u0027achat complet avec Redux Toolkit","anchor":"#tp-un-panier-d-achat-complet-avec-redux-toolkit"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion-de-ce-module","level":0,"title":"Conclusion de ce module","anchor":"#conclusion-de-ce-module"},{"id":"suggestions-de-projets-pour-pratiquer","level":0,"title":"Suggestions de projets pour pratiquer","anchor":"#suggestions-de-projets-pour-pratiquer"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 4 : Gestion de l'&Eacute;tat Global | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/004-module-04.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 4 : Gestion de l'&Eacute;tat Global | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/004-module-04.html#webpage",
+    "url": "writerside-documentation/004-module-04.html",
+    "name": "Module 4 : Gestion de l'&Eacute;tat Global | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="004-module-04" data-main-title="Module 4 : Gestion de l'État Global" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="004-module-04" id="004-module-04.md">Module 4 : Gestion de l'État Global</h1><p id="-y0cyk_3">Vous avez d&eacute;couvert <code class="code" id="-y0cyk_15">useContext</code> comme un excellent moyen de faire passer des informations sans &quot;prop drilling&quot;. C'est parfait pour des donn&eacute;es qui ne changent pas souvent, comme un th&egrave;me ou les informations de l'utilisateur connect&eacute;. Mais que se passe-t-il lorsque l'&eacute;tat devient plus complexe, que de nombreuses parties de votre application doivent le lire <span class="emphasis" id="-y0cyk_16">et</span> le modifier, et que les r&egrave;gles de modification deviennent tr&egrave;s strictes ?</p><p id="-y0cyk_4">Ce module vous plonge dans les strat&eacute;gies professionnelles de gestion d'&eacute;tat. Nous verrons comment structurer la logique de votre application pour qu'elle soit pr&eacute;visible, maintenable et facile &agrave; d&eacute;boguer, m&ecirc;me lorsqu'elle grandit de mani&egrave;re exponentielle.</p><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs P&eacute;dagogiques</h2><p id="-y0cyk_17">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="-y0cyk_18"><li class="list__item" id="-y0cyk_19"><p id="-y0cyk_25"><span class="control" id="-y0cyk_26">Expliquer</span> les limites de <code class="code" id="-y0cyk_27">useState</code> et <code class="code" id="-y0cyk_28">useContext</code> pour un &eacute;tat complexe.</p></li><li class="list__item" id="-y0cyk_20"><p id="-y0cyk_29"><span class="control" id="-y0cyk_30">Mettre en place</span> une gestion d'&eacute;tat local complexe avec le hook <code class="code" id="-y0cyk_31">useReducer</code>.</p></li><li class="list__item" id="-y0cyk_21"><p id="-y0cyk_32"><span class="control" id="-y0cyk_33">Comprendre</span> les principes fondamentaux de Redux (Source unique de v&eacute;rit&eacute;, &eacute;tat en lecture seule, modifications par des fonctions pures).</p></li><li class="list__item" id="-y0cyk_22"><p id="-y0cyk_34"><span class="control" id="-y0cyk_35">Impl&eacute;menter</span> une gestion d'&eacute;tat globale moderne et efficace avec <span class="control" id="-y0cyk_36">Redux Toolkit</span>.</p></li><li class="list__item" id="-y0cyk_23"><p id="-y0cyk_37"><span class="control" id="-y0cyk_38">Utiliser</span> les hooks <code class="code" id="-y0cyk_39">useSelector</code> et <code class="code" id="-y0cyk_40">useDispatch</code> pour interagir avec le store Redux depuis vos composants.</p></li><li class="list__item" id="-y0cyk_24"><p id="-y0cyk_41"><span class="control" id="-y0cyk_42">Comparer</span> Redux avec d'autres philosophies de gestion d'&eacute;tat (Zustand, Jotai).</p></li></ul></section><section class="chapter"><h2 id="pourquoi-ce-module-est-il-important" data-toc="pourquoi-ce-module-est-il-important">Pourquoi ce module est-il important ?</h2><p id="-y0cyk_43">Imaginez que vous construisez une ville. Au d&eacute;but, avec quelques maisons, chaque maison peut g&eacute;rer sa propre alimentation en eau (<code class="code" id="-y0cyk_45">useState</code>). Puis, pour un quartier, vous installez un puits partag&eacute; (<code class="code" id="-y0cyk_46">useContext</code>). Mais maintenant, vous devez g&eacute;rer l'eau pour toute la m&eacute;tropole ! Vous avez besoin d'une usine de traitement centrale, d'un ch&acirc;teau d'eau principal, et d'un r&eacute;seau de plomberie standardis&eacute; pour toute la ville. N'importe qui ne peut pas simplement ouvrir une vanne principale ; il faut des proc&eacute;dures claires.</p><p id="-y0cyk_44">Les gestionnaires d'&eacute;tat globaux comme Redux sont cette usine de traitement de l'eau pour votre application. Ils centralisent l'&eacute;tat (l'eau), fournissent des r&egrave;gles strictes pour le modifier (le traitement), et permettent &agrave; n'importe quel composant (maison) de s'y brancher de mani&egrave;re fiable. Apprendre &agrave; utiliser ces outils, c'est apprendre &agrave; construire des applications qui peuvent grandir sans sombrer dans le chaos.</p></section><section class="chapter"><h2 id="comp-tences-du-r-f-rentiel-reac" data-toc="comp-tences-du-r-f-rentiel-reac">Comp&eacute;tences du R&eacute;f&eacute;rentiel (REAC)</h2><p id="-y0cyk_47">Ce module est crucial pour le d&eacute;veloppement d'applications complexes et s'inscrit dans le <span class="control" id="-y0cyk_50">CCP-1 : Concevoir et d&eacute;velopper des composants d'interface utilisateur</span>.</p><ul class="list _bullet" id="-y0cyk_48"><li class="list__item" id="-y0cyk_51"><p id="-y0cyk_54"><span class="control" id="-y0cyk_55">Maquetter une application :</span> La compr&eacute;hension de la gestion d'&eacute;tat influence directement l'architecture des composants.</p></li><li class="list__item" id="-y0cyk_52"><p id="-y0cyk_56"><span class="control" id="-y0cyk_57">D&eacute;velopper une interface utilisateur de type desktop :</span> Les applications riches n&eacute;cessitent presque toujours un gestionnaire d'&eacute;tat robuste.</p></li><li class="list__item" id="-y0cyk_53"><p id="-y0cyk_58"><span class="control" id="-y0cyk_59">D&eacute;velopper des composants d&rsquo;acc&egrave;s aux donn&eacute;es :</span> L'&eacute;tat global est souvent l'endroit o&ugrave; sont stock&eacute;es les donn&eacute;es r&eacute;cup&eacute;r&eacute;es depuis une API.</p></li></ul></section><section class="chapter"><h2 id="1-usecontext-usereducer-une-alternative-native" data-toc="1-usecontext-usereducer-une-alternative-native">1. <code class="code" id="-y0cyk_70">useContext</code> + <code class="code" id="-y0cyk_71">useReducer</code>: Une alternative native</h2><p id="-y0cyk_61">Avant de nous lancer dans une biblioth&egrave;que externe, explorons comment React nous permet de g&eacute;rer un &eacute;tat complexe nativement. Nous connaissons <code class="code" id="-y0cyk_72">useContext</code> pour diffuser la valeur. Mais que se passe-t-il si la logique pour <span class="emphasis" id="-y0cyk_73">modifier</span> cette valeur est complexe ? C'est l&agrave; que <code class="code" id="-y0cyk_74">useReducer</code> entre en jeu.</p><section class="procedure-steps"><h3 id="-y0cyk_62" data-toc="-y0cyk_62">L'analogie du tableau de commande</h3><p id="-y0cyk_75">Pensez &agrave; `useState` comme un simple interrupteur lumi&egrave;re (on/off, vrai/faux). C'est direct et simple.</p><p id="-y0cyk_76">Maintenant, imaginez que vous &ecirc;tes aux commandes d'un robot complexe. Vous n'avez pas un seul interrupteur, mais un panneau de contr&ocirc;le avec des boutons &eacute;tiquet&eacute;s : &quot;Avancer&quot;, &quot;Tourner &agrave; gauche&quot;, &quot;Activer le bras&quot;. Vous n'indiquez pas directement les nouvelles coordonn&eacute;es du robot ; vous lui donnez un <b id="-y0cyk_78">ordre</b> clair (une &quot;action&quot;). Le robot a une logique interne (un &quot;reducer&quot;) qui interpr&egrave;te cet ordre et met &agrave; jour son propre &eacute;tat (sa position, l'&eacute;tat de son bras).</p><p id="-y0cyk_77">`useReducer` est ce tableau de commande. Il est id&eacute;al quand l'&eacute;tat suivant d&eacute;pend du pr&eacute;c&eacute;dent et que la logique de mise &agrave; jour est complexe.</p><ol class="list _decimal"></ol></section><p id="-y0cyk_63">Le hook <code class="code" id="-y0cyk_79">useReducer</code> prend deux arguments principaux :</p><ol class="list _decimal" id="-y0cyk_64" type="1"><li class="list__item" id="-y0cyk_80"><p id="-y0cyk_82">Une fonction <span class="control" id="-y0cyk_83">reducer</span>: <code class="code" id="-y0cyk_84">(state, action) =&gt; newState</code>.</p></li><li class="list__item" id="-y0cyk_81"><p id="-y0cyk_85">Un <span class="control" id="-y0cyk_86">&eacute;tat initial</span>.</p></li></ol><p id="-y0cyk_65">Il retourne un tableau contenant l'&eacute;tat actuel et une fonction <code class="code" id="-y0cyk_87">dispatch</code> pour envoyer des actions.</p><p id="-y0cyk_66"><span class="control" id="-y0cyk_88">Exemple : Un compteur avec <code class="code" id="-y0cyk_89">useReducer</code></span></p><div class="code-block" data-lang="javascript">
+import React, {useReducer} from 'react';
+
+// 1. L'état initial
+const initialState = {count: 0};
+
+// 2. La fonction reducer. Elle est &quot;pure&quot;.
+// Elle prend l'état actuel et une action, et retourne le NOUVEL état.
+function reducer(state, action) {
+    switch (action.type) {
+        case 'increment':
+            return {count: state.count + 1};
+        case 'decrement':
+            return {count: state.count - 1};
+        case 'reset':
+            return {count: action.payload};
+        default:
+            throw new Error();
+    }
+}
+
+function CounterWithReducer() {
+    // 3. On initialise le hook
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    return (
+        &lt;&gt;
+            Compteur : {state.count}
+            {/* 4. On &quot;dispatche&quot; des actions pour demander un changement d'état */}
+            &lt;button onClick={() =&gt; dispatch({type: 'increment'})}&gt;+&lt;/button&gt;
+            &lt;button onClick={() =&gt; dispatch({type: 'decrement'})}&gt;-&lt;/button&gt;
+            &lt;button onClick={() =&gt; dispatch({type: 'reset', payload: 0})}&gt;
+                Réinitialiser
+            &lt;/button&gt;
+        &lt;/&gt;
+    );
+}
+</div><p id="-y0cyk_68">En combinant <code class="code" id="-y0cyk_90">useReducer</code> pour la logique et <code class="code" id="-y0cyk_91">useContext</code> pour la diffusion, on obtient une solution de gestion d'&eacute;tat native et puissante. Le <code class="code" id="-y0cyk_92">Provider</code> du contexte peut alors fournir &agrave; la fois <code class="code" id="-y0cyk_93">state</code> et <code class="code" id="-y0cyk_94">dispatch</code> &agrave; tous les composants enfants.</p><section class="chapter"><h3 id="exercice-13-panier-simple-avec-usereducer-et-usecontext" data-toc="exercice-13-panier-simple-avec-usereducer-et-usecontext">Exercice 13 : Panier simple avec <code class="code" id="-y0cyk_99">useReducer</code> et <code class="code" id="-y0cyk_100">useContext</code></h3><p id="-y0cyk_96"><span class="control" id="-y0cyk_101">Objectif :</span> Cr&eacute;er un mini-panier d'achats o&ugrave; plusieurs composants peuvent ajouter des articles.</p><ol class="list _decimal" id="-y0cyk_97" type="1"><li class="list__item" id="-y0cyk_102"><p id="-y0cyk_107">D&eacute;finissez un <code class="code" id="-y0cyk_108">reducer</code> qui peut g&eacute;rer deux types d'actions : <code class="code" id="-y0cyk_109">ADD_ITEM</code> et <code class="code" id="-y0cyk_110">REMOVE_ITEM</code>. L'&eacute;tat sera un objet avec une propri&eacute;t&eacute; <code class="code" id="-y0cyk_111">items</code> (un tableau).</p></li><li class="list__item" id="-y0cyk_103"><p id="-y0cyk_112">Cr&eacute;ez un <code class="code" id="-y0cyk_113">CartContext</code>.</p></li><li class="list__item" id="-y0cyk_104"><p id="-y0cyk_114">Dans <code class="code" id="-y0cyk_115">App.js</code>, utilisez <code class="code" id="-y0cyk_116">useReducer</code> pour cr&eacute;er <code class="code" id="-y0cyk_117">state</code> et <code class="code" id="-y0cyk_118">dispatch</code>. Fournissez-les via le <code class="code" id="-y0cyk_119">CartContext.Provider</code>.</p></li><li class="list__item" id="-y0cyk_105"><p id="-y0cyk_120">Cr&eacute;ez un composant <code class="code" id="-y0cyk_121">ProductItem</code> qui utilise <code class="code" id="-y0cyk_122">useContext</code> pour r&eacute;cup&eacute;rer <code class="code" id="-y0cyk_123">dispatch</code> et qui, au clic sur un bouton, dispatche une action <code class="code" id="-y0cyk_124">ADD_ITEM</code>.</p></li><li class="list__item" id="-y0cyk_106"><p id="-y0cyk_125">Cr&eacute;ez un composant <code class="code" id="-y0cyk_126">CartDisplay</code> qui utilise <code class="code" id="-y0cyk_127">useContext</code> pour r&eacute;cup&eacute;rer <code class="code" id="-y0cyk_128">state</code> et affiche le nombre d'articles dans le panier.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-13" data-toc="correction-exercice-13">Correction exercice 13</h4></div><div class="collapse__content"><div class="tabs" id="-y0cyk_129" data-anchors="[-y0cyk_131,-y0cyk_132,-y0cyk_133]"><div class="tabs__content" data-gtm="tab" id="-y0cyk_131" data-title="CartContext.js"><p>```javascript // src/contexts/CartContext.js import { createContext } from 'react'; </p><p id="-y0cyk_134">export const CartContext = createContext(null);</p><div class="code-block" data-lang="none" data-title="None">
+&lt;/tab&gt;
+&lt;tab title=&quot;App.js (Provider &amp; Reducer)&quot;&gt;
+```javascript
+// src/App.js
+import React, { useReducer } from 'react';
+import { CartContext } from './contexts/CartContext';
+import ProductItem from './components/ProductItem';
+import CartDisplay from './components/CartDisplay';
+
+const initialState = {
+  items: [],
+};
+
+function cartReducer(state, action) {
+  switch (action.type) {
+    case 'ADD_ITEM':
+      // Ajoute le produit (payload) au tableau d'items
+      return {
+        ...state,
+        items: [...state.items, action.payload],
+      };
+    case 'REMOVE_ITEM':
+      // Filtre pour enlever le produit avec l'ID correspondant
+      return {
+        ...state,
+        items: state.items.filter(item =&gt; item.id !== action.payload.id),
+      };
+    default:
+      return state;
+  }
+}
+
+function App() {
+  const [state, dispatch] = useReducer(cartReducer, initialState);
+
+  return (
+    &lt;CartContext.Provider value={{ state, dispatch }}&gt;
+      &lt;div className=&quot;App&quot;&gt;
+        &lt;h1&gt;Boutique&lt;/h1&gt;
+        &lt;CartDisplay /&gt;
+        &lt;ProductItem product={{ id: 1, name: 'Livre React' }} /&gt;
+        &lt;ProductItem product={{ id: 2, name: 'T-shirt Hooks' }} /&gt;
+      &lt;/div&gt;
+    &lt;/CartContext.Provider&gt;
+  );
+}
+
+export default App;
+</div></div><div class="tabs__content" data-gtm="tab" id="-y0cyk_132" data-title="ProductItem.js (Consumer)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/components/ProductItem.js
+import React, { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
+
+function ProductItem({ product }) {
+const { dispatch } = useContext(CartContext);
+
+const handleAddToCart = () =&gt; {
+dispatch({ type: 'ADD_ITEM', payload: product });
+};
+
+return (
+&lt;div&gt;
+&lt;p&gt;{product.name}&lt;/p&gt;
+&lt;button onClick={handleAddToCart}&gt;Ajouter au panier&lt;/button&gt;
+&lt;/div&gt;
+);
+}
+
+export default ProductItem;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-y0cyk_133" data-title="CartDisplay.js (Consumer)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/components/CartDisplay.js
+import React, { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
+
+function CartDisplay() {
+  const { state } = useContext(CartContext);
+
+  return (
+    &lt;h2&gt;
+      Panier : {state.items.length} article(s)
+    &lt;/h2&gt;
+  );
+}
+
+export default CartDisplay;
+</div></div></div></div></div></section></section></section><section class="chapter"><h2 id="2-introduction-redux" data-toc="2-introduction-redux">2. Introduction &agrave; Redux</h2><p id="-y0cyk_138">La solution <code class="code" id="-y0cyk_143">useReducer</code> + <code class="code" id="-y0cyk_144">useContext</code> est excellente, mais pour les tr&egrave;s grandes applications, elle peut devenir limit&eacute;e. On peut se retrouver &agrave; &eacute;crire beaucoup de code r&eacute;p&eacute;titif, et elle n'offre pas d'outils avanc&eacute;s comme les &quot; middlewares&quot; (pour g&eacute;rer les appels API, par exemple) ou les extraordinaires outils de d&eacute;bogage de Redux (comme le &quot; time-travel debugging&quot;).</p><section class="procedure-steps"><h3 id="-y0cyk_139" data-toc="-y0cyk_139">L'analogie de la comptabilité d'entreprise</h3><p id="-y0cyk_145">G&eacute;rer l'&eacute;tat de son budget personnel (`useState`) est simple. G&eacute;rer celui d'une petite association (`useReducer` + `useContext`) est faisable avec un tableur.</p><p id="-y0cyk_146">Mais pour g&eacute;rer la comptabilit&eacute; d'une multinationale, vous avez besoin de plus. Vous avez besoin d'un syst&egrave;me comptable professionnel (<b id="-y0cyk_147">Redux</b>). Ce syst&egrave;me repose sur des principes tr&egrave;s stricts pour garantir qu'aucune transaction n'est perdue et que tout est auditable.</p><ol class="list _decimal"></ol></section><section class="chapter"><h3 id="les-3-principes-de-redux" data-toc="les-3-principes-de-redux">Les 3 principes de Redux</h3><ol class="list _decimal" id="-y0cyk_148" type="1"><li class="list__item" id="-y0cyk_149"><p id="-y0cyk_152"><span class="control" id="-y0cyk_153">Source unique de v&eacute;rit&eacute; :</span> Tout l'&eacute;tat de votre application est stock&eacute; dans un seul objet, appel&eacute; le <span class="control" id="-y0cyk_154">Store</span>. ( Un seul grand livre de comptes pour toute l'entreprise).</p></li><li class="list__item" id="-y0cyk_150"><p id="-y0cyk_155"><span class="control" id="-y0cyk_156">L'&eacute;tat est en lecture seule :</span> Le seul moyen de modifier l'&eacute;tat est d'&eacute;mettre une <span class="control" id="-y0cyk_157">action</span>, un objet d&eacute;crivant ce qui s'est pass&eacute;. (On ne modifie jamais une ligne du grand livre. On cr&eacute;e une nouvelle entr&eacute;e : &quot;Virement de X &agrave; Y&quot;).</p></li><li class="list__item" id="-y0cyk_151"><p id="-y0cyk_158"><span class="control" id="-y0cyk_159">Les modifications sont effectu&eacute;es avec des fonctions pures :</span> Pour sp&eacute;cifier comment l'&eacute;tat est transform&eacute; par les actions, vous &eacute;crivez des fonctions pures appel&eacute;es des <span class="control" id="-y0cyk_160">reducers</span>. (Un comptable qui prend le livre actuel et une transaction, et produit une nouvelle version du livre sans effet de bord).</p></li></ol></section><section class="chapter"><h3 id="redux-toolkit-rtk-la-mani-re-moderne-d-utiliser-redux" data-toc="redux-toolkit-rtk-la-mani-re-moderne-d-utiliser-redux">Redux Toolkit (RTK) : La mani&egrave;re moderne d'utiliser Redux</h3><p id="-y0cyk_161">Historiquement, Redux demandait beaucoup de code de configuration (&quot;boilerplate&quot;). <span class="control" id="-y0cyk_167">Redux Toolkit (RTK)</span> est aujourd'hui la m&eacute;thode officielle et recommand&eacute;e. Elle simplifie tout et inclut les meilleures pratiques par d&eacute;faut.</p><p id="-y0cyk_162">Les concepts cl&eacute;s de RTK :</p><ul class="list _bullet" id="-y0cyk_163"><li class="list__item" id="-y0cyk_168"><p id="-y0cyk_172"><span class="control" id="-y0cyk_173"><code class="code" id="-y0cyk_174">configureStore</code></span>: Cr&eacute;e le store Redux avec une configuration simplifi&eacute;e.</p></li><li class="list__item" id="-y0cyk_169"><p id="-y0cyk_175"><span class="control" id="-y0cyk_176"><code class="code" id="-y0cyk_177">createSlice</code></span>: Le c&oelig;ur de RTK. Une fonction qui accepte un &eacute;tat initial et un objet de fonctions &quot;reducers&quot;, et qui g&eacute;n&egrave;re automatiquement les actions et le reducer principal pour cette partie de l'&eacute;tat.</p></li><li class="list__item" id="-y0cyk_170"><p id="-y0cyk_178"><span class="control" id="-y0cyk_179"><code class="code" id="-y0cyk_181">useDispatch</code></span>: Un hook pour obtenir la fonction <code class="code" id="-y0cyk_180">dispatch</code> et envoyer des actions.</p></li><li class="list__item" id="-y0cyk_171"><p id="-y0cyk_182"><span class="control" id="-y0cyk_183"><code class="code" id="-y0cyk_184">useSelector</code></span>: Un hook pour extraire des donn&eacute;es du store et s'abonner aux mises &agrave; jour.</p></li></ul><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="264px" preserveAspectRatio="none" style="width:1229px;height:264px;background:#FFFFFF;" version="1.1" viewBox="0 0 1229 264" width="1229px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="Verdana" font-size="22" font-weight="bold" lengthAdjust="spacing" textLength="449" x="385.75" y="37.1182">Flux de donn&#233;es avec Redux Toolkit</text><!--cluster React Component--><g id="cluster_React Component"><path d="M63,107.5473 L202,107.5473 A3.75,3.75 0 0 1 204.5,110.0473 L211.5,130.562 L800,130.562 A2.5,2.5 0 0 1 802.5,133.062 L802.5,255.0573 A2.5,2.5 0 0 1 800,257.5573 L63,257.5573 A2.5,2.5 0 0 1 60.5,255.0573 L60.5,110.0473 A2.5,2.5 0 0 1 63,107.5473 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="60.5" x2="211.5" y1="130.562" y2="130.562"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="138" x="64.5" y="123.6225">React Component</text></g><!--cluster Redux Store--><g id="cluster_Redux Store"><path d="M829,107.5473 L926,107.5473 A3.75,3.75 0 0 1 928.5,110.0473 L935.5,130.562 L1220,130.562 A2.5,2.5 0 0 1 1222.5,133.062 L1222.5,255.0573 A2.5,2.5 0 0 1 1220,257.5573 L829,257.5573 A2.5,2.5 0 0 1 826.5,255.0573 L826.5,110.0473 A2.5,2.5 0 0 1 829,107.5473 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><line style="stroke:#000000;stroke-width:1.0;" x1="826.5" x2="935.5" y1="130.562" y2="130.562"/><text fill="#000000" font-family="Verdana" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="96" x="830.5" y="123.6225">Redux Store</text></g><g id="elem_UI Element"><ellipse cx="467.4973" cy="202.5428" fill="#FFFFFF" rx="65.7273" ry="15.5455" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="79" x="424.9973" y="206.8304">UI Element</text></g><!--entity useDispatch()--><g id="elem_useDispatch()"><ellipse cx="738.5" cy="172.5473" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M738.5,180.5473 L738.5,207.5473 M725.5,188.5473 L751.5,188.5473 M738.5,207.5473 L725.5,222.5473 M738.5,207.5473 L751.5,222.5473 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="97" x="690" y="238.6225">useDispatch()</text></g><!--entity useSelector()--><g id="elem_useSelector()"><ellipse cx="123.5" cy="172.5473" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M123.5,180.5473 L123.5,207.5473 M110.5,188.5473 L136.5,188.5473 M123.5,207.5473 L110.5,222.5473 M123.5,207.5473 L136.5,222.5473 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="93" x="77" y="238.6225">useSelector()</text></g><!--entity Action--><g id="elem_Action"><ellipse cx="864.5" cy="172.5473" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M864.5,180.5473 L864.5,207.5473 M851.5,188.5473 L877.5,188.5473 M864.5,207.5473 L851.5,222.5473 M864.5,207.5473 L877.5,222.5473 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="44" x="842.5" y="238.6225">Action</text></g><!--entity Reducer--><g id="elem_Reducer"><ellipse cx="964.5" cy="172.5473" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M964.5,180.5473 L964.5,207.5473 M951.5,188.5473 L977.5,188.5473 M964.5,207.5473 L951.5,222.5473 M964.5,207.5473 L977.5,222.5473 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="57" x="936" y="238.6225">Reducer</text></g><!--entity State--><g id="elem_State"><ellipse cx="1187.5" cy="172.5473" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M1187.5,180.5473 L1187.5,207.5473 M1174.5,188.5473 L1200.5,188.5473 M1187.5,207.5473 L1174.5,222.5473 M1187.5,207.5473 L1200.5,222.5473 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="38" x="1168.5" y="238.6225">State</text></g><!--entity User--><g id="elem_User"><ellipse cx="26.5" cy="172.5473" fill="#FFFFFF" rx="8" ry="8" style="stroke:#000000;stroke-width:1.0;"/><path d="M26.5,180.5473 L26.5,207.5473 M13.5,188.5473 L39.5,188.5473 M26.5,207.5473 L13.5,222.5473 M26.5,207.5473 L39.5,222.5473 " fill="none" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="14" lengthAdjust="spacing" textLength="31" x="11" y="238.6225">User</text></g><!--link User to UI Element--><g id="link_User_UI Element"><path d="M34.18,163.1173 C39.39,142.9173 47.71,118.6273 60.5,99.5473 C87.85,58.7373 121.75,75.3273 170,84.5473 C275.06,104.6173 385.0372,158.4201 435.7572,185.2701 " fill="none" id="User-to-UI Element" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="441.06,188.0773,434.9772,180.3313,436.641,185.738,431.2343,187.4017,441.06,188.0773" style="stroke:#000000;stroke-width:1.0;"/></g><!--link UI Element to useDispatch()--><g id="link_UI Element_useDispatch()"><path d="M533.45,202.5473 C581.7,202.5473 640.1,202.5473 683.76,202.5473 " fill="none" id="UI Element-to-useDispatch()" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="689.76,202.5473,680.76,198.5473,684.76,202.5473,680.76,206.5473,689.76,202.5473" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="120" x="551.61" y="196.6171">1. Dispatch action</text></g><!--link useSelector() to UI Element--><g id="link_useSelector()_UI Element"><path d="M170.25,202.5473 C229.95,202.5473 327.63,202.5473 395.4,202.5473 " fill="none" id="useSelector()-to-UI Element" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="401.4,202.5473,392.4,198.5473,396.4,202.5473,392.4,206.5473,401.4,202.5473" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="195" x="188.39" y="196.6171">5. Re-renders with new state</text></g><!--link useDispatch() to Action--><g id="link_useDispatch()_Action"><path d="M787.21,202.5473 C806.19,202.5473 820.99,202.5473 836.23,202.5473 " fill="none" id="useDispatch()-to-Action" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="842.23,202.5473,833.23,198.5473,837.23,202.5473,833.23,206.5473,842.23,202.5473" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="13" x="808.25" y="219.6171">2.</text></g><!--link Action to Reducer--><g id="link_Action_Reducer"><path d="M886.69,202.5473 C901.08,202.5473 913.97,202.5473 929.53,202.5473 " fill="none" id="Action-to-Reducer" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="935.53,202.5473,926.53,198.5473,930.53,202.5473,926.53,206.5473,935.53,202.5473" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="13" x="904.75" y="196.6171">3.</text></g><!--link Reducer to State--><g id="link_Reducer_State"><path d="M993.2,202.5473 C1039.31,202.5473 1122.71,202.5473 1162.08,202.5473 " fill="none" id="Reducer-to-State" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="1168.08,202.5473,1159.08,198.5473,1163.08,202.5473,1159.08,206.5473,1168.08,202.5473" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="139" x="1011.25" y="196.6171">4. Returns new state</text></g><!--link State to useSelector()--><g id="link_State_useSelector()"><path d="M1168.06,186.7773 C1137.01,162.7073 1073.3,117.8473 1010.5,101.1273 C876.07,65.3373 521.23,75.4973 384.5,101.1273 C306.14,115.8173 226.4458,150.6629 175.4258,175.7129 " fill="none" id="State-to-useSelector()" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="170.04,178.3573,179.8817,177.9813,174.5282,176.1537,176.3559,170.8002,170.04,178.3573" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="Verdana" font-size="13" lengthAdjust="spacing" textLength="129" x="604" y="88.6171">Notifies component</text></g><!--SRC=[NP1DJiD038NtSuf7LksYaVZRT864-97Oi6Ze0KOJqumwdObc78g4E13du6BOWLIbIx_tR7_s6NUq8_J1-cZOSo0yXk4TBQ5DCNv_KO5z8uSLjIA_f1IsdesnZbF6kb0sfhTkQpU4QaKYuoxj-XGfSeKFWp63nGrcwoSy15aMUIxoSQbsDHIwzwMtxBhPlC8IvpKc0JBNfoXj6cieaAxNsCbWQRkkXNMHARQK2_QUEqJQex1bCf__QFMYHWRHB-afWbBTZeiLvwBMo5IhfmCSPJKlH_CWgDleGlMk58Y77CiH20w1lzkFZrhYER5_zV9xDprJq7y0]--></g></svg></div><p id="-y0cyk_165"><span class="control" id="-y0cyk_185">Exemple concret : Un compteur avec Redux Toolkit</span></p><div class="tabs" id="-y0cyk_166" data-anchors="[-y0cyk_186,-y0cyk_187,-y0cyk_188]"><div class="tabs__content" data-gtm="tab" id="-y0cyk_186" data-title="features/counter/counterSlice.js"><p>```javascript import { createSlice } from '@reduxjs/toolkit'; </p><p id="-y0cyk_189">const initialState = { value: 0, };</p><p id="-y0cyk_190">export const counterSlice = createSlice({ name: 'counter', // Nom du &quot;slice&quot; initialState, // Le reducer est un objet de fonctions. // RTK utilise Immer.js, qui permet d'&eacute;crire du code &quot;mutant&quot; // de mani&egrave;re s&eacute;curis&eacute;e. reducers: { increment: (state) =&gt; { state.value += 1; }, decrement: (state) =&gt; { state.value -= 1; }, }, });</p><p id="-y0cyk_191">// RTK g&eacute;n&egrave;re automatiquement les &quot;action creators&quot; pour nous export const { increment, decrement } = counterSlice.actions;</p><p id="-y0cyk_192">// On exporte le reducer g&eacute;n&eacute;r&eacute; export default counterSlice.reducer;</p><div class="code-block" data-lang="none" data-title="None">
+&lt;/tab&gt;
+&lt;tab title=&quot;app/store.js&quot;&gt;
+```javascript
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '../features/counter/counterSlice';
+
+export const store = configureStore({
+  // On connecte nos slices au store
+  reducer: {
+    counter: counterReducer,
+    // on pourra ajouter d'autres reducers ici : user, cart, etc.
+  },
+});
+</div></div><div class="tabs__content" data-gtm="tab" id="-y0cyk_187" data-title="Counter.js (Composant)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { increment, decrement } from './features/counter/counterSlice';
+
+export function Counter() {
+// `useSelector` pour lire une valeur du store.
+// Le composant se re-rendra automatiquement si cette valeur change.
+const count = useSelector((state) =&gt; state.counter.value);
+
+// `useDispatch` pour pouvoir envoyer des actions.
+const dispatch = useDispatch();
+
+return (
+&lt;div&gt;
+&lt;div&gt;
+&lt;button aria-label=&quot;Increment value&quot; onClick={() =&gt; dispatch(increment())}&gt;
++
+&lt;/button&gt;
+&lt;span&gt;{count}&lt;/span&gt;
+&lt;button aria-label=&quot;Decrement value&quot; onClick={() =&gt; dispatch(decrement())}&gt;
+-
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+);
+}
+</div></div><div class="tabs__content" data-gtm="tab" id="-y0cyk_188" data-title="index.js (Int&eacute;gration)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// On enveloppe notre App avec le Provider de Redux
+// pour rendre le store accessible partout.
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+
+root.render(
+  &lt;Provider store={store}&gt;
+    &lt;App /&gt;
+  &lt;/Provider&gt;
+);
+</div></div></div></section><section class="chapter"><h3 id="exercice-14-g-rer-le-th-me-de-l-application-avec-rtk" data-toc="exercice-14-g-rer-le-th-me-de-l-application-avec-rtk">Exercice 14 : G&eacute;rer le th&egrave;me de l'application avec RTK</h3><p id="-y0cyk_196"><span class="control" id="-y0cyk_199">Objectif :</span> Cr&eacute;er un slice pour g&eacute;rer le th&egrave;me (clair/sombre) de l'application.</p><ol class="list _decimal" id="-y0cyk_197" type="1"><li class="list__item" id="-y0cyk_200"><p id="-y0cyk_206">Cr&eacute;ez un <code class="code" id="-y0cyk_207">themeSlice.js</code>.</p></li><li class="list__item" id="-y0cyk_201"><p id="-y0cyk_208">L'&eacute;tat initial sera <code class="code" id="-y0cyk_209">{ value: 'light' }</code>.</p></li><li class="list__item" id="-y0cyk_202"><p id="-y0cyk_210">Cr&eacute;ez un reducer <code class="code" id="-y0cyk_211">toggleTheme</code> qui change la valeur de 'light' &agrave; 'dark' et vice-versa.</p></li><li class="list__item" id="-y0cyk_203"><p id="-y0cyk_212">Connectez ce slice &agrave; votre store.</p></li><li class="list__item" id="-y0cyk_204"><p id="-y0cyk_213">Cr&eacute;ez un composant <code class="code" id="-y0cyk_214">ThemeSwitcher</code> qui utilise <code class="code" id="-y0cyk_215">useDispatch</code> pour appeler <code class="code" id="-y0cyk_216">toggleTheme</code> au clic sur un bouton.</p></li><li class="list__item" id="-y0cyk_205"><p id="-y0cyk_217">Dans <code class="code" id="-y0cyk_218">App.js</code>, utilisez <code class="code" id="-y0cyk_219">useSelector</code> pour r&eacute;cup&eacute;rer le th&egrave;me actuel et appliquez une classe CSS correspondante &agrave; la div principale.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-14" data-toc="correction-exercice-14">Correction exercice 14</h4></div><div class="collapse__content"><div class="tabs" id="-y0cyk_220" data-anchors="[-y0cyk_222,-y0cyk_223,-y0cyk_224]"><div class="tabs__content" data-gtm="tab" id="-y0cyk_222" data-title="features/theme/themeSlice.js"><p>```javascript import { createSlice } from '@reduxjs/toolkit'; </p><p id="-y0cyk_225">const initialState = { mode: 'light', };</p><p id="-y0cyk_226">export const themeSlice = createSlice({ name: 'theme', initialState, reducers: { toggleTheme: (state) =&gt; { state.mode = state.mode === 'light' ? 'dark' : 'light'; }, }, });</p><p id="-y0cyk_227">export const = themeSlice.actions;</p><p id="-y0cyk_228">export default themeSlice.reducer;</p><div class="code-block" data-lang="none" data-title="None">
+&lt;/tab&gt;
+&lt;tab title=&quot;app/store.js&quot;&gt;
+```javascript
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '../features/counter/counterSlice';
+import themeReducer from '../features/theme/themeSlice'; // Importez le nouveau reducer
+
+export const store = configureStore({
+  reducer: {
+    counter: counterReducer,
+    theme: themeReducer, // Ajoutez-le ici
+  },
+});
+</div></div><div class="tabs__content" data-gtm="tab" id="-y0cyk_223" data-title="ThemeSwitcher.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { toggleTheme } from '../features/theme/themeSlice';
+
+function ThemeSwitcher() {
+const theme = useSelector((state) =&gt; state.theme.mode);
+const dispatch = useDispatch();
+
+return (
+&lt;button onClick={() =&gt; dispatch(toggleTheme())}&gt;
+Passer au thème {theme === 'light' ? 'sombre' : 'clair'}
+&lt;/button&gt;
+);
+}
+
+export default ThemeSwitcher;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-y0cyk_224" data-title="App.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { useSelector } from 'react-redux';
+import ThemeSwitcher from './components/ThemeSwitcher';
+import './App.css';
+
+function App() {
+  const theme = useSelector((state) =&gt; state.theme.mode);
+
+  return (
+    // La classe CSS de la div change en fonction de l'état Redux
+    &lt;div className={`App ${theme}`}&gt;
+      &lt;h1&gt;Mon App avec Redux&lt;/h1&gt;
+      &lt;ThemeSwitcher /&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default App;
+</div></div></div></div></div></section></section></section><section class="chapter"><h2 id="3-alternatives-redux" data-toc="3-alternatives-redux">3. Alternatives &agrave; Redux</h2><p id="-y0cyk_232">Redux est un standard de l'industrie, mais il n'est pas la seule solution. Pour des projets moins complexes, des alternatives plus l&eacute;g&egrave;res ont gagn&eacute; en popularit&eacute;. Il est bon de les conna&icirc;tre.</p><section class="procedure-steps"><h3 id="-y0cyk_233" data-toc="-y0cyk_233">L'analogie du transport</h3><p id="-y0cyk_235">Redux est comme un <b id="-y0cyk_238">train de marchandises</b>. Il est incroyablement puissant, robuste, peut transporter une charge &eacute;norme sur de longues distances et suit des rails tr&egrave;s stricts. Parfait pour la logistique industrielle. Mais si vous voulez juste transporter une pizza, prendre le train est un peu excessif.</p><p id="-y0cyk_237">Chaque outil a sa place. Pour des applications d'entreprise complexes, Redux reste souvent le roi. Pour des projets plus petits ou des besoins sp&eacute;cifiques, les alternatives peuvent &ecirc;tre plus productives.</p><ol class="list _decimal"></ol></section></section><section class="chapter"><h2 id="tp-un-panier-d-achat-complet-avec-redux-toolkit" data-toc="tp-un-panier-d-achat-complet-avec-redux-toolkit">TP : Un panier d'achat complet avec Redux Toolkit</h2><p id="-y0cyk_246">Mettons en pratique la puissance de RTK pour cr&eacute;er un panier d'achat fonctionnel.</p><section class="chapter"><h3 id="tape-1-cr-er-le-cartslice" data-toc="tape-1-cr-er-le-cartslice">&Eacute;tape 1 : Cr&eacute;er le <code class="code" id="-y0cyk_253">cartSlice</code></h3><ul class="list _bullet" id="-y0cyk_252"><li class="list__item" id="-y0cyk_254"><p id="-y0cyk_258">L'&eacute;tat initial doit &ecirc;tre un tableau vide <code class="code" id="-y0cyk_259">items: []</code>.</p></li><li class="list__item" id="-y0cyk_255"><p id="-y0cyk_260">Cr&eacute;ez un reducer <code class="code" id="-y0cyk_261">addItem(state, action)</code>. <code class="code" id="-y0cyk_262">action.payload</code> sera un objet produit (<code class="code" id="-y0cyk_263">{ id, name, price }</code>). Si le produit est d&eacute;j&agrave; dans le panier, incr&eacute;mentez sa <code class="code" id="-y0cyk_264">quantity</code>. Sinon, ajoutez-le avec <code class="code" id="-y0cyk_265">quantity: 1</code>.</p></li><li class="list__item" id="-y0cyk_256"><p id="-y0cyk_266">Cr&eacute;ez un reducer <code class="code" id="-y0cyk_267">removeItem(state, action)</code>. <code class="code" id="-y0cyk_268">action.payload</code> sera l'ID du produit &agrave; retirer.</p></li><li class="list__item" id="-y0cyk_257"><p id="-y0cyk_269">Cr&eacute;ez un reducer <code class="code" id="-y0cyk_270">updateQuantity(state, action)</code>. <code class="code" id="-y0cyk_271">action.payload</code> sera <code class="code" id="-y0cyk_272">{ id, quantity }</code>.</p></li></ul></section><section class="chapter"><h3 id="tape-2-cr-er-les-selectors" data-toc="tape-2-cr-er-les-selectors">&Eacute;tape 2 : Cr&eacute;er les &quot;Selectors&quot;</h3><ul class="list _bullet" id="-y0cyk_273"><li class="list__item" id="-y0cyk_274"><p id="-y0cyk_275">Les selectors sont des fonctions qui extraient et calculent des donn&eacute;es d&eacute;riv&eacute;es du store. Dans <code class="code" id="-y0cyk_277">cartSlice.js</code>, exportez deux selectors :</p><ul class="list _bullet" id="-y0cyk_276"><li class="list__item" id="-y0cyk_278"><p id="-y0cyk_280"><code class="code" id="-y0cyk_281">selectCartItems</code> qui retourne <code class="code" id="-y0cyk_282">state.cart.items</code>.</p></li><li class="list__item" id="-y0cyk_279"><p id="-y0cyk_283"><code class="code" id="-y0cyk_284">selectCartTotal</code> qui utilise <code class="code" id="-y0cyk_285">reselect</code> (souvent inclus ou ajout&eacute;) ou un simple <code class="code" id="-y0cyk_286">.reduce()</code> pour calculer le prix total du panier.</p></li></ul></li></ul></section><section class="chapter"><h3 id="tape-3-cr-er-les-composants" data-toc="tape-3-cr-er-les-composants">&Eacute;tape 3 : Cr&eacute;er les composants</h3><ul class="list _bullet" id="-y0cyk_287"><li class="list__item" id="-y0cyk_288"><p id="-y0cyk_291"><code class="code" id="-y0cyk_292">ProductList.js</code>: Affiche une liste de produits. Chaque produit a un bouton &quot;Ajouter au panier&quot; qui <code class="code" id="-y0cyk_293">dispatch</code> l'action <code class="code" id="-y0cyk_294">addItem</code>.</p></li><li class="list__item" id="-y0cyk_289"><p id="-y0cyk_295"><code class="code" id="-y0cyk_297">ShoppingCart.js</code>:</p><ul class="list _bullet" id="-y0cyk_296"><li class="list__item" id="-y0cyk_298"><p id="-y0cyk_301">Utilise <code class="code" id="-y0cyk_302">useSelector</code> avec <code class="code" id="-y0cyk_303">selectCartItems</code> pour afficher la liste des articles dans le panier.</p></li><li class="list__item" id="-y0cyk_299"><p id="-y0cyk_304">Pour chaque article, affichez son nom, prix, quantit&eacute;, et un bouton pour le supprimer (<code class="code" id="-y0cyk_305">removeItem</code>).</p></li><li class="list__item" id="-y0cyk_300"><p id="-y0cyk_306">Affichez le total calcul&eacute; avec <code class="code" id="-y0cyk_307">selectCartTotal</code>.</p></li></ul></li><li class="list__item" id="-y0cyk_290"><p id="-y0cyk_308"><code class="code" id="-y0cyk_309">Header.js</code>: Affiche une ic&ocirc;ne de panier avec le nombre total d'articles (la longueur du tableau <code class="code" id="-y0cyk_310">items</code>).</p></li></ul></section><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-du-tp" data-toc="correction-du-tp">Correction du TP</h3></div><div class="collapse__content"><div class="tabs" id="-y0cyk_311" data-anchors="[-y0cyk_313,-y0cyk_314,-y0cyk_315]"><div class="tabs__content" data-gtm="tab" id="-y0cyk_313" data-title="features/cart/cartSlice.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import { createSlice, createSelector } from '@reduxjs/toolkit';
+
+const initialState = {
+items: [],
+};
+
+const cartSlice = createSlice({
+name: 'cart',
+initialState,
+reducers: {
+addItem: (state, action) =&gt; {
+const item = state.items.find(i =&gt; i.id === action.payload.id);
+if (item) {
+item.quantity++;
+} else {
+state.items.push({ ...action.payload, quantity: 1 });
+}
+},
+removeItem: (state, action) =&gt; {
+state.items = state.items.filter(i =&gt; i.id !== action.payload);
+},
+updateQuantity: (state, action) =&gt; {
+const item = state.items.find(i =&gt; i.id === action.payload.id);
+if (item) {
+item.quantity = action.payload.quantity;
+}
+},
+},
+});
+
+export const { addItem, removeItem, updateQuantity } = cartSlice.actions;
+
+// Selectors
+export const selectCartItems = (state) =&gt; state.cart.items;
+
+export const selectCartTotal = createSelector(
+selectCartItems,
+(items) =&gt; items.reduce((total, item) =&gt;
+total + item.price * item.quantity, 0)
+);
+
+export default cartSlice.reducer;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-y0cyk_314" data-title="ProductList.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addItem } from '../features/cart/cartSlice';
+
+const products = [
+  { id: 1, name: 'Laptop', price: 1200 },
+  { id: 2, name: 'Keyboard', price: 100 },
+  { id: 3, name: 'Mouse', price: 50 },
+];
+
+function ProductList() {
+  const dispatch = useDispatch();
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Produits&lt;/h2&gt;
+      {products.map(product =&gt; (
+        &lt;div key={product.id}&gt;
+          &lt;span&gt;{product.name} - {product.price}€&lt;/span&gt;
+          &lt;button onClick={() =&gt; dispatch(addItem(product))}&gt;
+            Ajouter
+          &lt;/button&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+export default ProductList;
+</div></div><div class="tabs__content" data-gtm="tab" id="-y0cyk_315" data-title="ShoppingCart.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  removeItem,
+  selectCartItems,
+  selectCartTotal,
+} from '../features/cart/cartSlice';
+
+function ShoppingCart() {
+const cartItems = useSelector(selectCartItems);
+const cartTotal = useSelector(selectCartTotal);
+const dispatch = useDispatch();
+
+return (
+&lt;div&gt;
+&lt;h2&gt;Panier&lt;/h2&gt;
+{cartItems.length === 0 ? (
+&lt;p&gt;Votre panier est vide.&lt;/p&gt;
+) : (
+&lt;ul&gt;
+{cartItems.map(item =&gt; (
+&lt;li key={item.id}&gt;
+{item.name} (x{item.quantity}) - {item.price * item.quantity}€
+&lt;button onClick={() =&gt; dispatch(removeItem(item.id))}&gt;
+Supprimer
+&lt;/button&gt;
+&lt;/li&gt;
+))}
+&lt;/ul&gt;
+)}
+&lt;h3&gt;Total : {cartTotal.toFixed(2)}€&lt;/h3&gt;
+&lt;/div&gt;
+);
+}
+export default ShoppingCart;
+</div></div></div></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="-y0cyk_319">Testez vos connaissances ! Les r&eacute;ponses se trouvent &agrave; la toute fin du support de cours.</p><section class="chapter"><h3 id="questions-choix-multiple-qcm" data-toc="questions-choix-multiple-qcm">Questions &agrave; Choix Multiple (QCM)</h3><p id="-y0cyk_322"><span class="control" id="-y0cyk_328">1. Quel est le r&ocirc;le d'un &quot;reducer&quot; dans Redux ?</span></p><ol class="list _decimal" id="-y0cyk_323" type="1"><li class="list__item" id="-y0cyk_329"><p id="-y0cyk_333">D'interroger une API pour obtenir de nouvelles donn&eacute;es.</p></li><li class="list__item" id="-y0cyk_330"><p id="-y0cyk_334">De d&eacute;crire une intention de changer l'&eacute;tat.</p></li><li class="list__item" id="-y0cyk_331"><p id="-y0cyk_335">De prendre l'&eacute;tat actuel et une action, et de retourner le nouvel &eacute;tat.</p></li><li class="list__item" id="-y0cyk_332"><p id="-y0cyk_336">De connecter le store Redux aux composants React.</p></li></ol><p id="-y0cyk_324"><span class="control" id="-y0cyk_337">2. Qu'est-ce que Redux Toolkit <code class="code" id="-y0cyk_338">createSlice</code> g&eacute;n&egrave;re automatiquement pour vous ?</span></p><ol class="list _decimal" id="-y0cyk_325" type="1"><li class="list__item" id="-y0cyk_339"><p id="-y0cyk_343">Uniquement le reducer.</p></li><li class="list__item" id="-y0cyk_340"><p id="-y0cyk_344">Uniquement les action creators.</p></li><li class="list__item" id="-y0cyk_341"><p id="-y0cyk_345">Le reducer, les action creators, et les types d'action.</p></li><li class="list__item" id="-y0cyk_342"><p id="-y0cyk_346">Le composant React pour afficher les donn&eacute;es.</p></li></ol><p id="-y0cyk_326"><span class="control" id="-y0cyk_347">3. Comment un composant React lit-il une donn&eacute;e depuis le store Redux ?</span></p><ol class="list _decimal" id="-y0cyk_327" type="1"><li class="list__item" id="-y0cyk_348"><p id="-y0cyk_352">En appelant <code class="code" id="-y0cyk_353">store.getState()</code> directement dans le JSX.</p></li><li class="list__item" id="-y0cyk_349"><p id="-y0cyk_354">En utilisant le hook <code class="code" id="-y0cyk_355">useDispatch</code>.</p></li><li class="list__item" id="-y0cyk_350"><p id="-y0cyk_356">En utilisant le hook <code class="code" id="-y0cyk_357">useSelector</code>.</p></li><li class="list__item" id="-y0cyk_351"><p id="-y0cyk_358">En important l'&eacute;tat comme une prop depuis le composant parent.</p></li></ol></section><section class="chapter"><h3 id="questions-ouvertes" data-toc="questions-ouvertes">Questions Ouvertes</h3><p id="-y0cyk_359"><span class="control" id="-y0cyk_362">4. Expliquez le principe de la &quot;source unique de v&eacute;rit&eacute;&quot; et pourquoi c'est un avantage majeur dans une grande application.</span></p><p id="-y0cyk_360"><span class="control" id="-y0cyk_363">5. Vous avez une application o&ugrave; l'&eacute;tat est tr&egrave;s simple (un bool&eacute;en pour un th&egrave;me) et partag&eacute; entre de nombreux composants. Quelle solution choisiriez-vous entre <code class="code" id="-y0cyk_364">useContext</code> et Redux, et pourquoi ?</span></p></section></section><section class="chapter"><h2 id="conclusion-de-ce-module" data-toc="conclusion-de-ce-module">Conclusion de ce module</h2><p id="-y0cyk_365">Vous avez maintenant les cl&eacute;s pour architecturer des applications React complexes et scalables. Vous avez compris que la gestion de l'&eacute;tat n'est pas juste une question technique, mais une question de <span class="control" id="-y0cyk_368">pr&eacute;visibilit&eacute;</span> et de **maintenabilit&eacute; **.</p><p id="-y0cyk_366">Vous avez vu comment passer de solutions natives comme <code class="code" id="-y0cyk_369">useReducer</code> et <code class="code" id="-y0cyk_370">useContext</code> &agrave; une solution de calibre industriel comme <span class="control" id="-y0cyk_371">Redux Toolkit</span>. Vous savez maintenant comment centraliser votre logique m&eacute;tier dans des <span class="control" id="-y0cyk_372">slices</span>, comment interagir avec le <span class="control" id="-y0cyk_373">store</span> de mani&egrave;re d&eacute;coupl&eacute;e gr&acirc;ce &agrave; <code class="code" id="-y0cyk_374">useSelector</code> et <code class="code" id="-y0cyk_375">useDispatch</code>, et comment tout cela forme un flux de donn&eacute;es unidirectionnel clair et facile &agrave; d&eacute;boguer.</p><p id="-y0cyk_367">Maintenant que nous savons g&eacute;rer l'&eacute;tat de notre application de mani&egrave;re robuste, d'o&ugrave; vient cet &eacute;tat ? La plupart du temps, d'un serveur externe. Le prochain module est donc une suite logique : nous allons apprendre &agrave; <span class="control" id="-y0cyk_376">communiquer avec des APIs</span> pour remplir notre application de donn&eacute;es dynamiques et r&eacute;elles.</p></section><section class="chapter"><h2 id="suggestions-de-projets-pour-pratiquer" data-toc="suggestions-de-projets-pour-pratiquer">Suggestions de projets pour pratiquer</h2><ol class="list _decimal" id="-y0cyk_377" type="1"><li class="list__item" id="-y0cyk_378"><p id="-y0cyk_381"><span class="control" id="-y0cyk_383">Niveau D&eacute;butant : Application de notes simple</span></p><ul class="list _bullet" id="-y0cyk_382"><li class="list__item" id="-y0cyk_384"><p id="-y0cyk_386"><span class="control" id="-y0cyk_387">Description :</span> Une application o&ugrave; l'on peut ajouter, &eacute;diter et supprimer des notes. Une note a un titre et un contenu.</p></li><li class="list__item" id="-y0cyk_385"><p id="-y0cyk_388"><span class="control" id="-y0cyk_389">Piste technique :</span> Cr&eacute;ez un <code class="code" id="-y0cyk_390">notesSlice</code> avec des reducers pour <code class="code" id="-y0cyk_391">addNote</code>, <code class="code" id="-y0cyk_392">updateNote</code>, <code class="code" id="-y0cyk_393">deleteNote</code>. L'&eacute;tat sera un tableau d'objets <code class="code" id="-y0cyk_394">notes</code>.</p></li></ul></li><li class="list__item" id="-y0cyk_379"><p id="-y0cyk_395"><span class="control" id="-y0cyk_397">Niveau Interm&eacute;diaire : Quiz interactif</span></p><ul class="list _bullet" id="-y0cyk_396"><li class="list__item" id="-y0cyk_398"><p id="-y0cyk_400"><span class="control" id="-y0cyk_401">Description :</span> Un quiz multi-questions. L'application doit suivre la question actuelle, les r&eacute;ponses de l'utilisateur et le score final.</p></li><li class="list__item" id="-y0cyk_399"><p id="-y0cyk_402"><span class="control" id="-y0cyk_403">Piste technique :</span> Un <code class="code" id="-y0cyk_404">quizSlice</code>. L'&eacute;tat pourrait inclure <code class="code" id="-y0cyk_405">questions: []</code>, <code class="code" id="-y0cyk_406">currentQuestionIndex: 0</code>, <code class="code" id="-y0cyk_407">answers: {}</code>, <code class="code" id="-y0cyk_408">status: 'playing' | 'finished'</code>. Les reducers seraient <code class="code" id="-y0cyk_409">answerQuestion</code> (qui enregistre la r&eacute;ponse et passe &agrave; la question suivante) et <code class="code" id="-y0cyk_410">restartQuiz</code>.</p></li></ul></li><li class="list__item" id="-y0cyk_380"><p id="-y0cyk_411"><span class="control" id="-y0cyk_413">Niveau Avanc&eacute; : Clone de Trello (simplifi&eacute;)</span></p><ul class="list _bullet" id="-y0cyk_412"><li class="list__item" id="-y0cyk_414"><p id="-y0cyk_416"><span class="control" id="-y0cyk_417">Description :</span> Un tableau avec plusieurs colonnes (&quot;&Agrave; faire&quot;, &quot;En cours&quot;, &quot;Termin&eacute;&quot;). L'utilisateur peut ajouter des cartes &agrave; une colonne et les glisser-d&eacute;poser d'une colonne &agrave; l'autre.</p></li><li class="list__item" id="-y0cyk_415"><p id="-y0cyk_418"><span class="control" id="-y0cyk_419">Piste technique :</span> C'est un excellent cas d'usage pour Redux. L'&eacute;tat pourrait &ecirc;tre <code class="code" id="-y0cyk_420">{ columns: { 'col-1': { id: 'col-1', title: '&Agrave; faire', cardIds: [] } }, cards: { 'card-1': { ... } } }</code>. Le drag-and-drop est un d&eacute;fi en soi (une biblioth&egrave;que comme <code class="code" id="-y0cyk_421">react-beautiful-dnd</code> peut aider), et les actions Redux (<code class="code" id="-y0cyk_422">moveCardToColumn</code>, <code class="code" id="-y0cyk_423">reorderCardInColumn</code>) rendront la logique de mise &agrave; jour de l'&eacute;tat tr&egrave;s propre.</p></li></ul></li></ol></section><div class="last-modified">08 octobre 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="003-module-03.html" class="navigation-links__prev">Module 3 : Rendu Avanc&eacute; et Optimisation de la Performance</a><a href="005-module-05.html" class="navigation-links__next">Module 5 : Communication avec les APIs</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-11-21T15:37:45.346524"><title>Module 8 : Architecture et Bonnes Pratiques | React</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs Pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"pourquoi-ce-module-est-il-important","level":0,"title":"Pourquoi ce module est-il important ?","anchor":"#pourquoi-ce-module-est-il-important"},{"id":"comp-tences-du-r-f-rentiel-reac","level":0,"title":"Compétences du Référentiel (REAC)","anchor":"#comp-tences-du-r-f-rentiel-reac"},{"id":"1-organisation-du-projet-structure-de-dossiers","level":0,"title":"1. Organisation du Projet : Structure de Dossiers","anchor":"#1-organisation-du-projet-structure-de-dossiers"},{"id":"2-d-coupage-des-composants","level":0,"title":"2. Découpage des Composants","anchor":"#2-d-coupage-des-composants"},{"id":"3-r-utilisabilit-dry-don-t-repeat-yourself","level":0,"title":"3. Réutilisabilité (DRY - Don\u0027t Repeat Yourself)","anchor":"#3-r-utilisabilit-dry-don-t-repeat-yourself"},{"id":"4-strat-gies-de-style","level":0,"title":"4. Stratégies de Style","anchor":"#4-strat-gies-de-style"},{"id":"tp-refactoriser-le-blog","level":0,"title":"TP : Refactoriser le blog","anchor":"#tp-refactoriser-le-blog"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion-de-ce-module","level":0,"title":"Conclusion de ce module","anchor":"#conclusion-de-ce-module"},{"id":"suggestions-de-projets-pour-pratiquer","level":0,"title":"Suggestions de projets pour pratiquer","anchor":"#suggestions-de-projets-pour-pratiquer"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 8 : Architecture et Bonnes Pratiques | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/008-module-08.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 8 : Architecture et Bonnes Pratiques | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/008-module-08.html#webpage",
+    "url": "writerside-documentation/008-module-08.html",
+    "name": "Module 8 : Architecture et Bonnes Pratiques | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="008-module-08" data-main-title="Module 8 : Architecture et Bonnes Pratiques" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="008-module-08" id="008-module-08.md">Module 8 : Architecture et Bonnes Pratiques</h1><p id="-ydxb50_2">Absolument ! Apr&egrave;s avoir ma&icirc;tris&eacute; les briques de construction individuelles, il est temps de prendre de la hauteur et de penser comme un architecte. Comment assembler toutes ces pi&egrave;ces pour construire un &eacute;difice solide, facile &agrave; entretenir et capable de grandir ? C'est tout l'enjeu de ce module.</p><p id="-ydxb50_5">&Eacute;crire du code qui fonctionne est une chose. &Eacute;crire du code que vous (ou vos coll&egrave;gues) pourrez comprendre, modifier et &eacute;tendre dans six mois en est une autre. Ce module ne porte pas sur de nouvelles fonctionnalit&eacute;s de React, mais sur la sagesse accumul&eacute;e par la communaut&eacute; pour organiser des projets React de mani&egrave;re efficace et professionnelle.</p><p id="-ydxb50_6">Nous allons parler de structure, de principes de conception et de strat&eacute;gies pour que votre base de code reste un plaisir &agrave; travailler, m&ecirc;me lorsqu'elle devient grande et complexe.</p><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs P&eacute;dagogiques</h2><p id="-ydxb50_18">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="-ydxb50_19"><li class="list__item" id="-ydxb50_20"><p id="-ydxb50_25"><span class="control" id="-ydxb50_26">Organiser</span> les fichiers et dossiers de votre projet React selon des conventions &eacute;tablies.</p></li><li class="list__item" id="-ydxb50_21"><p id="-ydxb50_27"><span class="control" id="-ydxb50_28">Appliquer</span> le principe de responsabilit&eacute; unique en s&eacute;parant les composants de pr&eacute;sentation des composants conteneurs (logique).</p></li><li class="list__item" id="-ydxb50_22"><p id="-ydxb50_29"><span class="control" id="-ydxb50_30">Maximiser</span> la r&eacute;utilisabilit&eacute; de votre code en cr&eacute;ant des composants g&eacute;n&eacute;riques et des hooks personnalis&eacute;s.</p></li><li class="list__item" id="-ydxb50_23"><p id="-ydxb50_31"><span class="control" id="-ydxb50_32">Adopter</span> des conventions de nommage claires pour vos composants, props et variables.</p></li><li class="list__item" id="-ydxb50_24"><p id="-ydxb50_33"><span class="control" id="-ydxb50_34">Comparer</span> et choisir une strat&eacute;gie de stylisation adapt&eacute;e &agrave; vos besoins (CSS Modules, CSS-in-JS, Tailwind CSS).</p></li></ul></section><section class="chapter"><h2 id="pourquoi-ce-module-est-il-important" data-toc="pourquoi-ce-module-est-il-important">Pourquoi ce module est-il important ?</h2><p id="-ydxb50_35">Imaginez que vous construisez une maison. Au d&eacute;but, vous pouvez laisser vos outils et mat&eacute;riaux un peu partout dans le jardin. &Ccedil;a fonctionne. Mais si vous construisez un immeuble de 20 &eacute;tages, cette approche m&egrave;ne au chaos. Des outils sont perdus, personne ne sait o&ugrave; trouver les plans, et le chantier devient dangereux et inefficace.</p><p id="-ydxb50_36">Un projet logiciel, c'est la m&ecirc;me chose. Sans un plan clair (<code class="code" id="-ydxb50_37">architecture</code>), des r&egrave;gles de rangement (<code class="code" id="-ydxb50_38">structure de dossiers</code>), et des outils bien identifi&eacute;s (<code class="code" id="-ydxb50_39">conventions de nommage</code>), votre projet devient rapidement ce qu'on appelle un &quot;plat de spaghettis&quot; : un enchev&ecirc;trement de code impossible &agrave; d&eacute;m&ecirc;ler. Ce module vous donne le plan et les r&egrave;gles pour construire des &quot;gratte-ciel&quot; logiciels robustes et non des cabanes fragiles.</p></section><section class="chapter"><h2 id="comp-tences-du-r-f-rentiel-reac" data-toc="comp-tences-du-r-f-rentiel-reac">Comp&eacute;tences du R&eacute;f&eacute;rentiel (REAC)</h2><p id="-ydxb50_40">Ce module est transversal et renforce la professionnalisation de toutes les comp&eacute;tences du <span class="control" id="-ydxb50_43">CCP-1 : Concevoir et d&eacute;velopper des composants d'interface utilisateur</span>.</p><ul class="list _bullet" id="-ydxb50_41"><li class="list__item" id="-ydxb50_44"><p id="-ydxb50_47"><span class="control" id="-ydxb50_48">Maquetter une application :</span> Une bonne architecture d&eacute;coule d'une bonne phase de conception.</p></li><li class="list__item" id="-ydxb50_45"><p id="-ydxb50_49"><span class="control" id="-ydxb50_50">D&eacute;velopper une interface utilisateur :</span> Les principes de ce module permettent de d&eacute;velopper des UI maintenables.</p></li><li class="list__item" id="-ydxb50_46"><p id="-ydxb50_51"><span class="control" id="-ydxb50_52">Pr&eacute;parer et tester un d&eacute;ploiement :</span> Un code bien organis&eacute; est plus facile &agrave; tester, &agrave; d&eacute;boguer et &agrave; d&eacute;ployer en toute confiance.</p></li></ul></section><section class="chapter"><h2 id="1-organisation-du-projet-structure-de-dossiers" data-toc="1-organisation-du-projet-structure-de-dossiers">1. Organisation du Projet : Structure de Dossiers</h2><p id="-ydxb50_53">La premi&egrave;re chose qu'un d&eacute;veloppeur voit en arrivant sur un projet est sa structure de dossiers. Une structure claire et pr&eacute;visible est comme une carte : elle permet &agrave; n'importe qui de s'orienter rapidement.</p><section class="procedure-steps"><h3 id="-ydxb50_54" data-toc="-ydxb50_54">L'analogie du supermarché</h3><p id="-ydxb50_60">Pensez &agrave; un supermarch&eacute; bien organis&eacute;. Tous les fruits et l&eacute;gumes sont ensemble, les produits laitiers dans un autre rayon, la boulangerie ailleurs. Vous savez instinctivement o&ugrave; chercher. Une bonne structure de projet fait la m&ecirc;me chose.</p><p id="-ydxb50_61">Il n'existe pas UNE seule structure parfaite, mais une approche tr&egrave;s courante et efficace est l' <b id="-ydxb50_62">organisation par type de fichier</b>.</p><ol class="list _decimal"></ol></section><p id="-ydxb50_55">Voici une structure typique pour un projet de taille moyenne :</p><div class="code-block" data-lang="none">
+src/
+├── api/             # Fonctions pour les appels API (ex: apiClient.js)
+├── assets/          # Images, polices, etc.
+├── components/      # Composants UI réutilisables (Button, Input, Card...)
+│   ├── Button/
+│   │   ├── Button.js
+│   │   └── Button.module.css
+│   └── ...
+├── contexts/        # Définitions des contextes React (AuthContext, ThemeContext...)
+├── features/        # (Pour Redux) Logique métier par fonctionnalité (user, cart...)
+│   ├── user/
+│   │   └── userSlice.js
+│   └── ...
+├── hooks/           # Hooks personnalisés (useFetch, useAuth...)
+├── pages/           # Composants qui représentent une page (route) de l'app
+│   ├── HomePage.js
+│   └── ...
+├── services/        # Logique métier non-React (calculs, formatage...)
+├── styles/          # Fichiers CSS globaux (variables, reset...)
+├── utils/           # Fonctions utilitaires pures (ex: formatDate.js)
+├── App.js           # Composant racine
+└── index.js         # Point d'entrée de l'application
+
+</div><p id="-ydxb50_57"><span class="control" id="-ydxb50_63">Principaux avantages :</span></p><ul class="list _bullet" id="-ydxb50_58"><li class="list__item" id="-ydxb50_64"><p id="-ydxb50_67"><span class="control" id="-ydxb50_68">Pr&eacute;visibilit&eacute; :</span> Vous cherchez un hook ? C'est dans <code class="code" id="-ydxb50_69">/hooks</code>. Une page ? Dans <code class="code" id="-ydxb50_70">/pages</code>.</p></li><li class="list__item" id="-ydxb50_65"><p id="-ydxb50_71"><span class="control" id="-ydxb50_72">Scalabilit&eacute; :</span> Facile d'ajouter de nouveaux &eacute;l&eacute;ments sans se poser de question.</p></li><li class="list__item" id="-ydxb50_66"><p id="-ydxb50_73"><span class="control" id="-ydxb50_74">Clart&eacute; :</span> S&eacute;pare clairement la logique (hooks, services) de la pr&eacute;sentation (components, pages).</p></li></ul></section><section class="chapter"><h2 id="2-d-coupage-des-composants" data-toc="2-d-coupage-des-composants">2. D&eacute;coupage des Composants</h2><p id="-ydxb50_75">La r&egrave;gle d'or du d&eacute;veloppement de composants est le <span class="control" id="-ydxb50_80">Principe de Responsabilit&eacute; Unique (Single Responsibility Principle)</span>: un composant ne devrait avoir qu'une seule raison de changer.</p><section class="procedure-steps"><h3 id="-ydxb50_76" data-toc="-ydxb50_76">L'analogie de la trousse à outils</h3><p id="-ydxb50_81">Vous n'achetez pas un &quot;marteau-tournevis-scie&quot;. Vous achetez un marteau, un tournevis, et une scie. Chaque outil excelle dans une seule t&acirc;che. Vos composants doivent &ecirc;tre pareils. Un composant <code class="code" id="-ydxb50_82">Button</code> ne doit s'occuper que de l'apparence et du clic d'un bouton. Il ne doit pas savoir <em id="-ydxb50_83">pourquoi</em> on clique dessus.</p><ol class="list _decimal"></ol></section><p id="-ydxb50_77">Pour appliquer ce principe, on distingue souvent deux types de composants :</p><section class="chapter"><h3 id="composants-de-pr-sentation-ou-dumb-components" data-toc="composants-de-pr-sentation-ou-dumb-components">Composants de Pr&eacute;sentation (ou &quot;Dumb Components&quot;)</h3><ul class="list _bullet" id="-ydxb50_84"><li class="list__item" id="-ydxb50_85"><p id="-ydxb50_88"><span class="control" id="-ydxb50_89">Leur r&ocirc;le :</span> Comment les choses <span class="emphasis" id="-ydxb50_90">apparaissent</span>.</p></li><li class="list__item" id="-ydxb50_86"><p id="-ydxb50_91"><span class="control" id="-ydxb50_93">Caract&eacute;ristiques :</span></p><ul class="list _bullet" id="-ydxb50_92"><li class="list__item" id="-ydxb50_94"><p id="-ydxb50_98">Re&ccedil;oivent leurs donn&eacute;es uniquement via les <code class="code" id="-ydxb50_99">props</code>.</p></li><li class="list__item" id="-ydxb50_95"><p id="-ydxb50_100">N'ont g&eacute;n&eacute;ralement pas de <code class="code" id="-ydxb50_101">state</code> interne (ou tr&egrave;s peu, pour l'UI).</p></li><li class="list__item" id="-ydxb50_96"><p id="-ydxb50_102">Ne connaissent pas l'origine des donn&eacute;es ou la logique de l'application.</p></li><li class="list__item" id="-ydxb50_97"><p id="-ydxb50_103">Sont tr&egrave;s r&eacute;utilisables.</p></li></ul></li><li class="list__item" id="-ydxb50_87"><p id="-ydxb50_104"><span class="control" id="-ydxb50_105">Exemples :</span> <code class="code" id="-ydxb50_106">Button</code>, <code class="code" id="-ydxb50_107">Avatar</code>, <code class="code" id="-ydxb50_108">ProductCard</code>, <code class="code" id="-ydxb50_109">FormInput</code>.</p></li></ul></section><section class="chapter"><h3 id="composants-conteneurs-ou-smart-components" data-toc="composants-conteneurs-ou-smart-components">Composants Conteneurs (ou &quot;Smart Components&quot;)</h3><ul class="list _bullet" id="-ydxb50_110"><li class="list__item" id="-ydxb50_115"><p id="-ydxb50_118"><span class="control" id="-ydxb50_119">Leur r&ocirc;le :</span> Comment les choses <span class="emphasis" id="-ydxb50_120">fonctionnent</span>.</p></li><li class="list__item" id="-ydxb50_116"><p id="-ydxb50_121"><span class="control" id="-ydxb50_123">Caract&eacute;ristiques :</span></p><ul class="list _bullet" id="-ydxb50_122"><li class="list__item" id="-ydxb50_124"><p id="-ydxb50_129">Contiennent la logique m&eacute;tier.</p></li><li class="list__item" id="-ydxb50_125"><p id="-ydxb50_130">G&egrave;rent l'&eacute;tat (<code class="code" id="-ydxb50_131">useState</code>, <code class="code" id="-ydxb50_132">useReducer</code>, Redux).</p></li><li class="list__item" id="-ydxb50_126"><p id="-ydxb50_133">Effectuent les appels API (<code class="code" id="-ydxb50_134">useEffect</code>).</p></li><li class="list__item" id="-ydxb50_127"><p id="-ydxb50_135">Passent les donn&eacute;es et les fonctions aux composants de pr&eacute;sentation.</p></li><li class="list__item" id="-ydxb50_128"><p id="-ydxb50_136">Ne contiennent que tr&egrave;s peu de balisage direct (divs, structure).</p></li></ul></li><li class="list__item" id="-ydxb50_117"><p id="-ydxb50_137"><span class="control" id="-ydxb50_138">Exemples :</span> <code class="code" id="-ydxb50_139">UserListPage</code>, <code class="code" id="-ydxb50_140">ProductPage</code>, <code class="code" id="-ydxb50_141">RegistrationFormContainer</code>.</p></li></ul><p id="-ydxb50_111"><span class="control" id="-ydxb50_142">Exemple concret :</span></p><div class="tabs" id="-ydxb50_112" data-anchors="[-ydxb50_143,-ydxb50_144]"><div class="tabs__content" data-gtm="tab" id="-ydxb50_143" data-title="Composant de Pr&eacute;sentation (`UserList.js`)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// Ce composant ne sait pas d'où viennent les utilisateurs.
+// Il se contente de les afficher. Très réutilisable !
+function UserList({ users, onUserClick }) {
+  return (
+    &lt;ul&gt;
+      {users.map(user =&gt; (
+        &lt;li key={user.id} onClick={() =&gt; onUserClick(user.id)}&gt;
+          {user.name}
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-ydxb50_144" data-title="Composant Conteneur (`UserPage.js`)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import UserList from './UserList';
+import useFetch from '../hooks/useFetch';
+
+// Ce composant contient la logique : fetcher les données,
+// gérer le chargement, les erreurs, et les actions.
+function UserPage() {
+const { data: users, loading, error } = useFetch('/api/users');
+
+const handleUserClick = (userId) =&gt; {
+console.log(`Utilisateur ${userId} cliqué !`);
+};
+
+if (loading) return &lt;p&gt;Chargement...&lt;/p&gt;;
+if (error) return &lt;p&gt;Erreur.&lt;/p&gt;;
+
+return (
+&lt;div&gt;
+&lt;h1&gt;Nos utilisateurs&lt;/h1&gt;
+&lt;UserList users={users} onUserClick={handleUserClick} /&gt;
+&lt;/div&gt;
+);
+}
+
+</div></div></div><aside class="prompt" data-type="tip" data-title="" id="-ydxb50_113"><p id="-ydxb50_147"><span class="control" id="-ydxb50_148">Note :</span> Avec les hooks, la fronti&egrave;re est parfois plus floue, mais le principe de s&eacute;parer la logique de la vue reste fondamental.</p></aside></section></section><section class="chapter"><h2 id="3-r-utilisabilit-dry-don-t-repeat-yourself" data-toc="3-r-utilisabilit-dry-don-t-repeat-yourself">3. R&eacute;utilisabilit&eacute; (DRY - Don't Repeat Yourself)</h2><p id="-ydxb50_149">Le but ultime d'une bonne architecture est de ne jamais avoir &agrave; &eacute;crire la m&ecirc;me logique deux fois.</p><section class="procedure-steps"><h3 id="-ydxb50_150" data-toc="-ydxb50_150">L'analogie de la recette de cuisine</h3><p id="-ydxb50_154">Si vous faites souvent de la p&acirc;tisserie, vous n'allez pas r&eacute;&eacute;crire la recette de la &quot;p&acirc;te sabl&eacute;e&quot; dans chaque recette de tarte. Vous allez la mettre sur une fiche &agrave; part et, dans vos recettes de tarte au citron ou de tarte aux fraises, vous &eacute;crirez simplement : &quot;Pr&eacute;parer une p&acirc;te sabl&eacute;e (voir fiche P-01)&quot;.</p><ol class="list _decimal"></ol></section><p id="-ydxb50_151"><span class="control" id="-ydxb50_163">Comment identifier ce qui doit &ecirc;tre r&eacute;utilisable ?</span></p><ul class="list _bullet" id="-ydxb50_152"><li class="list__item" id="-ydxb50_164"><p id="-ydxb50_166"><span class="control" id="-ydxb50_167">Pour les composants :</span> Vous vous surprenez &agrave; copier-coller du JSX avec de l&eacute;g&egrave;res variations ? C'est le signe qu'il faut cr&eacute;er un composant g&eacute;n&eacute;rique qui prend ces variations en <code class="code" id="-ydxb50_168">props</code>.</p></li><li class="list__item" id="-ydxb50_165"><p id="-ydxb50_169"><span class="control" id="-ydxb50_170">Pour les hooks :</span> Vous vous surprenez &agrave; copier-coller de la logique (<code class="code" id="-ydxb50_171">useState</code> + <code class="code" id="-ydxb50_172">useEffect</code>) dans plusieurs composants ? Extrayez cette logique dans un hook personnalis&eacute;. Notre <code class="code" id="-ydxb50_173">useFetch</code> du module 5 en est l'exemple parfait.</p></li></ul></section><section class="chapter"><h2 id="4-strat-gies-de-style" data-toc="4-strat-gies-de-style">4. Strat&eacute;gies de Style</h2><p id="-ydxb50_174">Comment appliquer du CSS &agrave; nos composants ? C'est un sujet avec de nombreuses approches en React. Voici les trois plus populaires.</p><div class="tabs" id="-ydxb50_175" data-anchors="[-ydxb50_179,-ydxb50_180,-ydxb50_181]"><div class="tabs__content" data-gtm="tab" id="-ydxb50_179" data-title="CSS Modules"><p id="-ydxb50_182"><b id="-ydxb50_185">Principe :</b> Chaque fichier CSS est &quot;scop&eacute;&quot; localement au composant qui l'importe. Fini les conflits de noms de classes !</p><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// Button.js
+import styles from './Button.module.css';
+
+function Button() {
+// `styles.button` sera transformé en un nom de classe unique
+// comme `Button_button__a21eZ`
+return &lt;button className={styles.button}&gt;Click Me&lt;/button&gt;;
+}
+</div><p id="-ydxb50_184"><b id="-ydxb50_186">Avantages :</b> CSS standard, pas de conflits, s&eacute;paration claire du style et de la logique. <br> <b id="-ydxb50_188">Inconv&eacute;nients :</b> Peut &ecirc;tre verbeux pour passer des styles dynamiques.</p></div><div class="tabs__content" data-gtm="tab" id="-ydxb50_180" data-title="CSS-in-JS (Styled-Components)"><p id="-ydxb50_189"><b id="-ydxb50_192">Principe :</b> On &eacute;crit le CSS directement dans nos fichiers JavaScript en utilisant des &quot;template literals&quot;. La biblioth&egrave;que cr&eacute;e des composants React avec des classes uniques.</p><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// npm install styled-components
+import styled from 'styled-components';
+
+// Crée un composant `&lt;StyledButton&gt;` qui est un `&lt;button&gt;` avec ces styles.
+const StyledButton = styled.button`
+  background-color: ${props =&gt; props.primary ? 'blue' : 'gray'};
+  color: white;
+  padding: 10px;
+`;
+
+// Utilisation
+// &lt;StyledButton primary&gt;Primary&lt;/StyledButton&gt;
+// &lt;StyledButton&gt;Default&lt;/StyledButton&gt;
+</div><p id="-ydxb50_191"><b id="-ydxb50_193">Avantages :</b> Colocation du style et du composant, stylisation dynamique tr&egrave;s facile avec les props. <br> <b id="-ydxb50_195">Inconv&eacute;nients :</b> Peut avoir un l&eacute;ger co&ucirc;t en performance (runtime), courbe d'apprentissage.</p></div><div class="tabs__content" data-gtm="tab" id="-ydxb50_181" data-title="Utility-First (Tailwind CSS)"><p id="-ydxb50_196"><b id="-ydxb50_199">Principe :</b> Au lieu d'&eacute;crire du CSS, on utilise une large palette de classes utilitaires directement dans le JSX.</p><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// On n'écrit presque plus de fichier CSS.
+function Alert() {
+  return (
+    &lt;div className=&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded&quot;&gt;
+      Une erreur est survenue.
+    &lt;/div&gt;
+  );
+}
+</div><p id="-ydxb50_198"><b id="-ydxb50_200">Avantages :</b> Extr&ecirc;mement rapide pour prototyper, design system coh&eacute;rent, pas de changement de contexte entre JS et CSS. <br> <b id="-ydxb50_202">Inconv&eacute;nients :</b> Le JSX peut devenir tr&egrave;s charg&eacute;, peut &ecirc;tre difficile &agrave; prendre en main.</p></div></div><p id="-ydxb50_176"><span class="control" id="-ydxb50_203">Quelle approche choisir ?</span></p><ul class="list _bullet" id="-ydxb50_177"><li class="list__item" id="-ydxb50_204"><p id="-ydxb50_207"><span class="control" id="-ydxb50_208">CSS Modules :</span> Un choix solide, s&ucirc;r et proche du CSS traditionnel. Id&eacute;al pour commencer.</p></li><li class="list__item" id="-ydxb50_205"><p id="-ydxb50_209"><span class="control" id="-ydxb50_210">Styled-Components :</span> Excellent si vous aimez la colocation et avez beaucoup de styles dynamiques.</p></li><li class="list__item" id="-ydxb50_206"><p id="-ydxb50_211"><span class="control" id="-ydxb50_212">Tailwind CSS :</span> Tr&egrave;s populaire et productif une fois ma&icirc;tris&eacute;, surtout en &eacute;quipe.</p></li></ul><section class="chapter"><h3 id="exercice-18-refactoriser-un-composant" data-toc="exercice-18-refactoriser-un-composant">Exercice 18 : Refactoriser un composant</h3><p id="-ydxb50_213"><span class="control" id="-ydxb50_217">Objectif :</span> Appliquer le principe de s&eacute;paration conteneur/pr&eacute;sentation.</p><p id="-ydxb50_214">Reprenez le composant <code class="code" id="-ydxb50_218">RandomCatFact</code> de l'exercice 15.</p><ol class="list _decimal" id="-ydxb50_215" type="1"><li class="list__item" id="-ydxb50_219"><p id="-ydxb50_221">Cr&eacute;ez un composant de pr&eacute;sentation <code class="code" id="-ydxb50_222">CatFactDisplay({ fact, loading, error })</code>. Ce composant ne contiendra que la logique d'affichage (le <code class="code" id="-ydxb50_223">if (loading)</code>, <code class="code" id="-ydxb50_224">if (error)</code> et le JSX final).</p></li><li class="list__item" id="-ydxb50_220"><p id="-ydxb50_225">Le composant <code class="code" id="-ydxb50_226">RandomCatFact</code> devient un conteneur. Son seul r&ocirc;le est d'appeler le hook <code class="code" id="-ydxb50_227">useFetch</code> et de passer les r&eacute;sultats en props &agrave; <code class="code" id="-ydxb50_228">CatFactDisplay</code>.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-18" data-toc="correction-exercice-18">Correction exercice 18</h4></div><div class="collapse__content"><div class="tabs" id="-ydxb50_229" data-anchors="[-ydxb50_231,-ydxb50_232]"><div class="tabs__content" data-gtm="tab" id="-ydxb50_231" data-title="CatFactDisplay.js (Pr&eacute;sentation)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/components/CatFactDisplay.js
+import React from 'react';
+
+// Ce composant est &quot;bête&quot;. Il ne fait qu'afficher ce qu'on lui donne.
+function CatFactDisplay({ fact, loading, error }) {
+if (loading) {
+return &lt;p&gt;Chargement d'un fait incroyable...&lt;/p&gt;;
+}
+
+if (error) {
+return &lt;p&gt;Impossible de contacter les chats pour le moment.&lt;/p&gt;;
+}
+
+return (
+&lt;div&gt;
+&lt;h2&gt;Le saviez-vous ?&lt;/h2&gt;
+&lt;p&gt;{fact ? fact : 'Aucun fait trouvé.'}&lt;/p&gt;
+&lt;/div&gt;
+);
+}
+
+export default CatFactDisplay;
+
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-ydxb50_232" data-title="RandomCatFact.js (Conteneur)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/pages/RandomCatFactPage.js (On pourrait le renommer)
+import React from 'react';
+import useFetch from '../hooks/useFetch';
+import CatFactDisplay from '../components/CatFactDisplay';
+
+function RandomCatFact() {
+const { data, loading, error } = useFetch('https://catfact.ninja/fact');
+
+return (
+&lt;CatFactDisplay
+fact={data ? data.fact : null}
+loading={loading}
+error={error}
+/&gt;
+);
+}
+
+export default RandomCatFact;
+
+</div></div></div></div></div></section></section></section><section class="chapter"><h2 id="tp-refactoriser-le-blog" data-toc="tp-refactoriser-le-blog">TP : Refactoriser le blog</h2><p id="-ydxb50_235">Reprenons le mini-blog du module sur le routage et appliquons nos nouveaux principes d'architecture.</p><section class="chapter"><h3 id="tape-1-organiser-les-fichiers" data-toc="tape-1-organiser-les-fichiers">&Eacute;tape 1 : Organiser les fichiers</h3><ul class="list _bullet" id="-ydxb50_241"><li class="list__item" id="-ydxb50_242"><p id="-ydxb50_244">Cr&eacute;ez une structure de dossiers <code class="code" id="-ydxb50_245">/pages</code>, <code class="code" id="-ydxb50_246">/components</code>, <code class="code" id="-ydxb50_247">/hooks</code>, <code class="code" id="-ydxb50_248">/layouts</code> (pour le <code class="code" id="-ydxb50_249">Layout.js</code>).</p></li><li class="list__item" id="-ydxb50_243"><p id="-ydxb50_250">D&eacute;placez les fichiers existants (<code class="code" id="-ydxb50_251">BlogPage.js</code>, <code class="code" id="-ydxb50_252">PostPage.js</code>, <code class="code" id="-ydxb50_253">Layout.js</code>, <code class="code" id="-ydxb50_254">useFetch.js</code>, etc.) dans les dossiers appropri&eacute;s. Mettez &agrave; jour les imports.</p></li></ul></section><section class="chapter"><h3 id="tape-2-cr-er-des-composants-de-pr-sentation" data-toc="tape-2-cr-er-des-composants-de-pr-sentation">&Eacute;tape 2 : Cr&eacute;er des composants de pr&eacute;sentation</h3><ul class="list _bullet" id="-ydxb50_255"><li class="list__item" id="-ydxb50_256"><p id="-ydxb50_258">Dans <code class="code" id="-ydxb50_259">BlogPage.js</code>, la liste <code class="code" id="-ydxb50_260">&lt;ul&gt;</code> est de la pr&eacute;sentation. Extrayez-la dans un composant <code class="code" id="-ydxb50_261">PostList({ posts })</code>. <code class="code" id="-ydxb50_262">BlogPage</code> devient un conteneur qui g&egrave;re le fetch et passe <code class="code" id="-ydxb50_263">posts</code> au <code class="code" id="-ydxb50_264">PostList</code>.</p></li><li class="list__item" id="-ydxb50_257"><p id="-ydxb50_265">Dans <code class="code" id="-ydxb50_266">PostPage.js</code>, l'affichage de l'article (<code class="code" id="-ydxb50_267">&lt;article&gt;</code>) est de la pr&eacute;sentation. Extrayez-le dans un composant <code class="code" id="-ydxb50_268">PostDetail({ post })</code>. <code class="code" id="-ydxb50_269">PostPage</code> devient le conteneur.</p></li></ul></section><section class="chapter"><h3 id="tape-3-cr-er-un-composant-ui-g-n-rique" data-toc="tape-3-cr-er-un-composant-ui-g-n-rique">&Eacute;tape 3 : Cr&eacute;er un composant UI g&eacute;n&eacute;rique</h3><ul class="list _bullet" id="-ydxb50_270"><li class="list__item" id="-ydxb50_271"><p id="-ydxb50_274">Cr&eacute;ez un composant <code class="code" id="-ydxb50_275">Spinner.js</code> dans le dossier <code class="code" id="-ydxb50_276">/components</code>. Il affichera une simple animation ou un message de chargement.</p></li><li class="list__item" id="-ydxb50_272"><p id="-ydxb50_277">Cr&eacute;ez un composant <code class="code" id="-ydxb50_278">ErrorMessage.js</code> qui prend une prop <code class="code" id="-ydxb50_279">message</code> et l'affiche dans un style d'erreur.</p></li><li class="list__item" id="-ydxb50_273"><p id="-ydxb50_280">Utilisez ces deux composants dans vos conteneurs <code class="code" id="-ydxb50_281">BlogPage</code> et <code class="code" id="-ydxb50_282">PostPage</code> pour g&eacute;rer les &eacute;tats de <code class="code" id="-ydxb50_283">loading</code> et <code class="code" id="-ydxb50_284">error</code>, au lieu de simples balises <code class="code" id="-ydxb50_285">&lt;p&gt;</code>.</p></li></ul></section><section class="chapter"><h3 id="tape-4-bonus-adopter-une-strat-gie-de-style" data-toc="tape-4-bonus-adopter-une-strat-gie-de-style">&Eacute;tape 4 (Bonus) : Adopter une strat&eacute;gie de style</h3><ul class="list _bullet" id="-ydxb50_286"><li class="list__item" id="-ydxb50_287"><p id="-ydxb50_288">Choisissez une des trois strat&eacute;gies (CSS Modules est un bon choix pour commencer) et appliquez-la &agrave; quelques composants (par exemple, le <code class="code" id="-ydxb50_289">Layout</code> ou les <code class="code" id="-ydxb50_290">PostList</code> et <code class="code" id="-ydxb50_291">PostDetail</code>) pour styliser un peu l'application.</p></li></ul></section><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-du-tp" data-toc="correction-du-tp">Correction du TP</h3></div><div class="collapse__content"><p id="-ydxb50_292"><span class="emphasis" id="-ydxb50_295">(Cette correction montre la structure des fichiers et le code refactoris&eacute;, en supposant que les fichiers ont &eacute;t&eacute; d&eacute;plac&eacute;s comme demand&eacute; &agrave; l'&eacute;tape 1.)</span></p><div class="tabs" id="-ydxb50_293" data-anchors="[-ydxb50_296,-ydxb50_297,-ydxb50_298,-ydxb50_299]"><div class="tabs__content" data-gtm="tab" id="-ydxb50_296" data-title="components/PostList.js (Pr&eacute;sentation)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function PostList({ posts }) {
+return (
+&lt;ul&gt;
+{posts.map(post =&gt; (
+&lt;li key={post.id}&gt;
+&lt;Link to={`/blog/${post.id}`}&gt;{post.title}&lt;/Link&gt;
+&lt;/li&gt;
+))}
+&lt;/ul&gt;
+);
+}
+
+export default PostList;
+
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-ydxb50_297" data-title="pages/BlogPage.js (Conteneur)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import useFetch from '../hooks/useFetch';
+import PostList from '../components/PostList';
+import Spinner from '../components/Spinner';
+import ErrorMessage from '../components/ErrorMessage';
+
+function BlogPage() {
+const { data: posts, loading, error } = useFetch(
+'https://jsonplaceholder.typicode.com/posts'
+);
+
+if (loading) return &lt;Spinner /&gt;;
+if (error) return &lt;ErrorMessage message=&quot;Erreur de chargement des articles.&quot; /&gt;;
+
+return (
+&lt;div&gt;
+&lt;h2&gt;Tous les articles&lt;/h2&gt;
+{posts &amp;&amp; &lt;PostList posts={posts} /&gt;}
+&lt;/div&gt;
+);
+}
+
+export default BlogPage;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-ydxb50_298" data-title="components/PostDetail.js (Pr&eacute;sentation)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+function PostDetail({ post }) {
+if (!post) return null;
+
+return (
+&lt;article&gt;
+&lt;h2&gt;{post.title}&lt;/h2&gt;
+&lt;p&gt;{post.body}&lt;/p&gt;
+&lt;Link to=&quot;/blog&quot;&gt;Retour au blog&lt;/Link&gt;
+&lt;/article&gt;
+);
+}
+
+export default PostDetail;
+
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-ydxb50_299" data-title="pages/PostPage.js (Conteneur)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
+import PostDetail from '../components/PostDetail';
+import Spinner from '../components/Spinner';
+import ErrorMessage from '../components/ErrorMessage';
+
+function PostPage() {
+const { postId } = useParams();
+const { data: post, loading, error } = useFetch(
+`https://jsonplaceholder.typicode.com/posts/${postId}`
+);
+
+if (loading) return &lt;Spinner /&gt;;
+if (error) return &lt;ErrorMessage message=&quot;Erreur de chargement de l'article.&quot; /&gt;;
+
+return &lt;PostDetail post={post} /&gt;;
+}
+
+export default PostPage;
+
+</div></div></div></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="-ydxb50_304">Testez vos connaissances ! Les r&eacute;ponses se trouvent &agrave; la toute fin du support de cours.</p><section class="chapter"><h3 id="questions-choix-multiple-qcm" data-toc="questions-choix-multiple-qcm">Questions &agrave; Choix Multiple (QCM)</h3><p id="-ydxb50_307"><span class="control" id="-ydxb50_313">1. Quel est l'objectif principal de la distinction entre composants Conteneur et Pr&eacute;sentation ?</span></p><ol class="list _decimal" id="-ydxb50_308" type="1"><li class="list__item" id="-ydxb50_314"><p id="-ydxb50_318">Am&eacute;liorer la performance de l'application.</p></li><li class="list__item" id="-ydxb50_315"><p id="-ydxb50_319">S&eacute;parer la logique m&eacute;tier de l'interface utilisateur pour am&eacute;liorer la r&eacute;utilisabilit&eacute; et la maintenabilit&eacute;.</p></li><li class="list__item" id="-ydxb50_316"><p id="-ydxb50_320">Permettre d'utiliser plus de hooks dans un seul composant.</p></li><li class="list__item" id="-ydxb50_317"><p id="-ydxb50_321">Rendre le CSS plus facile &agrave; &eacute;crire.</p></li></ol><p id="-ydxb50_309"><span class="control" id="-ydxb50_322">2. Vous &eacute;crivez un code qui g&egrave;re la connexion/d&eacute;connexion d'un utilisateur, incluant l'&eacute;tat de connexion et la communication avec une API d'authentification. O&ugrave; cette logique devrait-elle id&eacute;alement r&eacute;sider ?</span></p><ol class="list _decimal" id="-ydxb50_310" type="1"><li class="list__item" id="-ydxb50_323"><p id="-ydxb50_327">Dans un composant r&eacute;utilisable <code class="code" id="-ydxb50_328">&lt;Button&gt;</code>.</p></li><li class="list__item" id="-ydxb50_324"><p id="-ydxb50_329">Dans un hook personnalis&eacute; <code class="code" id="-ydxb50_330">useAuth</code>.</p></li><li class="list__item" id="-ydxb50_325"><p id="-ydxb50_331">Directement dans le composant de page <code class="code" id="-ydxb50_332">LoginPage</code>.</p></li><li class="list__item" id="-ydxb50_326"><p id="-ydxb50_333">Dans un fichier CSS.</p></li></ol><p id="-ydxb50_311"><span class="control" id="-ydxb50_334">3. Quel est le principal avantage des CSS Modules ?</span></p><ol class="list _decimal" id="-ydxb50_312" type="1"><li class="list__item" id="-ydxb50_335"><p id="-ydxb50_339">Ils permettent d'&eacute;crire du CSS en utilisant la syntaxe de JavaScript.</p></li><li class="list__item" id="-ydxb50_336"><p id="-ydxb50_340">Ils &eacute;vitent les conflits de noms de classes CSS en rendant les noms de classe uniques et locaux au composant.</p></li><li class="list__item" id="-ydxb50_337"><p id="-ydxb50_341">Ils sont plus rapides &agrave; charger que les fichiers CSS classiques.</p></li><li class="list__item" id="-ydxb50_338"><p id="-ydxb50_342">Ils n'ont pas besoin d'&ecirc;tre import&eacute;s dans les fichiers JavaScript.</p></li></ol></section><section class="chapter"><h3 id="questions-ouvertes" data-toc="questions-ouvertes">Questions Ouvertes</h3><p id="-ydxb50_343"><span class="control" id="-ydxb50_346">4. D&eacute;crivez le Principe de Responsabilit&eacute; Unique (SRP) et donnez un exemple de comment vous l'appliqueriez en divisant un composant React monolithique.</span></p><p id="-ydxb50_344"><span class="control" id="-ydxb50_347">5. Votre application a besoin d'afficher des dates dans un format sp&eacute;cifique (<code class="code" id="-ydxb50_348">jj/mm/aaaa</code>) &agrave; de nombreux endroits. Quelle est la meilleure fa&ccedil;on d'architecturer cette logique pour &eacute;viter la r&eacute;p&eacute;tition de code ?</span></p></section></section><section class="chapter"><h2 id="conclusion-de-ce-module" data-toc="conclusion-de-ce-module">Conclusion de ce module</h2><p id="-ydxb50_349">Vous avez atteint un nouveau palier dans votre ma&icirc;trise de React. Vous ne pensez plus seulement en termes de composants individuels, mais en termes de <span class="control" id="-ydxb50_352">syst&egrave;mes de composants</span>. Vous avez appris &agrave; structurer vos projets de mani&egrave;re logique, &agrave; s&eacute;parer les pr&eacute;occupations, &agrave; maximiser la r&eacute;utilisabilit&eacute; et &agrave; choisir une strat&eacute;gie de style qui convient &agrave; votre projet.</p><p id="-ydxb50_350">Ces comp&eacute;tences sont celles qui distinguent un d&eacute;veloppeur junior d'un d&eacute;veloppeur confirm&eacute;. Elles sont la cl&eacute; pour construire des applications qui non seulement fonctionnent aujourd'hui, mais qui seront aussi un plaisir &agrave; maintenir et &agrave; faire &eacute;voluer demain.</p><p id="-ydxb50_351">Maintenant que nous savons construire des applications propres et bien architectur&eacute;es, comment pouvons-nous &ecirc;tre s&ucirc;rs qu'elles fonctionnent correctement et qu'une modification future ne cassera pas tout ? La r&eacute;ponse se trouve dans notre prochain module : <span class="control" id="-ydxb50_353">Tester son Application</span>.</p></section><section class="chapter"><h2 id="suggestions-de-projets-pour-pratiquer" data-toc="suggestions-de-projets-pour-pratiquer">Suggestions de projets pour pratiquer</h2><ol class="list _decimal" id="-ydxb50_354" type="1"><li class="list__item" id="-ydxb50_355"><p id="-ydxb50_358"><span class="control" id="-ydxb50_360">Niveau D&eacute;butant : Refactoriser un projet existant</span></p><ul class="list _bullet" id="-ydxb50_359"><li class="list__item" id="-ydxb50_361"><p id="-ydxb50_363"><span class="control" id="-ydxb50_364">Description :</span> Prenez l'un des projets que vous avez d&eacute;j&agrave; r&eacute;alis&eacute;s (comme la TodoList ou le convertisseur) et r&eacute;organisez-le en suivant la structure de dossiers et les principes vus dans ce module.</p></li><li class="list__item" id="-ydxb50_362"><p id="-ydxb50_365"><span class="control" id="-ydxb50_366">Piste technique :</span> S&eacute;parez les conteneurs des composants de pr&eacute;sentation, extrayez la logique r&eacute;p&eacute;titive dans des hooks, et cr&eacute;ez des composants UI g&eacute;n&eacute;riques (<code class="code" id="-ydxb50_367">&lt;Button&gt;</code>, <code class="code" id="-ydxb50_368">&lt;Input&gt;</code>).</p></li></ul></li><li class="list__item" id="-ydxb50_356"><p id="-ydxb50_369"><span class="control" id="-ydxb50_371">Niveau Interm&eacute;diaire : Cr&eacute;er un kit de composants UI</span></p><ul class="list _bullet" id="-ydxb50_370"><li class="list__item" id="-ydxb50_372"><p id="-ydxb50_374"><span class="control" id="-ydxb50_375">Description :</span> Cr&eacute;ez un nouveau projet React dont le seul but est de d&eacute;velopper une petite biblioth&egrave;que de composants de pr&eacute;sentation g&eacute;n&eacute;riques : un <code class="code" id="-ydxb50_376">Button</code> (avec des props <code class="code" id="-ydxb50_377">variant</code>, <code class="code" id="-ydxb50_378">size</code>), un <code class="code" id="-ydxb50_379">Card</code>, un <code class="code" id="-ydxb50_380">Modal</code>, un <code class="code" id="-ydxb50_381">Input</code>.</p></li><li class="list__item" id="-ydxb50_373"><p id="-ydxb50_382"><span class="control" id="-ydxb50_383">Piste technique :</span> Utilisez Storybook ou une simple page de d&eacute;monstration pour afficher tous vos composants. Appliquez une strat&eacute;gie de style coh&eacute;rente (CSS Modules, Styled-Components...) &agrave; l'ensemble du kit.</p></li></ul></li><li class="list__item" id="-ydxb50_357"><p id="-ydxb50_384"><span class="control" id="-ydxb50_386">Niveau Avanc&eacute; : Concevoir l'architecture d'une nouvelle application</span></p><ul class="list _bullet" id="-ydxb50_385"><li class="list__item" id="-ydxb50_387"><p id="-ydxb50_389"><span class="control" id="-ydxb50_390">Description :</span> Avant de coder, prenez le temps de concevoir l'architecture d'une application (par exemple, un clone de Twitter simple).</p></li><li class="list__item" id="-ydxb50_388"><p id="-ydxb50_391"><span class="control" id="-ydxb50_392">Piste technique :</span> Sur papier ou avec un outil de diagramme, d&eacute;finissez la structure des dossiers, listez les composants (en distinguant pr&eacute;sentation/conteneur), les hooks personnalis&eacute;s dont vous aurez besoin, les pages ( routes), et la forme de votre &eacute;tat global. C'est un excellent exercice pour penser comme un architecte logiciel.</p></li></ul></li></ol></section><div class="last-modified">08 octobre 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="007-module-07.html" class="navigation-links__prev">Module 7 : Gestion des Formulaires</a><a href="009-module-09.html" class="navigation-links__next">Module 9 : Tester son Application</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

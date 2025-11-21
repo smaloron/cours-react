@@ -1,0 +1,372 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-11-21T15:37:45.346515"><title>Module 3 : Rendu Avanc&eacute; et Optimisation de la Performance | React</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs Pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"pourquoi-ce-module-est-il-important","level":0,"title":"Pourquoi ce module est-il important ?","anchor":"#pourquoi-ce-module-est-il-important"},{"id":"comp-tences-du-r-f-rentiel-reac","level":0,"title":"Compétences du Référentiel (REAC)","anchor":"#comp-tences-du-r-f-rentiel-reac"},{"id":"1-le-rendu-conditionnel","level":0,"title":"1. Le Rendu Conditionnel","anchor":"#1-le-rendu-conditionnel"},{"id":"2-afficher-des-listes","level":0,"title":"2. Afficher des Listes","anchor":"#2-afficher-des-listes"},{"id":"3-les-fragments","level":0,"title":"3. Les Fragments","anchor":"#3-les-fragments"},{"id":"4-techniques-d-optimisation","level":0,"title":"4. Techniques d\u0027Optimisation","anchor":"#4-techniques-d-optimisation"},{"id":"tp-cr-er-une-todolist-filtrable-et-optimis-e","level":0,"title":"TP : Créer une TodoList filtrable et optimisée","anchor":"#tp-cr-er-une-todolist-filtrable-et-optimis-e"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion-de-ce-module","level":0,"title":"Conclusion de ce module","anchor":"#conclusion-de-ce-module"},{"id":"suggestions-de-projets-pour-pratiquer","level":0,"title":"Suggestions de projets pour pratiquer","anchor":"#suggestions-de-projets-pour-pratiquer"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 3 : Rendu Avanc&eacute; et Optimisation de la Performance | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/003-module-03.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 3 : Rendu Avanc&eacute; et Optimisation de la Performance | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/003-module-03.html#webpage",
+    "url": "writerside-documentation/003-module-03.html",
+    "name": "Module 3 : Rendu Avanc&eacute; et Optimisation de la Performance | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="003-module-03" data-main-title="Module 3 : Rendu Avancé et Optimisation de la Performance" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="003-module-03" id="003-module-03.md">Module 3 : Rendu Avancé et Optimisation de la Performance</h1><p id="z7eyvl2_3">Vous savez construire des composants solides. C'est parfait. Mais que se passe-t-il lorsque votre interface doit s'adapter dynamiquement ? Afficher une liste de 1000 produits, un message d'erreur uniquement quand c'est n&eacute;cessaire, ou un formulaire complexe &eacute;tape par &eacute;tape ?</p><p id="z7eyvl2_4">Dans ce module, nous allons apprendre &agrave; ma&icirc;triser l'art de l'affichage dynamique. Plus important encore, nous allons d&eacute;couvrir les secrets pour que votre application ne ralentisse pas. C'est la diff&eacute;rence entre une application qui &quot; fonctionne&quot; et une application que les utilisateurs <span class="emphasis" id="z7eyvl2_16">adorent</span> utiliser.</p><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs P&eacute;dagogiques</h2><p id="z7eyvl2_17">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="z7eyvl2_18"><li class="list__item" id="z7eyvl2_19"><p id="z7eyvl2_24"><span class="control" id="z7eyvl2_25">Afficher</span> des composants de mani&egrave;re conditionnelle en utilisant diff&eacute;rentes strat&eacute;gies (ternaire, <code class="code" id="z7eyvl2_26">&amp;&amp;</code>).</p></li><li class="list__item" id="z7eyvl2_20"><p id="z7eyvl2_27"><span class="control" id="z7eyvl2_28">G&eacute;n&eacute;rer</span> dynamiquement des listes d'&eacute;l&eacute;ments &agrave; partir de tableaux de donn&eacute;es avec <code class="code" id="z7eyvl2_29">.map()</code>.</p></li><li class="list__item" id="z7eyvl2_21"><p id="z7eyvl2_30"><span class="control" id="z7eyvl2_31">Expliquer</span> le r&ocirc;le crucial de la prop <code class="code" id="z7eyvl2_32">key</code> et choisir des cl&eacute;s appropri&eacute;es.</p></li><li class="list__item" id="z7eyvl2_22"><p id="z7eyvl2_33"><span class="control" id="z7eyvl2_34">Structurer</span> votre JSX sans ajouter de n&oelig;uds inutiles au DOM gr&acirc;ce aux Fragments.</p></li><li class="list__item" id="z7eyvl2_23"><p id="z7eyvl2_35"><span class="control" id="z7eyvl2_36">Optimiser</span> la performance de votre application en &eacute;vitant les re-rendus inutiles avec <code class="code" id="z7eyvl2_37">React.memo</code>, <code class="code" id="z7eyvl2_38">useCallback</code> et <code class="code" id="z7eyvl2_39">useMemo</code>.</p></li></ul></section><section class="chapter"><h2 id="pourquoi-ce-module-est-il-important" data-toc="pourquoi-ce-module-est-il-important">Pourquoi ce module est-il important ?</h2><p id="z7eyvl2_40">Imaginez que vous &ecirc;tes le chef d'orchestre d'une grande symphonie. Au d&eacute;but, avec quelques musiciens (composants), il est facile de tout diriger. Mais quand l'orchestre grandit, vous ne pouvez plus crier des instructions &agrave; tout le monde en m&ecirc;me temps. Vous devez donner des instructions pr&eacute;cises : &quot;Violons, jouez seulement &agrave; ce moment-l&agrave;&quot;, &quot;Trombones, ne rejouez pas cette note si elle n'a pas chang&eacute;&quot;.</p><p id="z7eyvl2_41">Ce module vous apprend &agrave; devenir ce chef d'orchestre. Vous apprendrez &agrave; dire &agrave; React exactement quoi afficher, quand l'afficher, et surtout, quand <span class="emphasis" id="z7eyvl2_42">ne pas</span> perdre de temps &agrave; redessiner quelque chose qui n'a pas chang&eacute;. La ma&icirc;trise de ces techniques est une &eacute;tape d&eacute;cisive pour passer de d&eacute;veloppeur d&eacute;butant &agrave; d&eacute;veloppeur confirm&eacute;.</p></section><section class="chapter"><h2 id="comp-tences-du-r-f-rentiel-reac" data-toc="comp-tences-du-r-f-rentiel-reac">Comp&eacute;tences du R&eacute;f&eacute;rentiel (REAC)</h2><p id="z7eyvl2_43">Ce module est au c&oelig;ur du bloc <span class="control" id="z7eyvl2_46">CCP-1 : Concevoir et d&eacute;velopper des composants d'interface utilisateur</span>.</p><ul class="list _bullet" id="z7eyvl2_44"><li class="list__item" id="z7eyvl2_47"><p id="z7eyvl2_51"><span class="control" id="z7eyvl2_52">Maquetter une application :</span> Le rendu conditionnel et de liste sont les outils de base pour traduire une maquette dynamique en code.</p></li><li class="list__item" id="z7eyvl2_48"><p id="z7eyvl2_53"><span class="control" id="z7eyvl2_54">D&eacute;velopper une interface utilisateur :</span> Les techniques abord&eacute;es ici sont fondamentales pour toute interface non-triviale.</p></li><li class="list__item" id="z7eyvl2_49"><p id="z7eyvl2_55"><span class="control" id="z7eyvl2_56">D&eacute;velopper des composants d&rsquo;acc&egrave;s aux donn&eacute;es :</span> Une fois les donn&eacute;es r&eacute;cup&eacute;r&eacute;es, il faut les afficher efficacement, souvent sous forme de listes.</p></li><li class="list__item" id="z7eyvl2_50"><p id="z7eyvl2_57"><span class="control" id="z7eyvl2_58">Pr&eacute;parer et tester un d&eacute;ploiement :</span> Les optimisations de performance sont une &eacute;tape cl&eacute; avant de mettre une application en production.</p></li></ul></section><section class="chapter"><h2 id="1-le-rendu-conditionnel" data-toc="1-le-rendu-conditionnel">1. Le Rendu Conditionnel</h2><p id="z7eyvl2_59">L'une des t&acirc;ches les plus courantes est d'afficher ou de masquer une partie de l'interface en fonction de l'&eacute;tat de l'application. Faut-il afficher un message de chargement ? Un bouton &quot;Se d&eacute;connecter&quot; ? Ou un message d'erreur ?</p><section class="procedure-steps"><h3 id="z7eyvl2_60" data-toc="z7eyvl2_60">L'analogie de l'assistant de navigation GPS</h3><p id="z7eyvl2_66">Pensez &agrave; votre application GPS. Elle ne vous montre pas toutes les instructions en m&ecirc;me temps. Elle suit une logique tr&egrave;s stricte :</p><ul class="list _bullet" id="z7eyvl2_67"><li class="list__item" id="z7eyvl2_69"><p><b id="z7eyvl2_72">SI</b> vous approchez d'un virage, <b id="z7eyvl2_73">ALORS</b> affichez la fl&egrave;che de direction.</p></li><li class="list__item" id="z7eyvl2_70"><p><b id="z7eyvl2_74">SI</b> vous &ecirc;tes sur la bonne route, <b id="z7eyvl2_75">ALORS</b> n'affichez rien de sp&eacute;cial, <b id="z7eyvl2_76">SINON</b> affichez &quot;Veuillez faire demi-tour&quot;.</p></li><li class="list__item" id="z7eyvl2_71"><p><b id="z7eyvl2_77">SI</b> un embouteillage est d&eacute;tect&eacute; <b id="z7eyvl2_78">ET</b> qu'il est significatif, <b id="z7eyvl2_79">ALORS</b> affichez une alerte.</p></li></ul><p id="z7eyvl2_68">Le rendu conditionnel en React, c'est exactement &ccedil;a : appliquer des r&egrave;gles logiques pour d&eacute;cider quelles parties de l'interface (quels composants) doivent &ecirc;tre rendues &agrave; un instant T.</p><ol class="list _decimal"></ol></section><p id="z7eyvl2_61">React int&egrave;gre cette logique directement dans le JSX gr&acirc;ce &agrave; des op&eacute;rateurs JavaScript que vous connaissez d&eacute;j&agrave;.</p><section class="chapter"><h3 id="avec-l-op-rateur-ternaire-condition-a-b" data-toc="avec-l-op-rateur-ternaire-condition-a-b">Avec l'op&eacute;rateur ternaire <code class="code" id="z7eyvl2_83">condition ? &lt;A /&gt; : &lt;B /&gt;</code></h3><p id="z7eyvl2_81">C'est la solution id&eacute;ale pour un choix entre deux options : &quot;soit ceci, soit cela&quot;.</p><div class="code-block" data-lang="javascript">
+import React, {useState} from 'react';
+
+function AuthButton() {
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    return (
+        &lt;div&gt;
+            &lt;p&gt;
+                {isLoggedIn ? 'Bienvenue !' : 'Veuillez vous connecter.'}
+            &lt;/p&gt;
+            &lt;button onClick={() =&gt; setIsLoggedIn(!isLoggedIn)}&gt;
+                {isLoggedIn ? 'Se déconnecter' : 'Se connecter'}
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+</div></section><section class="chapter"><h3 id="avec-l-op-rateur-logique" data-toc="avec-l-op-rateur-logique">Avec l'op&eacute;rateur logique <code class="code" id="z7eyvl2_87">&amp;&amp;</code></h3><p id="z7eyvl2_85">Parfait pour le cas &quot;affiche ceci, ou n'affiche rien&quot;. Si la condition est vraie, l'&eacute;l&eacute;ment apr&egrave;s <code class="code" id="z7eyvl2_88">&amp;&amp;</code> est affich&eacute;. Si elle est fausse, rien n'est affich&eacute;.</p><div class="code-block" data-lang="javascript">
+import React from 'react';
+
+function Mailbox({unreadMessages}) {
+    const hasMessages = unreadMessages.length &gt; 0;
+
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;Bonjour !&lt;/h1&gt;
+            {/* Si `hasMessages` est vrai, le h2 sera rendu. */}
+            {hasMessages &amp;&amp;
+                &lt;h2&gt;
+                    Vous avez {unreadMessages.length} message(s) non lu(s).
+                &lt;/h2&gt;
+            }
+        &lt;/div&gt;
+    );
+}
+</div></section><section class="chapter"><h3 id="avec-un-if-classique" data-toc="avec-un-if-classique">Avec un <code class="code" id="z7eyvl2_92">if</code> classique</h3><p id="z7eyvl2_90">Pour une logique plus complexe, vous pouvez utiliser un <code class="code" id="z7eyvl2_93">if</code> standard avant l'instruction <code class="code" id="z7eyvl2_94">return</code> pour pr&eacute;parer le contenu &agrave; afficher.</p><div class="code-block" data-lang="javascript">
+import React from 'react';
+
+function UserGreeting({status}) { // status peut être 'loading', 'error', 'success'
+    let content;
+
+    if (status === 'loading') {
+        content = &lt;p&gt;Chargement en cours...&lt;/p&gt;;
+    } else if (status === 'error') {
+        content = &lt;p&gt;Une erreur est survenue.&lt;/p&gt;;
+    } else {
+        content = &lt;p&gt;Données chargées avec succès !&lt;/p&gt;;
+    }
+
+    return &lt;div&gt;{content}&lt;/div&gt;;
+}
+</div></section><section class="chapter"><h3 id="exercice-9-afficher-une-alerte" data-toc="exercice-9-afficher-une-alerte">Exercice 9 : Afficher une alerte</h3><p id="z7eyvl2_95"><span class="control" id="z7eyvl2_98">Objectif :</span> Cr&eacute;er un composant <code class="code" id="z7eyvl2_99">Alert</code> qui n'affiche un message que si une prop <code class="code" id="z7eyvl2_100">message</code> lui est fournie.</p><ol class="list _decimal" id="z7eyvl2_96" type="1"><li class="list__item" id="z7eyvl2_101"><p id="z7eyvl2_104">Cr&eacute;ez un composant <code class="code" id="z7eyvl2_105">Alert</code>.</p></li><li class="list__item" id="z7eyvl2_102"><p id="z7eyvl2_106">Il re&ccedil;oit une prop <code class="code" id="z7eyvl2_107">message</code> (une cha&icirc;ne de caract&egrave;res).</p></li><li class="list__item" id="z7eyvl2_103"><p id="z7eyvl2_108">Utilisez l'op&eacute;rateur <code class="code" id="z7eyvl2_109">&amp;&amp;</code> pour que le composant n'affiche une <code class="code" id="z7eyvl2_110">div</code> avec la classe <code class="code" id="z7eyvl2_111">alert</code> et le contenu du message que si la prop <code class="code" id="z7eyvl2_112">message</code> n'est ni nulle, ni vide.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-9" data-toc="correction-exercice-9">Correction exercice 9</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+import React from 'react';
+
+// Supposons un CSS : .alert { padding: 10px; background-color: #f8d7da; }
+function Alert({message}) {
+    return (
+        // Si `message` est une chaîne non vide (truthy),
+        // React évaluera ce qui se trouve après le &amp;&amp;.
+        // Si `message` est `null`, `undefined` ou '', l'expression s'arrête.
+        &lt;&gt;
+            {message &amp;&amp; &lt;div className=&quot;alert&quot;&gt;{message}&lt;/div&gt;}
+        &lt;/&gt;
+    );
+}
+
+// Exemple d'utilisation dans un autre composant
+// function App() {
+//   const [error, setError] = useState('');
+//   return (
+//     &lt;div&gt;
+//       &lt;Alert message={error} /&gt;
+//       &lt;button onClick={() =&gt; setError('Le mot de passe est incorrect')}&gt;
+//         Simuler une erreur
+//       &lt;/button&gt;
+//       &lt;button onClick={() =&gt; setError('')}&gt;
+//         Effacer l'erreur
+//       &lt;/button&gt;
+//     &lt;/div&gt;
+//   );
+// }
+
+export default Alert;
+</div></div></div></section></section></section><section class="chapter"><h2 id="2-afficher-des-listes" data-toc="2-afficher-des-listes">2. Afficher des Listes</h2><p id="z7eyvl2_115">Tr&egrave;s rarement, vous afficherez des donn&eacute;es une par une. Le plus souvent, vous recevrez un tableau de donn&eacute;es ( utilisateurs, produits, articles) et vous devrez tous les afficher.</p><section class="procedure-steps"><h3 id="z7eyvl2_116" data-toc="z7eyvl2_116">L'analogie de la chaîne de montage</h3><p id="z7eyvl2_121">Imaginez une cha&icirc;ne de montage automobile. Vous avez un conteneur rempli de ch&acirc;ssis (votre tableau de donn&eacute;es). Vous n'allez pas construire chaque voiture manuellement.</p><p id="z7eyvl2_122">Vous d&eacute;finissez un &quot;mod&egrave;le&quot; ou un &quot;plan&quot; (votre composant `CarItem`). Puis, vous utilisez une machine (la m&eacute;thode `.map()` de JavaScript) qui prend chaque ch&acirc;ssis, lui applique le plan, et place une voiture finie (un composant React rendu) sur la cha&icirc;ne d'exposition (votre UI).</p><ol class="list _decimal"></ol></section><p id="z7eyvl2_117">La m&eacute;thode <code class="code" id="z7eyvl2_123">.map()</code> des tableaux JavaScript est l'outil parfait pour cela. Elle transforme chaque &eacute;l&eacute;ment d'un tableau en un &eacute;l&eacute;ment JSX.</p><div class="code-block" data-lang="javascript">
+const numbers = [1, 2, 3, 4, 5];
+const listItems = numbers.map((number) =&gt; &lt;li&gt;{number}&lt;/li&gt;);
+
+// Dans votre composant :
+// &lt;ul&gt;{listItems}&lt;/ul&gt;
+</div><section class="chapter"><h3 id="l-attribut-key-la-carte-d-identit-de-chaque-l-ment" data-toc="l-attribut-key-la-carte-d-identit-de-chaque-l-ment">L'attribut <code class="code" id="z7eyvl2_130">key</code>: La carte d'identit&eacute; de chaque &eacute;l&eacute;ment</h3><p id="z7eyvl2_125">Quand vous faites cela, React a besoin d'une information cruciale : une <span class="control" id="z7eyvl2_131">cl&eacute; (<code class="code" id="z7eyvl2_132">key</code>)</span>.</p><aside class="prompt" data-type="warning" data-title="La prop `key` est obligatoire pour les listes !" id="z7eyvl2_126"><p id="z7eyvl2_133">La `key` est une prop sp&eacute;ciale que vous devez fournir pour chaque &eacute;l&eacute;ment d'une liste. Elle doit &ecirc;tre une <b id="z7eyvl2_137">cha&icirc;ne de caract&egrave;res ou un nombre</b>, et elle doit &ecirc;tre <b id="z7eyvl2_138">unique et stable</b> parmi les &eacute;l&eacute;ments fr&egrave;res.</p><p id="z7eyvl2_134"><b id="z7eyvl2_139">Pourquoi ?</b> Reprenons l'analogie de la cha&icirc;ne de montage. Si vous &eacute;changez deux voitures, comment React peut-il savoir qu'il s'agit des m&ecirc;mes voitures mais dans un ordre diff&eacute;rent, et non de deux nouvelles voitures ? La `key` est comme le num&eacute;ro de s&eacute;rie du v&eacute;hicule. Elle permet &agrave; React de suivre chaque &eacute;l&eacute;ment individuellement. Si vous ajoutez, supprimez ou r&eacute;organisez des &eacute;l&eacute;ments, React utilise la `key` pour savoir pr&eacute;cis&eacute;ment quoi modifier dans le DOM, ce qui est beaucoup plus performant que de tout redessiner.</p><p id="z7eyvl2_135"><b id="z7eyvl2_140">Quelle cl&eacute; choisir ?</b> Id&eacute;alement, un identifiant unique qui vient de vos donn&eacute;es, comme `product.id`.</p></aside><p id="z7eyvl2_127"><span class="control" id="z7eyvl2_143">Exemple concret :</span></p><div class="code-block" data-lang="javascript">
+import React from 'react';
+
+const users = [
+    {id: 'u1', name: 'Sarah'},
+    {id: 'u2', name: 'Marc'},
+    {id: 'u3', name: 'Léa'},
+];
+
+function UserList() {
+    return (
+        &lt;ul&gt;
+            {users.map(user =&gt; (
+                // `user.id` est une clé parfaite : unique et stable.
+                &lt;li key={user.id}&gt;
+                    {user.name}
+                &lt;/li&gt;
+            ))}
+        &lt;/ul&gt;
+    );
+}
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="620px" preserveAspectRatio="none" style="width:620px;height:620px;background:#FFFFFF;" version="1.1" viewBox="0 0 620 620" width="620px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="244" x="181" y="23.5352">Rendu de liste avec .map() et 'key'</text><!--cluster Component--><g id="cluster_Component"><rect fill="none" height="87.49" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:1.0;" width="368" x="246" y="172.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="164" x="348" y="188.0234">Composant `UserList`</text></g><!--cluster VDOM--><g id="cluster_VDOM"><rect fill="none" height="185.49" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:1.0;" width="431" x="7" y="316.9783"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="90" x="177.5" y="332.5134">Virtual DOM</text></g><!--cluster UL--><g id="cluster_UL"><polygon fill="none" points="39,377.9783,49,367.9783,398,367.9783,398,460.4683,388,470.4683,39,470.4683,39,377.9783" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="388" x2="398" y1="377.9783" y2="367.9783"/><line style="stroke:#181818;stroke-width:1.0;" x1="39" x2="388" y1="377.9783" y2="377.9783"/><line style="stroke:#181818;stroke-width:1.0;" x1="388" x2="388" y1="377.9783" y2="470.4683"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="36" x="196.5" y="394.5134">&lt;ul&gt;</text></g><!--entity Map--><g id="elem_Map"><rect fill="#F1F1F1" height="36.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="335" x="262.5" y="207.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="315" x="272.5" y="231.0234">users.map(user =&gt; &lt;li key={user.id}&gt;...&lt;/li&gt;)</text></g><!--entity LI1--><g id="elem_LI1"><polygon fill="#F1F1F1" points="55,417.9783,65,407.9783,197,407.9783,197,444.4666,187,454.4666,55,454.4666,55,417.9783" style="stroke:#181818;stroke-width:0.5;"/><line style="stroke:#181818;stroke-width:0.5;" x1="187" x2="197" y1="417.9783" y2="407.9783"/><line style="stroke:#181818;stroke-width:0.5;" x1="55" x2="187" y1="417.9783" y2="417.9783"/><line style="stroke:#181818;stroke-width:0.5;" x1="187" x2="187" y1="417.9783" y2="454.4666"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="70" y="441.5134">&lt;li&gt; (key='u1')</text></g><!--entity LI2--><g id="elem_LI2"><polygon fill="#F1F1F1" points="232,417.9783,242,407.9783,382,407.9783,382,444.4666,372,454.4666,232,454.4666,232,417.9783" style="stroke:#181818;stroke-width:0.5;"/><line style="stroke:#181818;stroke-width:0.5;" x1="372" x2="382" y1="417.9783" y2="407.9783"/><line style="stroke:#181818;stroke-width:0.5;" x1="232" x2="372" y1="417.9783" y2="417.9783"/><line style="stroke:#181818;stroke-width:0.5;" x1="372" x2="372" y1="417.9783" y2="454.4666"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="247" y="441.5134">&lt;li&gt; (key='-u2')</text></g><rect fill="#F1F1F1" height="61.4648" style="stroke:#181818;stroke-width:0.5;" width="219" x="320.5" y="44.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="111" x="374.5" y="60.0234">Donn&#233;es (Array)</text><line style="stroke:#181818;stroke-width:1.0;" x1="367.5" x2="367.5" y1="64.9766" y2="105.9531"/><line style="stroke:#181818;stroke-width:1.0;" x1="320.5" x2="539.5" y1="64.9766" y2="64.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="325.5" y="80.5117">users</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="162" x="372.5" y="80.5117">{ id: 'u1', name: 'Sarah' }</text><line style="stroke:#181818;stroke-width:1.0;" x1="367.5" x2="539.5" y1="85.4648" y2="85.4648"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="156" x="372.5" y="101">{ id: 'u2', name: 'Marc' }</text><g id="elem_GMN11"><path d="M313,557.4683 L313,613.3999 L547,613.3999 L547,567.4683 L537,557.4683 L313,557.4683 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M537,557.4683 L537,567.4683 L547,567.4683 L537,557.4683 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="196" x="319" y="575.0366">La `key` aide React &#224; identifier</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="213" x="319" y="590.3472">chaque `&lt;li&gt;` de mani&#232;re unique</text><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="135" x="319" y="605.6577">lors des mises &#224; jour.</text></g><!--link Data to Map--><g id="link_Data_Map"><path d="M430,109.3683 C430,139.6883 430,177.2383 430,201.2183 " fill="none" id="Data-to-Map" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="430,207.2183,434,198.2183,430,202.2183,426,198.2183,430,207.2183" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="58" x="431" y="153.0566">en entr&#233;e</text></g><!--link Map to VDOM--><g id="link_Map_VDOM"><path d="M430,244.4383 C430,256.6208 430,274.0589 430,293.4281 C430,298.2704 430,303.2334 430,308.2652 C430,310.781 430,313.3141 430,315.8579 C430,316.1758 430,310.494 430,310.8123 " fill="none" id="Map-to-VDOM" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="430,316.8123,434,307.8123,430,311.8123,426,307.8123,430,316.8123" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="42" x="431" y="289.5466">g&#233;n&#232;re</text></g><!--link VDOM to GMN11--><g id="link_VDOM_GMN11"><path d="M430,502.9892 C430,503.2013 430,503.4136 430,503.6258 C430,504.0504 430,504.4751 430,504.9 C430,506.5995 430,508.3013 430,510.002 C430,513.4033 430,516.8002 430,520.1655 C430,533.6264 430,546.5808 430,557.2883 " fill="none" id="VDOM-GMN11" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/></g><!--SRC=[RL9DQm8n4BtdLppsiWfrYnv55qgz59H2YrvAOQUxKMDt4vja2oB-bnxhx_2FTHBf9uLbcSoylFTc9bxvMk9Ewgf59L4hvoNeLPR86jfskf0UwRFSfK9idD589aRhqr4wTAwifLqt0JbCo1Fs0aXQ9wrBXdZW0n_tKDKGQTjFBw2faHpVawLrYaDoyHio-8RCo9O1mO17SH32ojAJNh7HvDeqM-D8UnHpbfgoto9QY0KjkH1y_BWH7SLcGeHnZb6jm2sDzo6HgUgGPraskgnLVkvcHji_gWjbVKir9hUpY5Xm47MquQ4bexREOtu-ZTclF5EY4wJ21Cxaqvl-_uWUJ-0JCc388NY8W-rLlJoOmX1Iy-SjBq24HAn4CqEiJaTzUhTI26ruXq_6UzF0B6ET-QQ4WeKAaAh2ngdqEBtny9bGBPMqZ2dNzD9A5C5M4Tv3Gre5KhHQSOKXjR6EAmwDSlndXerfRIRu1I48Ymy0]--></g></svg></div></section><section class="chapter"><h3 id="exercice-10-afficher-une-liste-de-produits" data-toc="exercice-10-afficher-une-liste-de-produits">Exercice 10 : Afficher une liste de produits</h3><p id="z7eyvl2_144"><span class="control" id="z7eyvl2_147">Objectif :</span> Cr&eacute;er un composant qui affiche une liste de produits &agrave; partir d'un tableau.</p><ol class="list _decimal" id="z7eyvl2_145" type="1"><li class="list__item" id="z7eyvl2_148"><p id="z7eyvl2_153">Cr&eacute;ez un composant <code class="code" id="z7eyvl2_154">ProductList</code>.</p></li><li class="list__item" id="z7eyvl2_149"><p id="z7eyvl2_155">&Agrave; l'int&eacute;rieur, d&eacute;finissez un tableau <code class="code" id="z7eyvl2_156">products</code>. Chaque produit sera un objet avec <code class="code" id="z7eyvl2_157">id</code>, <code class="code" id="z7eyvl2_158">name</code> et <code class="code" id="z7eyvl2_159">price</code>.</p></li><li class="list__item" id="z7eyvl2_150"><p id="z7eyvl2_160">Utilisez <code class="code" id="z7eyvl2_161">.map()</code> pour transformer ce tableau en une liste non ordonn&eacute;e (<code class="code" id="z7eyvl2_162">&lt;ul&gt;</code>).</p></li><li class="list__item" id="z7eyvl2_151"><p id="z7eyvl2_163">Chaque &eacute;l&eacute;ment de la liste (<code class="code" id="z7eyvl2_164">&lt;li&gt;</code>) doit afficher le nom et le prix du produit.</p></li><li class="list__item" id="z7eyvl2_152"><p id="z7eyvl2_165">Assurez-vous d'assigner une <code class="code" id="z7eyvl2_166">key</code> correcte &agrave; chaque <code class="code" id="z7eyvl2_167">&lt;li&gt;</code>.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-10" data-toc="correction-exercice-10">Correction exercice 10</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+import React from 'react';
+
+const productsData = [
+    {id: 'p-01', name: 'Écouteurs Bluetooth', price: 59.99},
+    {id: 'p-02', name: 'Clavier Mécanique', price: 120.00},
+    {id: 'p-03', name: 'Souris Gamer', price: 75.50},
+];
+
+function ProductList() {
+    return (
+        &lt;div&gt;
+            &lt;h2&gt;Nos produits&lt;/h2&gt;
+            &lt;ul&gt;
+                {productsData.map(product =&gt; (
+                    &lt;li key={product.id}&gt;
+                        {product.name} -
+                        &lt;strong&gt;{product.price.toFixed(2)} €&lt;/strong&gt;
+                    &lt;/li&gt;
+                ))}
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default ProductList;
+</div></div></div></section></section></section><section class="chapter"><h2 id="3-les-fragments" data-toc="3-les-fragments">3. Les Fragments</h2><p id="z7eyvl2_170">Parfois, vous voulez retourner plusieurs &eacute;l&eacute;ments depuis un composant, mais la r&egrave;gle de React est stricte : un composant ne peut retourner <span class="control" id="z7eyvl2_176">qu'un seul &eacute;l&eacute;ment racine</span>. La solution &eacute;vidente est de tout envelopper dans une <code class="code" id="z7eyvl2_177">&lt;div&gt;</code>.</p><section class="procedure-steps"><h3 id="z7eyvl2_171" data-toc="z7eyvl2_171">L'analogie de l'emballage cadeau</h3><p id="z7eyvl2_178">Vous avez deux cadeaux &agrave; offrir (un `h2` et un `p`). Pour les transporter, vous les mettez dans un grand sac (`div`). Probl&egrave;me : quand le destinataire ouvre le sac, il a un sac suppl&eacute;mentaire dont il ne sait que faire. Cette `div` inutile pollue votre structure HTML (le DOM), ce qui peut parfois casser vos styles CSS (par exemple avec Flexbox ou Grid) ou simplement rendre le code plus lourd.</p><p id="z7eyvl2_179">Les <b id="z7eyvl2_180">Fragments</b> sont la solution. C'est comme si vous utilisiez un simple ruban pour lier vos deux cadeaux. Ils sont group&eacute;s, mais sans emballage superflu. Le ruban dispara&icirc;t &agrave; l'arriv&eacute;e, et il ne reste que les cadeaux.</p><ol class="list _decimal"></ol></section><p id="z7eyvl2_172">Un fragment vous permet de grouper une liste d'enfants sans ajouter de n&oelig;ud suppl&eacute;mentaire au DOM.</p><p id="z7eyvl2_173">Il existe deux syntaxes :</p><div class="code-block" data-lang="javascript">
+import React, {Fragment} from 'react';
+
+function MyComponent() {
+    // Syntaxe longue (utile si vous avez besoin d'une `key`)
+    return (
+        &lt;Fragment&gt;
+            &lt;h2&gt;Titre&lt;/h2&gt;
+            &lt;p&gt;Paragraphe&lt;/p&gt;
+        &lt;/Fragment&gt;
+    );
+}
+
+function AnotherComponent() {
+    // Syntaxe courte (la plus courante)
+    return (
+        &lt;&gt;
+            &lt;td&gt;Colonne 1&lt;/td&gt;
+            &lt;td&gt;Colonne 2&lt;/td&gt;
+        &lt;/&gt;
+    );
+}
+</div><section class="chapter"><h3 id="exercice-11-utiliser-un-fragment" data-toc="exercice-11-utiliser-un-fragment">Exercice 11 : Utiliser un Fragment</h3><p id="z7eyvl2_181"><span class="control" id="z7eyvl2_184">Objectif :</span> Cr&eacute;er un composant qui retourne une s&eacute;rie de termes de glossaire (<code class="code" id="z7eyvl2_185">&lt;dt&gt;</code> et <code class="code" id="z7eyvl2_186">&lt;dd&gt;</code>) qui doivent &ecirc;tre des enfants directs d'une liste de description (<code class="code" id="z7eyvl2_187">&lt;dl&gt;</code>).</p><ol class="list _decimal" id="z7eyvl2_182" type="1"><li class="list__item" id="z7eyvl2_188"><p id="z7eyvl2_192">Imaginez un composant parent <code class="code" id="z7eyvl2_193">Glossary</code> qui rend une balise <code class="code" id="z7eyvl2_194">&lt;dl&gt;</code>.</p></li><li class="list__item" id="z7eyvl2_189"><p id="z7eyvl2_195">Cr&eacute;ez un composant enfant <code class="code" id="z7eyvl2_196">GlossaryTerm</code>.</p></li><li class="list__item" id="z7eyvl2_190"><p id="z7eyvl2_197"><code class="code" id="z7eyvl2_198">GlossaryTerm</code> doit retourner un <code class="code" id="z7eyvl2_199">&lt;dt&gt;</code> (terme) et un <code class="code" id="z7eyvl2_200">&lt;dd&gt;</code> (d&eacute;finition) adjacents.</p></li><li class="list__item" id="z7eyvl2_191"><p id="z7eyvl2_201">Utilisez un Fragment pour que ces deux &eacute;l&eacute;ments puissent &ecirc;tre retourn&eacute;s ensemble sans &ecirc;tre envelopp&eacute;s dans une <code class="code" id="z7eyvl2_202">div</code> invalide.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-11" data-toc="correction-exercice-11">Correction exercice 11</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+import React from 'react';
+
+function GlossaryTerm() {
+    // Sans Fragment, on serait obligé d'entourer ça d'une &lt;div&gt;,
+    // ce qui est invalide à l'intérieur d'un &lt;dl&gt;.
+    return (
+        &lt;&gt;
+            &lt;dt&gt;React&lt;/dt&gt;
+            &lt;dd&gt;Une bibliothèque JavaScript pour construire des interfaces utilisateur.&lt;/dd&gt;
+
+            &lt;dt&gt;Composant&lt;/dt&gt;
+            &lt;dd&gt;Un bloc de construction réutilisable qui retourne du JSX.&lt;/dd&gt;
+        &lt;/&gt;
+    );
+}
+
+function Glossary() {
+    return (
+        &lt;dl&gt;
+            &lt;GlossaryTerm/&gt;
+        &lt;/dl&gt;
+    );
+}
+
+export default Glossary;
+</div></div></div></section></section></section><section class="chapter"><h2 id="4-techniques-d-optimisation" data-toc="4-techniques-d-optimisation">4. Techniques d'Optimisation</h2><p id="z7eyvl2_205">Votre application grandit. Vous avez des listes, des conditions... et vous remarquez un l&eacute;ger ralentissement. Pourquoi ? Souvent, c'est parce que React re-rend des composants qui n'ont pas besoin de l'&ecirc;tre.</p><section class="procedure-steps"><h3 id="z7eyvl2_206" data-toc="z7eyvl2_206">L'analogie de l'équipe de rénovation</h3><p id="z7eyvl2_211">Imaginez que votre application est une maison en r&eacute;novation. Un changement d'&eacute;tat est un ordre de travail.</p><p id="z7eyvl2_212"><b id="z7eyvl2_215">Comportement par d&eacute;faut de React :</b> L'ordre arrive : &quot;Changer l'ampoule dans le salon&quot;. L'&eacute;quipe de r&eacute;novation, tr&egrave;s z&eacute;l&eacute;e, non seulement change l'ampoule, mais repeint aussi les murs du salon, v&eacute;rifie la plomberie de la cuisine et tond la pelouse. C'est inutile et &ccedil;a prend du temps. C'est ce qui se passe quand un composant parent se met &agrave; jour : par d&eacute;faut, tous ses enfants sont re-rendus.</p><p id="z7eyvl2_214">Ces outils permettent d'&eacute;viter le travail superflu, rendant la r&eacute;novation (votre application) beaucoup plus rapide.</p><ol class="list _decimal"></ol></section><section class="chapter"><h3 id="react-memo-mettre-en-cache-un-composant" data-toc="react-memo-mettre-en-cache-un-composant"><code class="code" id="z7eyvl2_227">React.memo</code>: Mettre en cache un composant</h3><p id="z7eyvl2_225"><code class="code" id="z7eyvl2_228">React.memo</code> est un &quot;High-Order Component&quot; (HOC). Il enveloppe votre composant et lui dit : &quot;Ne te re-rends que si tes <code class="code" id="z7eyvl2_229">props</code> ont r&eacute;ellement chang&eacute;&quot;.</p><div class="code-block" data-lang="javascript">
+import React from 'react';
+
+// Ce composant est &quot;pur&quot; : pour les mêmes props, il rend la même chose.
+function UserAvatar({username}) {
+    console.log(`Avatar de ${username} rendu.`);
+    return &lt;div&gt;{/* ... image de l'avatar ... */}&lt;/div&gt;;
+}
+
+// On exporte la version &quot;mémoïsée&quot;.
+export default React.memo(UserAvatar);
+</div></section><section class="chapter"><h3 id="usecallback-m-moriser-une-fonction" data-toc="usecallback-m-moriser-une-fonction"><code class="code" id="z7eyvl2_233">useCallback</code>: M&eacute;moriser une fonction</h3><p id="z7eyvl2_231">Probl&egrave;me : <code class="code" id="z7eyvl2_234">React.memo</code> ne fonctionne pas bien si vous passez des fonctions en props. Pourquoi ? Parce qu'&agrave; chaque rendu du parent, la fonction est recr&eacute;&eacute;e, donc sa r&eacute;f&eacute;rence change, et <code class="code" id="z7eyvl2_235">React.memo</code> pense que la prop a chang&eacute;. <code class="code" id="z7eyvl2_236">useCallback</code> r&eacute;sout ce probl&egrave;me en m&eacute;morisant la fonction elle-m&ecirc;me.</p><div class="code-block" data-lang="javascript">
+const handleSomething = useCallback(() =&gt; {
+    // Fait quelque chose avec `data`.
+}, [data]); // Ne recrée la fonction que si `data` change.
+
+&lt;MyMemoizedComponent onClick={handleSomething}/&gt;
+</div></section><section class="chapter"><h3 id="usememo-m-moriser-une-valeur-calcul-e" data-toc="usememo-m-moriser-une-valeur-calcul-e"><code class="code" id="z7eyvl2_241">useMemo</code>: M&eacute;moriser une valeur calcul&eacute;e</h3><p id="z7eyvl2_238">Si vous avez un calcul co&ucirc;teux qui est fait &agrave; chaque rendu, <code class="code" id="z7eyvl2_242">useMemo</code> peut mettre en cache son r&eacute;sultat.</p><div class="code-block" data-lang="javascript">
+// Imaginez que `filterAndSort` est une fonction très lente.
+const visibleItems = useMemo(() =&gt; {
+    return filterAndSort(allItems, filter);
+}, [allItems, filter]); // Ne recalcule que si `allItems` ou `filter` change.
+</div><aside class="prompt" data-type="warning" data-title="N'optimisez pas prématurément !" id="z7eyvl2_240"><p>Ces outils sont puissants, mais ils ont un co&ucirc;t (en m&eacute;moire et en complexit&eacute;). Ne les utilisez pas partout. La r&egrave;gle d'or : 1. &Eacute;crivez votre code de la mani&egrave;re la plus simple et lisible possible. 2. Si vous constatez un probl&egrave;me de performance (utilisez les React DevTools !), identifiez le goulot d'&eacute;tranglement. 3. Appliquez ces optimisations de mani&egrave;re cibl&eacute;e, l&agrave; o&ugrave; elles sont n&eacute;cessaires.</p></aside></section><section class="chapter"><h3 id="exercice-12-optimiser-un-composant-enfant" data-toc="exercice-12-optimiser-un-composant-enfant">Exercice 12 : Optimiser un composant enfant</h3><p id="z7eyvl2_243"><span class="control" id="z7eyvl2_246">Objectif :</span> Emp&ecirc;cher un composant &quot;enfant&quot; de se re-rendre inutilement.</p><ol class="list _decimal" id="z7eyvl2_244" type="1"><li class="list__item" id="z7eyvl2_247"><p id="z7eyvl2_253">Cr&eacute;ez un composant parent <code class="code" id="z7eyvl2_254">Dashboard</code> qui a un &eacute;tat <code class="code" id="z7eyvl2_255">time</code> (qui se met &agrave; jour toutes les secondes avec <code class="code" id="z7eyvl2_256">setInterval</code>) et un &eacute;tat <code class="code" id="z7eyvl2_257">user</code>.</p></li><li class="list__item" id="z7eyvl2_248"><p id="z7eyvl2_258">Cr&eacute;ez un composant enfant <code class="code" id="z7eyvl2_259">WelcomeMessage</code> qui prend <code class="code" id="z7eyvl2_260">user</code> en prop et affiche &quot;Bonjour, &quot;.</p></li><li class="list__item" id="z7eyvl2_249"><p id="z7eyvl2_261">Enveloppez <code class="code" id="z7eyvl2_262">WelcomeMessage</code> avec <code class="code" id="z7eyvl2_263">React.memo</code>.</p></li><li class="list__item" id="z7eyvl2_250"><p id="z7eyvl2_264">Dans <code class="code" id="z7eyvl2_265">Dashboard</code>, affichez l'heure et le <code class="code" id="z7eyvl2_266">WelcomeMessage</code>.</p></li><li class="list__item" id="z7eyvl2_251"><p id="z7eyvl2_267">Observez (avec un <code class="code" id="z7eyvl2_268">console.log</code> dans <code class="code" id="z7eyvl2_269">WelcomeMessage</code>) qu'il se re-rend &agrave; chaque seconde, m&ecirc;me si <code class="code" id="z7eyvl2_270">user</code> ne change pas.</p></li><li class="list__item" id="z7eyvl2_252"><p id="z7eyvl2_271"><span class="emphasis" id="z7eyvl2_272">Bonus :</span> ajoutez un bouton dans <code class="code" id="z7eyvl2_273">Dashboard</code> pour changer l'utilisateur. Constatez que <code class="code" id="z7eyvl2_274">WelcomeMessage</code> se re-rend &agrave; ce moment-l&agrave;, ce qui est le comportement attendu.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-12" data-toc="correction-exercice-12">Correction exercice 12</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+import React, {useState, useEffect} from 'react';
+
+// 1. Composant enfant, rendu &quot;coûteux&quot; (simulé par un console.log)
+const WelcomeMessage = React.memo(({user}) =&gt; {
+    console.log(`Rendu du message pour ${user.name}...`);
+    return &lt;h1&gt;Bonjour, {user.name} !&lt;/h1&gt;;
+});
+
+// 2. Composant parent
+function Dashboard() {
+    const [time, setTime] = useState(new Date().toLocaleTimeString());
+    const [user, setUser] = useState({name: 'Admin'});
+
+    // Cet effet fait que le parent se re-rend toutes les secondes
+    useEffect(() =&gt; {
+        const timerId = setInterval(() =&gt; {
+            setTime(new Date().toLocaleTimeString());
+        }, 1000);
+        return () =&gt; clearInterval(timerId);
+    }, []);
+
+    return (
+        &lt;div&gt;
+            &lt;h2&gt;Dashboard&lt;/h2&gt;
+            &lt;p&gt;Heure actuelle : {time}&lt;/p&gt;
+            &lt;hr/&gt;
+            {/* 
+        Même si le parent `Dashboard` se re-rend toutes les secondes,
+        `React.memo` voit que la prop `user` n'a pas changé de référence.
+        Il empêche donc `WelcomeMessage` de se re-rendre inutilement.
+        Le console.log ne s'affichera qu'une seule fois au début,
+        et si l'on clique sur le bouton.
+      */}
+            &lt;WelcomeMessage user={user}/&gt;
+            &lt;button onClick={() =&gt; setUser({name: 'Visiteur'})}&gt;
+                Changer d'utilisateur
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default Dashboard;
+</div></div></div></section></section></section><section class="chapter"><h2 id="tp-cr-er-une-todolist-filtrable-et-optimis-e" data-toc="tp-cr-er-une-todolist-filtrable-et-optimis-e">TP : Cr&eacute;er une TodoList filtrable et optimis&eacute;e</h2><p id="z7eyvl2_277">Combinons tout cela pour cr&eacute;er une application de liste de t&acirc;ches performante.</p><section class="chapter"><h3 id="tape-1-structure-de-base" data-toc="tape-1-structure-de-base">&Eacute;tape 1 : Structure de base</h3><ul class="list _bullet" id="z7eyvl2_283"><li class="list__item" id="z7eyvl2_284"><p id="z7eyvl2_288">Cr&eacute;ez un composant <code class="code" id="z7eyvl2_289">TodoApp</code>.</p></li><li class="list__item" id="z7eyvl2_285"><p id="z7eyvl2_290">Utilisez <code class="code" id="z7eyvl2_291">useState</code> pour g&eacute;rer une liste de t&acirc;ches (<code class="code" id="z7eyvl2_292">todos</code>). Chaque t&acirc;che est un objet <code class="code" id="z7eyvl2_293">{ id, text, completed }</code>.</p></li><li class="list__item" id="z7eyvl2_286"><p id="z7eyvl2_294">Utilisez <code class="code" id="z7eyvl2_295">useState</code> pour g&eacute;rer un champ de saisie pour ajouter de nouvelles t&acirc;ches.</p></li><li class="list__item" id="z7eyvl2_287"><p id="z7eyvl2_296">Affichez la liste des t&acirc;ches en utilisant <code class="code" id="z7eyvl2_297">.map()</code>. Chaque t&acirc;che sera rendue par un composant <code class="code" id="z7eyvl2_298">TodoItem</code>. N'oubliez pas la <code class="code" id="z7eyvl2_299">key</code>!</p></li></ul></section><section class="chapter"><h3 id="tape-2-ajouter-les-fonctionnalit-s" data-toc="tape-2-ajouter-les-fonctionnalit-s">&Eacute;tape 2 : Ajouter les fonctionnalit&eacute;s</h3><ul class="list _bullet" id="z7eyvl2_300"><li class="list__item" id="z7eyvl2_301"><p id="z7eyvl2_303">Cr&eacute;ez les fonctions pour :</p><ul class="list _bullet" id="z7eyvl2_304"><li class="list__item" id="z7eyvl2_305"><p id="z7eyvl2_308">Ajouter une t&acirc;che (<code class="code" id="z7eyvl2_309">addTodo</code>).</p></li><li class="list__item" id="z7eyvl2_306"><p id="z7eyvl2_310">Basculer l'&eacute;tat <code class="code" id="z7eyvl2_311">completed</code> d'une t&acirc;che (<code class="code" id="z7eyvl2_312">toggleTodo</code>).</p></li><li class="list__item" id="z7eyvl2_307"><p id="z7eyvl2_313">Supprimer une t&acirc;che (<code class="code" id="z7eyvl2_314">removeTodo</code>).</p></li></ul></li><li class="list__item" id="z7eyvl2_302"><p id="z7eyvl2_315">Passez ces fonctions en props au composant <code class="code" id="z7eyvl2_316">TodoItem</code>. <code class="code" id="z7eyvl2_317">TodoItem</code> affichera le texte, une checkbox pour <code class="code" id="z7eyvl2_318">toggleTodo</code> et un bouton pour <code class="code" id="z7eyvl2_319">removeTodo</code>.</p></li></ul></section><section class="chapter"><h3 id="tape-3-ajouter-les-filtres" data-toc="tape-3-ajouter-les-filtres">&Eacute;tape 3 : Ajouter les filtres</h3><ul class="list _bullet" id="z7eyvl2_320"><li class="list__item" id="z7eyvl2_321"><p id="z7eyvl2_325">Cr&eacute;ez un &eacute;tat <code class="code" id="z7eyvl2_326">filter</code> ('all', 'active', 'completed').</p></li><li class="list__item" id="z7eyvl2_322"><p id="z7eyvl2_327">Affichez des boutons pour changer ce filtre.</p></li><li class="list__item" id="z7eyvl2_323"><p id="z7eyvl2_328">Utilisez <code class="code" id="z7eyvl2_329">useMemo</code> pour cr&eacute;er une variable <code class="code" id="z7eyvl2_330">filteredTodos</code>. Ce calcul ne doit se refaire que si <code class="code" id="z7eyvl2_331">todos</code> ou <code class="code" id="z7eyvl2_332">filter</code> change.</p></li><li class="list__item" id="z7eyvl2_324"><p id="z7eyvl2_333">Affichez la liste <code class="code" id="z7eyvl2_334">filteredTodos</code> au lieu de la liste <code class="code" id="z7eyvl2_335">todos</code> compl&egrave;te.</p></li></ul></section><section class="chapter"><h3 id="tape-4-optimisation" data-toc="tape-4-optimisation">&Eacute;tape 4 : Optimisation</h3><ul class="list _bullet" id="z7eyvl2_336"><li class="list__item" id="z7eyvl2_337"><p id="z7eyvl2_341">Enveloppez <code class="code" id="z7eyvl2_342">TodoItem</code> dans <code class="code" id="z7eyvl2_343">React.memo</code>.</p></li><li class="list__item" id="z7eyvl2_338"><p id="z7eyvl2_344">Observez (avec les React DevTools ou des <code class="code" id="z7eyvl2_345">console.log</code>) que m&ecirc;me avec <code class="code" id="z7eyvl2_346">memo</code>, si vous cochez une case, tous les <code class="code" id="z7eyvl2_347">TodoItem</code> se re-rendent. Pourquoi ? Parce que les fonctions <code class="code" id="z7eyvl2_348">toggleTodo</code> et <code class="code" id="z7eyvl2_349">removeTodo</code> sont recr&eacute;&eacute;es &agrave; chaque rendu de <code class="code" id="z7eyvl2_350">TodoApp</code>.</p></li><li class="list__item" id="z7eyvl2_339"><p id="z7eyvl2_351">Utilisez <code class="code" id="z7eyvl2_352">useCallback</code> sur <code class="code" id="z7eyvl2_353">toggleTodo</code> et <code class="code" id="z7eyvl2_354">removeTodo</code> pour m&eacute;moriser ces fonctions.</p></li><li class="list__item" id="z7eyvl2_340"><p id="z7eyvl2_355">V&eacute;rifiez &agrave; nouveau : maintenant, seul le <code class="code" id="z7eyvl2_356">TodoItem</code> qui a &eacute;t&eacute; modifi&eacute; devrait se re-rendre !</p></li></ul></section><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-du-tp" data-toc="correction-du-tp">Correction du TP</h3></div><div class="collapse__content"><div class="tabs" id="z7eyvl2_357" data-anchors="[z7eyvl2_359,z7eyvl2_360]"><div class="tabs__content" data-gtm="tab" id="z7eyvl2_359" data-title="TodoItem.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/components/TodoItem.js
+import React from 'react';
+
+// Enveloppé avec React.memo pour éviter les re-rendus inutiles.
+const TodoItem = React.memo(({todo, toggleTodo, removeTodo}) =&gt; {
+    console.log(`Rendu de TodoItem: ${todo.text}`);
+
+    return (
+        &lt;li className={todo.completed ? 'completed' : ''}&gt;
+            &lt;input
+                type=&quot;checkbox&quot;
+                checked={todo.completed}
+                onChange={() =&gt; toggleTodo(todo.id)}
+            /&gt;
+            &lt;span&gt;{todo.text}&lt;/span&gt;
+            &lt;button onClick={() =&gt; removeTodo(todo.id)}&gt;X&lt;/button&gt;
+        &lt;/li&gt;
+    );
+});
+
+export default TodoItem;
+</div></div><div class="tabs__content" data-gtm="tab" id="z7eyvl2_360" data-title="TodoApp.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/App.js
+import React, {useState, useCallback, useMemo} from 'react';
+import TodoItem from './components/TodoItem';
+import './App.css';
+
+let nextId = 4;
+const initialTodos = [
+    {id: 1, text: 'Apprendre React', completed: true},
+    {id: 2, text: 'Faire un TP', completed: false},
+    {id: 3, text: 'Optimiser le code', completed: false},
+];
+
+function TodoApp() {
+    const [todos, setTodos] = useState(initialTodos);
+    const [text, setText] = useState('');
+    const [filter, setFilter] = useState('all');
+
+    const addTodo = (e) =&gt; {
+        e.preventDefault();
+        if (text.trim() === '') return;
+        setTodos([...todos, {id: nextId++, text, completed: false}]);
+        setText('');
+    };
+
+    // On utilise useCallback pour que les fonctions ne soient pas
+    // recréées à chaque rendu, ce qui casserait l'optimisation de memo.
+    const toggleTodo = useCallback((id) =&gt; {
+        setTodos(
+            todos.map(t =&gt; (t.id === id ? {...t, completed: !t.completed} : t))
+        );
+    }, [todos]); // La dépendance est `todos` car la fonction en dépend.
+
+    const removeTodo = useCallback((id) =&gt; {
+        setTodos(todos.filter(t =&gt; t.id !== id));
+    }, [todos]);
+
+    // On utilise useMemo pour éviter de recalculer la liste filtrée
+    // si ni `todos` ni `filter` n'ont changé.
+    const filteredTodos = useMemo(() =&gt; {
+        console.log(&quot;Calcul de la liste filtrée...&quot;);
+        switch (filter) {
+            case 'active':
+                return todos.filter(t =&gt; !t.completed);
+            case 'completed':
+                return todos.filter(t =&gt; t.completed);
+            default:
+                return todos;
+        }
+    }, [todos, filter]);
+
+    return (
+        &lt;div className=&quot;todo-app&quot;&gt;
+            &lt;h1&gt;Ma TodoList&lt;/h1&gt;
+            &lt;form onSubmit={addTodo}&gt;
+                &lt;input
+                    type=&quot;text&quot;
+                    value={text}
+                    onChange={(e) =&gt; setText(e.target.value)}
+                    placeholder=&quot;Ajouter une tâche...&quot;
+                /&gt;
+                &lt;button type=&quot;submit&quot;&gt;Ajouter&lt;/button&gt;
+            &lt;/form&gt;
+
+            &lt;div&gt;
+                &lt;button onClick={() =&gt; setFilter('all')}&gt;Tous&lt;/button&gt;
+                &lt;button onClick={() =&gt; setFilter('active')}&gt;Actifs&lt;/button&gt;
+                &lt;button onClick={() =&gt; setFilter('completed')}&gt;Terminés&lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;ul&gt;
+                {filteredTodos.map(todo =&gt; (
+                    &lt;TodoItem
+                        key={todo.id}
+                        todo={todo}
+                        toggleTodo={toggleTodo}
+                        removeTodo={removeTodo}
+                    /&gt;
+                ))}
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default TodoApp;
+</div></div></div></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="z7eyvl2_363">Testez vos connaissances ! Les r&eacute;ponses se trouvent &agrave; la toute fin du support de cours.</p><section class="chapter"><h3 id="questions-choix-multiple-qcm" data-toc="questions-choix-multiple-qcm">Questions &agrave; Choix Multiple (QCM)</h3><p id="z7eyvl2_366"><span class="control" id="z7eyvl2_372">1. Vous voulez afficher un spinner de chargement si <code class="code" id="z7eyvl2_373">isLoading</code> est vrai, et les donn&eacute;es sinon. Quelle est la syntaxe JSX la plus concise pour cela ?</span></p><ol class="list _decimal" id="z7eyvl2_367" type="1"><li class="list__item" id="z7eyvl2_374"><p id="z7eyvl2_378"><code class="code" id="z7eyvl2_379">&lt;&gt;{isLoading &amp;&amp; &lt;Spinner /&gt;} {!isLoading &amp;&amp; &lt;Data /&gt;}&lt;/&gt;</code></p></li><li class="list__item" id="z7eyvl2_375"><p id="z7eyvl2_380"><code class="code" id="z7eyvl2_381">{if (isLoading) { &lt;Spinner /&gt; } else { &lt;Data /&gt; }}</code></p></li><li class="list__item" id="z7eyvl2_376"><p id="z7eyvl2_382"><code class="code" id="z7eyvl2_383">{isLoading ? &lt;Spinner /&gt; : &lt;Data /&gt;}</code></p></li><li class="list__item" id="z7eyvl2_377"><p id="z7eyvl2_384"><code class="code" id="z7eyvl2_385">{isLoading &amp;&amp; &lt;Spinner /&gt; || &lt;Data /&gt;}</code></p></li></ol><p id="z7eyvl2_368"><span class="control" id="z7eyvl2_386">2. Quand devriez-vous absolument &eacute;viter d'utiliser l'index d'un tableau comme <code class="code" id="z7eyvl2_387">key</code> dans une liste ?</span></p><ol class="list _decimal" id="z7eyvl2_369" type="1"><li class="list__item" id="z7eyvl2_388"><p id="z7eyvl2_392">Quand la liste est affich&eacute;e dans un ordre alphab&eacute;tique.</p></li><li class="list__item" id="z7eyvl2_389"><p id="z7eyvl2_393">Quand la liste contient plus de 10 &eacute;l&eacute;ments.</p></li><li class="list__item" id="z7eyvl2_390"><p id="z7eyvl2_394">Quand les &eacute;l&eacute;ments de la liste peuvent &ecirc;tre ajout&eacute;s, supprim&eacute;s ou r&eacute;organis&eacute;s.</p></li><li class="list__item" id="z7eyvl2_391"><p id="z7eyvl2_395">Il ne faut jamais utiliser l'index comme cl&eacute;.</p></li></ol><p id="z7eyvl2_370"><span class="control" id="z7eyvl2_396">3. Un composant <code class="code" id="z7eyvl2_397">ListItem</code> envelopp&eacute; dans <code class="code" id="z7eyvl2_398">React.memo</code> se re-rend inutilement. Vous lui passez une prop <code class="code" id="z7eyvl2_399">onDelete</code> qui est une fonction d&eacute;finie dans le composant parent. Quelle est la cause la plus probable ?</span></p><ol class="list _decimal" id="z7eyvl2_371" type="1"><li class="list__item" id="z7eyvl2_400"><p id="z7eyvl2_404"><code class="code" id="z7eyvl2_405">React.memo</code> ne fonctionne pas pour les composants qui ont des gestionnaires d'&eacute;v&eacute;nements.</p></li><li class="list__item" id="z7eyvl2_401"><p id="z7eyvl2_406">La fonction <code class="code" id="z7eyvl2_407">onDelete</code> est red&eacute;clar&eacute;e &agrave; chaque rendu du parent, changeant sa r&eacute;f&eacute;rence, ce qui annule l'effet de <code class="code" id="z7eyvl2_408">memo</code>.</p></li><li class="list__item" id="z7eyvl2_402"><p id="z7eyvl2_409">Le composant <code class="code" id="z7eyvl2_410">ListItem</code> a son propre &eacute;tat interne qui change.</p></li><li class="list__item" id="z7eyvl2_403"><p id="z7eyvl2_411">Il faut utiliser <code class="code" id="z7eyvl2_412">useMemo</code> au lieu de <code class="code" id="z7eyvl2_413">React.memo</code> pour les fonctions.</p></li></ol></section><section class="chapter"><h3 id="questions-ouvertes" data-toc="questions-ouvertes">Questions Ouvertes</h3><p id="z7eyvl2_414"><span class="control" id="z7eyvl2_417">4. Expliquez la diff&eacute;rence de cas d'usage entre <code class="code" id="z7eyvl2_418">useCallback</code> et <code class="code" id="z7eyvl2_419">useMemo</code>. Donnez un exemple concret pour chacun.</span></p><p id="z7eyvl2_415"><span class="control" id="z7eyvl2_420">5. Vous avez une liste d'utilisateurs que vous devez filtrer par leur nom (via un champ de recherche) PUIS trier par ordre alphab&eacute;tique. Expliquez comment vous utiliseriez <code class="code" id="z7eyvl2_421">useMemo</code> pour optimiser cette op&eacute;ration.</span></p></section></section><section class="chapter"><h2 id="conclusion-de-ce-module" data-toc="conclusion-de-ce-module">Conclusion de ce module</h2><p id="z7eyvl2_422">Vous avez fait un grand pas en avant ! Vous ne vous contentez plus de simplement &quot;afficher des choses&quot;, vous orchestrez une interface dynamique et performante. Vous savez maintenant comment donner vie &agrave; vos donn&eacute;es en les affichant sous forme de listes, comment adapter votre UI &agrave; n'importe quelle situation avec le <span class="control" id="z7eyvl2_425">rendu conditionnel</span>, et comment garder une structure DOM propre avec les <span class="control" id="z7eyvl2_426">Fragments</span>.</p><p id="z7eyvl2_423">Plus important encore, vous avez &eacute;t&eacute; initi&eacute; &agrave; l'art de l'optimisation. <code class="code" id="z7eyvl2_427">React.memo</code>, <code class="code" id="z7eyvl2_428">useCallback</code> et <code class="code" id="z7eyvl2_429">useMemo</code> sont des outils de pr&eacute;cision qui, bien utilis&eacute;s, feront de vos applications des exp&eacute;riences fluides et professionnelles.</p><p id="z7eyvl2_424">Le prochain d&eacute;fi ? G&eacute;rer un &eacute;tat qui doit &ecirc;tre partag&eacute; par de nombreux composants &eacute;loign&eacute;s les uns des autres. Le &quot;prop drilling&quot; et <code class="code" id="z7eyvl2_430">useContext</code> ont leurs limites. Il est temps de d&eacute;couvrir les outils de <span class="control" id="z7eyvl2_431">gestion d'&eacute;tat global</span> comme Redux.</p></section><section class="chapter"><h2 id="suggestions-de-projets-pour-pratiquer" data-toc="suggestions-de-projets-pour-pratiquer">Suggestions de projets pour pratiquer</h2><ol class="list _decimal" id="z7eyvl2_432" type="1"><li class="list__item" id="z7eyvl2_433"><p id="z7eyvl2_436"><span class="control" id="z7eyvl2_438">Niveau D&eacute;butant : Accord&eacute;on / FAQ</span></p><ul class="list _bullet" id="z7eyvl2_437"><li class="list__item" id="z7eyvl2_439"><p id="z7eyvl2_441"><span class="control" id="z7eyvl2_442">Description :</span> Cr&eacute;ez une liste de questions. En cliquant sur une question, la r&eacute;ponse appara&icirc;t en dessous (et les autres se referment &eacute;ventuellement).</p></li><li class="list__item" id="z7eyvl2_440"><p id="z7eyvl2_443"><span class="control" id="z7eyvl2_444">Piste technique :</span> Un &eacute;tat pour savoir quel item est actuellement ouvert (<code class="code" id="z7eyvl2_445">useState(null)</code>). Utilisez le rendu conditionnel pour n'afficher la r&eacute;ponse que de l'item dont l'ID correspond &agrave; l'&eacute;tat.</p></li></ul></li><li class="list__item" id="z7eyvl2_434"><p id="z7eyvl2_446"><span class="control" id="z7eyvl2_448">Niveau Interm&eacute;diaire : Galerie d'images filtrable</span></p><ul class="list _bullet" id="z7eyvl2_447"><li class="list__item" id="z7eyvl2_449"><p id="z7eyvl2_451"><span class="control" id="z7eyvl2_452">Description :</span> Affichez une grille d'images. Des boutons permettent de filtrer les images par cat&eacute;gorie (ex: &quot; nature&quot;, &quot;ville&quot;, &quot;animaux&quot;).</p></li><li class="list__item" id="z7eyvl2_450"><p id="z7eyvl2_453"><span class="control" id="z7eyvl2_454">Piste technique :</span> Un &eacute;tat pour le filtre actif. Utilisez <code class="code" id="z7eyvl2_455">.map()</code> pour afficher les images. <code class="code" id="z7eyvl2_456">useMemo</code> est parfait pour calculer le tableau d'images filtr&eacute;es.</p></li></ul></li><li class="list__item" id="z7eyvl2_435"><p id="z7eyvl2_457"><span class="control" id="z7eyvl2_459">Niveau Avanc&eacute; : Table de donn&eacute;es triable et pagin&eacute;e</span></p><ul class="list _bullet" id="z7eyvl2_458"><li class="list__item" id="z7eyvl2_460"><p id="z7eyvl2_462"><span class="control" id="z7eyvl2_463">Description :</span> Affichez une grande quantit&eacute; de donn&eacute;es (100+ lignes) dans un tableau. Les en-t&ecirc;tes de colonnes sont cliquables pour trier les donn&eacute;es. Des boutons &quot;Pr&eacute;c&eacute;dent&quot;/&quot;Suivant&quot; permettent de naviguer entre les pages.</p></li><li class="list__item" id="z7eyvl2_461"><p id="z7eyvl2_464"><span class="control" id="z7eyvl2_465">Piste technique :</span> C'est l'exercice parfait pour <code class="code" id="z7eyvl2_466">useMemo</code>. Un <code class="code" id="z7eyvl2_467">useMemo</code> calcule les donn&eacute;es tri&eacute;es en fonction de l'&eacute;tat de tri. Un second <code class="code" id="z7eyvl2_468">useMemo</code> (qui d&eacute;pend du premier) calcule la &quot;tranche&quot; de donn&eacute;es &agrave; afficher pour la page actuelle. <code class="code" id="z7eyvl2_469">React.memo</code> sur les lignes du tableau (<code class="code" id="z7eyvl2_470">&lt;tr&gt;</code>) est crucial pour la performance.</p></li></ul></li></ol></section><div class="last-modified">21 novembre 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="002-module-02.html" class="navigation-links__prev">Module 2 : Le Cycle de Vie et les Hooks Essentiels</a><a href="004-module-04.html" class="navigation-links__next">Module 4 : Gestion de l'&Eacute;tat Global</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

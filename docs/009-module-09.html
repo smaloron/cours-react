@@ -1,0 +1,234 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-11-21T15:37:45.346525"><title>Module 9 : Tester son Application | React</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs Pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"pourquoi-ce-module-est-il-important","level":0,"title":"Pourquoi ce module est-il important ?","anchor":"#pourquoi-ce-module-est-il-important"},{"id":"comp-tences-du-r-f-rentiel-reac","level":0,"title":"Compétences du Référentiel (REAC)","anchor":"#comp-tences-du-r-f-rentiel-reac"},{"id":"1-philosophie-du-test-et-outils","level":0,"title":"1. Philosophie du Test et Outils","anchor":"#1-philosophie-du-test-et-outils"},{"id":"2-tests-unitaires","level":0,"title":"2. Tests Unitaires","anchor":"#2-tests-unitaires"},{"id":"3-tests-de-composants-avec-rtl","level":0,"title":"3. Tests de Composants avec RTL","anchor":"#3-tests-de-composants-avec-rtl"},{"id":"4-snapshot-testing","level":0,"title":"4. Snapshot Testing","anchor":"#4-snapshot-testing"},{"id":"tp-tester-un-formulaire-de-contact","level":0,"title":"TP : Tester un formulaire de contact","anchor":"#tp-tester-un-formulaire-de-contact"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion-de-ce-module","level":0,"title":"Conclusion de ce module","anchor":"#conclusion-de-ce-module"},{"id":"suggestions-de-projets-pour-pratiquer","level":0,"title":"Suggestions de projets pour pratiquer","anchor":"#suggestions-de-projets-pour-pratiquer"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 9 : Tester son Application | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/009-module-09.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 9 : Tester son Application | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/009-module-09.html#webpage",
+    "url": "writerside-documentation/009-module-09.html",
+    "name": "Module 9 : Tester son Application | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="009-module-09" data-main-title="Module 9 : Tester son Application" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="009-module-09" id="009-module-09.md">Module 9 : Tester son Application</h1><p id="sa7iai_3">&Eacute;crire du code sans tests, c'est comme construire un pont sans en v&eacute;rifier la solidit&eacute;. Il peut sembler stable au d&eacute;but, mais s'effondrer &agrave; la premi&egrave;re charge lourde. Les tests automatis&eacute;s sont votre filet de s&eacute;curit&eacute;. Ils vous permettent de modifier votre code avec confiance, de d&eacute;tecter les r&eacute;gressions rapidement et de livrer un produit de meilleure qualit&eacute;.</p><p id="sa7iai_4">Dans ce module, nous allons d&eacute;mystifier le test des applications React. Nous nous concentrerons sur une approche moderne et pragmatique qui privil&eacute;gie le test du point de vue de l'utilisateur.</p><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs P&eacute;dagogiques</h2><p id="sa7iai_16">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="sa7iai_17"><li class="list__item" id="sa7iai_18"><p id="sa7iai_24"><span class="control" id="sa7iai_25">Expliquer</span> l'importance des tests et la philosophie de la &quot;pyramide des tests&quot;.</p></li><li class="list__item" id="sa7iai_19"><p id="sa7iai_26"><span class="control" id="sa7iai_27">Identifier</span> les principaux outils de l'&eacute;cosyst&egrave;me de test React : <span class="control" id="sa7iai_28">Jest</span> et <span class="control" id="sa7iai_29">React Testing Library (RTL)</span>.</p></li><li class="list__item" id="sa7iai_20"><p id="sa7iai_30"><span class="control" id="sa7iai_31">&Eacute;crire</span> des tests unitaires pour des fonctions et des hooks personnalis&eacute;s isol&eacute;s.</p></li><li class="list__item" id="sa7iai_21"><p id="sa7iai_32"><span class="control" id="sa7iai_33">R&eacute;diger</span> des tests de composants interactifs en simulant des &eacute;v&eacute;nements utilisateur (clics, saisie).</p></li><li class="list__item" id="sa7iai_22"><p id="sa7iai_34"><span class="control" id="sa7iai_35">Utiliser</span> les requ&ecirc;tes de RTL pour trouver des &eacute;l&eacute;ments dans le DOM de la mani&egrave;re dont un utilisateur le ferait.</p></li><li class="list__item" id="sa7iai_23"><p id="sa7iai_36"><span class="control" id="sa7iai_37">Comprendre</span> le concept de &quot;Snapshot Testing&quot; et ses cas d'usage.</p></li></ul></section><section class="chapter"><h2 id="pourquoi-ce-module-est-il-important" data-toc="pourquoi-ce-module-est-il-important">Pourquoi ce module est-il important ?</h2><p id="sa7iai_38">Imaginez que vous &ecirc;tes un horloger. Chaque fois que vous ajoutez une nouvelle complication &agrave; votre montre (une nouvelle fonctionnalit&eacute;), vous devez vous assurer que les aiguilles tournent toujours correctement, que la date change bien &agrave; minuit, et que le chronom&egrave;tre fonctionne. Le feriez-vous manuellement &agrave; chaque fois ? Cliquer sur chaque bouton, v&eacute;rifier chaque &eacute;cran de votre application apr&egrave;s chaque petite modification ? C'est lent, fastidieux et source d'erreurs.</p><p id="sa7iai_39">Les tests automatis&eacute;s sont votre machine de contr&ocirc;le qualit&eacute;. Vous &eacute;crivez une fois pour toutes une s&eacute;rie de sc&eacute;narios (&quot;Quand j'appuie sur ce bouton, est-ce que le compteur s'incr&eacute;mente ?&quot;). Ensuite, &agrave; chaque modification, vous lancez la machine, et elle vous dit en quelques secondes si tout fonctionne toujours comme pr&eacute;vu. C'est un gain de temps et de s&eacute;r&eacute;nit&eacute; immense, et c'est une comp&eacute;tence non n&eacute;gociable dans le monde professionnel.</p></section><section class="chapter"><h2 id="comp-tences-du-r-f-rentiel-reac" data-toc="comp-tences-du-r-f-rentiel-reac">Comp&eacute;tences du R&eacute;f&eacute;rentiel (REAC)</h2><p id="sa7iai_40">Ce module est la pierre angulaire de la comp&eacute;tence <span class="control" id="sa7iai_43">Pr&eacute;parer et tester un d&eacute;ploiement</span> du <span class="control" id="sa7iai_44">CCP-1</span>.</p><ul class="list _bullet" id="sa7iai_41"><li class="list__item" id="sa7iai_45"><p id="sa7iai_47"><span class="control" id="sa7iai_48">Pr&eacute;parer et tester un d&eacute;ploiement :</span> L'&eacute;criture de tests unitaires et d'int&eacute;gration est une &eacute;tape fondamentale pour valider le bon fonctionnement de l'application avant sa mise en production.</p></li><li class="list__item" id="sa7iai_46"><p id="sa7iai_49"><span class="control" id="sa7iai_50">D&eacute;velopper une interface utilisateur :</span> Les tests garantissent que les composants se comportent comme attendu face aux interactions utilisateur.</p></li></ul></section><section class="chapter"><h2 id="1-philosophie-du-test-et-outils" data-toc="1-philosophie-du-test-et-outils">1. Philosophie du Test et Outils</h2><p id="sa7iai_51">Avant d'&eacute;crire du code, comprenons <span class="emphasis" id="sa7iai_54">quoi</span> et <span class="emphasis" id="sa7iai_55">comment</span> tester.</p><section class="chapter"><h3 id="la-pyramide-des-tests" data-toc="la-pyramide-des-tests">La Pyramide des Tests</h3><p id="sa7iai_56">C'est un mod&egrave;le qui nous guide sur la r&eacute;partition de nos efforts de test :</p><ul class="list _bullet" id="sa7iai_57"><li class="list__item" id="sa7iai_59"><p id="sa7iai_62"><span class="control" id="sa7iai_63">Tests Unitaires (Base large) :</span> Testent une petite unit&eacute; de code (une fonction, un hook) de mani&egrave;re isol&eacute;e. Ils sont tr&egrave;s rapides et peu co&ucirc;teux &agrave; &eacute;crire.</p></li><li class="list__item" id="sa7iai_60"><p id="sa7iai_64"><span class="control" id="sa7iai_65">Tests d'Int&eacute;gration / de Composants (Milieu) :</span> Testent comment plusieurs unit&eacute;s fonctionnent ensemble. En React, cela signifie souvent tester un composant ou une page enti&egrave;re et ses interactions. C'est le &quot;sweet spot&quot; pour les applications React.</p></li><li class="list__item" id="sa7iai_61"><p id="sa7iai_66"><span class="control" id="sa7iai_67">Tests End-to-End (E2E) (Sommet &eacute;troit) :</span> Testent un flux utilisateur complet dans un vrai navigateur (ex: connexion, ajout au panier, paiement). Ils sont lents, co&ucirc;teux et fragiles, donc on en &eacute;crit moins.</p></li></ul><section class="procedure-steps"><h3 id="sa7iai_58" data-toc="sa7iai_58">La philosophie de React Testing Library (RTL)</h3><p id="sa7iai_68">Cr&eacute;&eacute;e par Kent C. Dodds, RTL a une philosophie simple mais puissante :</p><aside class="prompt" data-type="tip" data-title="" id="sa7iai_69"><p>&quot;Plus vos tests ressemblent &agrave; la fa&ccedil;on dont votre logiciel est utilis&eacute;, plus ils vous donneront confiance.&quot;</p></aside><p id="sa7iai_70">Cela signifie que nous n'allons pas tester les d&eacute;tails d'impl&eacute;mentation de nos composants (ex: &quot;Est-ce que l'&eacute;tat `count` est bien &agrave; 1 ?&quot;). Nous allons plut&ocirc;t tester ce que l'utilisateur voit et fait : &quot;Quand je clique sur le bouton qui a le texte '+', est-ce que le texte 'Le compteur est &agrave; : 1' appara&icirc;t &agrave; l'&eacute;cran ?&quot;. C'est plus robuste car si vous refactorisez votre composant (en changeant le nom de la variable d'&eacute;tat par exemple), le test ne cassera pas.</p><ol class="list _decimal"></ol></section></section><section class="chapter"><h3 id="les-outils" data-toc="les-outils">Les Outils</h3><p id="sa7iai_71">Dans un projet cr&eacute;&eacute; avec <code class="code" id="sa7iai_74">create-react-app</code> ou <code class="code" id="sa7iai_75">Vite</code>, tout est g&eacute;n&eacute;ralement pr&eacute;-configur&eacute; !</p><ul class="list _bullet" id="sa7iai_72"><li class="list__item" id="sa7iai_76"><p id="sa7iai_78"><span class="control" id="sa7iai_79">Jest :</span> C'est le <span class="control" id="sa7iai_80">framework de test</span>, le &quot;lanceur&quot; (<code class="code" id="sa7iai_81">test runner</code>). Il fournit l'environnement pour ex&eacute;cuter les tests, des fonctions pour les structurer (<code class="code" id="sa7iai_82">describe</code>, <code class="code" id="sa7iai_83">it</code>, <code class="code" id="sa7iai_84">test</code>) et des fonctions d'assertion pour v&eacute;rifier les r&eacute;sultats (<code class="code" id="sa7iai_85">expect</code>).</p></li><li class="list__item" id="sa7iai_77"><p id="sa7iai_86"><span class="control" id="sa7iai_87">React Testing Library (RTL) :</span> C'est la <span class="control" id="sa7iai_88">biblioth&egrave;que pour tester les composants React</span>. Elle fournit des fonctions pour rendre un composant dans un faux DOM (<code class="code" id="sa7iai_89">render</code>) et pour interagir avec lui comme le ferait un utilisateur (<code class="code" id="sa7iai_90">screen</code>, <code class="code" id="sa7iai_91">fireEvent</code>, <code class="code" id="sa7iai_92">userEvent</code>).</p></li></ul></section></section><section class="chapter"><h2 id="2-tests-unitaires" data-toc="2-tests-unitaires">2. Tests Unitaires</h2><p id="sa7iai_93">Commen&ccedil;ons par la base : tester une logique pure, isol&eacute;e de l'UI.</p><p id="sa7iai_94"><span class="control" id="sa7iai_98">Exemple : Une fonction utilitaire</span></p><div class="code-block" data-lang="javascript">
+// src/utils/formatPrice.js
+export function formatPrice(price) {
+    if (typeof price !== 'number') return '';
+    return `${price.toFixed(2).replace('.', ',')} €`;
+}
+
+// src/utils/formatPrice.test.js
+import {formatPrice} from './formatPrice';
+
+// `describe` groupe des tests liés
+describe('formatPrice function', () =&gt; {
+    // `it` ou `test` définit un cas de test individuel
+    it('should format a number correctly with 2 decimal places', () =&gt; {
+        // Assertion : on s'attend (`expect`) à ce que le résultat soit (`toBe`) ...
+        expect(formatPrice(10.5)).toBe('10,50 €');
+    });
+
+    it('should handle integer numbers', () =&gt; {
+        expect(formatPrice(5)).toBe('5,00 €');
+    });
+
+    it('should return an empty string for non-numeric input', () =&gt; {
+        expect(formatPrice('abc')).toBe('');
+        expect(formatPrice(null)).toBe('');
+    });
+});
+</div><p id="sa7iai_96"><span class="control" id="sa7iai_99">Pour lancer les tests :</span> <code class="code" id="sa7iai_100">npm test</code></p></section><section class="chapter"><h2 id="3-tests-de-composants-avec-rtl" data-toc="3-tests-de-composants-avec-rtl">3. Tests de Composants avec RTL</h2><p id="sa7iai_101">C'est le c&oelig;ur du test en React. La m&eacute;thodologie est toujours la m&ecirc;me :</p><ol class="list _decimal" id="sa7iai_102" type="1"><li class="list__item" id="sa7iai_106"><p id="sa7iai_110"><span class="control" id="sa7iai_111">Render :</span> Affichez le composant.</p></li><li class="list__item" id="sa7iai_107"><p id="sa7iai_112"><span class="control" id="sa7iai_113">Find :</span> Trouvez les &eacute;l&eacute;ments &agrave; l'&eacute;cran.</p></li><li class="list__item" id="sa7iai_108"><p id="sa7iai_114"><span class="control" id="sa7iai_115">Act :</span> Interagissez avec ces &eacute;l&eacute;ments (clic, saisie...).</p></li><li class="list__item" id="sa7iai_109"><p id="sa7iai_116"><span class="control" id="sa7iai_117">Assert :</span> V&eacute;rifiez que le r&eacute;sultat attendu est bien visible &agrave; l'&eacute;cran.</p></li></ol><section class="chapter"><h3 id="exemple-1-un-composant-simple" data-toc="exemple-1-un-composant-simple"><span class="control" id="sa7iai_120">Exemple 1 : Un composant simple</span></h3><div class="code-block" data-lang="javascript">
+// src/components/Greeting.js
+function Greeting({name}) {
+    return &lt;h1&gt;Bonjour, {name} !&lt;/h1&gt;;
+}
+
+// src/components/Greeting.test.js
+import {render, screen} from '@testing-library/react';
+import Greeting from './Greeting';
+
+test('renders a greeting with the provided name', () =&gt; {
+    // 1. Render
+    render(&lt;Greeting name=&quot;Monde&quot;/&gt;);
+
+    // 2. Find
+    // `screen.getByText` cherche un élément contenant le texte.
+    // La recherche va échouer si l'élément n'est pas trouvé, faisant échouer le test.
+    const headingElement = screen.getByText(/Bonjour, Monde !/i); // Le `i` rend insensible à la casse
+
+    // 4. Assert
+    // On vérifie que l'élément trouvé est bien dans le document.
+    expect(headingElement).toBeInTheDocument();
+});
+</div></section><section class="chapter"><h3 id="exemple-2-un-composant-interactif" data-toc="exemple-2-un-composant-interactif"><span class="control" id="sa7iai_124">Exemple 2 : Un composant interactif</span></h3><p id="sa7iai_122">La biblioth&egrave;que <code class="code" id="sa7iai_125">@testing-library/user-event</code> est une surcouche &agrave; <code class="code" id="sa7iai_126">fireEvent</code> qui simule plus fid&egrave;lement les interactions r&eacute;elles de l'utilisateur.</p><div class="code-block" data-lang="javascript">
+// src/components/Counter.js
+import {useState} from 'react';
+
+function Counter() {
+    const [count, setCount] = useState(0);
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Compteur : {count}&lt;/p&gt;
+            &lt;button onClick={() =&gt; setCount(count + 1)}&gt;Incrémenter&lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+
+// src/components/Counter.test.js
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import Counter from './Counter';
+
+test('increments counter on button click', async () =&gt; {
+    // `userEvent` retourne des promesses, le test doit être `async`
+    const user = userEvent.setup();
+
+    // 1. Render
+    render(&lt;Counter/&gt;);
+
+    // 2. Find le bouton et le texte initial
+    // `getByRole` est une très bonne pratique (accessible !)
+    const button = screen.getByRole('button', {name: /incrémenter/i});
+    const countText = screen.getByText(/Compteur : 0/i);
+
+    // 4. Assert l'état initial
+    expect(countText).toBeInTheDocument();
+
+    // 3. Act
+    await user.click(button);
+
+    // 4. Assert le nouvel état
+    // On cherche le nouveau texte. S'il n'est pas là, `getByText` échoue.
+    const updatedCountText = screen.getByText(/Compteur : 1/i);
+    expect(updatedCountText).toBeInTheDocument();
+});
+</div></section><section class="chapter"><h3 id="exercice-19-tester-un-togglebutton" data-toc="exercice-19-tester-un-togglebutton">Exercice 19 : Tester un <code class="code" id="sa7iai_132">ToggleButton</code></h3><p id="sa7iai_128"><span class="control" id="sa7iai_133">Objectif :</span> &Eacute;crire un test pour le composant <code class="code" id="sa7iai_134">ToggleButton</code> que nous avons cr&eacute;&eacute; dans un module pr&eacute;c&eacute;dent.</p><p id="sa7iai_129">Le composant <code class="code" id="sa7iai_135">ToggleButton</code> affiche &quot;OFF&quot; par d&eacute;faut. Au clic, il doit afficher &quot;ON&quot;. Au second clic, il doit revenir &agrave; &quot;OFF&quot;.</p><ol class="list _decimal" id="sa7iai_130" type="1"><li class="list__item" id="sa7iai_136"><p id="sa7iai_142">Rendez le composant <code class="code" id="sa7iai_143">ToggleButton</code>.</p></li><li class="list__item" id="sa7iai_137"><p id="sa7iai_144">V&eacute;rifiez que le bouton avec le texte &quot;OFF&quot; est bien pr&eacute;sent &agrave; l'&eacute;cran.</p></li><li class="list__item" id="sa7iai_138"><p id="sa7iai_145">Simulez un clic sur ce bouton.</p></li><li class="list__item" id="sa7iai_139"><p id="sa7iai_146">V&eacute;rifiez que le bouton affiche maintenant le texte &quot;ON&quot;.</p></li><li class="list__item" id="sa7iai_140"><p id="sa7iai_147">Simulez un autre clic.</p></li><li class="list__item" id="sa7iai_141"><p id="sa7iai_148">V&eacute;rifiez que le bouton affiche &agrave; nouveau &quot;OFF&quot;.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-19" data-toc="correction-exercice-19">Correction exercice 19</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+// src/components/ToggleButton.js (pour rappel)
+import React, {useState} from 'react';
+
+function ToggleButton() {
+    const [isOn, setIsOn] = useState(false);
+    return &lt;button onClick={() =&gt; setIsOn(!isOn)}&gt;{isOn ? 'ON' : 'OFF'}&lt;/button&gt;;
+}
+
+// src/components/ToggleButton.test.js
+import {render, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import ToggleButton from './ToggleButton';
+
+describe('ToggleButton', () =&gt; {
+    test('should display OFF by default and toggle to ON and back to OFF', async () =&gt; {
+        const user = userEvent.setup();
+        render(&lt;ToggleButton/&gt;);
+
+        // 1. Vérifier l'état initial
+        let button = screen.getByRole('button', {name: 'OFF'});
+        expect(button).toBeInTheDocument();
+
+        // 2. Simuler le premier clic
+        await user.click(button);
+
+        // 3. Vérifier le nouvel état
+        // On doit &quot;récupérer&quot; le bouton car la référence a pu changer.
+        button = screen.getByRole('button', {name: 'ON'});
+        expect(button).toBeInTheDocument();
+        // On s'assure que l'ancien texte n'est plus là.
+        // `queryBy` retourne `null` si non trouvé, au lieu de lever une erreur.
+        expect(screen.queryByRole('button', {name: 'OFF'})).toBeNull();
+
+        // 4. Simuler le second clic
+        await user.click(button);
+
+        // 5. Vérifier le retour à l'état initial
+        button = screen.getByRole('button', {name: 'OFF'});
+        expect(button).toBeInTheDocument();
+        expect(screen.queryByRole('button', {name: 'ON'})).toBeNull();
+    });
+});
+</div></div></div></section></section></section><section class="chapter"><h2 id="4-snapshot-testing" data-toc="4-snapshot-testing">4. Snapshot Testing</h2><p id="sa7iai_151">Le &quot;snapshot testing&quot; est une technique o&ugrave; Jest prend une &quot;photo&quot; de votre composant rendu la premi&egrave;re fois et la sauvegarde dans un fichier. Lors des tests suivants, il prend une nouvelle photo et la compare &agrave; l'ancienne. Si elles sont diff&eacute;rentes, le test &eacute;choue.</p><section class="procedure-steps"><h3 id="sa7iai_152" data-toc="sa7iai_152">L'analogie du jeu des 7 erreurs</h3><p id="sa7iai_157">Le premier test, vous donnez &agrave; Jest une image de r&eacute;f&eacute;rence. Ensuite, chaque fois que vous lancez les tests, c'est comme si vous lui donniez une nouvelle version de l'image en lui demandant de jouer au jeu des 7 erreurs. S'il trouve une diff&eacute;rence, il vous alerte : &quot;Attention, l'UI a chang&eacute; ! Est-ce intentionnel ?&quot;. Si c'est le cas, vous lui dites &quot;OK, mets &agrave; jour l'image de r&eacute;f&eacute;rence&quot;. Sinon, vous avez trouv&eacute; un bug (une r&eacute;gression visuelle).</p><ol class="list _decimal"></ol></section><p id="sa7iai_153"><span class="control" id="sa7iai_158">Cas d'usage :</span> Id&eacute;al pour des composants purement pr&eacute;sentationnels qui ne devraient pas changer souvent. <span class="control" id="sa7iai_159">Attention :</span> &Agrave; utiliser avec parcimonie. Les snapshots peuvent devenir difficiles &agrave; maintenir s'ils changent trop souvent.</p><div class="code-block" data-lang="javascript">
+// src/components/UserInfo.test.js
+import {render} from '@testing-library/react';
+import UserInfo from './UserInfo';
+
+test('renders correctly', () =&gt; {
+    const user = {name: 'John Doe', email: 'john@doe.com'};
+    const {asFragment} = render(&lt;UserInfo user={user}/&gt;);
+
+    // `toMatchSnapshot()` va créer un fichier .snap ou comparer avec l'existant.
+    expect(asFragment()).toMatchSnapshot();
+});
+</div><p id="sa7iai_155">La premi&egrave;re fois, un fichier <code class="code" id="sa7iai_160">UserInfo.test.js.snap</code> sera cr&eacute;&eacute;. Si le JSX de <code class="code" id="sa7iai_161">UserInfo</code> change, le test &eacute;chouera jusqu'&agrave; ce que vous mettiez &agrave; jour le snapshot (en pressant <code class="code" id="sa7iai_162">u</code> dans la console de test).</p></section><section class="chapter"><h2 id="tp-tester-un-formulaire-de-contact" data-toc="tp-tester-un-formulaire-de-contact">TP : Tester un formulaire de contact</h2><p id="sa7iai_163">Reprenons le formulaire de contact cr&eacute;&eacute; avec React Hook Form (Exercice 17) et &eacute;crivons une suite de tests pour lui.</p><section class="chapter"><h3 id="tape-1-test-du-rendu-initial" data-toc="tape-1-test-du-rendu-initial">&Eacute;tape 1 : Test du rendu initial</h3><ul class="list _bullet" id="sa7iai_168"><li class="list__item" id="sa7iai_169"><p id="sa7iai_171">&Eacute;crivez un test qui rend le formulaire <code class="code" id="sa7iai_172">ContactForm</code>.</p></li><li class="list__item" id="sa7iai_170"><p id="sa7iai_173">V&eacute;rifiez que les champs &quot;Nom&quot;, &quot;Email&quot;, &quot;Message&quot; et le bouton &quot;Envoyer&quot; sont bien pr&eacute;sents &agrave; l'&eacute;cran. Utilisez <code class="code" id="sa7iai_174">getByLabelText</code> et <code class="code" id="sa7iai_175">getByRole</code>.</p></li></ul></section><section class="chapter"><h3 id="tape-2-test-de-la-validation-et-des-messages-d-erreur" data-toc="tape-2-test-de-la-validation-et-des-messages-d-erreur">&Eacute;tape 2 : Test de la validation et des messages d'erreur</h3><ul class="list _bullet" id="sa7iai_176"><li class="list__item" id="sa7iai_177"><p id="sa7iai_179">&Eacute;crivez un test qui simule un clic sur le bouton &quot;Envoyer&quot; sans remplir aucun champ.</p></li><li class="list__item" id="sa7iai_178"><p id="sa7iai_180">V&eacute;rifiez que les messages d'erreur attendus apparaissent &agrave; l'&eacute;cran (ex: &quot;Le nom est obligatoire.&quot;). Utilisez <code class="code" id="sa7iai_181">findByText</code> (qui est asynchrone) car l'affichage des erreurs peut &ecirc;tre asynchrone avec React Hook Form.</p></li></ul></section><section class="chapter"><h3 id="tape-3-test-de-la-soumission-r-ussie" data-toc="tape-3-test-de-la-soumission-r-ussie">&Eacute;tape 3 : Test de la soumission r&eacute;ussie</h3><ul class="list _bullet" id="sa7iai_182"><li class="list__item" id="sa7iai_183"><p id="sa7iai_187">&Eacute;crivez un test qui remplit tous les champs avec des donn&eacute;es valides en utilisant <code class="code" id="sa7iai_188">userEvent.type</code>.</p></li><li class="list__item" id="sa7iai_184"><p id="sa7iai_189">Simulez un clic sur le bouton &quot;Envoyer&quot;.</p></li><li class="list__item" id="sa7iai_185"><p id="sa7iai_190">V&eacute;rifiez que les messages d'erreur n'apparaissent PAS.</p></li><li class="list__item" id="sa7iai_186"><p id="sa7iai_191"><span class="control" id="sa7iai_192">Bonus :</span> &quot;Mockez&quot; la fonction <code class="code" id="sa7iai_193">console.log</code> pour v&eacute;rifier qu'elle a bien &eacute;t&eacute; appel&eacute;e avec les bonnes donn&eacute;es.</p></li></ul></section><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-du-tp" data-toc="correction-du-tp">Correction du TP</h3></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+// src/components/ContactForm.test.js
+import {render, screen, waitFor} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import ContactForm from './ContactForm';
+
+describe('ContactForm', () =&gt; {
+    const setup = () =&gt; {
+        const user = userEvent.setup();
+        render(&lt;ContactForm/&gt;);
+        return {user};
+    };
+
+    test('renders all fields and the submit button', () =&gt; {
+        setup();
+        expect(screen.getByLabelText(/nom/i)).toBeInTheDocument();
+        expect(screen.getByLabelText(/email/i)).toBeInTheDocument();
+        expect(screen.getByLabelText(/message/i)).toBeInTheDocument();
+        expect(screen.getByRole('button', {name: /envoyer/i})).toBeInTheDocument();
+    });
+
+    test('shows validation errors when submitted empty', async () =&gt; {
+        const {user} = setup();
+        const submitButton = screen.getByRole('button', {name: /envoyer/i});
+
+        await user.click(submitButton);
+
+        // findBy* est asynchrone, il attend que l'élément apparaisse
+        expect(await screen.findByText(/le nom est obligatoire/i)).toBeInTheDocument();
+        expect(screen.getByText(/l'email est obligatoire/i)).toBeInTheDocument();
+        expect(screen.getByText(/le message ne peut pas être vide/i)).toBeInTheDocument();
+    });
+
+    test('does not show errors when fields are valid', async () =&gt; {
+        const {user} = setup();
+
+        await user.type(screen.getByLabelText(/nom/i), 'John Doe');
+        await user.type(screen.getByLabelText(/email/i), 'john@example.com');
+        await user.type(screen.getByLabelText(/message/i), 'Ceci est un message de test suffisamment long.');
+
+        const submitButton = screen.getByRole('button', {name: /envoyer/i});
+        await user.click(submitButton);
+
+        // On vérifie que les messages d'erreur ne sont PAS là
+        expect(screen.queryByText(/le nom est obligatoire/i)).toBeNull();
+        expect(screen.queryByText(/l'email est obligatoire/i)).toBeNull();
+        expect(screen.queryByText(/le message ne peut pas être vide/i)).toBeNull();
+    });
+
+    test('calls onSubmit with form data when submission is successful', async () =&gt; {
+        // Mock de la fonction alert
+        const alertMock = jest.spyOn(window, 'alert').mockImplementation(() =&gt; {
+        });
+        const {user} = setup();
+
+        await user.type(screen.getByLabelText(/nom/i), 'Jane Doe');
+        await user.type(screen.getByLabelText(/email/i), 'jane@example.com');
+        await user.type(screen.getByLabelText(/message/i), 'Un autre message de test valide.');
+
+        const submitButton = screen.getByRole('button', {name: /envoyer/i});
+        await user.click(submitButton);
+
+        // On attend que l'alerte soit appelée (indique que onSubmit a été exécuté)
+        await waitFor(() =&gt; {
+            expect(alertMock).toHaveBeenCalledWith('Formulaire envoyé !');
+        });
+
+        // Nettoyage du mock
+        alertMock.mockRestore();
+    });
+});
+</div></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="sa7iai_196">Testez vos connaissances ! Les r&eacute;ponses se trouvent &agrave; la toute fin du support de cours.</p><section class="chapter"><h3 id="questions-choix-multiple-qcm" data-toc="questions-choix-multiple-qcm">Questions &agrave; Choix Multiple (QCM)</h3><p id="sa7iai_199"><span class="control" id="sa7iai_205">1. Quelle est la philosophie principale de React Testing Library (RTL) ?</span></p><ol class="list _decimal" id="sa7iai_200" type="1"><li class="list__item" id="sa7iai_206"><p id="sa7iai_210">Tester les d&eacute;tails d'impl&eacute;mentation, comme l'&eacute;tat interne d'un composant.</p></li><li class="list__item" id="sa7iai_207"><p id="sa7iai_211">Tester les composants en se concentrant sur ce que l'utilisateur voit et fait.</p></li><li class="list__item" id="sa7iai_208"><p id="sa7iai_212">&Eacute;crire des tests qui s'ex&eacute;cutent le plus rapidement possible, m&ecirc;me s'ils sont moins fiables.</p></li><li class="list__item" id="sa7iai_209"><p id="sa7iai_213">Remplacer compl&egrave;tement les tests End-to-End.</p></li></ol><p id="sa7iai_201"><span class="control" id="sa7iai_214">2. Vous voulez trouver un bouton dans votre test. Quelle est la meilleure requ&ecirc;te RTL &agrave; utiliser du point de vue de l'accessibilit&eacute; ?</span></p><ol class="list _decimal" id="sa7iai_202" type="1"><li class="list__item" id="sa7iai_215"><p id="sa7iai_219"><code class="code" id="sa7iai_220">getByTestId('submit-button')</code></p></li><li class="list__item" id="sa7iai_216"><p id="sa7iai_221"><code class="code" id="sa7iai_222">getByText('Envoyer')</code></p></li><li class="list__item" id="sa7iai_217"><p id="sa7iai_223"><code class="code" id="sa7iai_224">getByRole('button', { name: /envoyer/i })</code></p></li><li class="list__item" id="sa7iai_218"><p id="sa7iai_225"><code class="code" id="sa7iai_226">container.querySelector('button')</code></p></li></ol><p id="sa7iai_203"><span class="control" id="sa7iai_227">3. Quelle est la diff&eacute;rence entre <code class="code" id="sa7iai_228">getByText</code> et <code class="code" id="sa7iai_229">findByText</code>?</span></p><ol class="list _decimal" id="sa7iai_204" type="1"><li class="list__item" id="sa7iai_230"><p id="sa7iai_234">Il n'y a aucune diff&eacute;rence.</p></li><li class="list__item" id="sa7iai_231"><p id="sa7iai_235"><code class="code" id="sa7iai_236">getByText</code> est pour le texte court, <code class="code" id="sa7iai_237">findByText</code> pour le texte long.</p></li><li class="list__item" id="sa7iai_232"><p id="sa7iai_238"><code class="code" id="sa7iai_239">getByText</code> est synchrone (&eacute;choue imm&eacute;diatement si non trouv&eacute;), <code class="code" id="sa7iai_240">findByText</code> est asynchrone (attend un peu que l'&eacute;l&eacute;ment apparaisse).</p></li><li class="list__item" id="sa7iai_233"><p id="sa7iai_241"><code class="code" id="sa7iai_242">findByText</code> est une ancienne version de <code class="code" id="sa7iai_243">getByText</code>.</p></li></ol></section><section class="chapter"><h3 id="questions-ouvertes" data-toc="questions-ouvertes">Questions Ouvertes</h3><p id="sa7iai_244"><span class="control" id="sa7iai_247">4. Expliquez pourquoi il est g&eacute;n&eacute;ralement d&eacute;conseill&eacute; de tester les d&eacute;tails d'impl&eacute;mentation d'un composant.</span></p><p id="sa7iai_245"><span class="control" id="sa7iai_248">5. Vous testez un composant qui fait un appel API avec <code class="code" id="sa7iai_249">axios</code> dans un <code class="code" id="sa7iai_250">useEffect</code>. Comment feriez-vous pour tester ce composant sans faire de v&eacute;ritable appel r&eacute;seau ? (Donnez le nom de la technique).</span></p></section></section><section class="chapter"><h2 id="conclusion-de-ce-module" data-toc="conclusion-de-ce-module">Conclusion de ce module</h2><p id="sa7iai_251">Vous avez ajout&eacute; une corde essentielle &agrave; votre arc : la capacit&eacute; de garantir la qualit&eacute; et la robustesse de votre code. Vous savez d&eacute;sormais que les tests ne sont pas une corv&eacute;e, mais un outil puissant pour d&eacute;velopper plus vite et avec plus de confiance.</p><p id="sa7iai_252">Vous avez d&eacute;couvert l'&eacute;cosyst&egrave;me de test moderne de React avec <span class="control" id="sa7iai_254">Jest</span> et <span class="control" id="sa7iai_255">React Testing Library</span>. Vous avez appris &agrave; penser comme un utilisateur, &agrave; &eacute;crire des tests qui sont &agrave; la fois significatifs et r&eacute;silients au changement. Vous savez tester la logique pure avec des <span class="control" id="sa7iai_256">tests unitaires</span> et les interactions complexes avec des <span class="control" id="sa7iai_257">tests de composants</span>.</p><p id="sa7iai_253">Nous approchons de la fin de notre parcours. Nous savons concevoir, d&eacute;velopper, architecturer et tester. Il ne nous reste plus qu'&agrave; polir notre travail et &agrave; le mettre au monde. Le prochain et dernier module couvrira les <span class="control" id="sa7iai_258">outils, la qualit&eacute; du code et le d&eacute;ploiement</span> de votre application React.</p></section><section class="chapter"><h2 id="suggestions-de-projets-pour-pratiquer" data-toc="suggestions-de-projets-pour-pratiquer">Suggestions de projets pour pratiquer</h2><ol class="list _decimal" id="sa7iai_259" type="1"><li class="list__item" id="sa7iai_260"><p id="sa7iai_263"><span class="control" id="sa7iai_265">Niveau D&eacute;butant : Tester une TodoList</span></p><ul class="list _bullet" id="sa7iai_264"><li class="list__item" id="sa7iai_266"><p id="sa7iai_268"><span class="control" id="sa7iai_270">Description :</span> Prenez une application TodoList simple. &Eacute;crivez des tests pour :</p><ol class="list _decimal" id="sa7iai_269" type="1"><li class="list__item" id="sa7iai_271"><p id="sa7iai_274">Ajouter une nouvelle t&acirc;che et v&eacute;rifier qu'elle appara&icirc;t dans la liste.</p></li><li class="list__item" id="sa7iai_272"><p id="sa7iai_275">Cocher une t&acirc;che et v&eacute;rifier qu'elle a bien le style &quot;termin&eacute;&quot;.</p></li><li class="list__item" id="sa7iai_273"><p id="sa7iai_276">Supprimer une t&acirc;che et v&eacute;rifier qu'elle dispara&icirc;t de la liste.</p></li></ol></li><li class="list__item" id="sa7iai_267"><p id="sa7iai_277"><span class="control" id="sa7iai_278">Piste technique :</span> C'est un excellent exercice pour pratiquer <code class="code" id="sa7iai_279">userEvent.type</code>, <code class="code" id="sa7iai_280">userEvent.click</code> et les assertions sur la pr&eacute;sence/absence d'&eacute;l&eacute;ments.</p></li></ul></li><li class="list__item" id="sa7iai_261"><p id="sa7iai_281"><span class="control" id="sa7iai_283">Niveau Interm&eacute;diaire : Tester un composant avec appel API</span></p><ul class="list _bullet" id="sa7iai_282"><li class="list__item" id="sa7iai_284"><p id="sa7iai_286"><span class="control" id="sa7iai_287">Description :</span> Prenez le composant <code class="code" id="sa7iai_288">RandomCatFact</code> et testez ses diff&eacute;rents &eacute;tats.</p></li><li class="list__item" id="sa7iai_285"><p id="sa7iai_289"><span class="control" id="sa7iai_291">Piste technique :</span> Vous devrez &quot;mocker&quot; <code class="code" id="sa7iai_292">axios</code> (ou <code class="code" id="sa7iai_293">fetch</code>) avec <code class="code" id="sa7iai_294">jest.mock</code>. Cr&eacute;ez des tests pour trois sc&eacute;narios :</p><ol class="list _decimal" id="sa7iai_290" type="1"><li class="list__item" id="sa7iai_295"><p id="sa7iai_298">L'API r&eacute;pond avec succ&egrave;s : v&eacute;rifiez que le message de chargement dispara&icirc;t et que le fait est affich&eacute;.</p></li><li class="list__item" id="sa7iai_296"><p id="sa7iai_299">L'API retourne une erreur : v&eacute;rifiez que le message d'erreur est affich&eacute;.</p></li><li class="list__item" id="sa7iai_297"><p id="sa7iai_300">Pendant le chargement : v&eacute;rifiez que le message de chargement est bien affich&eacute; initialement.</p></li></ol></li></ul></li><li class="list__item" id="sa7iai_262"><p id="sa7iai_301"><span class="control" id="sa7iai_303">Niveau Avanc&eacute; : Atteindre 100% de couverture de test sur un hook personnalis&eacute;</span></p><ul class="list _bullet" id="sa7iai_302"><li class="list__item" id="sa7iai_304"><p id="sa7iai_306"><span class="control" id="sa7iai_307">Description :</span> Prenez votre hook <code class="code" id="sa7iai_308">useFetch</code>. Installez un outil pour mesurer la couverture de test (<code class="code" id="sa7iai_309">npm test -- --coverage</code>). &Eacute;crivez des tests unitaires pour ce hook (en utilisant <code class="code" id="sa7iai_310">@testing-library/react-hooks</code> ou une approche similaire) pour couvrir tous les cas (succ&egrave;s, erreur, changement d'URL, etc.) jusqu'&agrave; atteindre 100% de couverture sur ce fichier.</p></li><li class="list__item" id="sa7iai_305"><p id="sa7iai_311"><span class="control" id="sa7iai_312">Piste technique :</span> C'est un exercice avanc&eacute; qui vous apprendra &agrave; tester la logique de hook de mani&egrave;re isol&eacute;e et &agrave; penser &agrave; tous les cas limites.</p></li></ul></li></ol></section><div class="last-modified">08 novembre 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="008-module-08.html" class="navigation-links__prev">Module 8 : Architecture et Bonnes Pratiques</a><a href="010-module-10.html" class="navigation-links__next">Module 10 : Outils, Qualit&eacute; et D&eacute;ploiement</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

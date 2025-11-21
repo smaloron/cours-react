@@ -1,0 +1,375 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-11-21T15:37:45.346554"><title>Module 6 : Le Routage c&ocirc;t&eacute; Client avec React Router | React</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs Pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"pourquoi-ce-module-est-il-important","level":0,"title":"Pourquoi ce module est-il important ?","anchor":"#pourquoi-ce-module-est-il-important"},{"id":"comp-tences-du-r-f-rentiel-reac","level":0,"title":"Compétences du Référentiel (REAC)","anchor":"#comp-tences-du-r-f-rentiel-reac"},{"id":"1-installation-et-configuration","level":0,"title":"1. Installation et configuration","anchor":"#1-installation-et-configuration"},{"id":"2-navigation","level":0,"title":"2. Navigation","anchor":"#2-navigation"},{"id":"3-routes-dynamiques","level":0,"title":"3. Routes Dynamiques","anchor":"#3-routes-dynamiques"},{"id":"4-routes-prot-g-es","level":0,"title":"4. Routes Protégées","anchor":"#4-routes-prot-g-es"},{"id":"tp-construire-une-mini-application-de-blog","level":0,"title":"TP : Construire une mini-application de blog","anchor":"#tp-construire-une-mini-application-de-blog"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion-de-ce-module","level":0,"title":"Conclusion de ce module","anchor":"#conclusion-de-ce-module"},{"id":"suggestions-de-projets-pour-pratiquer","level":0,"title":"Suggestions de projets pour pratiquer","anchor":"#suggestions-de-projets-pour-pratiquer"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 6 : Le Routage c&ocirc;t&eacute; Client avec React Router | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/006-module-06.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 6 : Le Routage c&ocirc;t&eacute; Client avec React Router | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/006-module-06.html#webpage",
+    "url": "writerside-documentation/006-module-06.html",
+    "name": "Module 6 : Le Routage c&ocirc;t&eacute; Client avec React Router | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="006-module-06" data-main-title="Module 6 : Le Routage côté Client avec React Router" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="006-module-06" id="006-module-06.md">Module 6 : Le Routage côté Client avec React Router</h1><p id="-hnyu1s_2">Parfait ! Votre application peut maintenant afficher des donn&eacute;es dynamiques. Mais pour l'instant, elle se comporte comme un document unique. Comment la transformer en une exp&eacute;rience multi-pages fluide, sans les rechargements complets du web traditionnel ? C'est le r&ocirc;le du routage c&ocirc;t&eacute; client.</p><p id="-hnyu1s_5">Bienvenue dans le monde des <span class="control" id="-hnyu1s_18">Single Page Applications (SPA)</span>. L'id&eacute;e est simple : l'utilisateur charge votre site une seule fois, puis la navigation entre les &quot;pages&quot; est g&eacute;r&eacute;e directement par JavaScript dans le navigateur. C'est plus rapide, plus fluide, et cela donne une sensation d'application de bureau.</p><p id="-hnyu1s_6">Dans ce module, nous allons d&eacute;couvrir la biblioth&egrave;que la plus populaire pour g&eacute;rer cela en React : <span class="control" id="-hnyu1s_19">React Router</span>. Vous apprendrez &agrave; d&eacute;finir des routes, &agrave; cr&eacute;er des liens de navigation et &agrave; construire des applications qui ont plusieurs vues distinctes.</p><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs P&eacute;dagogiques</h2><p id="-hnyu1s_20">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="-hnyu1s_21"><li class="list__item" id="-hnyu1s_22"><p id="-hnyu1s_29"><span class="control" id="-hnyu1s_30">Expliquer</span> le concept de routage c&ocirc;t&eacute; client et ses avantages pour une SPA.</p></li><li class="list__item" id="-hnyu1s_23"><p id="-hnyu1s_31"><span class="control" id="-hnyu1s_32">Configurer</span> React Router dans une application pour d&eacute;finir diff&eacute;rentes routes.</p></li><li class="list__item" id="-hnyu1s_24"><p id="-hnyu1s_33"><span class="control" id="-hnyu1s_34">Utiliser</span> le composant <code class="code" id="-hnyu1s_35">&lt;Link&gt;</code> pour cr&eacute;er une navigation d&eacute;clarative sans rechargement de page.</p></li><li class="list__item" id="-hnyu1s_25"><p id="-hnyu1s_36"><span class="control" id="-hnyu1s_37">D&eacute;clencher</span> une navigation par programmation avec le hook <code class="code" id="-hnyu1s_38">useNavigate</code>.</p></li><li class="list__item" id="-hnyu1s_26"><p id="-hnyu1s_39"><span class="control" id="-hnyu1s_40">Cr&eacute;er</span> des routes dynamiques pour afficher des pages de d&eacute;tails (ex: <code class="code" id="-hnyu1s_41">/utilisateurs/:id</code>).</p></li><li class="list__item" id="-hnyu1s_27"><p id="-hnyu1s_42"><span class="control" id="-hnyu1s_43">R&eacute;cup&eacute;rer</span> les param&egrave;tres d'une URL avec le hook <code class="code" id="-hnyu1s_44">useParams</code>.</p></li><li class="list__item" id="-hnyu1s_28"><p id="-hnyu1s_45"><span class="control" id="-hnyu1s_46">Mettre en place</span> un syst&egrave;me de routes prot&eacute;g&eacute;es basique pour contr&ocirc;ler l'acc&egrave;s &agrave; certaines pages.</p></li></ul></section><section class="chapter"><h2 id="pourquoi-ce-module-est-il-important" data-toc="pourquoi-ce-module-est-il-important">Pourquoi ce module est-il important ?</h2><p id="-hnyu1s_47">Imaginez que votre application est un grand mus&eacute;e. Sans React Router, c'est un mus&eacute;e avec une seule immense salle. Tout y est expos&eacute; en m&ecirc;me temps : l'accueil, la collection &eacute;gyptienne, la boutique de souvenirs... C'est le chaos.</p><p id="-hnyu1s_48">React Router est l'architecte qui va concevoir le plan du mus&eacute;e. Il va cr&eacute;er des salles distinctes (<code class="code" id="-hnyu1s_49">Routes</code>), des couloirs pour y acc&eacute;der (<code class="code" id="-hnyu1s_50">&lt;Link&gt;</code>), et des panneaux de signalisation (<code class="code" id="-hnyu1s_51">URLs</code>). L'utilisateur peut se d&eacute;placer d'une salle &agrave; l'autre de mani&egrave;re intuitive, et l'exp&eacute;rience est bien plus agr&eacute;able. Chaque salle a une adresse unique (<code class="code" id="-hnyu1s_52">/egypte</code>, <code class="code" id="-hnyu1s_53">/boutique</code>), ce qui permet aussi de partager un lien direct vers une section pr&eacute;cise du mus&eacute;e. Ma&icirc;triser le routage est la comp&eacute;tence qui transforme votre collection de composants en une application structur&eacute;e et navigable.</p></section><section class="chapter"><h2 id="comp-tences-du-r-f-rentiel-reac" data-toc="comp-tences-du-r-f-rentiel-reac">Comp&eacute;tences du R&eacute;f&eacute;rentiel (REAC)</h2><p id="-hnyu1s_54">Ce module est fondamental pour la construction d'applications web compl&egrave;tes et s'int&egrave;gre parfaitement au <span class="control" id="-hnyu1s_57">CCP-1 : Concevoir et d&eacute;velopper des composants d'interface utilisateur</span>.</p><ul class="list _bullet" id="-hnyu1s_55"><li class="list__item" id="-hnyu1s_58"><p id="-hnyu1s_61"><span class="control" id="-hnyu1s_62">Maquetter une application :</span> Le routage est une partie int&eacute;grante de la conception de l'architecture et du flux de navigation d'une application.</p></li><li class="list__item" id="-hnyu1s_59"><p id="-hnyu1s_63"><span class="control" id="-hnyu1s_64">D&eacute;velopper une interface utilisateur de type desktop :</span> Les SPA imitent le comportement des applications natives, o&ugrave; la navigation entre les &eacute;crans est instantan&eacute;e.</p></li><li class="list__item" id="-hnyu1s_60"><p id="-hnyu1s_65"><span class="control" id="-hnyu1s_66">D&eacute;velopper des composants d'interface utilisateur :</span> Nous allons cr&eacute;er des composants sp&eacute;cifiques &agrave; chaque &quot;page&quot; ( route) de l'application.</p></li></ul></section><section class="chapter"><h2 id="1-installation-et-configuration" data-toc="1-installation-et-configuration">1. Installation et configuration</h2><p id="-hnyu1s_67">La premi&egrave;re &eacute;tape est d'ajouter React Router &agrave; notre projet et de configurer la structure de base.</p><p id="-hnyu1s_68"><code class="code" id="-hnyu1s_73">npm install react-router-dom</code></p><section class="procedure-steps"><h3 id="-hnyu1s_69" data-toc="-hnyu1s_69">L'analogie de l'aiguilleur de train</h3><p id="-hnyu1s_74">Pour faire fonctionner un r&eacute;seau de trains, vous avez besoin de plusieurs choses :</p><ol class="list _decimal" id="-hnyu1s_75" type="1"><li class="list__item" id="-hnyu1s_76"><p>Un <b id="-hnyu1s_79">contexte global</b> qui conna&icirc;t tout le r&eacute;seau. C'est le r&ocirc;le de <code class="code" id="-hnyu1s_80">&lt;BrowserRouter&gt;</code>. On l'enroule autour de toute notre application.</p></li><li class="list__item" id="-hnyu1s_77"><p>Une <b id="-hnyu1s_81">zone d'aiguillage</b> principale o&ugrave; les d&eacute;cisions sont prises. C'est le composant <code class="code" id="-hnyu1s_82">&lt;Routes&gt;</code>.</p></li><li class="list__item" id="-hnyu1s_78"><p>Des <b id="-hnyu1s_83">r&egrave;gles d'aiguillage</b> sp&eacute;cifiques : &quot;Si le train a la destination '/contact', envoie-le sur cette voie&quot;. Chaque r&egrave;gle est un composant <code class="code" id="-hnyu1s_84">&lt;Route&gt;</code>.</p></li></ol><ol class="list _decimal"></ol></section><p id="-hnyu1s_70"><span class="control" id="-hnyu1s_85">Configuration de base :</span></p><div class="tabs" id="-hnyu1s_71" data-anchors="[-hnyu1s_86,-hnyu1s_87]"><div class="tabs__content" data-gtm="tab" id="-hnyu1s_86" data-title="index.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/index.js
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  &lt;React.StrictMode&gt;
+    {/* On enveloppe notre App avec BrowserRouter */}
+    &lt;BrowserRouter&gt;
+      &lt;App /&gt;
+    &lt;/BrowserRouter&gt;
+  &lt;/React.StrictMode&gt;
+);
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-hnyu1s_87" data-title="App.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/App.js
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+function App() {
+return (
+&lt;div&gt;
+{/* Ici on pourrait mettre une barre de navigation persistante */}
+&lt;h1&gt;Mon Application&lt;/h1&gt;
+&lt;nav&gt;
+{/* ... liens de navigation ici ... */}
+&lt;/nav&gt;
+
+      {/* L'aiguilleur principal */}
+      &lt;Routes&gt;
+        {/*
+          Chaque Route est une règle :
+          - `path` : l'URL à surveiller.
+          - `element` : le composant à afficher si l'URL correspond.
+        */}
+        &lt;Route path=&quot;/&quot; element={&lt;HomePage /&gt;} /&gt;
+        &lt;Route path=&quot;/about&quot; element={&lt;AboutPage /&gt;} /&gt;
+        &lt;Route path=&quot;/contact&quot; element={&lt;ContactPage /&gt;} /&gt;
+        
+        {/* Une route &quot;catch-all&quot; pour les URL inconnues */}
+        &lt;Route path=&quot;*&quot; element={&lt;NotFoundPage /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/div&gt;
+
+);
+}
+
+export default App;
+
+
+</div></div></div></section><section class="chapter"><h2 id="2-navigation" data-toc="2-navigation">2. Navigation</h2><p id="-hnyu1s_90">Maintenant que nos routes sont d&eacute;finies, comment permettre &agrave; l'utilisateur de se d&eacute;placer entre elles ?</p><section class="chapter"><h3 id="navigation-d-clarative-avec-link" data-toc="navigation-d-clarative-avec-link">Navigation d&eacute;clarative avec <code class="code" id="-hnyu1s_98">&lt;Link&gt;</code></h3><aside class="prompt" data-type="warning" data-title="Ne jamais utiliser de balise `&lt;a&gt;` !" id="-hnyu1s_94"><p id="-hnyu1s_99">Si vous utilisez <code class="code" id="-hnyu1s_100">&lt;a href=&quot;/about&quot;&gt;&Agrave; propos&lt;/a&gt;</code>, vous demandez au navigateur de faire un rechargement complet de la page. Cela d&eacute;truit tout l'int&eacute;r&ecirc;t d'une SPA ! React Router perd le contr&ocirc;le.</p></aside><p id="-hnyu1s_95">La bonne pratique est d'utiliser le composant <code class="code" id="-hnyu1s_101">&lt;Link&gt;</code> fourni par React Router.</p><section class="procedure-steps"><h3 id="-hnyu1s_96" data-toc="-hnyu1s_96">L'analogie du téléporteur</h3><p id="-hnyu1s_102">Une balise <code class="code" id="-hnyu1s_104">&lt;a&gt;</code>, c'est comme prendre sa voiture pour aller &agrave; l'autre bout de la ville. Il faut sortir du garage, prendre la route, se garer... C'est lent.</p><p id="-hnyu1s_103">Le composant <code class="code" id="-hnyu1s_105">&lt;Link&gt;</code>, c'est un t&eacute;l&eacute;porteur. En apparence, c'est une porte, mais quand vous la franchissez, vous &ecirc;tes instantan&eacute;ment &agrave; destination, sans temps de trajet. Il modifie l'URL dans la barre d'adresse et demande &agrave; React d'afficher le bon composant, le tout sans quitter l'application.</p><ol class="list _decimal"></ol></section><div class="code-block" data-lang="javascript">
+// src/components/NavBar.js
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
+
+function NavBar() {
+  return (
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;
+          {/* On utilise `to` au lieu de `href` */}
+          &lt;Link to=&quot;/&quot;&gt;Accueil&lt;/Link&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          {/* NavLink est une variante de Link qui sait quand elle est active.
+              Parfait pour ajouter une classe CSS et styliser le lien actif. */}
+          &lt;NavLink 
+            to=&quot;/about&quot; 
+            className={({ isActive }) =&gt; isActive ? 'active-link' : ''}
+          &gt;
+            À Propos
+          &lt;/NavLink&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+          &lt;Link to=&quot;/contact&quot;&gt;Contact&lt;/Link&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  );
+}
+
+</div></section><section class="chapter"><h3 id="navigation-programmatique-avec-usenavigate" data-toc="navigation-programmatique-avec-usenavigate">Navigation programmatique avec <code class="code" id="-hnyu1s_110">useNavigate</code></h3><p id="-hnyu1s_107">Parfois, vous devez naviguer suite &agrave; une action, comme la soumission d'un formulaire ou une condition logique. Dans ces cas, on ne peut pas utiliser <code class="code" id="-hnyu1s_111">&lt;Link&gt;</code>. On utilise le hook <code class="code" id="-hnyu1s_112">useNavigate</code>.</p><div class="code-block" data-lang="javascript">
+import {useNavigate} from 'react-router-dom';
+
+function LoginForm() {
+    const navigate = useNavigate();
+
+    const handleSubmit = (event) =&gt; {
+        event.preventDefault();
+        // ... logique de connexion ...
+
+        // Si la connexion réussit, on redirige l'utilisateur.
+        const isLoginSuccessful = true; // Simulé
+        if (isLoginSuccessful) {
+            navigate('/dashboard');
+        }
+    };
+
+    return &lt;form onSubmit={handleSubmit}&gt;{/* ... */}&lt;/form&gt;;
+}
+
+</div></section></section><section class="chapter"><h2 id="3-routes-dynamiques" data-toc="3-routes-dynamiques">3. Routes Dynamiques</h2><p id="-hnyu1s_113">Imaginez un site de blog. Vous n'allez pas cr&eacute;er une route pour chaque article ! Vous avez besoin d'un &quot;mod&egrave;le&quot; de route qui peut correspondre &agrave; n'importe quel article. C'est le but des routes dynamiques.</p><section class="procedure-steps"><h3 id="-hnyu1s_114" data-toc="-hnyu1s_114">L'analogie des adresses postales</h3><p id="-hnyu1s_123">Une route statique (<code class="code" id="-hnyu1s_126">/contact</code>) est comme l'adresse du si&egrave;ge social d'une entreprise. Elle est unique et fixe.</p><p id="-hnyu1s_124">Une route dynamique (<code class="code" id="-hnyu1s_127">/employes/:id</code>) est comme un mod&egrave;le pour l'adresse de n'importe quel employ&eacute;. La rue est la m&ecirc;me, mais le num&eacute;ro de l'appartement (l' <code class="code" id="-hnyu1s_128">:id</code>) change. Le facteur sait qu'il doit aller &agrave; la bonne rue, puis chercher le bon num&eacute;ro d'appartement.</p><p id="-hnyu1s_125">Le composant qui g&egrave;re cette route doit ensuite &ecirc;tre capable de lire ce num&eacute;ro d'appartement pour afficher les informations de la bonne personne. C'est le r&ocirc;le du hook <code class="code" id="-hnyu1s_129">useParams</code>.</p><ol class="list _decimal"></ol></section><p id="-hnyu1s_115">On d&eacute;finit un segment dynamique dans l'URL avec un deux-points (<code class="code" id="-hnyu1s_130">:</code>).</p><p id="-hnyu1s_116"><span class="control" id="-hnyu1s_131">&Eacute;tape 1 : D&eacute;finir la route dynamique</span></p><div class="code-block" data-lang="javascript">
+// Dans App.js
+import UserProfilePage from './pages/UserProfilePage';
+
+&lt;Routes&gt;
+    &lt;Route path=&quot;/&quot; element={&lt;HomePage/&gt;}/&gt;
+    {/* Le `:userId` est un paramètre dynamique */}
+    &lt;Route path=&quot;/users/:userId&quot; element={&lt;UserProfilePage/&gt;}/&gt;
+&lt;/Routes&gt;
+
+</div><p id="-hnyu1s_118">Cette route correspondra &agrave; <code class="code" id="-hnyu1s_132">/users/1</code>, <code class="code" id="-hnyu1s_133">/users/alice</code>, <code class="code" id="-hnyu1s_134">/users/123-abc</code>, etc.</p><p id="-hnyu1s_119"><span class="control" id="-hnyu1s_135">&Eacute;tape 2 : R&eacute;cup&eacute;rer le param&egrave;tre dans le composant</span> On utilise le hook <code class="code" id="-hnyu1s_136">useParams</code> qui retourne un objet contenant les param&egrave;tres de l'URL.</p><div class="code-block" data-lang="javascript">
+// src/pages/UserProfilePage.js
+import React from 'react';
+import {useParams} from 'react-router-dom';
+
+function UserProfilePage() {
+    // useParams() retourne un objet : { userId: 'valeur_dans_url' }
+    const {userId} = useParams();
+
+    // On peut maintenant utiliser cet ID pour fetcher les données
+    // de l'utilisateur spécifique.
+    // useEffect(() =&gt; {
+    //   fetch(`https://api.example.com/users/${userId}`)
+    // }, [userId]);
+
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;Profil de l'utilisateur&lt;/h1&gt;
+            &lt;p&gt;ID de l'utilisateur : {userId}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}
+
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="667.7083px" preserveAspectRatio="none" style="width:975px;height:667px;" version="1.1" viewBox="0 0 975 667" width="975px" zoomAndPan="magnify"><defs><linearGradient id="gd1beodm210gf0" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#B8B8B8"/><stop offset="100%" stop-color="#999999"/></linearGradient><linearGradient id="gd1beodm210gf1" x1="50%" x2="50%" y1="0%" y2="100%"><stop offset="0%" stop-color="#7C9AB9"/><stop offset="100%" stop-color="#304D6D"/></linearGradient></defs><g><rect fill="url(#gd1beodm210gf0)" height="48.2361" id="_title" rx="4.1667" ry="4.1667" style="stroke:#6B6B6B;stroke-width:1.0416666666666667;" width="348.9583" x="335.6771" y="20.8333"/><text fill="#304D6D" font-family="Verdana" font-size="20.8333" font-weight="bold" lengthAdjust="spacing" textLength="326.0417" x="347.1354" y="53.2369">Flux d'une route dynamique</text><line style="stroke:#999999;stroke-width:1.0416666666666667;stroke-dasharray:5.0,5.0;" x1="37.5" x2="37.5" y1="169.6777" y2="569.5109"/><line style="stroke:#999999;stroke-width:1.0416666666666667;stroke-dasharray:5.0,5.0;" x1="239.0625" x2="239.0625" y1="169.6777" y2="569.5109"/><line style="stroke:#999999;stroke-width:1.0416666666666667;stroke-dasharray:5.0,5.0;" x1="409.8958" x2="409.8958" y1="169.6777" y2="569.5109"/><line style="stroke:#999999;stroke-width:1.0416666666666667;stroke-dasharray:5.0,5.0;" x1="661.9792" x2="661.9792" y1="169.6777" y2="569.5109"/><line style="stroke:#999999;stroke-width:1.0416666666666667;stroke-dasharray:5.0,5.0;" x1="911.9792" x2="911.9792" y1="169.6777" y2="569.5109"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="28.125" x="20.8333" y="161.8449">User</text><ellipse cx="38.0208" cy="89.9028" fill="url(#gd1beodm210gf1)" rx="8.3333" ry="8.3333" style="stroke:#304D6D;stroke-width:1.0416666666666667;"/><path d="M38.0208,98.2361 L38.0208,126.3611 M24.4792,106.5694 L51.5625,106.5694 M38.0208,126.3611 L24.4792,141.9861 M38.0208,126.3611 L51.5625,141.9861 " fill="none" style="stroke:#304D6D;stroke-width:1.0416666666666667;"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="28.125" x="20.8333" y="586.2447">User</text><ellipse cx="38.0208" cy="603.4526" fill="url(#gd1beodm210gf1)" rx="8.3333" ry="8.3333" style="stroke:#304D6D;stroke-width:1.0416666666666667;"/><path d="M38.0208,611.7859 L38.0208,639.9109 M24.4792,620.1192 L51.5625,620.1192 M38.0208,639.9109 L24.4792,655.5359 M38.0208,639.9109 L51.5625,655.5359 " fill="none" style="stroke:#304D6D;stroke-width:1.0416666666666667;"/><rect fill="url(#gd1beodm210gf1)" height="40.1917" rx="4.1667" ry="4.1667" style="stroke:#304D6D;stroke-width:1.0416666666666667;" width="50" x="214.0625" y="128.4444"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="25" x="226.5625" y="153.5116">URL</text><rect fill="url(#gd1beodm210gf1)" height="40.1917" rx="4.1667" ry="4.1667" style="stroke:#304D6D;stroke-width:1.0416666666666667;" width="50" x="214.0625" y="568.4692"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="25" x="226.5625" y="593.5364">URL</text><rect fill="url(#gd1beodm210gf1)" height="40.1917" rx="4.1667" ry="4.1667" style="stroke:#304D6D;stroke-width:1.0416666666666667;" width="105.2083" x="357.8125" y="128.4444"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="80.2083" x="370.3125" y="153.5116">React Router</text><rect fill="url(#gd1beodm210gf1)" height="40.1917" rx="4.1667" ry="4.1667" style="stroke:#304D6D;stroke-width:1.0416666666666667;" width="105.2083" x="357.8125" y="568.4692"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="80.2083" x="370.3125" y="593.5364">React Router</text><rect fill="url(#gd1beodm210gf1)" height="40.1917" rx="4.1667" ry="4.1667" style="stroke:#304D6D;stroke-width:1.0416666666666667;" width="210.4167" x="556.7708" y="128.4444"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="185.4167" x="569.2708" y="153.5116">Composant `UserProfilePage`</text><rect fill="url(#gd1beodm210gf1)" height="40.1917" rx="4.1667" ry="4.1667" style="stroke:#304D6D;stroke-width:1.0416666666666667;" width="210.4167" x="556.7708" y="568.4692"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="185.4167" x="569.2708" y="593.5364">Composant `UserProfilePage`</text><rect fill="url(#gd1beodm210gf1)" height="40.1917" rx="4.1667" ry="4.1667" style="stroke:#304D6D;stroke-width:1.0416666666666667;" width="103.125" x="860.9375" y="128.4444"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="78.125" x="873.4375" y="153.5116">useParams()</text><rect fill="url(#gd1beodm210gf1)" height="40.1917" rx="4.1667" ry="4.1667" style="stroke:#304D6D;stroke-width:1.0416666666666667;" width="103.125" x="860.9375" y="568.4692"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="78.125" x="873.4375" y="593.5364">useParams()</text><polygon fill="#446E9B" points="226.5625,207.7861,236.9792,211.9527,226.5625,216.1194,230.7292,211.9527" style="stroke:#446E9B;stroke-width:1.0416666666666667;"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="38.0208" x2="232.8125" y1="211.9527" y2="211.9527"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="165.625" x="50.5208" y="202.0365">Navigue vers "/users/123"</text><polygon fill="#446E9B" points="397.9167,247.9777,408.3333,252.1444,397.9167,256.311,402.0833,252.1444" style="stroke:#446E9B;stroke-width:1.0416666666666667;"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="239.0625" x2="404.1667" y1="252.1444" y2="252.1444"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="84.375" x="251.5625" y="242.2282">L'URL change</text><line style="stroke:#446E9B;stroke-width:3.125;" x1="410.4167" x2="454.1667" y1="307.5277" y2="307.5277"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="454.1667" x2="454.1667" y1="307.5277" y2="321.0693"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="411.4583" x2="454.1667" y1="321.0693" y2="321.0693"/><polygon fill="#446E9B" points="421.875,316.9027,411.4583,321.0693,421.875,325.236,417.7083,321.0693" style="stroke:#446E9B;stroke-width:1.0416666666666667;"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="194.7917" x="422.9167" y="282.4198">Trouve la route correspondante</text><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="211.4583" x="422.9167" y="297.6115">(&lt;Route path="/users/:userId"&gt;)</text><polygon fill="#446E9B" points="649.4792,357.0943,659.8958,361.261,649.4792,365.4277,653.6458,361.261" style="stroke:#446E9B;stroke-width:1.0416666666666667;"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="410.4167" x2="655.7292" y1="361.261" y2="361.261"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="117.7083" x="422.9167" y="351.3448">Rend le composant</text><polygon fill="#446E9B" points="900,397.286,910.4167,401.4526,900,405.6193,904.1667,401.4526" style="stroke:#446E9B;stroke-width:1.0416666666666667;"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="661.9792" x2="906.25" y1="401.4526" y2="401.4526"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="58.3333" x="674.4792" y="391.5365">s'ex&#233;cute</text><polygon fill="#446E9B" points="250.5208,437.4776,240.1042,441.6443,250.5208,445.811,246.3542,441.6443" style="stroke:#446E9B;stroke-width:1.0416666666666667;"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="244.2708" x2="911.4583" y1="441.6443" y2="441.6443"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="161.4583" x="261.9792" y="431.7281">Lit le segment dynamique</text><polygon fill="#446E9B" points="673.4375,477.6693,663.0208,481.8359,673.4375,486.0026,669.2708,481.8359" style="stroke:#446E9B;stroke-width:1.0416666666666667;"/><line style="stroke:#446E9B;stroke-width:3.125;stroke-dasharray:2.0,2.0;" x1="667.1875" x2="911.4583" y1="481.8359" y2="481.8359"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="189.5833" x="684.8958" y="471.9198">Retourne `{ userId: "123" }`</text><line style="stroke:#446E9B;stroke-width:3.125;" x1="661.9792" x2="705.7292" y1="537.2192" y2="537.2192"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="705.7292" x2="705.7292" y1="537.2192" y2="550.7609"/><line style="stroke:#446E9B;stroke-width:3.125;" x1="663.0208" x2="705.7292" y1="550.7609" y2="550.7609"/><polygon fill="#446E9B" points="673.4375,546.5942,663.0208,550.7609,673.4375,554.9276,669.2708,550.7609" style="stroke:#446E9B;stroke-width:1.0416666666666667;"/><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="111.4583" x="674.4792" y="512.1114">Utilise "123" pour</text><text fill="#FFFFFF" font-family="Verdana" font-size="12.5" lengthAdjust="spacing" textLength="136.4583" x="674.4792" y="527.3031">r&#233;cup&#233;rer les donn&#233;es</text><!--SRC=[PL6zJiCm4Dxz54UMjWEgWAs23Y0Xa2fKHNJh49CSgOLZXxDTYX0FrEVeYt5EKfh0PFk-d_lkVEOtM26uMkQevOlmock4UnrsK8o2GI0RF4BnQMIbtWCA8NDl2LOEITIIlCfLBOs7P9Kk4f0ERib-CCZF8PuYAo6DTjGGs-kGT6UhshfupMA79TbNfN4fIymQJOCRD7ue2uuv92itdZIq1slVX8WES3xl9O8PFCcjAWF25ib1CcKbkUd5vLKYH8_7gZOUAnQZMCatqfGekceVV-OLRH6qx7QLMo9q7BFWRBWsu-k62hNqcvjZnray7ejaFkbP_ax7hYcQ0dHqwpOYn0bcRXoHQMw4kyC-PmVHLFwEkr0-kZWigoWy_MFB_jVKsq3ywzaNj05daCJbm7SsRDzNhRpIoc77hDbXRIY6gWzxuiaqEYYiCOSzkXy0]--></g></svg></div><section class="chapter"><h3 id="exercice-16-cr-er-une-page-de-d-tail-de-produit" data-toc="exercice-16-cr-er-une-page-de-d-tail-de-produit">Exercice 16 : Cr&eacute;er une page de d&eacute;tail de produit</h3><p id="-hnyu1s_137"><span class="control" id="-hnyu1s_140">Objectif :</span> Cr&eacute;er une navigation entre une liste de produits et la page de d&eacute;tail de chaque produit.</p><ol class="list _decimal" id="-hnyu1s_138" type="1"><li class="list__item" id="-hnyu1s_141"><p id="-hnyu1s_146">Cr&eacute;ez une page <code class="code" id="-hnyu1s_147">ProductListPage</code> qui affiche une liste de produits (en dur, ex: &quot;Produit 1&quot;, &quot;Produit 2&quot;).</p></li><li class="list__item" id="-hnyu1s_142"><p id="-hnyu1s_148">Chaque nom de produit doit &ecirc;tre un <code class="code" id="-hnyu1s_149">&lt;Link&gt;</code> pointant vers <code class="code" id="-hnyu1s_150">/products/{id_du_produit}</code>.</p></li><li class="list__item" id="-hnyu1s_143"><p id="-hnyu1s_151">Cr&eacute;ez une page <code class="code" id="-hnyu1s_152">ProductDetailPage</code>.</p></li><li class="list__item" id="-hnyu1s_144"><p id="-hnyu1s_153">Dans <code class="code" id="-hnyu1s_154">App.js</code>, configurez les routes : <code class="code" id="-hnyu1s_155">/products</code> pour la liste et <code class="code" id="-hnyu1s_156">/products/:productId</code> pour le d&eacute;tail.</p></li><li class="list__item" id="-hnyu1s_145"><p id="-hnyu1s_157">Dans <code class="code" id="-hnyu1s_158">ProductDetailPage</code>, utilisez <code class="code" id="-hnyu1s_159">useParams</code> pour r&eacute;cup&eacute;rer le <code class="code" id="-hnyu1s_160">productId</code> et affichez-le.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-16" data-toc="correction-exercice-16">Correction exercice 16</h4></div><div class="collapse__content"><div class="tabs" id="-hnyu1s_161" data-anchors="[-hnyu1s_163,-hnyu1s_164,-hnyu1s_165]"><div class="tabs__content" data-gtm="tab" id="-hnyu1s_163" data-title="pages/ProductListPage.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const products = [
+{ id: 1, name: 'Ordinateur Portable' },
+{ id: 2, name: 'Smartphone' },
+{ id: 3, name: 'Casque audio' },
+];
+
+function ProductListPage() {
+return (
+&lt;div&gt;
+&lt;h2&gt;Nos produits&lt;/h2&gt;
+&lt;ul&gt;
+{products.map(product =&gt; (
+&lt;li key={product.id}&gt;
+{/* Le lien pointe vers une URL dynamique */}
+&lt;Link to={`/products/${product.id}`}&gt;{product.name}&lt;/Link&gt;
+&lt;/li&gt;
+))}
+&lt;/ul&gt;
+&lt;/div&gt;
+);
+}
+export default ProductListPage;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-hnyu1s_164" data-title="pages/ProductDetailPage.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+
+function ProductDetailPage() {
+const { productId } = useParams();
+
+// Dans une vraie app, on utiliserait cet ID pour fetcher les données
+return (
+&lt;div&gt;
+&lt;h1&gt;Détails du Produit&lt;/h1&gt;
+&lt;p&gt;Vous consultez le produit avec l'ID : &lt;strong&gt;{productId}&lt;/strong&gt;&lt;/p&gt;
+&lt;Link to=&quot;/products&quot;&gt;Retour à la liste&lt;/Link&gt;
+&lt;/div&gt;
+);
+}
+export default ProductDetailPage;
+
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-hnyu1s_165" data-title="App.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import { Routes, Route } from 'react-router-dom';
+import ProductListPage from './pages/ProductListPage';
+import ProductDetailPage from './pages/ProductDetailPage';
+// ... autres imports ...
+
+function App() {
+return (
+&lt;div&gt;
+&lt;nav&gt;
+&lt;Link to=&quot;/products&quot;&gt;Produits&lt;/Link&gt;
+&lt;/nav&gt;
+&lt;Routes&gt;
+{/* Autres routes */}
+&lt;Route path=&quot;/products&quot; element={&lt;ProductListPage /&gt;} /&gt;
+&lt;Route path=&quot;/products/:productId&quot; element={&lt;ProductDetailPage /&gt;} /&gt;
+&lt;/Routes&gt;
+&lt;/div&gt;
+);
+}
+
+</div></div></div></div></div></section></section></section><section class="chapter"><h2 id="4-routes-prot-g-es" data-toc="4-routes-prot-g-es">4. Routes Prot&eacute;g&eacute;es</h2><p id="-hnyu1s_169">Certaines pages de votre application ne devraient &ecirc;tre accessibles qu'aux utilisateurs connect&eacute;s (un tableau de bord, un profil...). Une route prot&eacute;g&eacute;e est un composant qui v&eacute;rifie une condition (l'utilisateur est-il authentifi&eacute; ?) avant de rendre la page demand&eacute;e. Si la condition n'est pas remplie, il redirige l'utilisateur.</p><div class="code-block" data-lang="javascript">
+import React from 'react';
+import {Navigate, Outlet} from 'react-router-dom';
+
+// Simule un hook d'authentification
+const useAuth = () =&gt; {
+    // Dans une vraie app, ceci viendrait d'un contexte ou de Redux
+    const user = {loggedIn: true};
+    return user &amp;&amp; user.loggedIn;
+};
+
+function ProtectedRoute() {
+    const isAuth = useAuth();
+
+    // Si l'utilisateur est authentifié, on rend le composant enfant
+    // que React Router nous passe via &lt;Outlet /&gt;.
+    // Sinon, on le redirige vers la page de connexion.
+    return isAuth ? &lt;Outlet/&gt; : &lt;Navigate to=&quot;/login&quot;/&gt;;
+}
+
+// Utilisation dans App.js
+&lt;Routes&gt;
+    &lt;Route path=&quot;/login&quot; element={&lt;LoginPage/&gt;}/&gt;
+    {/* On &quot;enveloppe&quot; nos routes protégées */}
+    &lt;Route element={&lt;ProtectedRoute/&gt;}&gt;
+        &lt;Route path=&quot;/dashboard&quot; element={&lt;DashboardPage/&gt;}/&gt;
+        &lt;Route path=&quot;/profile&quot; element={&lt;ProfilePage/&gt;}/&gt;
+    &lt;/Route&gt;
+&lt;/Routes&gt;
+
+</div><p id="-hnyu1s_171">L'&eacute;l&eacute;ment <code class="code" id="-hnyu1s_173">&lt;Outlet /&gt;</code> agit comme un placeholder, indiquant o&ugrave; les composants enfants de la route (<code class="code" id="-hnyu1s_174">DashboardPage</code>, <code class="code" id="-hnyu1s_175">ProfilePage</code>) doivent &ecirc;tre rendus.</p></section><section class="chapter"><h2 id="tp-construire-une-mini-application-de-blog" data-toc="tp-construire-une-mini-application-de-blog">TP : Construire une mini-application de blog</h2><p id="-hnyu1s_176">Mettons tout en pratique pour construire un blog simple avec une page d'accueil, une liste d'articles et des pages de d&eacute;tail pour chaque article.</p><section class="chapter"><h3 id="tape-1-structure-des-pages" data-toc="tape-1-structure-des-pages">&Eacute;tape 1 : Structure des pages</h3><ul class="list _bullet" id="-hnyu1s_181"><li class="list__item" id="-hnyu1s_182"><p id="-hnyu1s_187">Cr&eacute;ez les composants de page suivants : <code class="code" id="-hnyu1s_188">HomePage.js</code>, <code class="code" id="-hnyu1s_189">BlogPage.js</code>, <code class="code" id="-hnyu1s_190">PostPage.js</code>, et <code class="code" id="-hnyu1s_191">NotFoundPage.js</code>.</p></li><li class="list__item" id="-hnyu1s_183"><p id="-hnyu1s_192"><code class="code" id="-hnyu1s_193">HomePage</code>: Un simple message de bienvenue.</p></li><li class="list__item" id="-hnyu1s_184"><p id="-hnyu1s_194"><code class="code" id="-hnyu1s_195">BlogPage</code>: R&eacute;cup&egrave;re et affiche une liste de titres d'articles depuis <code class="code" id="-hnyu1s_196">https://jsonplaceholder.typicode.com/posts</code>. Chaque titre doit &ecirc;tre un <code class="code" id="-hnyu1s_197">&lt;Link&gt;</code> vers la page de d&eacute;tail de cet article (<code class="code" id="-hnyu1s_198">/blog/:postId</code>).</p></li><li class="list__item" id="-hnyu1s_185"><p id="-hnyu1s_199"><code class="code" id="-hnyu1s_200">PostPage</code>: Utilise <code class="code" id="-hnyu1s_201">useParams</code> pour obtenir le <code class="code" id="-hnyu1s_202">postId</code>, puis r&eacute;cup&egrave;re et affiche les d&eacute;tails de cet article sp&eacute;cifique depuis <code class="code" id="-hnyu1s_203">https://jsonplaceholder.typicode.com/posts/:postId</code> (titre et contenu).</p></li><li class="list__item" id="-hnyu1s_186"><p id="-hnyu1s_204"><code class="code" id="-hnyu1s_205">NotFoundPage</code>: Affiche un message &quot;404 - Page non trouv&eacute;e&quot;.</p></li></ul></section><section class="chapter"><h3 id="tape-2-cr-er-le-layout-et-la-navigation" data-toc="tape-2-cr-er-le-layout-et-la-navigation">&Eacute;tape 2 : Cr&eacute;er le Layout et la Navigation</h3><ul class="list _bullet" id="-hnyu1s_206"><li class="list__item" id="-hnyu1s_207"><p id="-hnyu1s_210">Cr&eacute;ez un composant <code class="code" id="-hnyu1s_211">Layout.js</code>. Il contiendra la structure commune &agrave; toutes les pages : un <code class="code" id="-hnyu1s_212">header</code> avec un <code class="code" id="-hnyu1s_213">&lt;nav&gt;</code>, un <code class="code" id="-hnyu1s_214">main</code> o&ugrave; le contenu des pages sera affich&eacute;, et un <code class="code" id="-hnyu1s_215">footer</code>.</p></li><li class="list__item" id="-hnyu1s_208"><p id="-hnyu1s_216">Dans le <code class="code" id="-hnyu1s_217">main</code>, utilisez le composant <code class="code" id="-hnyu1s_218">&lt;Outlet /&gt;</code>.</p></li><li class="list__item" id="-hnyu1s_209"><p id="-hnyu1s_219">La <code class="code" id="-hnyu1s_220">nav</code> doit contenir des <code class="code" id="-hnyu1s_221">NavLink</code> vers l'accueil (<code class="code" id="-hnyu1s_222">/</code>) et le blog (<code class="code" id="-hnyu1s_223">/blog</code>).</p></li></ul></section><section class="chapter"><h3 id="tape-3-configurer-les-routes" data-toc="tape-3-configurer-les-routes">&Eacute;tape 3 : Configurer les Routes</h3><ul class="list _bullet" id="-hnyu1s_224"><li class="list__item" id="-hnyu1s_225"><p id="-hnyu1s_228">Dans <code class="code" id="-hnyu1s_229">App.js</code>, mettez en place la structure des routes.</p></li><li class="list__item" id="-hnyu1s_226"><p id="-hnyu1s_230">Utilisez la route <code class="code" id="-hnyu1s_231">Layout</code> comme route parente pour que la navigation soit toujours visible.</p></li><li class="list__item" id="-hnyu1s_227"><p id="-hnyu1s_232">D&eacute;finissez les routes enfants pour <code class="code" id="-hnyu1s_233">/</code>, <code class="code" id="-hnyu1s_234">/blog</code>, <code class="code" id="-hnyu1s_235">/blog/:postId</code> et <code class="code" id="-hnyu1s_236">*</code>.</p></li></ul></section><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-du-tp" data-toc="correction-du-tp">Correction du TP</h3></div><div class="collapse__content"><div class="tabs" id="-hnyu1s_237" data-anchors="[-hnyu1s_239,-hnyu1s_240,-hnyu1s_241,-hnyu1s_242]"><div class="tabs__content" data-gtm="tab" id="-hnyu1s_239" data-title="components/Layout.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
+import './Layout.css';
+
+function Layout() {
+return (
+&lt;div className=&quot;layout&quot;&gt;
+&lt;header&gt;
+&lt;h1&gt;Mon Blog Technique&lt;/h1&gt;
+&lt;nav&gt;
+&lt;NavLink to=&quot;/&quot;&gt;Accueil&lt;/NavLink&gt;
+&lt;NavLink to=&quot;/blog&quot;&gt;Blog&lt;/NavLink&gt;
+&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+{/* Le contenu des routes enfants sera injecté ici */}
+&lt;Outlet /&gt;
+&lt;/main&gt;
+&lt;footer&gt;
+&lt;p&gt;© 2024 Mon Blog&lt;/p&gt;
+&lt;/footer&gt;
+&lt;/div&gt;
+);
+}
+
+export default Layout;
+
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-hnyu1s_240" data-title="pages/BlogPage.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { Link } from 'react-router-dom';
+import useFetch from '../hooks/useFetch'; // On réutilise notre hook !
+
+function BlogPage() {
+  const { data: posts, loading, error } = useFetch(
+    'https://jsonplaceholder.typicode.com/posts'
+  );
+
+  if (loading) return &lt;p&gt;Chargement des articles...&lt;/p&gt;;
+  if (error) return &lt;p&gt;Erreur de chargement.&lt;/p&gt;;
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Tous les articles&lt;/h2&gt;
+      &lt;ul&gt;
+        {posts &amp;&amp; posts.map(post =&gt; (
+          &lt;li key={post.id}&gt;
+            &lt;Link to={`/blog/${post.id}`}&gt;{post.title}&lt;/Link&gt;
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default BlogPage;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-hnyu1s_241" data-title="pages/PostPage.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { useParams, Link } from 'react-router-dom';
+import useFetch from '../hooks/useFetch';
+
+function PostPage() {
+const { postId } = useParams();
+const { data: post, loading, error } = useFetch(
+`https://jsonplaceholder.typicode.com/posts/${postId}`
+);
+
+if (loading) return &lt;p&gt;Chargement de l'article...&lt;/p&gt;;
+if (error) return &lt;p&gt;Erreur de chargement de l'article.&lt;/p&gt;;
+
+return (
+&lt;article&gt;
+{post &amp;&amp; (
+&lt;&gt;
+&lt;h2&gt;{post.title}&lt;/h2&gt;
+&lt;p&gt;{post.body}&lt;/p&gt;
+&lt;/&gt;
+)}
+&lt;Link to=&quot;/blog&quot;&gt;Retour au blog&lt;/Link&gt;
+&lt;/article&gt;
+);
+}
+
+export default PostPage;
+
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-hnyu1s_242" data-title="App.js (Routes)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import HomePage from './pages/HomePage';
+import BlogPage from './pages/BlogPage';
+import PostPage from './pages/PostPage';
+import NotFoundPage from './pages/NotFoundPage';
+
+function App() {
+  return (
+    &lt;Routes&gt;
+      {/* Toutes les routes suivantes partageront le même Layout */}
+      &lt;Route path=&quot;/&quot; element={&lt;Layout /&gt;}&gt;
+        {/* La page d'accueil à la racine */}
+        &lt;Route index element={&lt;HomePage /&gt;} /&gt;
+        
+        {/* Les routes du blog */}
+        &lt;Route path=&quot;blog&quot; element={&lt;BlogPage /&gt;} /&gt;
+        &lt;Route path=&quot;blog/:postId&quot; element={&lt;PostPage /&gt;} /&gt;
+        
+        {/* La route pour les pages non trouvées */}
+        &lt;Route path=&quot;*&quot; element={&lt;NotFoundPage /&gt;} /&gt;
+      &lt;/Route&gt;
+    &lt;/Routes&gt;
+  );
+}
+
+// Les composants HomePage et NotFoundPage sont de simples composants
+// affichant un message, leur code n'est pas inclus pour la brièveté.
+
+export default App;
+
+</div></div></div></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="-hnyu1s_247">Testez vos connaissances ! Les r&eacute;ponses se trouvent &agrave; la toute fin du support de cours.</p><section class="chapter"><h3 id="questions-choix-multiple-qcm" data-toc="questions-choix-multiple-qcm">Questions &agrave; Choix Multiple (QCM)</h3><p id="-hnyu1s_250"><span class="control" id="-hnyu1s_256">1. Quel composant de <code class="code" id="-hnyu1s_257">react-router-dom</code> faut-il utiliser pour cr&eacute;er un lien de navigation qui ne recharge pas la page ?</span></p><ol class="list _decimal" id="-hnyu1s_251" type="1"><li class="list__item" id="-hnyu1s_258"><p id="-hnyu1s_262"><code class="code" id="-hnyu1s_263">&lt;a href=&quot;...&quot;&gt;</code></p></li><li class="list__item" id="-hnyu1s_259"><p id="-hnyu1s_264"><code class="code" id="-hnyu1s_265">&lt;Route path=&quot;...&quot;&gt;</code></p></li><li class="list__item" id="-hnyu1s_260"><p id="-hnyu1s_266"><code class="code" id="-hnyu1s_267">&lt;Navigate to=&quot;...&quot;&gt;</code></p></li><li class="list__item" id="-hnyu1s_261"><p id="-hnyu1s_268"><code class="code" id="-hnyu1s_269">&lt;Link to=&quot;...&quot;&gt;</code></p></li></ol><p id="-hnyu1s_252"><span class="control" id="-hnyu1s_270">2. Vous avez une route d&eacute;finie comme <code class="code" id="-hnyu1s_271">&lt;Route path=&quot;/invoices/:invoiceId&quot; element={&lt;Invoice /&gt;}&gt;</code>. Comment le composant <code class="code" id="-hnyu1s_272">Invoice</code> peut-il acc&eacute;der &agrave; la valeur de <code class="code" id="-hnyu1s_273">invoiceId</code>?</span></p><ol class="list _decimal" id="-hnyu1s_253" type="1"><li class="list__item" id="-hnyu1s_274"><p id="-hnyu1s_278">Via <code class="code" id="-hnyu1s_279">props.invoiceId</code>.</p></li><li class="list__item" id="-hnyu1s_275"><p id="-hnyu1s_280">En utilisant <code class="code" id="-hnyu1s_281">const { invoiceId } = useParams();</code>.</p></li><li class="list__item" id="-hnyu1s_276"><p id="-hnyu1s_282">En lisant <code class="code" id="-hnyu1s_283">window.location.href</code>.</p></li><li class="list__item" id="-hnyu1s_277"><p id="-hnyu1s_284">En utilisant <code class="code" id="-hnyu1s_285">const navigate = useNavigate();</code>.</p></li></ol><p id="-hnyu1s_254"><span class="control" id="-hnyu1s_286">3. Quel est le r&ocirc;le du composant <code class="code" id="-hnyu1s_287">&lt;Outlet /&gt;</code>?</span></p><ol class="list _decimal" id="-hnyu1s_255" type="1"><li class="list__item" id="-hnyu1s_288"><p id="-hnyu1s_292">Il sert &agrave; d&eacute;finir une route qui n'est accessible que si l'utilisateur est d&eacute;connect&eacute;.</p></li><li class="list__item" id="-hnyu1s_289"><p id="-hnyu1s_293">C'est un placeholder qui indique o&ugrave; rendre le composant d'une route enfant dans un layout parent.</p></li><li class="list__item" id="-hnyu1s_290"><p id="-hnyu1s_294">C'est un alias pour le composant <code class="code" id="-hnyu1s_295">&lt;Link /&gt;</code>.</p></li><li class="list__item" id="-hnyu1s_291"><p id="-hnyu1s_296">Il g&egrave;re les redirections 404.</p></li></ol></section><section class="chapter"><h3 id="questions-ouvertes" data-toc="questions-ouvertes">Questions Ouvertes</h3><p id="-hnyu1s_297"><span class="control" id="-hnyu1s_300">4. Expliquez la diff&eacute;rence entre la navigation d&eacute;clarative et la navigation programmatique en React Router. Donnez un cas d'utilisation pour chacune.</span></p><p id="-hnyu1s_298"><span class="control" id="-hnyu1s_301">5. Vous construisez une application avec un tableau de bord (<code class="code" id="-hnyu1s_302">/dashboard</code>), des param&egrave;tres (<code class="code" id="-hnyu1s_303">/settings</code>) et une page de connexion (<code class="code" id="-hnyu1s_304">/login</code>). D&eacute;crivez comment vous structureriez vos routes pour que <code class="code" id="-hnyu1s_305">/dashboard</code> et <code class="code" id="-hnyu1s_306">/settings</code> ne soient accessibles qu'aux utilisateurs authentifi&eacute;s.</span></p></section></section><section class="chapter"><h2 id="conclusion-de-ce-module" data-toc="conclusion-de-ce-module">Conclusion de ce module</h2><p id="-hnyu1s_307">Vous avez transform&eacute; votre application d'une simple page en une v&eacute;ritable application web multi-vues. Vous avez maintenant le pouvoir de structurer la navigation de mani&egrave;re logique et intuitive pour vos utilisateurs.</p><p id="-hnyu1s_308">Vous savez comment d&eacute;finir des <span class="control" id="-hnyu1s_310">routes</span>, cr&eacute;er des liens avec <code class="code" id="-hnyu1s_311">&lt;Link&gt;</code>, g&eacute;rer des URL dynamiques avec <code class="code" id="-hnyu1s_312">useParams</code>, et m&ecirc;me prot&eacute;ger certaines parties de votre application. Avec React Router, vous avez ajout&eacute; une dimension essentielle &agrave; vos comp&eacute;tences, vous permettant de construire des exp&eacute;riences utilisateur compl&egrave;tes et professionnelles.</p><p id="-hnyu1s_309">Maintenant que les utilisateurs peuvent naviguer et voir des donn&eacute;es, la prochaine &eacute;tape logique est de leur permettre d'en <span class="emphasis" id="-hnyu1s_313">cr&eacute;er</span> et d'en <span class="emphasis" id="-hnyu1s_314">modifier</span>. Le prochain module se concentrera sur l'un des aspects les plus interactifs du d&eacute;veloppement web : <span class="control" id="-hnyu1s_315">la gestion des formulaires</span>.</p></section><section class="chapter"><h2 id="suggestions-de-projets-pour-pratiquer" data-toc="suggestions-de-projets-pour-pratiquer">Suggestions de projets pour pratiquer</h2><ol class="list _decimal" id="-hnyu1s_316" type="1"><li class="list__item" id="-hnyu1s_317"><p id="-hnyu1s_320"><span class="control" id="-hnyu1s_322">Niveau D&eacute;butant : Site vitrine simple</span></p><ul class="list _bullet" id="-hnyu1s_321"><li class="list__item" id="-hnyu1s_323"><p id="-hnyu1s_325"><span class="control" id="-hnyu1s_326">Description :</span> Cr&eacute;ez un site de 3 pages : Accueil, &Agrave; propos, Contact.</p></li><li class="list__item" id="-hnyu1s_324"><p id="-hnyu1s_327"><span class="control" id="-hnyu1s_328">Piste technique :</span> C'est l'exercice de base pour pratiquer <code class="code" id="-hnyu1s_329">&lt;BrowserRouter&gt;</code>, <code class="code" id="-hnyu1s_330">&lt;Routes&gt;</code>, <code class="code" id="-hnyu1s_331">&lt;Route&gt;</code>, et <code class="code" id="-hnyu1s_332">&lt;NavLink&gt;</code> pour la barre de navigation.</p></li></ul></li><li class="list__item" id="-hnyu1s_318"><p id="-hnyu1s_333"><span class="control" id="-hnyu1s_335">Niveau Interm&eacute;diaire : Clone de Wikip&eacute;dia simplifi&eacute;</span></p><ul class="list _bullet" id="-hnyu1s_334"><li class="list__item" id="-hnyu1s_336"><p id="-hnyu1s_338"><span class="control" id="-hnyu1s_339">Description :</span> Une page d'accueil avec un champ de recherche. La recherche m&egrave;ne &agrave; une page de r&eacute;sultats. Cliquer sur un r&eacute;sultat m&egrave;ne &agrave; la page de l'article.</p></li><li class="list__item" id="-hnyu1s_337"><p id="-hnyu1s_340"><span class="control" id="-hnyu1s_341">Piste technique :</span> Utilisez l'API de MediaWiki. Pratiquez <code class="code" id="-hnyu1s_342">useNavigate</code> pour la redirection apr&egrave;s la recherche et <code class="code" id="-hnyu1s_343">useParams</code> pour la page de l'article.</p></li></ul></li><li class="list__item" id="-hnyu1s_319"><p id="-hnyu1s_344"><span class="control" id="-hnyu1s_346">Niveau Avanc&eacute; : Mini-plateforme e-commerce</span></p><ul class="list _bullet" id="-hnyu1s_345"><li class="list__item" id="-hnyu1s_347"><p id="-hnyu1s_349"><span class="control" id="-hnyu1s_350">Description :</span> Une application avec une page listant des cat&eacute;gories de produits, une page listant les produits d'une cat&eacute;gorie, et une page de d&eacute;tail pour chaque produit. Ajoutez une fausse page de connexion et prot&eacute;gez une page &quot;Mon Compte&quot;.</p></li><li class="list__item" id="-hnyu1s_348"><p id="-hnyu1s_351"><span class="control" id="-hnyu1s_352">Piste technique :</span> C'est un excellent projet pour combiner le routage imbriqu&eacute; (<code class="code" id="-hnyu1s_353">/categories/:categoryId/products/:productId</code>), les routes prot&eacute;g&eacute;es, et la r&eacute;cup&eacute;ration de donn&eacute;es dynamique bas&eacute;e sur les param&egrave;tres de l'URL.</p></li></ul></li></ol></section><div class="last-modified">08 octobre 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="005-module-05.html" class="navigation-links__prev">Module 5 : Communication avec les APIs</a><a href="007-module-07.html" class="navigation-links__next">Module 7 : Gestion des Formulaires</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

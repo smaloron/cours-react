@@ -1,0 +1,288 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-11-21T15:37:45.346512"><title>Module 7 : Gestion des Formulaires | React</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs Pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"pourquoi-ce-module-est-il-important","level":0,"title":"Pourquoi ce module est-il important ?","anchor":"#pourquoi-ce-module-est-il-important"},{"id":"comp-tences-du-r-f-rentiel-reac","level":0,"title":"Compétences du Référentiel (REAC)","anchor":"#comp-tences-du-r-f-rentiel-reac"},{"id":"1-champs-contr-l-s-controlled-components","level":0,"title":"1. Champs Contrôlés (Controlled Components)","anchor":"#1-champs-contr-l-s-controlled-components"},{"id":"2-champs-non-contr-l-s-uncontrolled-components","level":0,"title":"2. Champs Non Contrôlés (Uncontrolled Components)","anchor":"#2-champs-non-contr-l-s-uncontrolled-components"},{"id":"3-librairies-de-formulaires-react-hook-form","level":0,"title":"3. Librairies de Formulaires : React Hook Form","anchor":"#3-librairies-de-formulaires-react-hook-form"},{"id":"tp-formulaire-d-ajout-d-v-nement-en-plusieurs-tapes","level":0,"title":"TP : Formulaire d\u0027ajout d\u0027événement en plusieurs étapes","anchor":"#tp-formulaire-d-ajout-d-v-nement-en-plusieurs-tapes"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion-de-ce-module","level":0,"title":"Conclusion de ce module","anchor":"#conclusion-de-ce-module"},{"id":"suggestions-de-projets-pour-pratiquer","level":0,"title":"Suggestions de projets pour pratiquer","anchor":"#suggestions-de-projets-pour-pratiquer"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 7 : Gestion des Formulaires | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/007-module-07.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 7 : Gestion des Formulaires | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/007-module-07.html#webpage",
+    "url": "writerside-documentation/007-module-07.html",
+    "name": "Module 7 : Gestion des Formulaires | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="007-module-07" data-main-title="Module 7 : Gestion des Formulaires" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="007-module-07" id="007-module-07.md">Module 7 : Gestion des Formulaires</h1><p id="-q0y2le_2">Parfaitement. Nous arrivons &agrave; un point crucial de l'interaction utilisateur. Nos applications peuvent afficher des donn&eacute;es, les utilisateurs peuvent naviguer entre les pages, mais comment leur permettre de soumettre leurs propres informations ? C'est le r&ocirc;le des formulaires.</p><p id="-q0y2le_5">Les formulaires sont partout sur le web. Inscription, connexion, publication d'un message, recherche, paiement... ils sont le principal moyen pour les utilisateurs de communiquer des informations &agrave; votre application. Cependant, leur gestion en React peut rapidement devenir complexe : il faut suivre la valeur de chaque champ, g&eacute;rer la validation, afficher les erreurs et traiter la soumission.</p><p id="-q0y2le_6">Dans ce module, nous allons explorer les strat&eacute;gies pour ma&icirc;triser les formulaires en React, de l'approche native &agrave; l' utilisation de biblioth&egrave;ques d&eacute;di&eacute;es qui vous feront gagner un temps pr&eacute;cieux.</p><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs P&eacute;dagogiques</h2><p id="-q0y2le_17">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="-q0y2le_18"><li class="list__item" id="-q0y2le_19"><p id="-q0y2le_25"><span class="control" id="-q0y2le_26">Impl&eacute;menter</span> des formulaires en utilisant la strat&eacute;gie des <span class="control" id="-q0y2le_27">champs contr&ocirc;l&eacute;s</span> (<code class="code" id="-q0y2le_28">controlled components</code>).</p></li><li class="list__item" id="-q0y2le_20"><p id="-q0y2le_29"><span class="control" id="-q0y2le_30">Comprendre</span> et utiliser la strat&eacute;gie des <span class="control" id="-q0y2le_31">champs non contr&ocirc;l&eacute;s</span> (<code class="code" id="-q0y2le_32">uncontrolled components</code>) avec <code class="code" id="-q0y2le_33">useRef</code>.</p></li><li class="list__item" id="-q0y2le_21"><p id="-q0y2le_34"><span class="control" id="-q0y2le_35">G&eacute;rer</span> les &eacute;v&eacute;nements de formulaire comme <code class="code" id="-q0y2le_36">onChange</code> et <code class="code" id="-q0y2le_37">onSubmit</code>.</p></li><li class="list__item" id="-q0y2le_22"><p id="-q0y2le_38"><span class="control" id="-q0y2le_39">Mettre en place</span> une validation de base c&ocirc;t&eacute; client.</p></li><li class="list__item" id="-q0y2le_23"><p id="-q0y2le_40"><span class="control" id="-q0y2le_41">Expliquer</span> les avantages d'utiliser une biblioth&egrave;que de gestion de formulaires.</p></li><li class="list__item" id="-q0y2le_24"><p id="-q0y2le_42"><span class="control" id="-q0y2le_43">Construire</span> des formulaires complexes, performants et faciles &agrave; maintenir avec la biblioth&egrave;que <span class="control" id="-q0y2le_44">React Hook Form</span>.</p></li></ul></section><section class="chapter"><h2 id="pourquoi-ce-module-est-il-important" data-toc="pourquoi-ce-module-est-il-important">Pourquoi ce module est-il important ?</h2><p id="-q0y2le_45">Imaginez que vous &ecirc;tes un agent de recensement. Vous devez collecter des informations pr&eacute;cises aupr&egrave;s des citoyens.</p><ul class="list _bullet" id="-q0y2le_46"><li class="list__item" id="-q0y2le_48"><p id="-q0y2le_50"><span class="control" id="-q0y2le_51">L'approche &quot;non contr&ocirc;l&eacute;e&quot; :</span> Vous donnez un questionnaire papier &agrave; une personne et vous revenez le chercher plus tard. Vous n'avez aucune id&eacute;e de ce qu'elle &eacute;crit avant la fin. C'est simple au d&eacute;but, mais si elle fait une erreur, vous ne le saurez qu'&agrave; la fin, et il sera peut-&ecirc;tre trop tard pour corriger.</p></li><li class="list__item" id="-q0y2le_49"><p id="-q0y2le_52"><span class="control" id="-q0y2le_53">L'approche &quot;contr&ocirc;l&eacute;e&quot; :</span> Vous posez les questions une par une et vous notez vous-m&ecirc;me les r&eacute;ponses sur votre carnet. Vous avez un contr&ocirc;le total en temps r&eacute;el. Si une r&eacute;ponse est invalide (&quot;Quelle est votre ann&eacute;e de naissance ?&quot; -&gt; &quot;Hier&quot;), vous pouvez le signaler imm&eacute;diatement. C'est plus de travail pour vous, mais le r&eacute;sultat est beaucoup plus fiable.</p></li></ul><p id="-q0y2le_47">Ce module vous apprendra &agrave; &ecirc;tre cet agent de recensement efficace. Vous saurez quand utiliser la m&eacute;thode simple et quand il est crucial d'avoir un contr&ocirc;le total. Plus important encore, vous d&eacute;couvrirez des assistants (les biblioth&egrave;ques) qui automatisent la plupart de ce travail pour vous, vous laissant vous concentrer sur les questions importantes.</p></section><section class="chapter"><h2 id="comp-tences-du-r-f-rentiel-reac" data-toc="comp-tences-du-r-f-rentiel-reac">Comp&eacute;tences du R&eacute;f&eacute;rentiel (REAC)</h2><p id="-q0y2le_54">La gestion des formulaires est une comp&eacute;tence fondamentale du <span class="control" id="-q0y2le_57">CCP-1 : Concevoir et d&eacute;velopper des composants d'interface utilisateur</span>.</p><ul class="list _bullet" id="-q0y2le_55"><li class="list__item" id="-q0y2le_58"><p id="-q0y2le_61"><span class="control" id="-q0y2le_62">D&eacute;velopper une interface utilisateur :</span> Les formulaires sont un composant central de la plupart des interfaces interactives.</p></li><li class="list__item" id="-q0y2le_59"><p id="-q0y2le_63"><span class="control" id="-q0y2le_64">D&eacute;velopper des composants d&rsquo;acc&egrave;s aux donn&eacute;es :</span> La soumission d'un formulaire r&eacute;sulte presque toujours en un envoi de donn&eacute;es vers une API (requ&ecirc;tes POST, PUT, PATCH).</p></li><li class="list__item" id="-q0y2le_60"><p id="-q0y2le_65"><span class="control" id="-q0y2le_66">Maquetter une application :</span> La conception des formulaires, y compris la gestion des &eacute;tats de validation et d'erreur, est une partie essentielle du maquettage.</p></li></ul></section><section class="chapter"><h2 id="1-champs-contr-l-s-controlled-components" data-toc="1-champs-contr-l-s-controlled-components">1. Champs Contr&ocirc;l&eacute;s (Controlled Components)</h2><p id="-q0y2le_67">C'est la m&eacute;thode <span class="control" id="-q0y2le_73">recommand&eacute;e et la plus courante</span> en React. L'id&eacute;e est simple : l'&eacute;tat de React est la <span class="control" id="-q0y2le_74">source unique de v&eacute;rit&eacute;</span> pour la valeur du champ de formulaire.</p><section class="procedure-steps"><h3 id="-q0y2le_68" data-toc="-q0y2le_68">Le principe du thermostat</h3><p id="-q0y2le_75">Un champ contr&ocirc;l&eacute; fonctionne comme un thermostat moderne.</p><ol class="list _decimal" id="-q0y2le_76" type="1"><li class="list__item" id="-q0y2le_78"><p>L' <b id="-q0y2le_83">&eacute;tat React</b> (ex: <code class="code" id="-q0y2le_84">const [temperature, setTemperature] = useState(20)</code>) est la temp&eacute;rature de consigne.</p></li><li class="list__item" id="-q0y2le_79"><p>Le thermostat (le <code class="code" id="-q0y2le_85">&lt;input&gt;</code>) <b id="-q0y2le_86">affiche</b> toujours cette valeur (<code class="code" id="-q0y2le_87">value={temperature}</code>). Il est &quot;contr&ocirc;l&eacute;&quot; par l'&eacute;tat.</p></li><li class="list__item" id="-q0y2le_80"><p>Quand vous tournez le bouton du thermostat (vous tapez dans le champ), cela d&eacute;clenche un &eacute;v&eacute;nement (<code class="code" id="-q0y2le_88">onChange</code>).</p></li><li class="list__item" id="-q0y2le_81"><p>Cet &eacute;v&eacute;nement ne change pas directement l'affichage. Il appelle une fonction (<code class="code" id="-q0y2le_89">setTemperature</code>) pour demander une <b id="-q0y2le_90">mise &agrave; jour de l'&eacute;tat</b>.</p></li><li class="list__item" id="-q0y2le_82"><p>L'&eacute;tat est mis &agrave; jour, ce qui provoque un nouveau rendu, et le thermostat affiche la nouvelle valeur.</p></li></ol><p id="-q0y2le_77">Le flux est circulaire : <b id="-q0y2le_91">&Eacute;tat &rarr; UI &rarr; Action &rarr; &Eacute;tat</b>. Cela garantit que ce que vous voyez est toujours synchronis&eacute; avec l'&eacute;tat de votre application.</p><ol class="list _decimal"></ol></section><p id="-q0y2le_69"><span class="control" id="-q0y2le_92">Exemple concret : Un champ de saisie simple</span></p><div class="code-block" data-lang="javascript">
+import React, {useState} from 'react';
+
+function ControlledForm() {
+    // L'état est la source de vérité
+    const [name, setName] = useState('');
+
+    const handleChange = (event) =&gt; {
+        // On met à jour l'état à chaque frappe
+        setName(event.target.value.toUpperCase()); // On peut même transformer la donnée
+    };
+
+    const handleSubmit = (event) =&gt; {
+        event.preventDefault(); // Empêche le rechargement de la page
+        alert(`Le nom soumis est : ${name}`);
+    };
+
+    return (
+        &lt;form onSubmit={handleSubmit}&gt;
+            &lt;label&gt;
+                Nom :
+                &lt;input
+                    type=&quot;text&quot;
+                    // La valeur affichée est TOUJOURS celle de l'état
+                    value={name}
+                    // L'événement onChange met à jour l'état
+                    onChange={handleChange}
+                /&gt;
+            &lt;/label&gt;
+            &lt;button type=&quot;submit&quot;&gt;Soumettre&lt;/button&gt;
+        &lt;/form&gt;
+    );
+}
+
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="385px" preserveAspectRatio="none" style="width:677px;height:385px;background:#FFFFFF;" version="1.1" viewBox="0 0 677 385" width="677px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="268" x="205.5" y="28.5352">Flux de donn&#233;es d'un champ contr&#244;l&#233;</text><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="64" x2="64" y1="118.9766" y2="304.5293"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="461.5" x2="461.5" y1="118.9766" y2="304.5293"/><line style="stroke:#696969;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="639.5" x2="639.5" y1="118.9766" y2="304.5293"/><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="118" x="5" y="87.4883"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="12" y="108.0234">State (`name`)</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="118" x="5" y="303.5293"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="104" x="12" y="324.0645">State (`name`)</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="109" x="407.5" y="87.4883"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="414.5" y="108.0234">Input Element</text><rect fill="#FF6347" height="30.4883" rx="3.5" ry="3.5" style="stroke:#454645;stroke-width:1.5;" width="109" x="407.5" y="303.5293"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="414.5" y="324.0645">Input Element</text><text fill="#454645" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="621.5" y="116.0234">User</text><ellipse cx="640" cy="50.9883" fill="#454645" rx="8" ry="8" style="stroke:#454645;stroke-width:0.5;"/><path d="M640,58.9883 L640,85.9883 M627,66.9883 L653,66.9883 M640,85.9883 L627,100.9883 M640,85.9883 L653,100.9883 " fill="none" style="stroke:#454645;stroke-width:0.5;"/><text fill="#454645" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="31" x="621.5" y="317.0645">User</text><ellipse cx="640" cy="328.5176" fill="#454645" rx="8" ry="8" style="stroke:#454645;stroke-width:0.5;"/><path d="M640,336.5176 L640,363.5176 M627,344.5176 L653,344.5176 M640,363.5176 L627,378.5176 M640,363.5176 L653,378.5176 " fill="none" style="stroke:#454645;stroke-width:0.5;"/><polygon fill="#454645" points="450,146.2871,460,150.2871,450,154.2871,454,150.2871" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="64" x2="456" y1="150.2871" y2="150.2871"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="117" x="71" y="145.5449">1. `value={name}`</text><polygon fill="#454645" points="473,175.5977,463,179.5977,473,183.5977,469,179.5977" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="467" x2="639" y1="179.5977" y2="179.5977"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="110" x="479" y="174.8555">2. Tape une lettre</text><line style="stroke:#454645;stroke-width:1.0;" x1="462" x2="504" y1="208.9082" y2="208.9082"/><line style="stroke:#454645;stroke-width:1.0;" x1="504" x2="504" y1="208.9082" y2="221.9082"/><line style="stroke:#454645;stroke-width:1.0;" x1="463" x2="504" y1="221.9082" y2="221.9082"/><polygon fill="#454645" points="473,217.9082,463,221.9082,473,225.9082,469,221.9082" style="stroke:#454645;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="164" x="469" y="204.166">3. D&#233;clenche `onChange`</text><polygon fill="#454645" points="75,250.2188,65,254.2188,75,258.2188,71,254.2188" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="69" x2="461" y1="254.2188" y2="254.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="205" x="81" y="249.4766">4. Appelle `setName(newValue)`</text><path d="M467,238.4082 L467,256.4082 A3.5,3.5 0 0 0 470.5,259.9082 L666.5,259.9082 A3.5,3.5 0 0 0 670,256.4082 L670,244.9082 L660,234.9082 L470.5,234.9082 A3.5,3.5 0 0 0 467,238.4082 " fill="#7FFFD4" style="stroke:#454645;stroke-width:1.5;"/><path d="M660,234.9082 L660,243.1582 A1.75,1.75 0 0 0 661.75,244.9082 L670,244.9082 L660,234.9082 " fill="#7FFFD4" style="stroke:#454645;stroke-width:1.5;"/><text fill="#454645" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="182" x="473" y="252.4766">D&#233;clenche un nouveau rendu</text><polygon fill="#454645" points="450,282.5293,460,286.5293,450,290.5293,454,286.5293" style="stroke:#454645;stroke-width:1.0;"/><line style="stroke:#454645;stroke-width:1.0;" x1="64" x2="456" y1="286.5293" y2="286.5293"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="374" x="71" y="281.7871">5. `value` est mis &#224; jour avec la nouvelle valeur de `name`</text><!--SRC=[RP6zJiGm48HxFyLm3NS5aVXh8e64-95eQFYfRPpL9SXPMyuw827UXVPwtY0lXfC84IGwQ_nvPdUy9pMrXBvvZeP5IIEESEFI6of2vPc77NMezXF3rgODi9ub3bzks2aLJ9J6DY6_nEfUZ13McarBUhE2wJ19VwbR3abmxN8eomHDYZ9MVCJgiQCugUD1gTdpu7o6KEAmWEwDItJsFkPyQ3M2I-Aem8C9XCG4HoAHr7orO8uBN0qxwuXjJT2UBsl3MzA_v1nSugJ0HGZaSYcw8xdBcMkcrwTnX8rMx3CLcsqjvT8nbyK-zMGI8d6L_bdaz6SH3Ue4RTDX-CIBJn6c9mjdPeinENEKzVmXSxdg6m00]--></g></svg></div></section><section class="chapter"><h2 id="2-champs-non-contr-l-s-uncontrolled-components" data-toc="2-champs-non-contr-l-s-uncontrolled-components">2. Champs Non Contr&ocirc;l&eacute;s (Uncontrolled Components)</h2><p id="-q0y2le_93">Parfois, vous n'avez pas besoin de contr&ocirc;ler la valeur &agrave; chaque frappe. Vous voulez juste r&eacute;cup&eacute;rer la valeur finale lorsque le formulaire est soumis. Dans ce cas, on peut laisser le DOM g&eacute;rer l'&eacute;tat du champ lui-m&ecirc;me.</p><section class="procedure-steps"><h3 id="-q0y2le_94" data-toc="-q0y2le_94">Le principe de la boîte aux lettres</h3><p id="-q0y2le_100">Un champ non contr&ocirc;l&eacute; est comme une bo&icirc;te aux lettres. Les gens (l'utilisateur) peuvent y d&eacute;poser du courrier (taper du texte) quand ils le veulent. Vous, le propri&eacute;taire (React), n'allez pas v&eacute;rifier la bo&icirc;te &agrave; chaque seconde. Vous attendez le moment opportun (la soumission du formulaire), puis vous ouvrez la bo&icirc;te avec votre cl&eacute; (une <code class="code" id="-q0y2le_101">ref</code>) pour r&eacute;cup&eacute;rer tout le courrier d'un coup.</p><ol class="list _decimal"></ol></section><p id="-q0y2le_95">On utilise une <code class="code" id="-q0y2le_102">ref</code> pour obtenir un acc&egrave;s direct &agrave; l'&eacute;l&eacute;ment du DOM au moment de la soumission.</p><p id="-q0y2le_96"><span class="control" id="-q0y2le_103">Exemple avec <code class="code" id="-q0y2le_104">useRef</code></span></p><div class="code-block" data-lang="javascript">
+import React, {useRef} from 'react';
+
+function UncontrolledForm() {
+    // On crée une ref pour &quot;s'accrocher&quot; à l'élément input
+    const nameInputRef = useRef(null);
+
+    const handleSubmit = (event) =&gt; {
+        event.preventDefault();
+        // On accède à la valeur via la ref au moment de la soumission
+        alert(`Le nom soumis est : ${nameInputRef.current.value}`);
+    };
+
+    return (
+        &lt;form onSubmit={handleSubmit}&gt;
+            &lt;label&gt;
+                Nom :
+                {/* L'input n'a pas de prop `value` ou `onChange` liée à l'état React.
+            Il est &quot;non contrôlé&quot;. `defaultValue` peut être utilisé pour la valeur initiale. */}
+                &lt;input type=&quot;text&quot; ref={nameInputRef} defaultValue=&quot;John Doe&quot;/&gt;
+            &lt;/label&gt;
+            &lt;button type=&quot;submit&quot;&gt;Soumettre&lt;/button&gt;
+        &lt;/form&gt;
+    );
+}
+
+</div><div class="table-wrapper"><table class="wide" id="-q0y2le_98"><thead><tr class="ijRowHead" id="-q0y2le_105"><th id="-q0y2le_111"><p>Crit&egrave;re</p></th><th id="-q0y2le_112"><p>Champs Contr&ocirc;l&eacute;s</p></th><th id="-q0y2le_113"><p>Champs Non Contr&ocirc;l&eacute;s</p></th></tr></thead><tbody><tr id="-q0y2le_106"><td id="-q0y2le_114"><p><span class="control" id="-q0y2le_117">Source de v&eacute;rit&eacute;</span></p></td><td id="-q0y2le_115"><p><span class="control" id="-q0y2le_118">&Eacute;tat React (<code class="code" id="-q0y2le_119">useState</code>)</span></p></td><td id="-q0y2le_116"><p><span class="control" id="-q0y2le_120">DOM</span></p></td></tr><tr id="-q0y2le_107"><td id="-q0y2le_121"><p><span class="control" id="-q0y2le_124">Validation</span></p></td><td id="-q0y2le_122"><p>Instantan&eacute;e (&agrave; chaque <code class="code" id="-q0y2le_125">onChange</code>)</p></td><td id="-q0y2le_123"><p>&Agrave; la soumission (<code class="code" id="-q0y2le_126">onSubmit</code>)</p></td></tr><tr id="-q0y2le_108"><td id="-q0y2le_127"><p><span class="control" id="-q0y2le_130">Flux de donn&eacute;es</span></p></td><td id="-q0y2le_128"><p>Unidirectionnel (React &rarr; DOM)</p></td><td id="-q0y2le_129"><p>Le DOM g&egrave;re son propre &eacute;tat</p></td></tr><tr id="-q0y2le_109"><td id="-q0y2le_131"><p><span class="control" id="-q0y2le_134">Complexit&eacute;</span></p></td><td id="-q0y2le_132"><p>Plus de code, mais plus de contr&ocirc;le</p></td><td id="-q0y2le_133"><p>Moins de code, plus simple</p></td></tr><tr id="-q0y2le_110"><td id="-q0y2le_135"><p><span class="control" id="-q0y2le_138">Cas d'usage</span></p></td><td id="-q0y2le_136"><p>Validation en temps r&eacute;el, champs dynamiques, masques de saisie</p></td><td id="-q0y2le_137"><p>Formulaires tr&egrave;s simples, int&eacute;gration avec du code non-React</p></td></tr></tbody></table></div></section><section class="chapter"><h2 id="3-librairies-de-formulaires-react-hook-form" data-toc="3-librairies-de-formulaires-react-hook-form">3. Librairies de Formulaires : React Hook Form</h2><p id="-q0y2le_139">G&eacute;rer un formulaire avec plusieurs champs, des validations complexes, des messages d'erreur et l'&eacute;tat de soumission peut vite devenir un cauchemar avec l'approche contr&ocirc;l&eacute;e native (beaucoup de <code class="code" id="-q0y2le_146">useState</code> et de re-rendus).</p><p id="-q0y2le_140"><span class="control" id="-q0y2le_147">React Hook Form</span> est une biblioth&egrave;que qui r&eacute;sout ces probl&egrave;mes avec brio.</p><section class="procedure-steps"><h3 id="-q0y2le_141" data-toc="-q0y2le_141">L'analogie de l'assistant personnel pour formulaires</h3><p id="-q0y2le_148">React Hook Form est un assistant ultra-comp&eacute;tent que vous engagez pour g&eacute;rer vos formulaires. Vous lui donnez simplement les instructions :</p><ul class="list _bullet" id="-q0y2le_149"><li class="list__item" id="-q0y2le_151"><p>&quot; <b id="-q0y2le_154">Enregistre</b> (<code class="code" id="-q0y2le_155">register</code>) ce champ 'email' pour moi. Il doit &ecirc;tre obligatoire et ressembler &agrave; une adresse email.&quot;</p></li><li class="list__item" id="-q0y2le_152"><p>&quot;Dis-moi s'il y a des <b id="-q0y2le_156">erreurs</b> (<code class="code" id="-q0y2le_157">formState: { errors }</code>) pour que je puisse les afficher.&quot;</p></li><li class="list__item" id="-q0y2le_153"><p>&quot;Quand l'utilisateur clique sur 'Soumettre', donne-moi directement un <b id="-q0y2le_158">objet propre avec toutes les donn&eacute;es</b>, mais seulement si tout est valide.&quot;</p></li></ul><p id="-q0y2le_150">L'assistant s'occupe de toute la logique interne, des re-rendus optimis&eacute;s (il s'appuie sur des refs, ce qui est tr&egrave;s performant), et vous donne juste les informations dont vous avez besoin.</p><ol class="list _decimal"></ol></section><p id="-q0y2le_142"><span class="control" id="-q0y2le_159">Installation :</span> <code class="code" id="-q0y2le_160">npm install react-hook-form</code></p><p id="-q0y2le_143"><span class="control" id="-q0y2le_161">Exemple : Formulaire d'inscription avec validation</span></p><div class="code-block" data-lang="javascript">
+import React from 'react';
+import {useForm} from 'react-hook-form';
+
+function RegistrationForm() {
+    const {
+        register,          // Fonction pour enregistrer un input
+        handleSubmit,      // Gère la soumission, ne s'exécute que si la validation passe
+        formState: {errors} // Objet contenant les erreurs de validation
+    } = useForm();
+
+    // Cette fonction ne sera appelée que si le formulaire est valide
+    const onSubmit = (data) =&gt; {
+        console.log(&quot;Données valides soumises :&quot;, data);
+    };
+
+    return (
+        // On passe notre fonction `onSubmit` à `handleSubmit`
+        &lt;form onSubmit={handleSubmit(onSubmit)}&gt;
+            &lt;div&gt;
+                &lt;label&gt;Email&lt;/label&gt;
+                &lt;input
+                    {...register('email', {
+                        required: 'L\'email est obligatoire',
+                        pattern: {
+                            value: /^\S+@\S+$/i,
+                            message: 'Le format de l\'email est invalide'
+                        }
+                    })}
+                /&gt;
+                {/* Affiche le message d'erreur s'il existe pour ce champ */}
+                {errors.email &amp;&amp; &lt;p className=&quot;error&quot;&gt;{errors.email.message}&lt;/p&gt;}
+            &lt;/div&gt;
+
+            &lt;div&gt;
+                &lt;label&gt;Mot de passe&lt;/label&gt;
+                &lt;input
+                    type=&quot;password&quot;
+                    {...register('password', {
+                        required: 'Le mot de passe est obligatoire',
+                        minLength: {
+                            value: 8,
+                            message: 'Le mot de passe doit faire au moins 8 caractères'
+                        }
+                    })}
+                /&gt;
+                {errors.password &amp;&amp; &lt;p className=&quot;error&quot;&gt;{errors.password.message}&lt;/p&gt;}
+            &lt;/div&gt;
+
+            &lt;button type=&quot;submit&quot;&gt;S'inscrire&lt;/button&gt;
+        &lt;/form&gt;
+    );
+}
+
+</div><section class="chapter"><h3 id="exercice-17-cr-er-un-formulaire-de-contact" data-toc="exercice-17-cr-er-un-formulaire-de-contact">Exercice 17 : Cr&eacute;er un formulaire de contact</h3><p id="-q0y2le_162"><span class="control" id="-q0y2le_165">Objectif :</span> Cr&eacute;er un formulaire de contact simple en utilisant React Hook Form.</p><ol class="list _decimal" id="-q0y2le_163" type="1"><li class="list__item" id="-q0y2le_166"><p id="-q0y2le_172">Le formulaire doit avoir trois champs : <code class="code" id="-q0y2le_173">name</code> (texte), <code class="code" id="-q0y2le_174">email</code> (email), et <code class="code" id="-q0y2le_175">message</code> (textarea).</p></li><li class="list__item" id="-q0y2le_167"><p id="-q0y2le_176">Le champ <code class="code" id="-q0y2le_177">name</code> doit &ecirc;tre obligatoire.</p></li><li class="list__item" id="-q0y2le_168"><p id="-q0y2le_178">Le champ <code class="code" id="-q0y2le_179">email</code> doit &ecirc;tre obligatoire et avoir un format valide.</p></li><li class="list__item" id="-q0y2le_169"><p id="-q0y2le_180">Le champ <code class="code" id="-q0y2le_181">message</code> doit &ecirc;tre obligatoire et avoir une longueur minimale de 10 caract&egrave;res.</p></li><li class="list__item" id="-q0y2le_170"><p id="-q0y2le_182">Affichez les messages d'erreur correspondants sous chaque champ.</p></li><li class="list__item" id="-q0y2le_171"><p id="-q0y2le_183">Lors de la soumission, affichez les donn&eacute;es dans la console.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-17" data-toc="correction-exercice-17">Correction exercice 17</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+import React from 'react';
+import {useForm} from 'react-hook-form';
+import './Form.css'; // Pour styliser les erreurs
+
+function ContactForm() {
+    const {
+        register,
+        handleSubmit,
+        formState: {errors}
+    } = useForm({
+        // mode: 'onBlur' // On peut choisir de valider au changement, au blur, etc.
+    });
+
+    const onSubmit = (data) =&gt; {
+        alert('Formulaire envoyé !');
+        console.log(data);
+    };
+
+    return (
+        &lt;form onSubmit={handleSubmit(onSubmit)}&gt;
+            &lt;div className=&quot;form-control&quot;&gt;
+                &lt;label htmlFor=&quot;name&quot;&gt;Nom&lt;/label&gt;
+                &lt;input
+                    id=&quot;name&quot;
+                    {...register('name', {required: 'Le nom est obligatoire.'})}
+                /&gt;
+                {errors.name &amp;&amp; &lt;p className=&quot;error-message&quot;&gt;{errors.name.message}&lt;/p&gt;}
+            &lt;/div&gt;
+
+            &lt;div className=&quot;form-control&quot;&gt;
+                &lt;label htmlFor=&quot;email&quot;&gt;Email&lt;/label&gt;
+                &lt;input
+                    id=&quot;email&quot;
+                    {...register('email', {
+                        required: 'L\'email est obligatoire.',
+                        pattern: {
+                            value: /^\S+@\S+$/i,
+                            message: 'Email invalide.'
+                        }
+                    })}
+                /&gt;
+                {errors.email &amp;&amp; &lt;p className=&quot;error-message&quot;&gt;{errors.email.message}&lt;/p&gt;}
+            &lt;/div&gt;
+
+            &lt;div className=&quot;form-control&quot;&gt;
+                &lt;label htmlFor=&quot;message&quot;&gt;Message&lt;/label&gt;
+                &lt;textarea
+                    id=&quot;message&quot;
+                    rows=&quot;5&quot;
+                    {...register('message', {
+                        required: 'Le message ne peut pas être vide.',
+                        minLength: {
+                            value: 10,
+                            message: 'Le message doit contenir au moins 10 caractères.'
+                        }
+                    })}
+                /&gt;
+                {errors.message &amp;&amp; &lt;p className=&quot;error-message&quot;&gt;{errors.message.message}&lt;/p&gt;}
+            &lt;/div&gt;
+
+            &lt;button type=&quot;submit&quot;&gt;Envoyer&lt;/button&gt;
+        &lt;/form&gt;
+    );
+}
+
+export default ContactForm;
+
+</div></div></div></section></section></section><section class="chapter"><h2 id="tp-formulaire-d-ajout-d-v-nement-en-plusieurs-tapes" data-toc="tp-formulaire-d-ajout-d-v-nement-en-plusieurs-tapes">TP : Formulaire d'ajout d'&eacute;v&eacute;nement en plusieurs &eacute;tapes</h2><p id="-q0y2le_186">Cr&eacute;ons un formulaire plus complexe qui guide l'utilisateur &agrave; travers plusieurs &eacute;tapes, en utilisant React Hook Form pour g&eacute;rer l'&eacute;tat global du formulaire.</p><section class="chapter"><h3 id="tape-1-le-setup" data-toc="tape-1-le-setup">&Eacute;tape 1 : Le setup</h3><ul class="list _bullet" id="-q0y2le_192"><li class="list__item" id="-q0y2le_193"><p id="-q0y2le_195">Utilisez <code class="code" id="-q0y2le_196">useState</code> pour g&eacute;rer l'&eacute;tape actuelle du formulaire (ex: <code class="code" id="-q0y2le_197">const [step, setStep] = useState(1);</code>).</p></li><li class="list__item" id="-q0y2le_194"><p id="-q0y2le_198">Installez et configurez <code class="code" id="-q0y2le_199">useForm</code> dans le composant principal du formulaire.</p></li></ul></section><section class="chapter"><h3 id="tape-2-premi-re-tape-informations-de-base" data-toc="tape-2-premi-re-tape-informations-de-base">&Eacute;tape 2 : Premi&egrave;re &eacute;tape - Informations de base</h3><ul class="list _bullet" id="-q0y2le_200"><li class="list__item" id="-q0y2le_201"><p id="-q0y2le_204">Si <code class="code" id="-q0y2le_206">step</code> est 1, affichez les champs :</p><ul class="list _bullet" id="-q0y2le_205"><li class="list__item" id="-q0y2le_207"><p id="-q0y2le_209"><code class="code" id="-q0y2le_210">eventName</code> (texte, obligatoire)</p></li><li class="list__item" id="-q0y2le_208"><p id="-q0y2le_211"><code class="code" id="-q0y2le_212">eventDate</code> (date, obligatoire)</p></li></ul></li><li class="list__item" id="-q0y2le_202"><p id="-q0y2le_213">Affichez un bouton &quot;Suivant&quot;. Ce bouton ne doit pas soumettre le formulaire, mais simplement v&eacute;rifier la validit&eacute; des champs de l'&eacute;tape 1 et passer &agrave; l'&eacute;tape 2.</p></li><li class="list__item" id="-q0y2le_203"><p id="-q0y2le_214"><span class="control" id="-q0y2le_215">Astuce :</span> <code class="code" id="-q0y2le_216">handleSubmit</code> peut &ecirc;tre utilis&eacute; sans <code class="code" id="-q0y2le_217">onSubmit</code> pour simplement d&eacute;clencher la validation. Ou mieux, utilisez la fonction <code class="code" id="-q0y2le_218">trigger()</code> de React Hook Form pour valider des champs sp&eacute;cifiques.</p></li></ul></section><section class="chapter"><h3 id="tape-3-deuxi-me-tape-d-tails-du-lieu" data-toc="tape-3-deuxi-me-tape-d-tails-du-lieu">&Eacute;tape 3 : Deuxi&egrave;me &eacute;tape - D&eacute;tails du lieu</h3><ul class="list _bullet" id="-q0y2le_219"><li class="list__item" id="-q0y2le_220"><p id="-q0y2le_222">Si <code class="code" id="-q0y2le_224">step</code> est 2, affichez les champs :</p><ul class="list _bullet" id="-q0y2le_223"><li class="list__item" id="-q0y2le_225"><p id="-q0y2le_227"><code class="code" id="-q0y2le_228">locationName</code> (texte, obligatoire)</p></li><li class="list__item" id="-q0y2le_226"><p id="-q0y2le_229"><code class="code" id="-q0y2le_230">locationAddress</code> (texte, obligatoire)</p></li></ul></li><li class="list__item" id="-q0y2le_221"><p id="-q0y2le_231">Affichez un bouton &quot;Pr&eacute;c&eacute;dent&quot; (qui fait <code class="code" id="-q0y2le_232">setStep(1)</code>) et un bouton &quot;Soumettre&quot; (qui est de type <code class="code" id="-q0y2le_233">submit</code>).</p></li></ul></section><section class="chapter"><h3 id="tape-4-soumission-et-r-sum" data-toc="tape-4-soumission-et-r-sum">&Eacute;tape 4 : Soumission et r&eacute;sum&eacute;</h3><ul class="list _bullet" id="-q0y2le_234"><li class="list__item" id="-q0y2le_235"><p id="-q0y2le_238">Le bouton &quot;Soumettre&quot; doit d&eacute;clencher le <code class="code" id="-q0y2le_239">handleSubmit</code> de <code class="code" id="-q0y2le_240">useForm</code>.</p></li><li class="list__item" id="-q0y2le_236"><p id="-q0y2le_241">La fonction <code class="code" id="-q0y2le_242">onSubmit</code> recevra toutes les donn&eacute;es des deux &eacute;tapes.</p></li><li class="list__item" id="-q0y2le_237"><p id="-q0y2le_243">Affichez un r&eacute;sum&eacute; des donn&eacute;es soumises dans une alerte ou dans la console.</p></li></ul></section><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-du-tp" data-toc="correction-du-tp">Correction du TP</h3></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+import React, {useState} from 'react';
+import {useForm} from 'react-hook-form';
+import './Form.css';
+
+function MultiStepEventForm() {
+    const [currentStep, setCurrentStep] = useState(1);
+    const {
+        register,
+        handleSubmit,
+        trigger, // Fonction pour déclencher la validation manuellement
+        formState: {errors},
+    } = useForm();
+
+    // La fonction de soumission finale
+    const processForm = (data) =&gt; {
+        console.log('Données finales :', data);
+        alert('Événement créé avec succès !');
+    };
+
+    // Passe à l'étape suivante si les champs actuels sont valides
+    const handleNextStep = async () =&gt; {
+        const fieldsToValidate = currentStep === 1 ? ['eventName', 'eventDate'] : [];
+        const isValid = await trigger(fieldsToValidate);
+        if (isValid) {
+            setCurrentStep(currentStep + 1);
+        }
+    };
+
+    const handlePrevStep = () =&gt; {
+        setCurrentStep(currentStep - 1);
+    };
+
+    return (
+        &lt;form onSubmit={handleSubmit(processForm)}&gt;
+            {currentStep === 1 &amp;&amp; (
+                &lt;section&gt;
+                    &lt;h2&gt;Étape 1: Informations de base&lt;/h2&gt;
+                    &lt;div className=&quot;form-control&quot;&gt;
+                        &lt;label&gt;Nom de l'événement&lt;/label&gt;
+                        &lt;input {...register('eventName', {required: 'Ce champ est requis.'})} /&gt;
+                        {errors.eventName &amp;&amp; &lt;p className=&quot;error-message&quot;&gt;{errors.eventName.message}&lt;/p&gt;}
+                    &lt;/div&gt;
+                    &lt;div className=&quot;form-control&quot;&gt;
+                        &lt;label&gt;Date de l'événement&lt;/label&gt;
+                        &lt;input type=&quot;date&quot; {...register('eventDate', {required: 'Ce champ est requis.'})} /&gt;
+                        {errors.eventDate &amp;&amp; &lt;p className=&quot;error-message&quot;&gt;{errors.eventDate.message}&lt;/p&gt;}
+                    &lt;/div&gt;
+                &lt;/section&gt;
+            )}
+
+            {currentStep === 2 &amp;&amp; (
+                &lt;section&gt;
+                    &lt;h2&gt;Étape 2: Lieu&lt;/h2&gt;
+                    &lt;div className=&quot;form-control&quot;&gt;
+                        &lt;label&gt;Nom du lieu&lt;/label&gt;
+                        &lt;input {...register('locationName', {required: 'Ce champ est requis.'})} /&gt;
+                        {errors.locationName &amp;&amp; &lt;p className=&quot;error-message&quot;&gt;{errors.locationName.message}&lt;/p&gt;}
+                    &lt;/div&gt;
+                    &lt;div className=&quot;form-control&quot;&gt;
+                        &lt;label&gt;Adresse&lt;/label&gt;
+                        &lt;input {...register('locationAddress', {required: 'Ce champ est requis.'})} /&gt;
+                        {errors.locationAddress &amp;&amp; &lt;p className=&quot;error-message&quot;&gt;{errors.locationAddress.message}&lt;/p&gt;}
+                    &lt;/div&gt;
+                &lt;/section&gt;
+            )}
+
+            &lt;div className=&quot;navigation-buttons&quot;&gt;
+                {currentStep &gt; 1 &amp;&amp; (
+                    &lt;button type=&quot;button&quot; onClick={handlePrevStep}&gt;
+                        Précédent
+                    &lt;/button&gt;
+                )}
+                {currentStep &lt; 2 &amp;&amp; (
+                    &lt;button type=&quot;button&quot; onClick={handleNextStep}&gt;
+                        Suivant
+                    &lt;/button&gt;
+                )}
+                {currentStep === 2 &amp;&amp; (
+                    &lt;button type=&quot;submit&quot;&gt;
+                        Créer l'événement
+                    &lt;/button&gt;
+                )}
+            &lt;/div&gt;
+        &lt;/form&gt;
+    );
+}
+
+export default MultiStepEventForm;
+
+</div></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="-q0y2le_246">Testez vos connaissances ! Les r&eacute;ponses se trouvent &agrave; la toute fin du support de cours.</p><section class="chapter"><h3 id="questions-choix-multiple-qcm" data-toc="questions-choix-multiple-qcm">Questions &agrave; Choix Multiple (QCM)</h3><p id="-q0y2le_249"><span class="control" id="-q0y2le_255">1. Quelle est la &quot;source unique de v&eacute;rit&eacute;&quot; pour la valeur d'un champ de formulaire contr&ocirc;l&eacute; ?</span></p><ol class="list _decimal" id="-q0y2le_250" type="1"><li class="list__item" id="-q0y2le_256"><p id="-q0y2le_260">La propri&eacute;t&eacute; <code class="code" id="-q0y2le_261">value</code> de l'&eacute;l&eacute;ment DOM.</p></li><li class="list__item" id="-q0y2le_257"><p id="-q0y2le_262">L'&eacute;tat React, g&eacute;r&eacute; par <code class="code" id="-q0y2le_263">useState</code>.</p></li><li class="list__item" id="-q0y2le_258"><p id="-q0y2le_264">Une <code class="code" id="-q0y2le_265">ref</code> pointant vers l'input.</p></li><li class="list__item" id="-q0y2le_259"><p id="-q0y2le_266">Les <code class="code" id="-q0y2le_267">props</code> pass&eacute;es au composant.</p></li></ol><p id="-q0y2le_251"><span class="control" id="-q0y2le_268">2. Quel est le principal avantage de performance de React Hook Form par rapport &agrave; une approche &quot;champs contr&ocirc;l&eacute;s&quot; native ?</span></p><ol class="list _decimal" id="-q0y2le_252" type="1"><li class="list__item" id="-q0y2le_269"><p id="-q0y2le_273">Il utilise des Web Workers pour la validation.</p></li><li class="list__item" id="-q0y2le_270"><p id="-q0y2le_274">Il minimise les re-rendus du composant car il s'appuie sur des champs non contr&ocirc;l&eacute;s (refs).</p></li><li class="list__item" id="-q0y2le_271"><p id="-q0y2le_275">Il est &eacute;crit dans un langage plus rapide que JavaScript.</p></li><li class="list__item" id="-q0y2le_272"><p id="-q0y2le_276">Il ne fait aucune validation.</p></li></ol><p id="-q0y2le_253"><span class="control" id="-q0y2le_277">3. Dans React Hook Form, que fait la fonction <code class="code" id="-q0y2le_278">handleSubmit</code>?</span></p><ol class="list _decimal" id="-q0y2le_254" type="1"><li class="list__item" id="-q0y2le_279"><p id="-q0y2le_283">Elle envoie directement les donn&eacute;es du formulaire &agrave; un serveur.</p></li><li class="list__item" id="-q0y2le_280"><p id="-q0y2le_284">Elle emp&ecirc;che la soumission du formulaire et appelle votre fonction <code class="code" id="-q0y2le_285">onSubmit</code> uniquement si la validation est r&eacute;ussie.</p></li><li class="list__item" id="-q0y2le_281"><p id="-q0y2le_286">Elle doit &ecirc;tre appel&eacute;e dans un <code class="code" id="-q0y2le_287">useEffect</code>.</p></li><li class="list__item" id="-q0y2le_282"><p id="-q0y2le_288">Elle sert &agrave; r&eacute;initialiser les champs du formulaire.</p></li></ol></section><section class="chapter"><h3 id="questions-ouvertes" data-toc="questions-ouvertes">Questions Ouvertes</h3><p id="-q0y2le_289"><span class="control" id="-q0y2le_292">4. D&eacute;crivez un sc&eacute;nario o&ugrave; l'utilisation de champs non contr&ocirc;l&eacute;s avec <code class="code" id="-q0y2le_293">useRef</code> pourrait &ecirc;tre pr&eacute;f&eacute;rable &agrave; celle de champs contr&ocirc;l&eacute;s.</span></p><p id="-q0y2le_290"><span class="control" id="-q0y2le_294">5. Vous construisez un formulaire avec un champ &quot;Confirmer le mot de passe&quot;. Comment impl&eacute;menteriez-vous la validation pour vous assurer que ce champ correspond au champ &quot;Mot de passe&quot; en utilisant React Hook Form ?</span></p></section></section><section class="chapter"><h2 id="conclusion-de-ce-module" data-toc="conclusion-de-ce-module">Conclusion de ce module</h2><p id="-q0y2le_295">Vous avez maintenant une ma&icirc;trise compl&egrave;te de l'une des parties les plus interactives et essentielles du d&eacute;veloppement web. Vous savez non seulement comment collecter des donn&eacute;es aupr&egrave;s des utilisateurs, mais aussi comment le faire de mani&egrave;re robuste, efficace et avec une excellente exp&eacute;rience utilisateur.</p><p id="-q0y2le_296">Vous avez appris la diff&eacute;rence fondamentale entre les <span class="control" id="-q0y2le_298">champs contr&ocirc;l&eacute;s</span> et <span class="control" id="-q0y2le_299">non contr&ocirc;l&eacute;s</span>, ce qui vous permet de choisir la bonne strat&eacute;gie pour chaque situation. Plus important encore, vous avez d&eacute;couvert la puissance de <span class="control" id="-q0y2le_300">React Hook Form</span>, une biblioth&egrave;que qui va vous faire gagner d'innombrables heures de d&eacute;veloppement tout en am&eacute;liorant la performance de vos applications.</p><p id="-q0y2le_297">Avec la navigation, la r&eacute;cup&eacute;ration de donn&eacute;es et maintenant la gestion des formulaires dans votre bo&icirc;te &agrave; outils, vous &ecirc;tes pr&ecirc;t &agrave; construire des applications compl&egrave;tes. Mais comment s'assurer que tout cela est bien organis&eacute; et facile &agrave; maintenir sur le long terme ? Le prochain module se concentre sur l' <span class="control" id="-q0y2le_301">architecture et les bonnes pratiques</span> pour structurer votre code de mani&egrave;re professionnelle.</p></section><section class="chapter"><h2 id="suggestions-de-projets-pour-pratiquer" data-toc="suggestions-de-projets-pour-pratiquer">Suggestions de projets pour pratiquer</h2><ol class="list _decimal" id="-q0y2le_302" type="1"><li class="list__item" id="-q0y2le_303"><p id="-q0y2le_306"><span class="control" id="-q0y2le_308">Niveau D&eacute;butant : Calculateur d'IMC</span></p><ul class="list _bullet" id="-q0y2le_307"><li class="list__item" id="-q0y2le_309"><p id="-q0y2le_311"><span class="control" id="-q0y2le_312">Description :</span> Un formulaire avec deux champs : poids (kg) et taille (cm). Un bouton &quot;Calculer&quot; affiche l'Indice de Masse Corporelle et une interpr&eacute;tation simple.</p></li><li class="list__item" id="-q0y2le_310"><p id="-q0y2le_313"><span class="control" id="-q0y2le_314">Piste technique :</span> Un excellent exercice pour les champs contr&ocirc;l&eacute;s. La validation peut se faire en temps r&eacute;el (<code class="code" id="-q0y2le_315">onChange</code>) pour s'assurer que seules des valeurs num&eacute;riques positives sont entr&eacute;es.</p></li></ul></li><li class="list__item" id="-q0y2le_304"><p id="-q0y2le_316"><span class="control" id="-q0y2le_318">Niveau Interm&eacute;diaire : Formulaire de r&eacute;servation d'h&ocirc;tel</span></p><ul class="list _bullet" id="-q0y2le_317"><li class="list__item" id="-q0y2le_319"><p id="-q0y2le_321"><span class="control" id="-q0y2le_322">Description :</span> Un formulaire pour r&eacute;server une chambre, avec des champs pour les dates d'arriv&eacute;e et de d&eacute;part, le nombre d'adultes et d'enfants, et le type de chambre (select).</p></li><li class="list__item" id="-q0y2le_320"><p id="-q0y2le_323"><span class="control" id="-q0y2le_324">Piste technique :</span> Utilisez React Hook Form. Impl&eacute;mentez des validations complexes, par exemple : la date de d&eacute;part doit &ecirc;tre post&eacute;rieure &agrave; la date d'arriv&eacute;e.</p></li></ul></li><li class="list__item" id="-q0y2le_305"><p id="-q0y2le_325"><span class="control" id="-q0y2le_327">Niveau Avanc&eacute; : Formulaire d'inscription avec connexion &agrave; une fausse API</span></p><ul class="list _bullet" id="-q0y2le_326"><li class="list__item" id="-q0y2le_328"><p id="-q0y2le_330"><span class="control" id="-q0y2le_331">Description :</span> Un formulaire d'inscription complet (email, mot de passe, confirmation de mot de passe). &Agrave; la soumission, envoyez les donn&eacute;es avec <code class="code" id="-q0y2le_332">axios</code> &agrave; une fausse API (comme <code class="code" id="-q0y2le_333">reqres.in</code>). G&eacute;rez les &eacute;tats de soumission ( affichage d'un spinner sur le bouton) et affichez les messages d'erreur ou de succ&egrave;s retourn&eacute;s par l'API.</p></li><li class="list__item" id="-q0y2le_329"><p id="-q0y2le_334"><span class="control" id="-q0y2le_335">Piste technique :</span> C'est un projet complet qui combine les comp&eacute;tences de ce module et du module sur les APIs. Utilisez la propri&eacute;t&eacute; <code class="code" id="-q0y2le_336">isSubmitting</code> de <code class="code" id="-q0y2le_337">formState</code> dans React Hook Form pour d&eacute;sactiver le bouton et afficher un indicateur de chargement.</p></li></ul></li></ol></section><div class="last-modified">08 octobre 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="006-module-06.html" class="navigation-links__prev">Module 6 : Le Routage c&ocirc;t&eacute; Client avec React Router</a><a href="008-module-08.html" class="navigation-links__next">Module 8 : Architecture et Bonnes Pratiques</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

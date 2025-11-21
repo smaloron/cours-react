@@ -1,0 +1,298 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-11-21T15:37:45.346468"><title>Module 5 : Communication avec les APIs | React</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs Pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"pourquoi-ce-module-est-il-important","level":0,"title":"Pourquoi ce module est-il important ?","anchor":"#pourquoi-ce-module-est-il-important"},{"id":"comp-tences-du-r-f-rentiel-reac","level":0,"title":"Compétences du Référentiel (REAC)","anchor":"#comp-tences-du-r-f-rentiel-reac"},{"id":"1-promises-et-async-await-un-rappel-essentiel","level":0,"title":"1. Promises et async/await : Un rappel essentiel","anchor":"#1-promises-et-async-await-un-rappel-essentiel"},{"id":"2-appels-http-fetch-vs-axios","level":0,"title":"2. Appels HTTP : fetch vs Axios","anchor":"#2-appels-http-fetch-vs-axios"},{"id":"3-int-gration-dans-react","level":0,"title":"3. Intégration dans React","anchor":"#3-int-gration-dans-react"},{"id":"4-bonus-hooks-personnalis-s-cr-er-un-usefetch-r-utilisable","level":0,"title":"4. (Bonus) Hooks personnalisés : Créer un useFetch réutilisable","anchor":"#4-bonus-hooks-personnalis-s-cr-er-un-usefetch-r-utilisable"},{"id":"tp-page-de-d-tails-d-un-produit","level":0,"title":"TP : Page de détails d\u0027un produit","anchor":"#tp-page-de-d-tails-d-un-produit"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion-de-ce-module","level":0,"title":"Conclusion de ce module","anchor":"#conclusion-de-ce-module"},{"id":"suggestions-de-projets-pour-pratiquer","level":0,"title":"Suggestions de projets pour pratiquer","anchor":"#suggestions-de-projets-pour-pratiquer"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 5 : Communication avec les APIs | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/005-module-05.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 5 : Communication avec les APIs | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/005-module-05.html#webpage",
+    "url": "writerside-documentation/005-module-05.html",
+    "name": "Module 5 : Communication avec les APIs | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="005-module-05" data-main-title="Module 5 : Communication avec les APIs" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="005-module-05" id="005-module-05.md">Module 5 : Communication avec les APIs</h1><p id="-9azli6_3">Jusqu'&agrave; pr&eacute;sent, nos applications vivaient dans une bulle. Les donn&eacute;es que nous manipulions &eacute;taient &quot;en dur&quot; dans notre code. C'est parfait pour apprendre, mais les applications r&eacute;elles sont vivantes : elles affichent des informations &agrave; jour, permettent aux utilisateurs de sauvegarder leur travail, et interagissent avec d'autres services. Tout cela se fait via des <span class="control" id="-9azli6_16">APIs</span> (Application Programming Interfaces).</p><p id="-9azli6_4">Ce module vous apprendra &agrave; transformer votre application en un client intelligent capable de dialoguer avec des serveurs distants pour r&eacute;cup&eacute;rer et envoyer des donn&eacute;es.</p><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs P&eacute;dagogiques</h2><p id="-9azli6_17">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="-9azli6_18"><li class="list__item" id="-9azli6_19"><p id="-9azli6_25"><span class="control" id="-9azli6_26">Rappeler</span> le fonctionnement de la communication asynchrone en JavaScript avec les <code class="code" id="-9azli6_27">Promises</code> et <code class="code" id="-9azli6_28">async/await</code>.</p></li><li class="list__item" id="-9azli6_20"><p id="-9azli6_29"><span class="control" id="-9azli6_30">Effectuer</span> des requ&ecirc;tes HTTP pour r&eacute;cup&eacute;rer des donn&eacute;es en utilisant l'API <code class="code" id="-9azli6_31">fetch</code> native et la biblioth&egrave;que <code class="code" id="-9azli6_32">Axios</code>.</p></li><li class="list__item" id="-9azli6_21"><p id="-9azli6_33"><span class="control" id="-9azli6_34">Comparer</span> les avantages et inconv&eacute;nients de <code class="code" id="-9azli6_35">fetch</code> et <code class="code" id="-9azli6_36">Axios</code>.</p></li><li class="list__item" id="-9azli6_22"><p id="-9azli6_37"><span class="control" id="-9azli6_38">Int&eacute;grer</span> proprement les appels API dans le cycle de vie de vos composants React avec <code class="code" id="-9azli6_39">useEffect</code>.</p></li><li class="list__item" id="-9azli6_23"><p id="-9azli6_40"><span class="control" id="-9azli6_41">G&eacute;rer</span> les diff&eacute;rents &eacute;tats d'une requ&ecirc;te r&eacute;seau (<code class="code" id="-9azli6_42">loading</code>, <code class="code" id="-9azli6_43">data</code>, <code class="code" id="-9azli6_44">error</code>) pour une meilleure exp&eacute;rience utilisateur.</p></li><li class="list__item" id="-9azli6_24"><p id="-9azli6_45"><span class="control" id="-9azli6_46">Cr&eacute;er</span> un hook personnalis&eacute; r&eacute;utilisable (<code class="code" id="-9azli6_47">useFetch</code>) pour simplifier votre logique d'acc&egrave;s aux donn&eacute;es.</p></li></ul></section><section class="chapter"><h2 id="pourquoi-ce-module-est-il-important" data-toc="pourquoi-ce-module-est-il-important">Pourquoi ce module est-il important ?</h2><p id="-9azli6_48">Imaginez que vous avez construit la plus belle cuisine de restaurant du monde (<code class="code" id="-9azli6_50">votre application React</code>). Elle est propre, organis&eacute;e, et vos cuisiniers (<code class="code" id="-9azli6_51">vos composants</code>) sont pr&ecirc;ts &agrave; travailler. Mais... les garde-mangers sont vides. Sans ingr&eacute;dients frais (<code class="code" id="-9azli6_52">donn&eacute;es externes</code>), vous ne pouvez pr&eacute;parer que des plats imaginaires.</p><p id="-9azli6_49">Ce module vous apprend &agrave; devenir le responsable des approvisionnements. Vous allez apprendre &agrave; passer des commandes (<code class="code" id="-9azli6_53">requ&ecirc;tes API</code>) aupr&egrave;s de vos fournisseurs (<code class="code" id="-9azli6_54">serveurs</code>), &agrave; g&eacute;rer la livraison (<code class="code" id="-9azli6_55">r&eacute;ponse de l'API</code>), &agrave; v&eacute;rifier la qualit&eacute; des produits (<code class="code" id="-9azli6_56">gestion des erreurs</code>), et &agrave; stocker les ingr&eacute;dients dans votre cuisine (<code class="code" id="-9azli6_57">mise &agrave; jour de l'&eacute;tat</code>) pour que vos cuisiniers puissent enfin pr&eacute;parer de vrais plats pour vos clients. Sans cette comp&eacute;tence, votre application restera une simple maquette.</p></section><section class="chapter"><h2 id="comp-tences-du-r-f-rentiel-reac" data-toc="comp-tences-du-r-f-rentiel-reac">Comp&eacute;tences du R&eacute;f&eacute;rentiel (REAC)</h2><p id="-9azli6_58">Ce module est la concr&eacute;tisation de la comp&eacute;tence <span class="control" id="-9azli6_61">D&eacute;velopper des composants d&rsquo;acc&egrave;s aux donn&eacute;es</span> du bloc <span class="control" id="-9azli6_62">CCP-1</span>.</p><ul class="list _bullet" id="-9azli6_59"><li class="list__item" id="-9azli6_63"><p id="-9azli6_66"><span class="control" id="-9azli6_67">D&eacute;velopper des composants d&rsquo;acc&egrave;s aux donn&eacute;es :</span> Nous allons impl&eacute;menter la logique compl&egrave;te pour consommer des points de terminaison d'API REST.</p></li><li class="list__item" id="-9azli6_64"><p id="-9azli6_68"><span class="control" id="-9azli6_69">Maquetter une application :</span> La structure de vos composants d&eacute;pendra souvent de la forme des donn&eacute;es retourn&eacute;es par les APIs.</p></li><li class="list__item" id="-9azli6_65"><p id="-9azli6_70"><span class="control" id="-9azli6_71">D&eacute;velopper une interface utilisateur :</span> L'interface devra r&eacute;agir aux &eacute;tats de chargement et d'erreur des requ&ecirc;tes, ce qui est un aspect cl&eacute; de l'UX moderne.</p></li></ul></section><section class="chapter"><h2 id="1-promises-et-async-await-un-rappel-essentiel" data-toc="1-promises-et-async-await-un-rappel-essentiel">1. Promises et <code class="code" id="-9azli6_78">async/await</code>: Un rappel essentiel</h2><p id="-9azli6_73">La communication avec un serveur n'est pas instantan&eacute;e. C'est <span class="control" id="-9azli6_79">asynchrone</span>. JavaScript a besoin d'un moyen de g&eacute;rer ces op&eacute;rations qui prennent du temps sans bloquer le reste de l'application.</p><section class="procedure-steps"><h3 id="-9azli6_74" data-toc="-9azli6_74">L'analogie de la commande au restaurant</h3><p id="-9azli6_80">Quand vous commandez un plat, vous ne restez pas plant&eacute; devant le comptoir &agrave; attendre. Le serveur vous donne un ticket (une <b id="-9azli6_83">Promesse</b>). Cette promesse dit : &quot;Je m'occupe de votre plat. Je vous pr&eacute;viendrai quand il sera pr&ecirc;t (<b id="-9azli6_84">r&eacute;solue</b>) ou s'il y a un probl&egrave;me en cuisine (<b id="-9azli6_85">rejet&eacute;e</b>).&quot;</p><p id="-9azli6_81">Pendant ce temps, vous pouvez faire autre chose (le reste de votre code continue de s'ex&eacute;cuter).</p><ul class="list _bullet" id="-9azli6_82"><li class="list__item" id="-9azli6_86"><p>La syntaxe <code class="code" id="-9azli6_88">.then()</code>, c'est comme dire : &quot;Quand le plat sera pr&ecirc;t, voici ce que je ferai avec.&quot;</p></li><li class="list__item" id="-9azli6_87"><p>La syntaxe <code class="code" id="-9azli6_89">async/await</code>, c'est une mani&egrave;re plus moderne et lisible de faire la m&ecirc;me chose. C'est comme si vous disiez &agrave; un ami : &quot;<b id="-9azli6_90">Attends</b> (await) que le plat arrive, puis nous mangerons.&quot; C'est plus naturel &agrave; lire.</p></li></ul><ol class="list _decimal"></ol></section><p id="-9azli6_75"><code class="code" id="-9azli6_91">async/await</code> est du &quot;sucre syntaxique&quot; au-dessus des Promesses, rendant le code beaucoup plus lisible. Nous l'utiliserons principalement.</p><div class="code-block" data-lang="javascript">
+// Avec .then()
+function getUserWithThen() {
+    fetch('https://api.example.com/user/1')
+        .then(response =&gt; response.json())
+        .then(data =&gt; console.log(data))
+        .catch(error =&gt; console.error('Erreur !', error));
+}
+
+// Avec async/await (plus lisible)
+async function getUserWithAsyncAwait() {
+    try {
+        const response = await fetch('https://api.example.com/user/1');
+        const data = await response.json();
+        console.log(data);
+    } catch (error) {
+        console.error('Erreur !', error);
+    }
+}
+</div></section><section class="chapter"><h2 id="2-appels-http-fetch-vs-axios" data-toc="2-appels-http-fetch-vs-axios">2. Appels HTTP : <code class="code" id="-9azli6_98">fetch</code> vs <code class="code" id="-9azli6_99">Axios</code></h2><p id="-9azli6_93">Pour faire des requ&ecirc;tes, nous avons deux outils principaux : l'API <code class="code" id="-9azli6_100">fetch</code> int&eacute;gr&eacute;e au navigateur, et <code class="code" id="-9azli6_101">Axios</code>, une biblioth&egrave;que tr&egrave;s populaire.</p><section class="procedure-steps"><h3 id="-9azli6_94" data-toc="-9azli6_94">L'analogie du kit de voyage</h3><p id="-9azli6_102">Imaginez que vous pr&eacute;parez un voyage.</p><p id="-9azli6_103"><b id="-9azli6_105">`fetch`</b> est le kit de base : il vous donne un billet d'avion et un passeport. C'est tout ce dont vous avez besoin pour voyager, mais c'est &agrave; vous de g&eacute;rer les d&eacute;tails : convertir vos devises (transformer la r&eacute;ponse en JSON avec <code class="code" id="-9azli6_106">.json()</code>), v&eacute;rifier si l'h&ocirc;tel est bien ouvert (v&eacute;rifier que la r&eacute;ponse HTTP est un succ&egrave;s avec <code class="code" id="-9azli6_107">response.ok</code>), etc. C'est minimaliste et d&eacute;j&agrave; inclus.</p><p id="-9azli6_104"><b id="-9azli6_108">`Axios`</b> est le forfait &quot;tout compris&quot;. Il s'occupe de tout pour vous : les devises sont d&eacute;j&agrave; converties (les donn&eacute;es sont directement en JSON dans <code class="code" id="-9azli6_109">response.data</code>), et si l'h&ocirc;tel est ferm&eacute; (une erreur HTTP comme 404 ou 500), l'agence annule le voyage et vous pr&eacute;vient directement (il rejette la promesse, ce qui est captur&eacute; par le <code class="code" id="-9azli6_110">catch</code>). C'est plus confortable et demande moins de configuration.</p><ol class="list _decimal"></ol></section><div class="tabs" id="-9azli6_95" data-anchors="[-9azli6_111,-9azli6_112]"><div class="tabs__content" data-gtm="tab" id="-9azli6_111" data-title="Avec Fetch API (natif)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+async function getPostsWithFetch() {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+    // fetch ne considère pas les erreurs 4xx/5xx comme des erreurs.
+    // Il faut vérifier manuellement le statut de la réponse.
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP : ${response.status}`);
+    }
+    
+    // Il faut manuellement transformer la réponse en JSON.
+    const data = await response.json();
+    console.log(data);
+
+} catch (error) {
+console.error(&quot;Impossible de récupérer les articles:&quot;, error);
+}
+}
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-9azli6_112" data-title="Avec Axios (librairie)"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// D'abord, installer Axios : npm install axios
+import axios from 'axios';
+
+async function getPostsWithAxios() {
+  try {
+    // Axios gère les erreurs HTTP et la conversion JSON automatiquement.
+    const response = await axios.get(
+      'https://jsonplaceholder.typicode.com/posts'
+    );
+    
+    // Les données sont directement dans `response.data`.
+    console.log(response.data);
+  } catch (error) {
+    // Le bloc `catch` sera exécuté pour les erreurs réseau ET les erreurs HTTP.
+    console.error(&quot;Impossible de récupérer les articles:&quot;, error);
+  }
+}
+</div></div></div><div class="table-wrapper"><table class="wide" id="-9azli6_96"><thead><tr class="ijRowHead" id="-9azli6_115"><th id="-9azli6_121"><p>Caract&eacute;ristique</p></th><th id="-9azli6_122"><p>Fetch API</p></th><th id="-9azli6_123"><p>Axios</p></th></tr></thead><tbody><tr id="-9azli6_116"><td id="-9azli6_124"><p><span class="control" id="-9azli6_127">Inclus</span></p></td><td id="-9azli6_125"><p>✅ Natif dans le navigateur</p></td><td id="-9azli6_126"><p>❌ N&eacute;cessite une installation</p></td></tr><tr id="-9azli6_117"><td id="-9azli6_128"><p><span class="control" id="-9azli6_131">Conversion JSON</span></p></td><td id="-9azli6_129"><p>Manuelle (<code class="code" id="-9azli6_132">response.json()</code>)</p></td><td id="-9azli6_130"><p>✅ Automatique</p></td></tr><tr id="-9azli6_118"><td id="-9azli6_133"><p><span class="control" id="-9azli6_136">Gestion erreurs HTTP</span></p></td><td id="-9azli6_134"><p>Manuelle (<code class="code" id="-9azli6_137">response.ok</code>)</p></td><td id="-9azli6_135"><p>✅ Automatique (via <code class="code" id="-9azli6_138">catch</code>)</p></td></tr><tr id="-9azli6_119"><td id="-9azli6_139"><p><span class="control" id="-9azli6_142">Fonctionnalit&eacute;s+</span></p></td><td id="-9azli6_140"><p>Basique</p></td><td id="-9azli6_141"><p>Intercepteurs, annulation...</p></td></tr><tr id="-9azli6_120"><td id="-9azli6_143"><p><span class="control" id="-9azli6_146">Verdict</span></p></td><td id="-9azli6_144"><p>Tr&egrave;s bien pour les besoins simples</p></td><td id="-9azli6_145"><p>Recommand&eacute; pour les applications professionnelles</p></td></tr></tbody></table></div></section><section class="chapter"><h2 id="3-int-gration-dans-react" data-toc="3-int-gration-dans-react">3. Int&eacute;gration dans React</h2><p id="-9azli6_147">Nous savons <span class="emphasis" id="-9azli6_154">comment</span> faire un appel API, mais <span class="control" id="-9azli6_155">o&ugrave;</span> et <span class="control" id="-9azli6_156">quand</span> le faire dans un composant React ?</p><p id="-9azli6_148">La r&eacute;ponse est : dans un hook <code class="code" id="-9azli6_157">useEffect</code>, pour traiter l'appel comme un <span class="control" id="-9azli6_158">effet de bord</span>. Et pour l'exp&eacute;rience utilisateur, nous devons g&eacute;rer 3 &eacute;tats :</p><ol class="list _decimal" id="-9azli6_149" type="1"><li class="list__item" id="-9azli6_159"><p id="-9azli6_162"><span class="control" id="-9azli6_163"><code class="code" id="-9azli6_164">loading</code></span>: La requ&ecirc;te est en cours. On affiche un spinner.</p></li><li class="list__item" id="-9azli6_160"><p id="-9azli6_165"><span class="control" id="-9azli6_166"><code class="code" id="-9azli6_167">data</code></span>: La requ&ecirc;te a r&eacute;ussi. On affiche les donn&eacute;es.</p></li><li class="list__item" id="-9azli6_161"><p id="-9azli6_168"><span class="control" id="-9azli6_169"><code class="code" id="-9azli6_170">error</code></span>: La requ&ecirc;te a &eacute;chou&eacute;. On affiche un message d'erreur.</p></li></ol><p id="-9azli6_150"><span class="control" id="-9azli6_171">Exemple concret : Afficher une liste d'utilisateurs</span></p><div class="code-block" data-lang="javascript">
+import React, {useState, useEffect} from 'react';
+import axios from 'axios';
+
+function UserListFromApi() {
+    // 1. Déclarer les 3 états
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    // 2. Lancer l'effet au montage du composant
+    useEffect(() =&gt; {
+        const fetchUsers = async () =&gt; {
+            try {
+                const response = await axios.get(
+                    'https://jsonplaceholder.typicode.com/users'
+                );
+                setUsers(response.data);
+            } catch (err) {
+                setError(err);
+            } finally {
+                // Dans tous les cas, le chargement est terminé.
+                setLoading(false);
+            }
+        };
+
+        fetchUsers();
+    }, []); // Le tableau vide `[]` assure que l'effet ne s'exécute qu'une fois.
+
+    // 3. Gérer l'affichage en fonction des états
+    if (loading) return &lt;p&gt;Chargement en cours...&lt;/p&gt;;
+    if (error) return &lt;p&gt;Erreur de chargement: {error.message}&lt;/p&gt;;
+
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;Liste des utilisateurs&lt;/h1&gt;
+            &lt;ul&gt;
+                {users.map(user =&gt; (
+                    &lt;li key={user.id}&gt;{user.name}&lt;/li&gt;
+                ))}
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    );
+}
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="558px" preserveAspectRatio="none" style="width:552px;height:558px;background:#FFFFFF;" version="1.1" viewBox="0 0 552 558" width="552px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="257" x="146.75" y="28.5352">S&#233;quence d'un appel API dans React</text><rect fill="#FFFFFF" height="309.4395" style="stroke:#181818;stroke-width:1.0;" width="10" x="261" y="150.2871"/><rect fill="#FFFFFF" height="32.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="495" y="224.9082"/><rect fill="none" height="116.8867" style="stroke:#000000;stroke-width:1.5;" width="311" x="189" y="272.2188"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="45" x2="45" y1="118.9766" y2="477.7266"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="266" x2="266" y1="118.9766" y2="477.7266"/><line style="stroke:#181818;stroke-width:0.5;stroke-dasharray:5.0,5.0;" x1="499.5" x2="499.5" y1="118.9766" y2="477.7266"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="5" y="116.0234">Navigateur</text><ellipse cx="45" cy="50.9883" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M45,58.9883 L45,85.9883 M32,66.9883 L58,66.9883 M45,85.9883 L32,100.9883 M45,85.9883 L58,100.9883 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74" x="5" y="490.2617">Navigateur</text><ellipse cx="45" cy="501.7148" fill="#E2E2F0" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/><path d="M45,509.7148 L45,536.7148 M32,517.7148 L58,517.7148 M45,536.7148 L32,551.7148 M45,536.7148 L58,551.7148 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="134" x="199" y="87.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="206" y="108.0234">Composant React</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="134" x="199" y="476.7266"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="120" x="206" y="497.2617">Composant React</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93" x="453.5" y="87.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="460.5" y="108.0234">API Externe</text><rect fill="#E2E2F0" height="30.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="93" x="453.5" y="476.7266"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="79" x="460.5" y="497.2617">API Externe</text><rect fill="#FFFFFF" height="309.4395" style="stroke:#181818;stroke-width:1.0;" width="10" x="261" y="150.2871"/><rect fill="#FFFFFF" height="32.3105" style="stroke:#181818;stroke-width:1.0;" width="10" x="495" y="224.9082"/><polygon fill="#181818" points="249,146.2871,259,150.2871,249,154.2871,253,150.2871" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="45" x2="255" y1="150.2871" y2="150.2871"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="79" x="52" y="145.5449">Rendu initial</text><line style="stroke:#181818;stroke-width:1.0;" x1="271" x2="313" y1="179.5977" y2="179.5977"/><line style="stroke:#181818;stroke-width:1.0;" x1="313" x2="313" y1="179.5977" y2="192.5977"/><line style="stroke:#181818;stroke-width:1.0;" x1="272" x2="313" y1="192.5977" y2="192.5977"/><polygon fill="#181818" points="282,188.5977,272,192.5977,282,196.5977,278,192.5977" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="159" x="278" y="174.8555">`useEffect` se d&#233;clenche</text><polygon fill="#181818" points="483,220.9082,493,224.9082,483,228.9082,487,224.9082" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="271" x2="489" y1="224.9082" y2="224.9082"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="94" x="278" y="220.166">`axios.get(...)`</text><path d="M104,205.5977 L104,230.5977 L256,230.5977 L256,215.5977 L246,205.5977 L104,205.5977 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M246,205.5977 L246,215.5977 L256,215.5977 L246,205.5977 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="131" x="110" y="223.166">`loading` est `true`</text><polygon fill="#181818" points="282,253.2188,272,257.2188,282,261.2188,278,257.2188" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="276" x2="499" y1="257.2188" y2="257.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="169" x="288" y="252.4766">R&#233;ponse (succ&#232;s ou erreur)</text><path d="M189,272.2188 L251,272.2188 L251,279.5293 L241,289.5293 L189,289.5293 L189,272.2188 " fill="#EEEEEE" style="stroke:#000000;stroke-width:1.5;"/><rect fill="none" height="116.8867" style="stroke:#000000;stroke-width:1.5;" width="311" x="189" y="272.2188"/><text fill="#000000" font-family="sans-serif" font-size="13" font-weight="bold" lengthAdjust="spacing" textLength="17" x="204" y="285.7871">alt</text><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="45" x="266" y="284.8535">[Succ&#232;s]</text><line style="stroke:#181818;stroke-width:1.0;" x1="271" x2="313" y1="310.8398" y2="310.8398"/><line style="stroke:#181818;stroke-width:1.0;" x1="313" x2="313" y1="310.8398" y2="323.8398"/><line style="stroke:#181818;stroke-width:1.0;" x1="272" x2="313" y1="323.8398" y2="323.8398"/><polygon fill="#181818" points="282,319.8398,272,323.8398,282,327.8398,278,323.8398" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="210" x="278" y="306.0977">`setUsers(data)`, `setError(null)`</text><line style="stroke:#000000;stroke-width:1.0;stroke-dasharray:2.0,2.0;" x1="189" x2="500" y1="332.8398" y2="332.8398"/><text fill="#000000" font-family="sans-serif" font-size="11" font-weight="bold" lengthAdjust="spacing" textLength="43" x="194" y="343.4746">[Erreur]</text><line style="stroke:#181818;stroke-width:1.0;" x1="271" x2="313" y1="368.1055" y2="368.1055"/><line style="stroke:#181818;stroke-width:1.0;" x1="313" x2="313" y1="368.1055" y2="381.1055"/><line style="stroke:#181818;stroke-width:1.0;" x1="272" x2="313" y1="381.1055" y2="381.1055"/><polygon fill="#181818" points="282,377.1055,272,381.1055,282,385.1055,278,381.1055" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="184" x="278" y="363.3633">`setUsers([])`, `setError(err)`</text><line style="stroke:#181818;stroke-width:1.0;" x1="271" x2="313" y1="417.416" y2="417.416"/><line style="stroke:#181818;stroke-width:1.0;" x1="313" x2="313" y1="417.416" y2="430.416"/><line style="stroke:#181818;stroke-width:1.0;" x1="272" x2="313" y1="430.416" y2="430.416"/><polygon fill="#181818" points="282,426.416,272,430.416,282,434.416,278,430.416" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="123" x="278" y="412.6738">`setLoading(false)`</text><path d="M53,404.6055 L53,429.6055 L256,429.6055 L256,414.6055 L246,404.6055 L53,404.6055 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M246,404.6055 L246,414.6055 L256,414.6055 L246,404.6055 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="182" x="59" y="422.1738">D&#233;clenche un nouveau rendu</text><polygon fill="#181818" points="56,455.7266,46,459.7266,56,463.7266,52,459.7266" style="stroke:#181818;stroke-width:1.0;"/><line style="stroke:#181818;stroke-width:1.0;" x1="50" x2="265" y1="459.7266" y2="459.7266"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="192" x="62" y="454.9844">Affiche les donn&#233;es ou l'erreur</text><!--SRC=[ZLBDIWCn4BxdAOPUkWMx3z23K7KFWeXOF8cmmsQs1cAo9fFQHxBFiI_cPAjjjw1uMMR3zpTVmeOjmQhVlITo3O6U9WVOTMHX-N0B6bs4HyA6bPAF3p2vnurP8rCA4y08Ly5_H0ggmy2cCHqwXicrV-jypEF07O33cIF7OsXsgRPCmT40at-blaLXVdcamKB4d4vWd663DkSn6mboegoEw3DgdI9LRKiDrn1bpNxNM5dubSQKd4R0k3K-bclYeYpBMNsqokcSby5IomAq7hLnwneeCjGS4jLAPP7vUVH-9xCu5p4rJVyPmIUW4AJ6cT8qCb1e6LPxc0BuVQT8_2GrnK8Zuwo-64wg47meNB9MWfCLosgm-P_IyyjOHo9c6QV_wbRGT_iYYXR5KHWd9TqSkWPvMywd3M62aE_oJFJdsXUmR5kJ2POYQEzSlwEXCJlTTtPQsK7Y2m00]--></g></svg></div></section><section class="chapter"><h2 id="4-bonus-hooks-personnalis-s-cr-er-un-usefetch-r-utilisable" data-toc="4-bonus-hooks-personnalis-s-cr-er-un-usefetch-r-utilisable">4. (Bonus) Hooks personnalis&eacute;s : Cr&eacute;er un <code class="code" id="-9azli6_179">useFetch</code> r&eacute;utilisable</h2><p id="-9azli6_173">Vous avez remarqu&eacute; que la logique <code class="code" id="-9azli6_180">loading</code>/<code class="code" id="-9azli6_181">data</code>/<code class="code" id="-9azli6_182">error</code> va se r&eacute;p&eacute;ter partout o&ugrave; vous ferez un appel API ? C'est le moment id&eacute;al pour cr&eacute;er un <span class="control" id="-9azli6_183">hook personnalis&eacute;</span> et respecter le principe DRY (Don't Repeat Yourself).</p><p id="-9azli6_174">Un hook personnalis&eacute; est une fonction JavaScript dont le nom commence par <code class="code" id="-9azli6_184">use</code> et qui peut appeler d'autres hooks.</p><div class="code-block" data-lang="javascript">
+// src/hooks/useFetch.js
+import {useState, useEffect} from 'react';
+import axios from 'axios';
+
+function useFetch(url) {
+    const [data, setData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() =&gt; {
+        const fetchData = async () =&gt; {
+            setLoading(true);
+            try {
+                const response = await axios.get(url);
+                setData(response.data);
+                setError(null);
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [url]); // L'effet se redéclenchera si l'URL change
+
+    return {data, loading, error};
+}
+
+export default useFetch;
+</div><p id="-9azli6_176">Maintenant, notre composant <code class="code" id="-9azli6_185">UserListFromApi</code> devient incroyablement plus simple :</p><div class="code-block" data-lang="javascript">
+import React from 'react';
+import useFetch from '../hooks/useFetch'; // On importe notre hook
+
+function UserListRefactored() {
+    // Une seule ligne pour toute la logique de fetch !
+    const {data: users, loading, error} = useFetch(
+        'https://jsonplaceholder.typicode.com/users'
+    );
+
+    if (loading) return &lt;p&gt;Chargement en cours...&lt;/p&gt;;
+    if (error) return &lt;p&gt;Erreur de chargement: {error.message}&lt;/p&gt;;
+
+    return (
+        &lt;div&gt;
+            &lt;h1&gt;Liste des utilisateurs&lt;/h1&gt;
+            &lt;ul&gt;
+                {users &amp;&amp; users.map(user =&gt; (
+                    &lt;li key={user.id}&gt;{user.name}&lt;/li&gt;
+                ))}
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    );
+}
+</div><section class="chapter"><h3 id="exercice-15-r-cup-rer-des-donn-es-avec-usefetch" data-toc="exercice-15-r-cup-rer-des-donn-es-avec-usefetch">Exercice 15 : R&eacute;cup&eacute;rer des donn&eacute;es avec <code class="code" id="-9azli6_190">useFetch</code></h3><p id="-9azli6_187"><span class="control" id="-9azli6_191">Objectif :</span> Cr&eacute;er un composant qui affiche un &quot;fait al&eacute;atoire sur les chats&quot; en utilisant votre hook <code class="code" id="-9azli6_192">useFetch</code>.</p><ol class="list _decimal" id="-9azli6_188" type="1"><li class="list__item" id="-9azli6_193"><p id="-9azli6_198">Assurez-vous d'avoir le hook <code class="code" id="-9azli6_199">useFetch</code> cr&eacute;&eacute; ci-dessus.</p></li><li class="list__item" id="-9azli6_194"><p id="-9azli6_200">Cr&eacute;ez un composant <code class="code" id="-9azli6_201">RandomCatFact</code>.</p></li><li class="list__item" id="-9azli6_195"><p id="-9azli6_202">Utilisez le hook <code class="code" id="-9azli6_203">useFetch</code> pour appeler l'API <code class="code" id="-9azli6_204">https://catfact.ninja/fact</code>.</p></li><li class="list__item" id="-9azli6_196"><p id="-9azli6_205">G&eacute;rez les &eacute;tats <code class="code" id="-9azli6_206">loading</code> et <code class="code" id="-9azli6_207">error</code>.</p></li><li class="list__item" id="-9azli6_197"><p id="-9azli6_208">Si les donn&eacute;es sont disponibles (<code class="code" id="-9azli6_209">data</code>), affichez la propri&eacute;t&eacute; <code class="code" id="-9azli6_210">fact</code> de l'objet retourn&eacute;.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-15" data-toc="correction-exercice-15">Correction exercice 15</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+// src/components/RandomCatFact.js
+import React from 'react';
+import useFetch from '../hooks/useFetch';
+
+function RandomCatFact() {
+    const {data, loading, error} = useFetch('https://catfact.ninja/fact');
+
+    if (loading) {
+        return &lt;p&gt;Chargement d'un fait incroyable...&lt;/p&gt;;
+    }
+
+    if (error) {
+        return &lt;p&gt;Impossible de contacter les chats pour le moment.&lt;/p&gt;;
+    }
+
+    return (
+        &lt;div&gt;
+            &lt;h2&gt;Le saviez-vous ?&lt;/h2&gt;
+            {/* On vérifie que `data` n'est pas nul avant d'accéder à `fact` */}
+            &lt;p&gt;{data ? data.fact : 'Aucun fait trouvé.'}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default RandomCatFact;
+</div></div></div></section></section></section><section class="chapter"><h2 id="tp-page-de-d-tails-d-un-produit" data-toc="tp-page-de-d-tails-d-un-produit">TP : Page de d&eacute;tails d'un produit</h2><p id="-9azli6_213">Cr&eacute;ons une page qui affiche les d&eacute;tails d'un seul produit r&eacute;cup&eacute;r&eacute; depuis une API. Cela combinera tout ce que nous avons appris.</p><section class="chapter"><h3 id="tape-1-cr-er-le-composant-productpage" data-toc="tape-1-cr-er-le-composant-productpage">&Eacute;tape 1 : Cr&eacute;er le composant <code class="code" id="-9azli6_221">ProductPage</code></h3><ul class="list _bullet" id="-9azli6_220"><li class="list__item" id="-9azli6_222"><p id="-9azli6_224">Ce composant sera responsable d'afficher les d&eacute;tails d'un produit.</p></li><li class="list__item" id="-9azli6_223"><p id="-9azli6_225">Il prendra un <code class="code" id="-9azli6_226">productId</code> en prop.</p></li></ul></section><section class="chapter"><h3 id="tape-2-utiliser-le-hook-usefetch" data-toc="tape-2-utiliser-le-hook-usefetch">&Eacute;tape 2 : Utiliser le hook <code class="code" id="-9azli6_229">useFetch</code></h3><ul class="list _bullet" id="-9azli6_228"><li class="list__item" id="-9azli6_230"><p id="-9azli6_233">&Agrave; l'int&eacute;rieur de <code class="code" id="-9azli6_234">ProductPage</code>, utilisez votre hook personnalis&eacute; <code class="code" id="-9azli6_235">useFetch</code>.</p></li><li class="list__item" id="-9azli6_231"><p id="-9azli6_236">L'URL &agrave; appeler sera une API de test comme <code class="code" id="-9azli6_237">https://fakestoreapi.com/products/{productId}</code>. L'URL doit donc &ecirc;tre dynamique en fonction de la prop.</p></li><li class="list__item" id="-9azli6_232"><p id="-9azli6_238">R&eacute;cup&eacute;rez <code class="code" id="-9azli6_239">data: product</code>, <code class="code" id="-9azli6_240">loading</code>, et <code class="code" id="-9azli6_241">error</code> depuis le hook.</p></li></ul></section><section class="chapter"><h3 id="tape-3-g-rer-les-tats-d-affichage" data-toc="tape-3-g-rer-les-tats-d-affichage">&Eacute;tape 3 : G&eacute;rer les &eacute;tats d'affichage</h3><ul class="list _bullet" id="-9azli6_242"><li class="list__item" id="-9azli6_243"><p id="-9azli6_246">Si <code class="code" id="-9azli6_247">loading</code> est vrai, affichez un squelette de chargement (ou un simple message &quot;Chargement...&quot;).</p></li><li class="list__item" id="-9azli6_244"><p id="-9azli6_248">Si <code class="code" id="-9azli6_249">error</code> est vrai, affichez un message d'erreur clair.</p></li><li class="list__item" id="-9azli6_245"><p id="-9azli6_250">Si <code class="code" id="-9azli6_252">product</code> est disponible, affichez ses d&eacute;tails :</p><ul class="list _bullet" id="-9azli6_251"><li class="list__item" id="-9azli6_253"><p id="-9azli6_257"><code class="code" id="-9azli6_258">product.title</code> dans un <code class="code" id="-9azli6_259">&lt;h1&gt;</code>.</p></li><li class="list__item" id="-9azli6_254"><p id="-9azli6_260"><code class="code" id="-9azli6_261">product.image</code> dans une balise <code class="code" id="-9azli6_262">&lt;img&gt;</code>.</p></li><li class="list__item" id="-9azli6_255"><p id="-9azli6_263"><code class="code" id="-9azli6_264">product.price</code> dans un <code class="code" id="-9azli6_265">&lt;p&gt;</code>.</p></li><li class="list__item" id="-9azli6_256"><p id="-9azli6_266"><code class="code" id="-9azli6_267">product.description</code> dans un autre <code class="code" id="-9azli6_268">&lt;p&gt;</code>.</p></li></ul></li></ul></section><section class="chapter"><h3 id="tape-4-int-grer-dans-app-js" data-toc="tape-4-int-grer-dans-app-js">&Eacute;tape 4 : Int&eacute;grer dans <code class="code" id="-9azli6_271">App.js</code></h3><ul class="list _bullet" id="-9azli6_270"><li class="list__item" id="-9azli6_272"><p id="-9azli6_273">Dans <code class="code" id="-9azli6_274">App.js</code>, appelez votre composant <code class="code" id="-9azli6_275">ProductPage</code> en lui passant un <code class="code" id="-9azli6_276">productId</code> en dur (par exemple, <code class="code" id="-9azli6_277">productId={1}</code>).</p></li></ul></section><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-du-tp" data-toc="correction-du-tp">Correction du TP</h3></div><div class="collapse__content"><div class="tabs" id="-9azli6_278" data-anchors="[-9azli6_280,-9azli6_281,-9azli6_282]"><div class="tabs__content" data-gtm="tab" id="-9azli6_280" data-title="hooks/useFetch.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// Ce hook est le même que celui défini précédemment dans le cours.
+// On s'assure qu'il est disponible pour le composant.
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+
+function useFetch(url) {
+const [data, setData] = useState(null);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState(null);
+
+useEffect(() =&gt; {
+// Si l'URL est nulle ou vide, on ne fait rien.
+if (!url) return;
+
+    const fetchData = async () =&gt; {
+      // On remet loading à true à chaque nouvel appel
+      setLoading(true); 
+      try {
+        const response = await axios.get(url);
+        setData(response.data);
+        setError(null);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+
+}, [url]);
+
+return { data, loading, error };
+}
+
+export default useFetch;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="-9azli6_281" data-title="components/ProductPage.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import useFetch from '../hooks/useFetch';
+import './ProductPage.css'; // Pour un peu de style
+
+function ProductPage({ productId }) {
+  const url = `https://fakestoreapi.com/products/${productId}`;
+  const { data: product, loading, error } = useFetch(url);
+
+  if (loading) {
+    return &lt;div className=&quot;loading-skeleton&quot;&gt;Chargement du produit...&lt;/div&gt;;
+  }
+
+  if (error) {
+    return (
+      &lt;div className=&quot;error-message&quot;&gt;
+        Erreur : Impossible de charger le produit.
+      &lt;/div&gt;
+    );
+  }
+
+  // On s'assure que le produit existe avant de tenter de l'afficher
+  if (!product) {
+    return &lt;p&gt;Produit non trouvé.&lt;/p&gt;;
+  }
+
+  return (
+    &lt;div className=&quot;product-page&quot;&gt;
+      &lt;img src={product.image} alt={product.title} /&gt;
+      &lt;div className=&quot;product-details&quot;&gt;
+        &lt;h1&gt;{product.title}&lt;/h1&gt;
+        &lt;p className=&quot;price&quot;&gt;{product.price.toFixed(2)} €&lt;/p&gt;
+        &lt;p className=&quot;category&quot;&gt;Catégorie : {product.category}&lt;/p&gt;
+        &lt;p className=&quot;description&quot;&gt;{product.description}&lt;/p&gt;
+        &lt;button&gt;Ajouter au panier&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default ProductPage;
+</div></div><div class="tabs__content" data-gtm="tab" id="-9azli6_282" data-title="App.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+import React from 'react';
+import ProductPage from './components/ProductPage';
+import './App.css';
+
+function App() {
+return (
+&lt;div className=&quot;App&quot;&gt;
+&lt;header&gt;
+&lt;h1&gt;Mon e-commerce&lt;/h1&gt;
+&lt;/header&gt;
+&lt;main&gt;
+{/* On affiche la page du produit avec l'ID 1 */}
+&lt;ProductPage productId={1} /&gt;
+&lt;/main&gt;
+&lt;/div&gt;
+);
+}
+
+export default App;
+
+</div></div></div></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="-9azli6_286">Testez vos connaissances ! Les r&eacute;ponses se trouvent &agrave; la toute fin du support de cours.</p><section class="chapter"><h3 id="questions-choix-multiple-qcm" data-toc="questions-choix-multiple-qcm">Questions &agrave; Choix Multiple (QCM)</h3><p id="-9azli6_289"><span class="control" id="-9azli6_295">1. Quelle est la meilleure pratique pour d&eacute;clencher un appel API dans un composant React ?</span></p><ol class="list _decimal" id="-9azli6_290" type="1"><li class="list__item" id="-9azli6_296"><p id="-9azli6_300">Directement dans le corps de la fonction du composant.</p></li><li class="list__item" id="-9azli6_297"><p id="-9azli6_301">Dans un <code class="code" id="-9azli6_302">useEffect</code> avec un tableau de d&eacute;pendances vide <code class="code" id="-9azli6_303">[]</code> pour un appel au montage.</p></li><li class="list__item" id="-9azli6_298"><p id="-9azli6_304">Dans un gestionnaire d'&eacute;v&eacute;nement <code class="code" id="-9azli6_305">onClick</code> sur un bouton.</p></li><li class="list__item" id="-9azli6_299"><p id="-9azli6_306">Dans un hook <code class="code" id="-9azli6_307">useMemo</code> pour mettre en cache le r&eacute;sultat.</p></li></ol><p id="-9azli6_291"><span class="control" id="-9azli6_308">2. Une diff&eacute;rence majeure entre <code class="code" id="-9azli6_309">fetch</code> et <code class="code" id="-9azli6_310">axios</code> est que :</span></p><ol class="list _decimal" id="-9azli6_292" type="1"><li class="list__item" id="-9azli6_311"><p id="-9azli6_315"><code class="code" id="-9azli6_316">fetch</code> est plus rapide qu' <code class="code" id="-9azli6_317">axios</code>.</p></li><li class="list__item" id="-9azli6_312"><p id="-9azli6_318"><code class="code" id="-9azli6_319">axios</code> rejette automatiquement la promesse pour les status HTTP d'erreur (4xx, 5xx), tandis que <code class="code" id="-9azli6_320">fetch</code> ne le fait pas.</p></li><li class="list__item" id="-9azli6_313"><p id="-9azli6_321">Seul <code class="code" id="-9azli6_322">axios</code> peut &ecirc;tre utilis&eacute; avec <code class="code" id="-9azli6_323">async/await</code>.</p></li><li class="list__item" id="-9azli6_314"><p id="-9azli6_324"><code class="code" id="-9azli6_325">fetch</code> transforme automatiquement la r&eacute;ponse en JSON, <code class="code" id="-9azli6_326">axios</code> non.</p></li></ol><p id="-9azli6_293"><span class="control" id="-9azli6_327">3. Vous cr&eacute;ez un hook <code class="code" id="-9azli6_328">useFetch(url)</code>. Pourquoi est-il crucial d'inclure <code class="code" id="-9azli6_329">url</code> dans le tableau de d&eacute;pendances de <code class="code" id="-9azli6_330">useEffect</code>?</span></p><ol class="list _decimal" id="-9azli6_294" type="1"><li class="list__item" id="-9azli6_331"><p id="-9azli6_335">Pour s'assurer que le hook ne s'ex&eacute;cute qu'une seule fois.</p></li><li class="list__item" id="-9azli6_332"><p id="-9azli6_336">Pour permettre &agrave; ESLint d'arr&ecirc;ter de se plaindre.</p></li><li class="list__item" id="-9azli6_333"><p id="-9azli6_337">Pour que le hook refasse un appel API si l'URL pass&eacute;e en argument change.</p></li><li class="list__item" id="-9azli6_334"><p id="-9azli6_338">Cela n'a aucune importance, un tableau vide fonctionnerait toujours.</p></li></ol></section><section class="chapter"><h3 id="questions-ouvertes" data-toc="questions-ouvertes">Questions Ouvertes</h3><p id="-9azli6_339"><span class="control" id="-9azli6_342">4. D&eacute;crivez les trois &eacute;tats que vous devez g&eacute;rer lorsque vous faites un appel API et expliquez pourquoi chacun est important pour l'exp&eacute;rience utilisateur (UX).</span></p><p id="-9azli6_340"><span class="control" id="-9azli6_343">5. Vous devez envoyer des donn&eacute;es &agrave; un serveur en utilisant une requ&ecirc;te <code class="code" id="-9azli6_344">POST</code>. Comment modifieriez-vous une fonction utilisant <code class="code" id="-9azli6_345">axios</code> pour accomplir cela ? Donnez un exemple de code simple.</span></p></section></section><section class="chapter"><h2 id="conclusion-de-ce-module" data-toc="conclusion-de-ce-module">Conclusion de ce module</h2><p id="-9azli6_346">F&eacute;licitations ! Vos applications React ne sont plus des &icirc;les isol&eacute;es. Vous avez acquis la comp&eacute;tence fondamentale pour les connecter &agrave; des sources de donn&eacute;es externes, les rendant ainsi infiniment plus utiles et dynamiques.</p><p id="-9azli6_347">Vous ma&icirc;trisez maintenant le flux de travail complet : d&eacute;clencher une requ&ecirc;te avec <code class="code" id="-9azli6_349">useEffect</code>, utiliser des outils modernes comme <code class="code" id="-9azli6_350">axios</code> et <code class="code" id="-9azli6_351">async/await</code>, g&eacute;rer les &eacute;tats de chargement et d'erreur pour une UX soign&eacute;e, et enfin, encapsuler cette logique dans des <span class="control" id="-9azli6_352">hooks personnalis&eacute;s</span> r&eacute;utilisables pour un code propre et maintenable.</p><p id="-9azli6_348">Maintenant que nous pouvons afficher des donn&eacute;es pour une page sp&eacute;cifique, une question se pose : comment permettre &agrave; l'utilisateur de naviguer entre diff&eacute;rentes pages (la liste des produits, la page d'un produit, la page de contact) au sein de notre application ? C'est l'objet de notre prochain module : <span class="control" id="-9azli6_353">le routage c&ocirc;t&eacute; client avec React Router</span>.</p></section><section class="chapter"><h2 id="suggestions-de-projets-pour-pratiquer" data-toc="suggestions-de-projets-pour-pratiquer">Suggestions de projets pour pratiquer</h2><ol class="list _decimal" id="-9azli6_354" type="1"><li class="list__item" id="-9azli6_355"><p id="-9azli6_358"><span class="control" id="-9azli6_360">Niveau D&eacute;butant : Application M&eacute;t&eacute;o</span></p><ul class="list _bullet" id="-9azli6_359"><li class="list__item" id="-9azli6_361"><p id="-9azli6_363"><span class="control" id="-9azli6_364">Description :</span> Un champ de saisie permet &agrave; l'utilisateur d'entrer le nom d'une ville. L'application affiche ensuite la temp&eacute;rature et la m&eacute;t&eacute;o actuelles pour cette ville.</p></li><li class="list__item" id="-9azli6_362"><p id="-9azli6_365"><span class="control" id="-9azli6_366">Piste technique :</span> Utilisez une API m&eacute;t&eacute;o gratuite comme OpenWeatherMap. L'appel API sera d&eacute;clench&eacute; non pas au montage, mais au clic sur un bouton de recherche ou &agrave; la soumission d'un formulaire.</p></li></ul></li><li class="list__item" id="-9azli6_356"><p id="-9azli6_367"><span class="control" id="-9azli6_369">Niveau Interm&eacute;diaire : Visionneuse de profils GitHub</span></p><ul class="list _bullet" id="-9azli6_368"><li class="list__item" id="-9azli6_370"><p id="-9azli6_372"><span class="control" id="-9azli6_373">Description :</span> Un champ de saisie pour un nom d'utilisateur GitHub. L'application r&eacute;cup&egrave;re et affiche les informations du profil (avatar, nom, biographie) et la liste de ses d&eacute;p&ocirc;ts publics.</p></li><li class="list__item" id="-9azli6_371"><p id="-9azli6_374"><span class="control" id="-9azli6_375">Piste technique :</span> Utilisez l'API publique de GitHub (<code class="code" id="-9azli6_376">https://api.github.com/users/{username}</code>). Cela n&eacute;cessitera deux appels : un pour le profil, et un autre (sur l' <code class="code" id="-9azli6_377">repos_url</code> du premier appel) pour les d&eacute;p&ocirc;ts.</p></li></ul></li><li class="list__item" id="-9azli6_357"><p id="-9azli6_378"><span class="control" id="-9azli6_380">Niveau Avanc&eacute; : Un &quot;Pokedex&quot; simple</span></p><ul class="list _bullet" id="-9azli6_379"><li class="list__item" id="-9azli6_381"><p id="-9azli6_383"><span class="control" id="-9azli6_384">Description :</span> Affichez une liste pagin&eacute;e de Pok&eacute;mon. En cliquant sur un Pok&eacute;mon, on affiche ses d&eacute;tails (type, statistiques, etc.).</p></li><li class="list__item" id="-9azli6_382"><p id="-9azli6_385"><span class="control" id="-9azli6_386">Piste technique :</span> Utilisez l'API gratuite <a href="https://pokeapi.co/" id="-9azli6_387" data-external="true" rel="noopener noreferrer" target="_blank">Pok&eacute;API</a>. Vous devrez g&eacute;rer la pagination en modifiant l'URL de l'API (<code class="code" id="-9azli6_388">?limit=20&amp;offset=...</code>). C'est un excellent projet pour combiner la r&eacute;cup&eacute;ration de listes et de d&eacute;tails d'entit&eacute;s individuelles.</p></li></ul></li></ol></section><div class="last-modified">21 novembre 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="004-module-04.html" class="navigation-links__prev">Module 4 : Gestion de l'&Eacute;tat Global</a><a href="006-module-06.html" class="navigation-links__next">Module 6 : Le Routage c&ocirc;t&eacute; Client avec React Router</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>

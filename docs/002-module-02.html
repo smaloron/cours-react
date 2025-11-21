@@ -1,0 +1,421 @@
+<!DOCTYPE html SYSTEM "about:legacy-compat">
+<html lang="en-US" data-preset="contrast" data-primary-color="#307FFF"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="built-on" content="2025-11-21T15:37:45.346512"><title>Module 2 : Le Cycle de Vie et les Hooks Essentiels | React</title><script type="application/json" id="virtual-toc-data">[{"id":"objectifs-p-dagogiques","level":0,"title":"Objectifs Pédagogiques","anchor":"#objectifs-p-dagogiques"},{"id":"pourquoi-ce-module-est-il-important","level":0,"title":"Pourquoi ce module est-il important ?","anchor":"#pourquoi-ce-module-est-il-important"},{"id":"comp-tences-du-r-f-rentiel-reac","level":0,"title":"Compétences du Référentiel (REAC)","anchor":"#comp-tences-du-r-f-rentiel-reac"},{"id":"1-useeffect-g-rer-les-effets-de-bord","level":0,"title":"1. useEffect : Gérer les effets de bord","anchor":"#1-useeffect-g-rer-les-effets-de-bord"},{"id":"2-useref-les-r-f-rences","level":0,"title":"2. useRef : Les Références","anchor":"#2-useref-les-r-f-rences"},{"id":"3-usecontext-partager-l-tat-simplement","level":0,"title":"3. useContext : Partager l\u0027état simplement","anchor":"#3-usecontext-partager-l-tat-simplement"},{"id":"tp-cr-er-un-blog-simple-avec-un-th-me-personnalisable","level":0,"title":"TP : Créer un blog simple avec un thème personnalisable","anchor":"#tp-cr-er-un-blog-simple-avec-un-th-me-personnalisable"},{"id":"auto-valuation","level":0,"title":"Auto-évaluation","anchor":"#auto-valuation"},{"id":"conclusion-de-ce-module","level":0,"title":"Conclusion de ce module","anchor":"#conclusion-de-ce-module"},{"id":"suggestions-de-projets-pour-pratiquer","level":0,"title":"Suggestions de projets pour pratiquer","anchor":"#suggestions-de-projets-pour-pratiquer"}]</script><script type="application/json" id="topic-shortcuts"></script><link href="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.css" rel="stylesheet"><meta name="msapplication-TileColor" content="#000000"><link rel="apple-touch-icon" sizes="180x180" href="https://jetbrains.com/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="https://jetbrains.com/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="https://jetbrains.com/favicon-16x16.png"><meta name="msapplication-TileImage" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-144x144.png"><meta name="msapplication-square70x70logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-70x70.png"><meta name="msapplication-square150x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-150x150.png"><meta name="msapplication-wide310x150logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x150.png"><meta name="msapplication-square310x310logo" content="https://resources.jetbrains.com/storage/ui/favicons/mstile-310x310.png"><meta name="image" content=""><!-- Open Graph --><meta property="og:title" content="Module 2 : Le Cycle de Vie et les Hooks Essentiels | React"><meta property="og:description" content=""><meta property="og:image" content=""><meta property="og:site_name" content="React Help"><meta property="og:type" content="website"><meta property="og:locale" content="en_US"><meta property="og:url" content="writerside-documentation/002-module-02.html"><!-- End Open Graph --><!-- Twitter Card --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:site" content=""><meta name="twitter:title" content="Module 2 : Le Cycle de Vie et les Hooks Essentiels | React"><meta name="twitter:description" content=""><meta name="twitter:creator" content=""><meta name="twitter:image:src" content=""><!-- End Twitter Card --><!-- Schema.org WebPage --><script type="application/ld+json">{
+    "@context": "http://schema.org",
+    "@type": "WebPage",
+    "@id": "writerside-documentation/002-module-02.html#webpage",
+    "url": "writerside-documentation/002-module-02.html",
+    "name": "Module 2 : Le Cycle de Vie et les Hooks Essentiels | React",
+    "description": "",
+    "image": "",
+    "inLanguage":"en-US"
+}</script><!-- End Schema.org --><!-- Schema.org WebSite --><script type="application/ld+json">{
+    "@type": "WebSite",
+    "@id": "writerside-documentation/#website",
+    "url": "writerside-documentation/",
+    "name": "React Help"
+}</script><!-- End Schema.org --></head><body data-id="002-module-02" data-main-title="Module 2 : Le Cycle de Vie et les Hooks Essentiels" data-article-props="{&quot;seeAlsoStyle&quot;:&quot;links&quot;}" data-template="article" data-breadcrumbs=""><div class="wrapper"><main class="panel _main"><header class="panel__header"><div class="container"><h3>React  Help</h3><div class="panel-trigger"></div></div></header><section class="panel__content"><div class="container"><article class="article" data-shortcut-switcher="inactive"><h1 data-toc="002-module-02" id="002-module-02.md">Module 2 : Le Cycle de Vie et les Hooks Essentiels</h1><p id="fry44o_3">Bravo d'avoir ma&icirc;tris&eacute; les fondamentaux ! Vos composants savent maintenant afficher des informations et r&eacute;agir &agrave; des actions simples. Mais une v&eacute;ritable application doit faire plus : elle doit communiquer avec un serveur, s'adapter &agrave; l' environnement du navigateur, ou partager une information globale sans la passer de main en main &agrave; travers des dizaines de composants.</p><p id="fry44o_4">Ce module vous pr&eacute;sente les outils qui transforment vos composants en v&eacute;ritables acteurs de votre application : les Hooks essentiels. Ils sont la cl&eacute; pour g&eacute;rer des logiques plus complexes et des effets de bord.</p><section class="chapter"><h2 id="objectifs-p-dagogiques" data-toc="objectifs-p-dagogiques">Objectifs P&eacute;dagogiques</h2><p id="fry44o_15">&Agrave; la fin de ce module, vous serez capable de :</p><ul class="list _bullet" id="fry44o_16"><li class="list__item" id="fry44o_17"><p id="fry44o_22"><span class="control" id="fry44o_23">G&eacute;rer</span> les effets de bord (comme les appels API ou les abonnements) avec le hook <code class="code" id="fry44o_24">useEffect</code>.</p></li><li class="list__item" id="fry44o_18"><p id="fry44o_25"><span class="control" id="fry44o_26">Comprendre</span> et ma&icirc;triser le cycle de vie d'un composant fonctionnel (montage, mise &agrave; jour, d&eacute;montage).</p></li><li class="list__item" id="fry44o_19"><p id="fry44o_27"><span class="control" id="fry44o_28">Acc&eacute;der</span> directement aux &eacute;l&eacute;ments du DOM de mani&egrave;re contr&ocirc;l&eacute;e avec le hook <code class="code" id="fry44o_29">useRef</code>.</p></li><li class="list__item" id="fry44o_20"><p id="fry44o_30"><span class="control" id="fry44o_31">Stocker</span> des valeurs persistantes qui ne d&eacute;clenchent pas de nouveaux rendus.</p></li><li class="list__item" id="fry44o_21"><p id="fry44o_32"><span class="control" id="fry44o_33">R&eacute;soudre</span> le probl&egrave;me du &quot;prop drilling&quot; en partageant un &eacute;tat global simple avec le hook <code class="code" id="fry44o_34">useContext</code>.</p></li></ul></section><section class="chapter"><h2 id="pourquoi-ce-module-est-il-important" data-toc="pourquoi-ce-module-est-il-important">Pourquoi ce module est-il important ?</h2><p id="fry44o_35">Imaginez que vos composants sont des acteurs sur une sc&egrave;ne de th&eacute;&acirc;tre. Jusqu'&agrave; pr&eacute;sent, vous leur avez appris leur texte (<code class="code" id="fry44o_37">props</code>) et comment changer d'&eacute;motion (<code class="code" id="fry44o_38">state</code>). Mais que se passe-t-il quand un acteur doit interagir avec les coulisses ? Par exemple, aller chercher un accessoire (donn&eacute;es d'une API), &eacute;couter une annonce du r&eacute;gisseur (un abonnement WebSocket), ou allumer un projecteur sp&eacute;cifique (manipuler le DOM) ?</p><p id="fry44o_36">Les Hooks que nous allons voir sont les &quot;oreillettes&quot; et les &quot;instructions de mise en sc&egrave;ne&quot; de vos acteurs. Sans eux, vos composants resteraient isol&eacute;s sur leur sc&egrave;ne. <code class="code" id="fry44o_39">useEffect</code>, <code class="code" id="fry44o_40">useRef</code> et <code class="code" id="fry44o_41">useContext</code> sont les trois outils qui connectent vos composants au reste de l'&eacute;cosyst&egrave;me de l'application et du navigateur, les rendant infiniment plus puissants.</p></section><section class="chapter"><h2 id="comp-tences-du-r-f-rentiel-reac" data-toc="comp-tences-du-r-f-rentiel-reac">Comp&eacute;tences du R&eacute;f&eacute;rentiel (REAC)</h2><p id="fry44o_42">Ce module renforce et &eacute;tend les comp&eacute;tences du bloc <span class="control" id="fry44o_45">CCP-1 : Concevoir et d&eacute;velopper des composants d'interface utilisateur</span>.</p><ul class="list _bullet" id="fry44o_43"><li class="list__item" id="fry44o_46"><p id="fry44o_48"><span class="control" id="fry44o_49">D&eacute;velopper des composants d&rsquo;acc&egrave;s aux donn&eacute;es :</span> <code class="code" id="fry44o_50">useEffect</code> est le principal outil pour initier des appels vers des API pour r&eacute;cup&eacute;rer des donn&eacute;es.</p></li><li class="list__item" id="fry44o_47"><p id="fry44o_51"><span class="control" id="fry44o_52">Pr&eacute;parer et tester un d&eacute;ploiement :</span> La bonne gestion du cycle de vie et des effets de bord est cruciale pour des applications stables et performantes.</p></li></ul></section><section class="chapter"><h2 id="1-useeffect-g-rer-les-effets-de-bord" data-toc="1-useeffect-g-rer-les-effets-de-bord">1. <code class="code" id="fry44o_62">useEffect</code>: G&eacute;rer les effets de bord</h2><p id="fry44o_54">Vos composants ont un travail principal : calculer et retourner du JSX pour d&eacute;crire l'UI. C'est ce qu'on appelle un &quot; rendu pur&quot;. Mais parfois, ils doivent faire des choses qui ne sont pas li&eacute;es au rendu lui-m&ecirc;me. C'est ce qu'on appelle des <span class="control" id="fry44o_63">effets de bord</span> (ou <span class="emphasis" id="fry44o_64">side effects</span>).</p><section class="procedure-steps"><h3 id="fry44o_55" data-toc="fry44o_55">L'analogie de l'assistant personnel</h3><p id="fry44o_65">Imaginez que vous &ecirc;tes un manager tr&egrave;s occup&eacute; (le composant React) dont le seul travail est de d&eacute;cider de l'apparence de votre bureau (le rendu JSX). Vous ne voulez pas &ecirc;tre d&eacute;rang&eacute; par des t&acirc;ches annexes.</p><ol class="list _decimal"></ol></section><p id="fry44o_56"><code class="code" id="fry44o_79">useEffect</code> est un hook qui prend deux arguments :</p><ol class="list _decimal" id="fry44o_57" type="1"><li class="list__item" id="fry44o_80"><p id="fry44o_82">Une <span class="control" id="fry44o_83">fonction</span> &agrave; ex&eacute;cuter (l'effet).</p></li><li class="list__item" id="fry44o_81"><p id="fry44o_84">Un <span class="control" id="fry44o_85">tableau de d&eacute;pendances</span> (optionnel) qui dit &agrave; React <span class="emphasis" id="fry44o_86">quand</span> r&eacute;-ex&eacute;cuter l'effet.</p></li></ol><section class="chapter"><h3 id="cas-1-ex-cution-au-montage-du-composant" data-toc="cas-1-ex-cution-au-montage-du-composant">Cas 1 : Ex&eacute;cution au montage du composant</h3><p id="fry44o_87">Pour ex&eacute;cuter une action une seule fois, juste apr&egrave;s le premier rendu du composant, on fournit un tableau de d&eacute;pendances vide <code class="code" id="fry44o_90">[]</code>.</p><p id="fry44o_88"><span class="control" id="fry44o_91">Exemple : Changer le titre de la page au chargement</span></p><div class="code-block" data-lang="javascript">
+import React, {useState, useEffect} from 'react';
+
+function DocumentTitleUpdater() {
+    const [clickCount, setClickCount] = useState(0);
+
+    // Ce `useEffect` s'exécute UNE SEULE FOIS après le premier rendu.
+    useEffect(() =&gt; {
+        // C'est un effet de bord : on interagit avec le navigateur (le DOM)
+        // en dehors de la logique de rendu du composant.
+        document.title = 'Bienvenue sur ma page !';
+        console.log(&quot;L'effet a été exécuté !&quot;);
+    }, []); // Le tableau vide signifie &quot;ne dépend de rien&quot;
+
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Regardez l'onglet de votre navigateur !&lt;/p&gt;
+            &lt;button onClick={() =&gt; setClickCount(clickCount + 1)}&gt;
+                Cliqué {clickCount} fois
+            &lt;/button&gt;
+            {/* Chaque clic re-rend le composant, mais l'effet ne se 
+          redéclenche pas. */}
+        &lt;/div&gt;
+    );
+}
+</div></section><section class="chapter"><h3 id="cas-2-ex-cution-la-mise-jour-d-une-d-pendance" data-toc="cas-2-ex-cution-la-mise-jour-d-une-d-pendance">Cas 2 : Ex&eacute;cution &agrave; la mise &agrave; jour d'une d&eacute;pendance</h3><p id="fry44o_92">Pour ex&eacute;cuter l'effet &agrave; chaque fois qu'une valeur sp&eacute;cifique (une prop ou une variable de state) change.</p><p id="fry44o_93"><span class="control" id="fry44o_95">Exemple : Mettre &agrave; jour le titre de la page avec un compteur</span></p><div class="code-block" data-lang="javascript">
+import React, {useState, useEffect} from 'react';
+
+function ClickCounterTitle() {
+    const [count, setCount] = useState(0);
+
+    // Cet effet s'exécute après le premier rendu ET
+    // à chaque fois que la valeur de `count` change.
+    useEffect(() =&gt; {
+        document.title = `Vous avez cliqué ${count} fois`;
+        console.log(`Le titre a été mis à jour avec la valeur ${count}.`);
+    }, [count]); // `count` est dans le tableau de dépendances.
+
+    return (
+        &lt;div&gt;
+            &lt;p&gt;
+                Regardez le titre de l'onglet pendant que vous cliquez.
+            &lt;/p&gt;
+            &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+                Cliquez ici
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+</div></section><section class="chapter"><h3 id="cas-3-nettoyage-d-montage" data-toc="cas-3-nettoyage-d-montage">Cas 3 : Nettoyage (d&eacute;montage)</h3><p id="fry44o_96">Parfois, un effet met en place quelque chose qui doit &ecirc;tre &quot;annul&eacute;&quot; lorsque le composant dispara&icirc;t (d&eacute;montage) pour &eacute;viter des fuites de m&eacute;moire. Exemples : un abonnement &agrave; un service, un timer <code class="code" id="fry44o_100">setInterval</code>. Pour cela, la fonction de <code class="code" id="fry44o_101">useEffect</code> peut retourner une autre fonction, appel&eacute;e <span class="control" id="fry44o_102">fonction de nettoyage</span>.</p><p id="fry44o_97"><span class="control" id="fry44o_103">Exemple : Un timer qui se nettoie tout seul</span></p><div class="code-block" data-lang="javascript">
+import React, {useState, useEffect} from 'react';
+
+function TickingClock() {
+    const [time, setTime] = useState(new Date());
+
+    useEffect(() =&gt; {
+        // Effet : démarrer un intervalle qui met à jour l'heure chaque seconde
+        const timerId = setInterval(() =&gt; {
+            setTime(new Date());
+            console.log('Tick');
+        }, 1000);
+
+        // Fonction de nettoyage :
+        // Elle sera appelée quand le composant sera retiré de l'écran.
+        return () =&gt; {
+            clearInterval(timerId);
+            console.log('Le timer a été nettoyé.');
+        };
+    }, []); // On veut que le timer soit créé une seule fois.
+
+    return (
+        &lt;p&gt;Heure actuelle : {time.toLocaleTimeString()}&lt;/p&gt;
+    );
+}
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="469px" preserveAspectRatio="none" style="width:806px;height:469px;background:#FFFFFF;" version="1.1" viewBox="0 0 806 469" width="806px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="195" x="298.5" y="23.5352">Cycle de Vie avec useEffect</text><g id="Mounted"><rect fill="#F1F1F1" height="64.7539" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="155" x="49.5" y="159.9283"/><line style="stroke:#181818;stroke-width:0.5;" x1="49.5" x2="204.5" y1="186.4166" y2="186.4166"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="126" x="64" y="178.4634">Composant Mont&#233;</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="4" x="54.5" y="203.0181">"</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="115" x="58.5" y="203.0181">useEffect(effect, [])</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="4" x="173.5" y="203.0181">"</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="135" x="54.5" y="217.1509">- `effect()` est ex&#233;cut&#233;</text></g><g id="Updated"><rect fill="#F1F1F1" height="93.0195" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="294" x="505" y="145.7983"/><line style="stroke:#181818;stroke-width:0.5;" x1="505" x2="799" y1="172.2866" y2="172.2866"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="150" x="577" y="164.3334">Composant Mis &#224; Jour</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="138" x="510" y="188.8881">useEffect(effect, [dep])</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="125" x="510" y="203.0209">- Si `dep` a chang&#233; :</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="266" x="518" y="217.1538">- `cleanup()` de l'effet pr&#233;c&#233;dent est ex&#233;cut&#233;</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="225" x="518" y="231.2866">- `effect()` du nouvel effet est ex&#233;cut&#233;</text></g><g id="Unmounted"><rect fill="#F1F1F1" height="64.7539" rx="12.5" ry="12.5" style="stroke:#181818;stroke-width:0.5;" width="249" x="323.5" y="315.8183"/><line style="stroke:#181818;stroke-width:0.5;" x1="323.5" x2="572.5" y1="342.3066" y2="342.3066"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="145" x="375.5" y="334.3534">Composant D&#233;mont&#233;</text><text fill="#000000" font-family="sans-serif" font-size="12" font-weight="bold" lengthAdjust="spacing" textLength="90" x="328.5" y="358.9081">return cleanup</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacing" textLength="229" x="328.5" y="373.0409">- La fonction de nettoyage est ex&#233;cut&#233;e</text></g><ellipse cx="127" cy="56.1383" fill="#222222" rx="10" ry="10" style="stroke:#222222;stroke-width:1.0;"/><ellipse cx="448" cy="452.5683" fill="none" rx="11" ry="11" style="stroke:#222222;stroke-width:1.0;"/><ellipse cx="448" cy="452.5683" fill="#222222" rx="6" ry="6" style="stroke:#222222;stroke-width:1.0;"/><g id="elem_GMN12"><path d="M239.5,179.6483 L239.5,188.3083 L204.93,192.3083 L239.5,196.3083 L239.5,204.9588 A0,0 0 0 0 239.5,204.9588 L470.5,204.9588 A0,0 0 0 0 470.5,204.9588 L470.5,189.6483 L460.5,179.6483 L239.5,179.6483 A0,0 0 0 0 239.5,179.6483 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M460.5,179.6483 L460.5,189.6483 L470.5,189.6483 L460.5,179.6483 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="210" x="245.5" y="197.2166">Id&#233;al pour les appels API initiaux.</text></g><g id="elem_GMN15"><path d="M512,43.4883 L512,68.7988 A0,0 0 0 0 512,68.7988 L648,68.7988 L652,145.5683 L656,68.7988 L792,68.7988 A0,0 0 0 0 792,68.7988 L792,53.4883 L782,43.4883 L512,43.4883 A0,0 0 0 0 512,43.4883 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M782,43.4883 L782,53.4883 L792,53.4883 L782,43.4883 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="259" x="518" y="61.0566">Synchronisation avec le monde ext&#233;rieur.</text></g><g id="elem_GMN18"><path d="M6,335.5383 L6,360.8488 A0,0 0 0 0 6,360.8488 L288,360.8488 A0,0 0 0 0 288,360.8488 L288,353.5383 L323.3,348.1883 L288,345.5383 L288,345.5383 L278,335.5383 L6,335.5383 A0,0 0 0 0 6,335.5383 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M278,335.5383 L278,345.5383 L288,345.5383 L278,335.5383 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="261" x="12" y="353.1066">Annuler les abonnements, les timers, etc.</text></g><!--link *start* to Mounted--><g id="link_*start*_Mounted"><path d="M127,66.3583 C127,85.2483 127,123.0983 127,153.4783 " fill="none" id="*start*-to-Mounted" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="127,159.4783,131,150.4783,127,154.4783,123,150.4783,127,159.4783" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="87" x="128" y="112.3666">Premier rendu</text></g><!--link Mounted to Updated--><g id="link_Mounted_Updated"><path d="M173.86,159.4483 C201.81,141.8883 238.81,122.0483 275,112.9583 C350.87,93.9083 374.16,98.3483 451,112.9583 C485.83,119.5883 516.7778,129.8639 548.9778,143.0539 " fill="none" id="Mounted-to-Updated" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="554.53,145.3283,547.7179,138.2153,549.9031,143.433,544.6854,145.6183,554.53,145.3283" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="174" x="276" y="112.3666">Une prop ou un &#233;tat change</text></g><!--link Updated to Unmounted--><g id="link_Updated_Unmounted"><path d="M591.07,239.2683 C558.55,263.7983 524.1301,289.7651 494.9901,311.7451 " fill="none" id="Updated-to-Unmounted" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="490.2,315.3583,499.7939,313.132,494.1918,312.3473,494.9764,306.7452,490.2,315.3583" style="stroke:#181818;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="191" x="551" y="282.3866">Le composant est retir&#233; de l'UI</text></g><!--link Mounted to Unmounted--><g id="link_Mounted_Unmounted"><path d="M193.12,225.0083 C248.27,251.4383 321.0693,286.3451 376.2793,312.8051 " fill="none" id="Mounted-to-Unmounted" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="381.69,315.3983,375.3027,307.9014,377.1811,313.2373,371.8452,315.1157,381.69,315.3983" style="stroke:#181818;stroke-width:1.0;"/></g><!--link Unmounted to *end*--><g id="link_Unmounted_*end*"><path d="M448,381.0183 C448,401.6883 448,421.2783 448,435.2583 " fill="none" id="Unmounted-to-*end*" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="448,441.2583,452,432.2583,448,436.2583,444,432.2583,448,441.2583" style="stroke:#181818;stroke-width:1.0;"/></g><!--SRC=[RLFDQkCm4BxhAOPSqYvDzrvAe6JtaAKBXPAzj8KezZWHs2CZZKhoDdlrS_Z5TYJ_Tib5jeUPxqzZDbmYR2wPd3d27uEWFp63uF5dKM36IYtXHziKXWmRIzBaeMrOirTUJeJ5nbQrzPeOVblYjbc0zl8QY36_qcDa_Y_yii6bnbsTwwkDGbfDU3kgUiGhUjXfykdJgxTl7x1QhGS1y00l3Yk33XnI7jHGbvQUMbfsX50xMuCD4AZp1zb9qn7Lq1L1HnKoyuoGZMBHi-2pSMqJOooNk-t4D1zK4qIiYzfa27tcJ9qSn7JAfOdEdS7WvebFfXQFX_LuHpUO7dVmzd7x-FsmNhpJ2lPTyUPsdzJXkMso8A1gidqT8yUwWuaehmRsKjY3xl8GVm_l123uiZAQGXq9akK8m1AZyBHDZdqg8sy_DQdA0v0DdrX2D_cVobdKebF23OwWvnpKFMieB6Nz8W0Xixte8tx5mXZnnZg7OsUfmL-8zHbJl6GPlOedE7CyCTXYja3Rl6rq2RMiB9JIhUiQImzFBrj8MwZ3-RuRvhX2nMonNY-KdPmbutMYJl-M_6gosQ82pyCbz_Cb5ebxRlw9A9JOCnyi4LQIhRzB1JOLEdb7pkxLFm00]--></g></svg></div></section><section class="chapter"><h3 id="exercice-6-simuler-un-chargement-de-donn-es" data-toc="exercice-6-simuler-un-chargement-de-donn-es">Exercice 6 : Simuler un chargement de donn&eacute;es</h3><p id="fry44o_104"><span class="control" id="fry44o_107">Objectif :</span> Cr&eacute;er un composant qui affiche un message de chargement, puis, apr&egrave;s 2 secondes, affiche des donn&eacute;es &quot; r&eacute;cup&eacute;r&eacute;es&quot;.</p><ol class="list _decimal" id="fry44o_105" type="1"><li class="list__item" id="fry44o_108"><p id="fry44o_114">Cr&eacute;ez un composant <code class="code" id="fry44o_115">UserData</code>.</p></li><li class="list__item" id="fry44o_109"><p id="fry44o_116">Utilisez deux &eacute;tats : <code class="code" id="fry44o_117">loading</code> (bool&eacute;en, initialis&eacute; &agrave; <code class="code" id="fry44o_118">true</code>) et <code class="code" id="fry44o_119">user</code> (objet, initialis&eacute; &agrave; <code class="code" id="fry44o_120">null</code>).</p></li><li class="list__item" id="fry44o_110"><p id="fry44o_121">Utilisez <code class="code" id="fry44o_122">useEffect</code> pour simuler un appel API qui se d&eacute;clenche une seule fois au montage.</p></li><li class="list__item" id="fry44o_111"><p id="fry44o_123">&Agrave; l'int&eacute;rieur de l'effet, utilisez <code class="code" id="fry44o_124">setTimeout</code> pour attendre 2 secondes.</p></li><li class="list__item" id="fry44o_112"><p id="fry44o_125">Apr&egrave;s 2 secondes, passez <code class="code" id="fry44o_126">loading</code> &agrave; <code class="code" id="fry44o_127">false</code> et mettez &agrave; jour <code class="code" id="fry44o_128">user</code> avec un objet (ex: <code class="code" id="fry44o_129">{ name: 'John Doe' }</code>).</p></li><li class="list__item" id="fry44o_113"><p id="fry44o_130">Dans le JSX, affichez &quot;Chargement...&quot; si <code class="code" id="fry44o_131">loading</code> est <code class="code" id="fry44o_132">true</code>, sinon affichez le nom de l'utilisateur.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-6" data-toc="correction-exercice-6">Correction exercice 6</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+import React, {useState, useEffect} from 'react';
+
+function UserData() {
+    const [isLoading, setIsLoading] = useState(true);
+    const [user, setUser] = useState(null);
+
+    useEffect(() =&gt; {
+        // On simule une requête réseau qui prend du temps.
+        const fakeApiCall = setTimeout(() =&gt; {
+            const fetchedUser = {name: 'Jane Doe', email: 'jane@example.com'};
+            setUser(fetchedUser);
+            setIsLoading(false);
+        }, 2000); // 2 secondes de délai
+
+        // C'est une bonne pratique de nettoyer le timeout
+        // si le composant est démonté avant la fin.
+        return () =&gt; clearTimeout(fakeApiCall);
+    }, []); // Tableau vide pour exécuter au montage uniquement.
+
+    if (isLoading) {
+        return &lt;p&gt;Chargement des données...&lt;/p&gt;;
+    }
+
+    return (
+        &lt;div&gt;
+            &lt;h2&gt;Données de l'utilisateur :&lt;/h2&gt;
+            &lt;p&gt;Nom : {user.name}&lt;/p&gt;
+            &lt;p&gt;Email : {user.email}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default UserData;
+</div></div></div></section></section></section><section class="chapter"><h2 id="2-useref-les-r-f-rences" data-toc="2-useref-les-r-f-rences">2. <code class="code" id="fry44o_142">useRef</code>: Les R&eacute;f&eacute;rences</h2><p id="fry44o_136">Parfois, vous avez besoin d'interagir directement avec un &eacute;l&eacute;ment du DOM (par exemple, pour g&eacute;rer le focus d'un champ) ou de conserver une valeur entre les rendus sans pour autant d&eacute;clencher un nouveau rendu. C'est le r&ocirc;le de <code class="code" id="fry44o_143">useRef</code>.</p><section class="procedure-steps"><h3 id="fry44o_137" data-toc="fry44o_137">L'analogie de l'étiquette et de la poche secrète</h3><p id="fry44o_144">`useRef` a deux super-pouvoirs :</p><p id="fry44o_145">1. <b id="fry44o_147">L'&eacute;tiquette :</b> Imaginez que vous voulez retrouver un livre pr&eacute;cis dans une immense biblioth&egrave;que. Au lieu de le chercher &agrave; chaque fois, vous y collez une grosse &eacute;tiquette fluo (`ref`). D&eacute;sormais, pour le retrouver, il suffit de chercher l'&eacute;tiquette. `useRef` vous permet de &quot;coller une &eacute;tiquette&quot; sur un &eacute;l&eacute;ment JSX pour y acc&eacute;der directement plus tard.</p><p id="fry44o_146">2. <b id="fry44o_148">La poche secr&egrave;te :</b> Imaginez que vous &ecirc;tes un magicien. Vous avez besoin de garder un objet dans votre poche sans que le public (le syst&egrave;me de rendu de React) ne le voie. Si vous le mettez dans votre main (`useState`), tout le monde le voit et r&eacute;agit. Si vous le mettez dans votre poche secr&egrave;te (`useRef`), vous pouvez le modifier discr&egrave;tement, sa valeur persiste, mais cela ne d&eacute;clenche pas une nouvelle &quot;sc&egrave;ne&quot; (un nouveau rendu).</p><ol class="list _decimal"></ol></section><p id="fry44o_138"><code class="code" id="fry44o_149">useRef</code> retourne un objet avec une seule propri&eacute;t&eacute; : <code class="code" id="fry44o_150">current</code>. <code class="code" id="fry44o_151">myRef.current</code>.</p><section class="chapter"><h3 id="cas-1-acc-der-aux-l-ments-du-dom" data-toc="cas-1-acc-der-aux-l-ments-du-dom">Cas 1 : Acc&eacute;der aux &eacute;l&eacute;ments du DOM</h3><p id="fry44o_152">C'est l'utilisation la plus courante. Parfait pour g&eacute;rer le focus, d&eacute;clencher des animations ou mesurer la taille d'un &eacute;l&eacute;ment.</p><p id="fry44o_153"><span class="control" id="fry44o_155">Exemple : Mettre le focus sur un champ de saisie au chargement</span></p><div class="code-block" data-lang="javascript">
+import React, {useRef, useEffect} from 'react';
+
+function AutoFocusInput() {
+    // 1. Créez la ref.
+    const inputRef = useRef(null);
+
+    // On utilise useEffect pour s'assurer que le DOM est bien rendu.
+    useEffect(() =&gt; {
+        // 3. Après le rendu, l'élément DOM est dans `inputRef.current`.
+        // On peut maintenant appeler ses méthodes natives.
+        if (inputRef.current) {
+            inputRef.current.focus();
+        }
+    }, []);
+
+    return (
+        &lt;div&gt;
+            &lt;label&gt;
+                Votre nom :
+                {/* 2. Attachez la ref à l'élément JSX. */}
+                &lt;input ref={inputRef} type=&quot;text&quot;/&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+    );
+}
+</div></section><section class="chapter"><h3 id="cas-2-stocker-des-valeurs-persistantes" data-toc="cas-2-stocker-des-valeurs-persistantes">Cas 2 : Stocker des valeurs persistantes</h3><p id="fry44o_156">Utile pour les valeurs qui doivent &quot;survivre&quot; aux re-renders, mais dont le changement ne doit pas en provoquer un. Parfait pour les identifiants de timers, les compteurs internes, etc.</p><aside class="prompt" data-type="warning" data-title="useRef vs useState" id="fry44o_157"><p>* Modifier `myRef.current` **ne provoque PAS** de nouveau rendu. * Appeler `setState(...)` **provoque** un nouveau rendu. </p><p id="fry44o_158">Choisissez <code class="code" id="fry44o_159">useRef</code> pour les donn&eacute;es &quot;silencieuses&quot; et <code class="code" id="fry44o_160">useState</code> pour les donn&eacute;es qui doivent &ecirc;tre visibles dans l'UI.</p></aside></section><section class="chapter"><h3 id="exercice-7-compter-le-nombre-de-rendus" data-toc="exercice-7-compter-le-nombre-de-rendus">Exercice 7 : Compter le nombre de rendus</h3><p id="fry44o_161"><span class="control" id="fry44o_164">Objectif :</span> Cr&eacute;er un composant qui affiche combien de fois il a &eacute;t&eacute; rendu.</p><ol class="list _decimal" id="fry44o_162" type="1"><li class="list__item" id="fry44o_165"><p id="fry44o_170">Cr&eacute;ez un composant <code class="code" id="fry44o_171">RenderCounter</code>.</p></li><li class="list__item" id="fry44o_166"><p id="fry44o_172">Utilisez <code class="code" id="fry44o_173">useState</code> pour stocker une valeur de compteur qui s'incr&eacute;mente au clic sur un bouton.</p></li><li class="list__item" id="fry44o_167"><p id="fry44o_174">Utilisez <code class="code" id="fry44o_175">useRef</code> pour stocker le nombre de rendus. Initialisez-le &agrave; 1.</p></li><li class="list__item" id="fry44o_168"><p id="fry44o_176">&Agrave; chaque ex&eacute;cution de la fonction du composant (c'est-&agrave;-dire &agrave; chaque rendu), incr&eacute;mentez <code class="code" id="fry44o_177">myRef.current</code>.</p></li><li class="list__item" id="fry44o_169"><p id="fry44o_178">Affichez la valeur du compteur <span class="emphasis" id="fry44o_179">et</span> la valeur du nombre de rendus. Observez la diff&eacute;rence de comportement.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-7" data-toc="correction-exercice-7">Correction exercice 7</h4></div><div class="collapse__content"><div class="code-block" data-lang="javascript">
+import React, {useState, useRef, useEffect} from 'react';
+
+function RenderCounter() {
+    const [count, setCount] = useState(0);
+
+    // La ref va persister entre les rendus.
+    const renderCountRef = useRef(0);
+
+    // Cette ligne est exécutée à chaque rendu.
+    renderCountRef.current = renderCountRef.current + 1;
+
+    // Note : On pourrait aussi utiliser un useEffect pour être plus
+    // sémantique, mais pour ce cas simple, c'est acceptable.
+    // useEffect(() =&gt; {
+    //   renderCountRef.current = renderCountRef.current + 1;
+    // });
+
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Compteur (état) : {count}&lt;/p&gt;
+            &lt;p&gt;Ce composant a été rendu {renderCountRef.current} fois.&lt;/p&gt;
+            &lt;button onClick={() =&gt; setCount(c =&gt; c + 1)}&gt;
+                Provoquer un nouveau rendu
+            &lt;/button&gt;
+        &lt;/div&gt;
+    );
+}
+
+export default RenderCounter;
+</div><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="300px" preserveAspectRatio="none" style="width:674px;height:300px;background:#F9F9F9;" version="1.1" viewBox="0 0 674 300" width="674px" zoomAndPan="magnify"><defs/><g><rect fill="#F9F9F9" height="300" style="stroke:none;stroke-width:1.0;" width="674" x="0" y="0"/><!--cluster RenderCounter--><g id="cluster_RenderCounter"><rect fill="none" height="101" rx="3.5" ry="3.5" style="stroke:#393939;stroke-width:1.0;" width="256" x="223.5" y="93.62"/><rect fill="none" height="10" style="stroke:#393939;stroke-width:1.0;" width="15" x="459.5" y="98.62"/><rect fill="none" height="2" style="stroke:#393939;stroke-width:1.0;" width="4" x="457.5" y="100.62"/><rect fill="none" height="2" style="stroke:#393939;stroke-width:1.0;" width="4" x="457.5" y="104.62"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="107" x="298" y="120.1552">RenderCounter</text></g><g id="RenderCounter.State"><rect fill="#F1F1F1" height="50" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="59" x="239" y="128.62"/><line style="stroke:#181818;stroke-width:0.5;" x1="239" x2="298" y1="155.1083" y2="155.1083"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="39" x="249" y="147.1552">count</text></g><!--entity Ref--><g id="elem_Ref"><rect fill="#F1F1F1" height="36.4883" rx="35" ry="35" style="stroke:#181818;stroke-width:0.5;" width="130" x="333.5" y="135.38"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="110" x="343.5" y="158.9152">renderCountRef</text></g><!--entity RenderLogic--><g id="elem_RenderLogic"><rect fill="#F1F1F1" height="36.4883" rx="3.5" ry="3.5" style="stroke:#181818;stroke-width:0.5;" width="144" x="260.5" y="257.62"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="124" x="270.5" y="281.1552">Logique de Rendu</text></g><g id="elem_GMN8"><path d="M6,17.16 L6,35.4705 A3.5,3.5 0 0 0 9.5,38.9705 L165.95,38.9705 L247.5,128.48 L173.95,38.9705 L309.5,38.9705 A3.5,3.5 0 0 0 313,35.4705 L313,23.66 L303,13.66 L9.5,13.66 A3.5,3.5 0 0 0 6,17.16 " fill="#E5E5E5" style="stroke:#191919;stroke-width:1.5;"/><path d="M303,13.66 L303,21.91 A1.75,1.75 0 0 0 304.75,23.66 L313,23.66 L303,13.66 " fill="#E5E5E5" style="stroke:#191919;stroke-width:1.5;"/><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="286" x="12" y="31.2284">`setCount()` -&gt; Provoque un nouveau rendu.</text></g><g id="elem_GMN11"><path d="M348,9.5 L348,43.1211 A3.5,3.5 0 0 0 351.5,46.6211 L486.47,46.6211 L413.66,135.2 L494.47,46.6211 L663.5,46.6211 A3.5,3.5 0 0 0 667,43.1211 L667,16 L657,6 L351.5,6 A3.5,3.5 0 0 0 348,9.5 " fill="#E5E5E5" style="stroke:#191919;stroke-width:1.5;"/><path d="M657,6 L657,14.25 A1.75,1.75 0 0 0 658.75,16 L667,16 L657,6 " fill="#E5E5E5" style="stroke:#191919;stroke-width:1.5;"/><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="298" x="354" y="23.5684">`ref.current++` -&gt; Ne provoque PAS de rendu.</text><text fill="#191919" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="150" x="354" y="38.8789">La valeur est conserv&#233;e.</text></g><!--link State to RenderLogic--><g id="link_State_RenderLogic"><path codeLine="12" d="M258.02,178.99 C253.3,193.87 250.39,212.81 258.5,227.62 C265.39,240.19 272.035,246.8198 284.225,254.0798 " fill="none" id="State-to-RenderLogic" style="stroke:#191919;stroke-width:1.0;"/><polygon fill="#191919" points="289.38,257.15,283.6943,249.1081,285.0842,254.5915,279.6007,255.9814,289.38,257.15" style="stroke:#191919;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="118" x="259.5" y="224.1884">d&#233;clenche le rendu</text></g><!--link Ref to RenderLogic--><!--SRC=[LOzDIWD148NtTOfdLaf83k124BT1Gh8KCKrtpMHWfchiduaW7YZdoCNiRgCccsvuzTxtgapVw-5jw3uwQObkufu7nc1y8Al3gC8IiM5nx9yqIMIFJm92D94niqMQmGHiYr07wasRH_u_i-6cUl9FN-JPHYDjdpqhRRltn71SAzBPLO9bP8ag5ek7InNtSAUZxLdidf4vfIfHfcFnik-SOtbrUf3h595eHaKTeStVkhl0iUvuUxShDMklavQLaa0qJMpI3tv9-KL1N8FAJHdZkLdQvBCrpkULzCmOVs7hnssvyGm2LWQJwJbvS8YmAe7zT3hoHSat]--></g></svg></div></div></div></section></section></section><section class="chapter"><h2 id="3-usecontext-partager-l-tat-simplement" data-toc="3-usecontext-partager-l-tat-simplement">3. <code class="code" id="fry44o_192">useContext</code>: Partager l'&eacute;tat simplement</h2><p id="fry44o_184">Vous est-il d&eacute;j&agrave; arriv&eacute; de devoir passer un objet de props &agrave; travers 5 niveaux de composants juste pour qu'il arrive au dernier ? C'est ce qu'on appelle le <span class="control" id="fry44o_193">&quot;prop drilling&quot;</span> (forage de props). C'est lourd, r&eacute;p&eacute;titif et difficile &agrave; maintenir.</p><section class="procedure-steps"><h3 id="fry44o_185" data-toc="fry44o_185">L'analogie du système d'annonce public</h3><p id="fry44o_194">Imaginez un grand immeuble de bureaux. Le PDG (le composant `App`) veut communiquer une information importante &agrave; tous les employ&eacute;s, comme le &quot;th&egrave;me de la journ&eacute;e&quot; (par exemple, &quot;journ&eacute;e casual&quot; ou &quot;journ&eacute;e formelle&quot;).</p><p id="fry44o_195"><b id="fry44o_197">La m&eacute;thode &quot;Prop Drilling&quot; :</b> Le PDG appelle son manager, qui appelle son chef d'&eacute;quipe, qui appelle son superviseur, qui finalement pr&eacute;vient l'employ&eacute; au fond du bureau. L'information est pass&eacute;e de main en main, m&ecirc;me par des gens qui n'en ont rien &agrave; faire. C'est inefficace.</p><p id="fry44o_196"><b id="fry44o_198">La m&eacute;thode `useContext` :</b> Le PDG utilise le syst&egrave;me d'annonce public de l'immeuble (`Context.Provider`). Il diffuse le message : &quot;Aujourd'hui, c'est journ&eacute;e casual&quot;. N'importe quel employ&eacute;, &agrave; n'importe quel &eacute;tage, qui a une radio branch&eacute;e sur la bonne fr&eacute;quence (`useContext`) entend le message directement, sans interm&eacute;diaire.</p><ol class="list _decimal"></ol></section><p id="fry44o_186"><code class="code" id="fry44o_199">useContext</code> permet de cr&eacute;er un &quot;conduit&quot; de donn&eacute;es accessible par n'importe quel composant enfant, peu importe sa profondeur dans l'arbre.</p><p id="fry44o_187">Le processus se fait en 3 &eacute;tapes :</p><ol class="list _decimal" id="fry44o_188" type="1"><li class="list__item" id="fry44o_200"><p id="fry44o_203"><span class="control" id="fry44o_205">Cr&eacute;er le Contexte :</span> On d&eacute;finit le &quot;canal radio&quot;.</p><div class="code-block" data-lang="javascript">
+// theme-context.js
+import { createContext } from 'react';
+export const ThemeContext = createContext('light'); // 'light' est la valeur par défaut
+</div></li><li class="list__item" id="fry44o_201"><p id="fry44o_206"><span class="control" id="fry44o_208">Fournir le Contexte :</span> On enveloppe une partie de notre application avec le <code class="code" id="fry44o_209">Provider</code> pour diffuser une valeur.</p><div class="code-block" data-lang="javascript">
+// App.js
+import { ThemeContext } from './theme-context';
+
+function App() {
+  const [theme, setTheme] = useState('dark');
+  return (
+    &lt;ThemeContext.Provider value={theme}&gt;
+      {/* Tous les enfants ici peuvent accéder à la valeur 'dark' */}
+      &lt;MyPage /&gt;
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+</div></li><li class="list__item" id="fry44o_202"><p id="fry44o_210"><span class="control" id="fry44o_212">Consommer le Contexte :</span> Un composant enfant utilise le hook <code class="code" id="fry44o_213">useContext</code> pour s'abonner et lire la valeur.</p><div class="code-block" data-lang="javascript">
+// Button.js
+import { useContext } from 'react';
+import { ThemeContext } from './theme-context';
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext); // theme sera 'dark'
+  return &lt;button className={`theme-${theme}`}&gt;Mon bouton&lt;/button&gt;;
+}
+</div></li></ol><style>.theme-dark .plantuml > svg {filter: hue-rotate(180deg) invert(0.9);}div.plantuml {overflow-x: auto;}</style><div class="plantuml"><?xml version="1.0" encoding="us-ascii" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="727px" preserveAspectRatio="none" style="width:594px;height:727px;background:#FFFFFF;" version="1.1" viewBox="0 0 594 727" width="594px" zoomAndPan="magnify"><defs/><g><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="209" x="185.5" y="23.5352">Architecture avec useContext</text><!--cluster Application--><g id="cluster_Application"><path d="M8.5,43.4883 L91.5,43.4883 A3.75,3.75 0 0 1 94,45.9883 L101,65.9766 L341.5,65.9766 A2.5,2.5 0 0 1 344,68.4766 L344,599.8183 A2.5,2.5 0 0 1 341.5,602.3183 L8.5,602.3183 A2.5,2.5 0 0 1 6,599.8183 L6,45.9883 A2.5,2.5 0 0 1 8.5,43.4883 " fill="none" style="stroke:#000000;stroke-width:1.5;"/><line style="stroke:#000000;stroke-width:1.5;" x1="6" x2="101" y1="65.9766" y2="65.9766"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="82" x="10" y="59.0234">Application</text></g><!--cluster App--><g id="cluster_App"><rect fill="none" height="175.37" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:1.0;" width="274" x="38" y="94.4883"/><rect fill="none" height="10" style="stroke:#181818;stroke-width:1.0;" width="15" x="292" y="99.4883"/><rect fill="none" height="2" style="stroke:#181818;stroke-width:1.0;" width="4" x="290" y="101.4883"/><rect fill="none" height="2" style="stroke:#181818;stroke-width:1.0;" width="4" x="290" y="105.4883"/><text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="28" x="161" y="121.0234">App</text></g><!--entity Page--><g id="elem_Page"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="73" x="138.5" y="324.8583"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="191.5" y="329.8583"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="189.5" y="331.8583"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="189.5" y="335.8583"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="33" x="153.5" y="358.3934">Page</text></g><!--entity Toolbar--><g id="elem_Toolbar"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="94" x="128" y="432.3483"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="202" y="437.3483"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="200" y="439.3483"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="200" y="443.3483"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="54" x="143" y="465.8834">Toolbar</text></g><!--entity ThemedButton--><g id="elem_ThemedButton"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="141" x="21.5" y="539.8283"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="142.5" y="544.8283"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="140.5" y="546.8283"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="140.5" y="550.8283"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101" x="36.5" y="573.3634">ThemedButton</text></g><!--entity ThemedText--><g id="elem_ThemedText"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="127" x="197.5" y="539.8283"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="304.5" y="544.8283"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="302.5" y="546.8283"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="302.5" y="550.8283"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="87" x="212.5" y="573.3634">ThemedText</text></g><!--entity Provider--><g id="elem_Provider"><rect fill="#F1F1F1" height="46.4883" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="225" x="62.5" y="199.3683"/><rect fill="#F1F1F1" height="10" style="stroke:#181818;stroke-width:0.5;" width="15" x="267.5" y="204.3683"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="265.5" y="206.3683"/><rect fill="#F1F1F1" height="2" style="stroke:#181818;stroke-width:0.5;" width="4" x="265.5" y="210.3683"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="185" x="77.5" y="232.9034">&lt;ThemeContext.Provider&gt;</text></g><!--entity Context--><g id="elem_Context"><path d="M200,675.3183 C200,665.3183 261,665.3183 261,665.3183 C261,665.3183 322,665.3183 322,675.3183 L322,700.8066 C322,710.8066 261,710.8066 261,710.8066 C261,710.8066 200,710.8066 200,700.8066 L200,675.3183 " fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;"/><path d="M200,675.3183 C200,685.3183 261,685.3183 261,685.3183 C261,685.3183 322,685.3183 322,675.3183 " fill="none" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="102" x="210" y="702.8534">ThemeContext</text></g><g id="elem_N1"><path d="M359.5,209.9583 L359.5,235.2688 A0,0 0 0 0 359.5,235.2688 L510.5,235.2688 A0,0 0 0 0 510.5,235.2688 L510.5,219.9583 L500.5,209.9583 L439,209.9583 L435,138.7183 L431,209.9583 L359.5,209.9583 A0,0 0 0 0 359.5,209.9583 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><path d="M500.5,209.9583 L500.5,219.9583 L510.5,219.9583 L500.5,209.9583 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="130" x="365.5" y="227.5266">Pas de prop drilling !</text></g><g id="elem_Page, Toolbar"><ellipse cx="435.0018" cy="121.8446" fill="#F1F1F1" rx="70.5818" ry="16.5164" style="stroke:#181818;stroke-width:0.5;"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="95" x="386.0184" y="125.5207">Page, Toolbar</text></g><!--link App to Provider--><g id="link_App_Provider"><path d="M175,122.9183 C175,124.9783 175,164.8483 175,193.3283 " fill="none" id="App-to-Provider" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="175,199.3283,179,190.3283,175,194.3283,171,190.3283,175,199.3283" style="stroke:#181818;stroke-width:1.0;"/></g><!--link Provider to Page--><g id="link_Provider_Page"><path d="M175,246.2583 C175,268.5383 175,296.3583 175,318.5883 " fill="none" id="Provider-to-Page" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="175,324.5883,179,315.5883,175,319.5883,171,315.5883,175,324.5883" style="stroke:#181818;stroke-width:1.0;"/></g><!--link Page to Toolbar--><g id="link_Page_Toolbar"><path d="M175,371.7283 C175,389.5283 175,408.2083 175,425.9983 " fill="none" id="Page-to-Toolbar" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="175,431.9983,179,422.9983,175,426.9983,171,422.9983,175,431.9983" style="stroke:#181818;stroke-width:1.0;"/></g><!--link Toolbar to ThemedButton--><g id="link_Toolbar_ThemedButton"><path d="M157.19,479.2183 C143.19,497.0183 127.4789,516.9819 113.4889,534.7719 " fill="none" id="Toolbar-to-ThemedButton" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="109.78,539.4883,118.4876,534.8864,112.8708,535.558,112.1991,529.9411,109.78,539.4883" style="stroke:#181818;stroke-width:1.0;"/></g><!--link Toolbar to ThemedText--><g id="link_Toolbar_ThemedText"><path d="M193.45,479.2183 C207.96,497.0183 224.2893,517.0474 238.7893,534.8374 " fill="none" id="Toolbar-to-ThemedText" style="stroke:#181818;stroke-width:1.0;"/><polygon fill="#181818" points="242.58,539.4883,239.9945,529.9849,239.4211,535.6126,233.7933,535.0392,242.58,539.4883" style="stroke:#181818;stroke-width:1.0;"/></g><!--link Provider to Context--><g id="link_Provider_Context"><path d="M240.24,246.2283 C272.4,258.4983 311.23,274.9983 344,293.8583 C377.88,313.3483 414,308.0083 414,347.0983 C414,347.0983 414,347.0983 414,564.0783 C414,597.2183 414.52,611.0083 392,635.3183 C373.72,655.0583 352.6996,665.6074 328.1196,673.2474 " fill="none" id="Provider-to-Context" style="stroke:#0000FF;stroke-width:2.0;"/><polygon fill="#0000FF" points="322.39,675.0283,332.1717,676.1767,327.1647,673.5442,329.7972,668.5372,322.39,675.0283" style="stroke:#0000FF;stroke-width:2.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="171" x="415" y="460.6566">Fournit la valeur (ex: 'dark')</text></g><!--link ThemedButton to Context--><g id="link_ThemedButton_Context"><path d="M95.84,586.6883 C99.57,602.2283 106.7,622.3183 120,635.3183 C141.54,656.3683 166.5528,667.3744 193.8828,674.8544 " fill="none" id="ThemedButton-to-Context" style="stroke:#008000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#008000" points="199.67,676.4383,192.0452,670.2043,194.8474,675.1184,189.9333,677.9205,199.67,676.4383" style="stroke:#008000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="128" x="121" y="631.8866">Consomme la valeur</text></g><!--link ThemedText to Context--><g id="link_ThemedText_Context"><path d="M259.24,586.5283 C258.34,600.5583 257.53,618.9883 258,635.3183 C258.28,645.0383 258.4874,649.7699 259.0574,658.9299 " fill="none" id="ThemedText-to-Context" style="stroke:#008000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/><polygon fill="#008000" points="259.43,664.9183,262.8633,655.6872,259.1195,659.9279,254.8788,656.1841,259.43,664.9183" style="stroke:#008000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="128" x="259" y="631.8866">Consomme la valeur</text></g><!--SRC=[bL31QiCm3BtxAxJqq1RImAvb5Dh1ZYE7taeFIYnQKySAZX8Ae_y-EssMbEsoWstfoNfFJsB44cnzUJP2fRIU03igeMtedPtGLPIgiRpWYI3PrhKr9OfXby2N0YYvgjcH4mYb7fbYoTl-JDN0a-MUEwF9RnB01eOizDp2UIBBWzeJi6Us1VfdB7BhNIl2xe_2Fev-KoeEjbfjHhqXkADHALvzDiWytZisbVbTw6MKHi42cx2YgUFUvyyMHzt3hB0jfGLRVGn4Zn-mXWzklJC25g53Iws71LtNCDVeB_Ebceu2sM5syaGkrTYSIH-pAL686gug6fdKEEw_MvLZ2TRou4OJr9vhqDvOQzm9NdgJdwzg4RUO3YjSGfP5z1i0]--></g></svg></div><figure id="fry44o_190"><img alt="usecontect.svg" src="images/usecontect.svg" title="usecontect.svg" width="1188" height="1452"></figure><section class="chapter"><h3 id="exercice-8-mettre-en-place-un-contexte-utilisateur" data-toc="exercice-8-mettre-en-place-un-contexte-utilisateur">Exercice 8 : Mettre en place un contexte utilisateur</h3><p id="fry44o_214"><span class="control" id="fry44o_217">Objectif :</span> Partager les informations d'un utilisateur connect&eacute; sans prop drilling.</p><ol class="list _decimal" id="fry44o_215" type="1"><li class="list__item" id="fry44o_218"><p id="fry44o_224">Cr&eacute;ez un fichier <code class="code" id="fry44o_225">UserContext.js</code> et exportez un <code class="code" id="fry44o_226">UserContext</code> cr&eacute;&eacute; avec <code class="code" id="fry44o_227">createContext</code>.</p></li><li class="list__item" id="fry44o_219"><p id="fry44o_228">Dans <code class="code" id="fry44o_229">App.js</code>, simulez un utilisateur connect&eacute; avec <code class="code" id="fry44o_230">useState</code> (ex: <code class="code" id="fry44o_231">{ name: 'Alice', isLoggedIn: true }</code>).</p></li><li class="list__item" id="fry44o_220"><p id="fry44o_232">Enveloppez vos composants enfants avec <code class="code" id="fry44o_233">UserContext.Provider</code> et passez-y l'objet utilisateur.</p></li><li class="list__item" id="fry44o_221"><p id="fry44o_234">Cr&eacute;ez un composant <code class="code" id="fry44o_235">Header</code>. &Agrave; l'int&eacute;rieur, cr&eacute;ez un composant <code class="code" id="fry44o_236">UserDisplay</code>.</p></li><li class="list__item" id="fry44o_222"><p id="fry44o_237"><code class="code" id="fry44o_238">App</code> rend <code class="code" id="fry44o_239">Header</code>, qui lui-m&ecirc;me rend <code class="code" id="fry44o_240">UserDisplay</code>.</p></li><li class="list__item" id="fry44o_223"><p id="fry44o_241"><code class="code" id="fry44o_242">UserDisplay</code> doit utiliser <code class="code" id="fry44o_243">useContext(UserContext)</code> pour r&eacute;cup&eacute;rer les infos de l'utilisateur et afficher &quot;Bonjour, Alice !&quot; ou &quot;Veuillez vous connecter.&quot; sans qu'aucune prop ne soit pass&eacute;e par <code class="code" id="fry44o_244">Header</code>.</p></li></ol><section class="chapter"><div class="collapse"><div class="collapse__title"><h4 id="correction-exercice-8" data-toc="correction-exercice-8">Correction exercice 8</h4></div><div class="collapse__content"><div class="tabs" id="fry44o_245" data-anchors="[fry44o_247,fry44o_248,fry44o_249,fry44o_250]"><div class="tabs__content" data-gtm="tab" id="fry44o_247" data-title="UserContext.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/contexts/UserContext.js
+import { createContext } from 'react';
+
+// On peut passer un objet par défaut pour une meilleure auto-complétion
+const defaultUserValue = {
+user: null,
+setUser: () =&gt; {} // une fonction vide par défaut
+};
+
+export const UserContext = createContext(defaultUserValue);
+</div></div><div class="tabs__content" data-gtm="tab" id="fry44o_248" data-title="UserDisplay.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/components/UserDisplay.js
+import React, { useContext } from 'react';
+import { UserContext } from '../contexts/UserContext';
+
+function UserDisplay() {
+  // On récupère la valeur fournie par le Provider le plus proche
+  const { user } = useContext(UserContext);
+
+  return (
+    &lt;div&gt;
+      {user &amp;&amp; user.isLoggedIn 
+        ? &lt;p&gt;Bonjour, {user.name} !&lt;/p&gt;
+        : &lt;p&gt;Veuillez vous connecter.&lt;/p&gt;
+      }
+    &lt;/div&gt;
+  );
+}
+
+export default UserDisplay;
+</div></div><div class="tabs__content" data-gtm="tab" id="fry44o_249" data-title="Header.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/components/Header.js
+import React from 'react';
+import UserDisplay from './UserDisplay';
+
+// Ce composant ne sait rien de l'utilisateur, il ne fait que passer le relais.
+// C'est l'exemple parfait de ce qu'on évite avec le context.
+function Header() {
+return (
+&lt;header style={{ borderBottom: '1px solid black', padding: '10px' }}&gt;
+&lt;h1&gt;Mon Site&lt;/h1&gt;
+&lt;UserDisplay /&gt;
+&lt;/header&gt;
+);
+}
+
+export default Header;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="fry44o_250" data-title="App.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/App.js
+import React, { useState } from 'react';
+import { UserContext } from './contexts/UserContext';
+import Header from './components/Header';
+
+function App() {
+  const [user, setUser] = useState({ 
+    name: 'Alice', 
+    isLoggedIn: true 
+  });
+
+  return (
+    // On passe l'objet utilisateur dans la `value` du Provider.
+    // Tous les composants enfants peuvent maintenant y accéder.
+    &lt;UserContext.Provider value={{ user, setUser }}&gt;
+      &lt;div className=&quot;App&quot;&gt;
+        &lt;Header /&gt;
+        &lt;main&gt;
+          &lt;p&gt;Contenu principal de la page...&lt;/p&gt;
+        &lt;/main&gt;
+      &lt;/div&gt;
+    &lt;/UserContext.Provider&gt;
+  );
+}
+
+export default App;
+</div></div></div></div></div></section></section></section><section class="chapter"><h2 id="tp-cr-er-un-blog-simple-avec-un-th-me-personnalisable" data-toc="tp-cr-er-un-blog-simple-avec-un-th-me-personnalisable">TP : Cr&eacute;er un blog simple avec un th&egrave;me personnalisable</h2><p id="fry44o_255">Combinons tout ce que nous avons appris pour cr&eacute;er une petite application qui charge des articles de blog depuis une fausse API et permet &agrave; l'utilisateur de basculer entre un th&egrave;me clair et un th&egrave;me sombre.</p><section class="chapter"><h3 id="tape-1-le-contexte-du-th-me" data-toc="tape-1-le-contexte-du-th-me">&Eacute;tape 1 : Le Contexte du Th&egrave;me</h3><ul class="list _bullet" id="fry44o_262"><li class="list__item" id="fry44o_263"><p id="fry44o_267">Cr&eacute;ez un <code class="code" id="fry44o_268">ThemeContext.js</code>.</p></li><li class="list__item" id="fry44o_264"><p id="fry44o_269">Dans <code class="code" id="fry44o_270">App.js</code>, cr&eacute;ez un &eacute;tat <code class="code" id="fry44o_271">theme</code> ('light' ou 'dark') avec <code class="code" id="fry44o_272">useState</code>.</p></li><li class="list__item" id="fry44o_265"><p id="fry44o_273">Cr&eacute;ez une fonction <code class="code" id="fry44o_274">toggleTheme</code> qui inverse le th&egrave;me.</p></li><li class="list__item" id="fry44o_266"><p id="fry44o_275">Entourez votre application avec un <code class="code" id="fry44o_276">ThemeContext.Provider</code> et fournissez un objet contenant le <code class="code" id="fry44o_277">theme</code> actuel et la fonction <code class="code" id="fry44o_278">toggleTheme</code>.</p></li></ul></section><section class="chapter"><h3 id="tape-2-le-hook-personnalis-usefetch" data-toc="tape-2-le-hook-personnalis-usefetch">&Eacute;tape 2 : Le Hook personnalis&eacute; <code class="code" id="fry44o_281">useFetch</code></h3><ul class="list _bullet" id="fry44o_280"><li class="list__item" id="fry44o_282"><p id="fry44o_288">Cr&eacute;ez un fichier <code class="code" id="fry44o_289">hooks/useFetch.js</code>.</p></li><li class="list__item" id="fry44o_283"><p id="fry44o_290">&Agrave; l'int&eacute;rieur, cr&eacute;ez une fonction <code class="code" id="fry44o_291">useFetch(url)</code>.</p></li><li class="list__item" id="fry44o_284"><p id="fry44o_292">Ce hook doit utiliser <code class="code" id="fry44o_293">useState</code> pour g&eacute;rer les &eacute;tats <code class="code" id="fry44o_294">data</code>, <code class="code" id="fry44o_295">loading</code> et <code class="code" id="fry44o_296">error</code>.</p></li><li class="list__item" id="fry44o_285"><p id="fry44o_297">Il doit utiliser <code class="code" id="fry44o_298">useEffect</code> pour lancer une requ&ecirc;te <code class="code" id="fry44o_299">fetch</code> vers l'URL fournie lors de son montage.</p></li><li class="list__item" id="fry44o_286"><p id="fry44o_300">Mettez &agrave; jour les &eacute;tats en fonction du r&eacute;sultat de la requ&ecirc;te.</p></li><li class="list__item" id="fry44o_287"><p id="fry44o_301">Le hook doit retourner <code class="code" id="fry44o_302">{ data, loading, error }</code>.</p></li></ul></section><section class="chapter"><h3 id="tape-3-afficher-les-articles" data-toc="tape-3-afficher-les-articles">&Eacute;tape 3 : Afficher les articles</h3><ul class="list _bullet" id="fry44o_303"><li class="list__item" id="fry44o_304"><p id="fry44o_308">Cr&eacute;ez un composant <code class="code" id="fry44o_309">PostList</code>.</p></li><li class="list__item" id="fry44o_305"><p id="fry44o_310">Utilisez votre hook <code class="code" id="fry44o_311">useFetch</code> pour charger les articles depuis <code class="code" id="fry44o_312">https://jsonplaceholder.typicode.com/posts</code>.</p></li><li class="list__item" id="fry44o_306"><p id="fry44o_313">G&eacute;rez les cas <code class="code" id="fry44o_314">loading</code> et <code class="code" id="fry44o_315">error</code>.</p></li><li class="list__item" id="fry44o_307"><p id="fry44o_316">Si les donn&eacute;es sont l&agrave;, mappez dessus pour afficher une liste de titres d'articles.</p></li></ul></section><section class="chapter"><h3 id="tape-4-le-bouton-de-changement-de-th-me" data-toc="tape-4-le-bouton-de-changement-de-th-me">&Eacute;tape 4 : Le bouton de changement de th&egrave;me</h3><ul class="list _bullet" id="fry44o_317"><li class="list__item" id="fry44o_318"><p id="fry44o_322">Cr&eacute;ez un composant <code class="code" id="fry44o_323">ThemeToggleButton</code>.</p></li><li class="list__item" id="fry44o_319"><p id="fry44o_324">Utilisez <code class="code" id="fry44o_325">useContext</code> pour r&eacute;cup&eacute;rer <code class="code" id="fry44o_326">theme</code> et <code class="code" id="fry44o_327">toggleTheme</code> depuis <code class="code" id="fry44o_328">ThemeContext</code>.</p></li><li class="list__item" id="fry44o_320"><p id="fry44o_329">Affichez un bouton qui, au clic, appelle <code class="code" id="fry44o_330">toggleTheme</code>.</p></li><li class="list__item" id="fry44o_321"><p id="fry44o_331">Le texte du bouton doit changer en fonction du th&egrave;me actuel (ex: &quot;Passer au th&egrave;me sombre&quot;).</p></li></ul></section><section class="chapter"><h3 id="tape-5-assemblage-et-stylisation" data-toc="tape-5-assemblage-et-stylisation">&Eacute;tape 5 : Assemblage et stylisation</h3><ul class="list _bullet" id="fry44o_332"><li class="list__item" id="fry44o_333"><p id="fry44o_336">Dans <code class="code" id="fry44o_337">App.js</code>, affichez le <code class="code" id="fry44o_338">ThemeToggleButton</code> et le <code class="code" id="fry44o_339">PostList</code>.</p></li><li class="list__item" id="fry44o_334"><p id="fry44o_340">Ajoutez une classe CSS sur la <code class="code" id="fry44o_341">div</code> principale de <code class="code" id="fry44o_342">App.js</code> qui d&eacute;pend du th&egrave;me (<code class="code" id="fry44o_343">&lt;div className={theme}&gt;</code>).</p></li><li class="list__item" id="fry44o_335"><p id="fry44o_344">Dans votre fichier CSS, d&eacute;finissez des styles pour <code class="code" id="fry44o_345">.light</code> et <code class="code" id="fry44o_346">.dark</code> (couleur de fond, couleur de texte).</p></li></ul></section><section class="chapter"><div class="collapse"><div class="collapse__title"><h3 id="correction-du-tp" data-toc="correction-du-tp">Correction du TP</h3></div><div class="collapse__content"><div class="tabs" id="fry44o_347" data-anchors="[fry44o_349,fry44o_350,fry44o_351,fry44o_352,fry44o_353,fry44o_354]"><div class="tabs__content" data-gtm="tab" id="fry44o_349" data-title="ThemeContext.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/contexts/ThemeContext.js
+import { createContext } from &quot;react&quot;;
+
+export const ThemeContext = createContext({
+theme: 'light',
+toggleTheme: () =&gt; {},
+});
+
+</div></div><div class="tabs__content" data-gtm="tab" id="fry44o_350" data-title="useFetch.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/hooks/useFetch.js
+import { useState, useEffect } from 'react';
+
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() =&gt; {
+    const fetchData = async () =&gt; {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        setData(jsonData);
+      } catch (e) {
+        setError(e);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+
+    // Il n'y a pas de nettoyage nécessaire pour un simple fetch.
+  }, [url]); // Se redéclenche si l'URL change.
+
+  return { data, loading, error };
+}
+
+export default useFetch;
+</div></div><div class="tabs__content" data-gtm="tab" id="fry44o_351" data-title="ThemeToggleButton.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/components/ThemeToggleButton.js
+import React, { useContext } from 'react';
+import { ThemeContext } from '../contexts/ThemeContext';
+
+function ThemeToggleButton() {
+const { theme, toggleTheme } = useContext(ThemeContext);
+
+return (
+&lt;button onClick={toggleTheme}&gt;
+Passer au thème {theme === 'light' ? 'sombre' : 'clair'}
+&lt;/button&gt;
+);
+}
+
+export default ThemeToggleButton;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="fry44o_352" data-title="PostList.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/components/PostList.js
+import React from 'react';
+import useFetch from '../hooks/useFetch';
+
+function PostList() {
+  const { data: posts, loading, error } = useFetch(
+    'https://jsonplaceholder.typicode.com/posts?_limit=10'
+  );
+
+  if (loading) return &lt;p&gt;Chargement des articles...&lt;/p&gt;;
+  if (error) return &lt;p&gt;Une erreur est survenue : {error.message}&lt;/p&gt;;
+
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Articles récents&lt;/h2&gt;
+      &lt;ul&gt;
+        {posts &amp;&amp; posts.map(post =&gt; &lt;li key={post.id}&gt;{post.title}&lt;/li&gt;)}
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
+}
+
+export default PostList;
+</div></div><div class="tabs__content" data-gtm="tab" id="fry44o_353" data-title="App.js"><div class="code-block" data-lang="javascript" data-title="JavaScript">
+// src/App.js
+import React, { useState } from 'react';
+import { ThemeContext } from './contexts/ThemeContext';
+import ThemeToggleButton from './components/ThemeToggleButton';
+import PostList from './components/PostList';
+import './App.css';
+
+function App() {
+const [theme, setTheme] = useState('light');
+
+const toggleTheme = () =&gt; {
+setTheme(currentTheme =&gt; (currentTheme === 'light' ? 'dark' : 'light'));
+};
+
+return (
+&lt;ThemeContext.Provider value={{ theme, toggleTheme }}&gt;
+&lt;div className={`App ${theme}`}&gt;
+&lt;header&gt;
+&lt;h1&gt;Mon Super Blog&lt;/h1&gt;
+&lt;ThemeToggleButton /&gt;
+&lt;/header&gt;
+&lt;main&gt;
+&lt;PostList /&gt;
+&lt;/main&gt;
+&lt;/div&gt;
+&lt;/ThemeContext.Provider&gt;
+);
+}
+
+export default App;
+
+</div></div><div class="tabs__content" data-gtm="tab" id="fry44o_354" data-title="App.css"><div class="code-block" data-lang="css" data-title="CSS">
+/* App.css */
+.App {
+  min-height: 100vh;
+  padding: 20px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.App.light {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.App.dark {
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.App.dark button {
+  background-color: #555;
+  color: #fff;
+  border: 1px solid #777;
+}
+</div></div></div></div></div></section></section><section class="chapter"><h2 id="auto-valuation" data-toc="auto-valuation">Auto-&eacute;valuation</h2><p id="fry44o_361">Testez vos connaissances ! Les r&eacute;ponses se trouvent &agrave; la toute fin du support de cours.</p><section class="chapter"><h3 id="questions-choix-multiple-qcm" data-toc="questions-choix-multiple-qcm">Questions &agrave; Choix Multiple (QCM)</h3><p id="fry44o_364"><span class="control" id="fry44o_370">1. Dans quel cas le <code class="code" id="fry44o_371">useEffect</code> suivant sera-t-il ex&eacute;cut&eacute; ? <code class="code" id="fry44o_372">useEffect(() =&gt; { ... }, [user]);</code></span></p><ol class="list _decimal" id="fry44o_365" type="1"><li class="list__item" id="fry44o_373"><p id="fry44o_377">Seulement une fois, quand le composant est mont&eacute;.</p></li><li class="list__item" id="fry44o_374"><p id="fry44o_378">&Agrave; chaque rendu du composant.</p></li><li class="list__item" id="fry44o_375"><p id="fry44o_379">Quand le composant est mont&eacute;, et &agrave; chaque fois que la r&eacute;f&eacute;rence de l'objet <code class="code" id="fry44o_380">user</code> change.</p></li><li class="list__item" id="fry44o_376"><p id="fry44o_381">Seulement quand le composant est d&eacute;mont&eacute;.</p></li></ol><p id="fry44o_366"><span class="control" id="fry44o_382">2. Quelle est la principale raison d'utiliser <code class="code" id="fry44o_383">useRef</code> au lieu de <code class="code" id="fry44o_384">useState</code>?</span></p><ol class="list _decimal" id="fry44o_367" type="1"><li class="list__item" id="fry44o_385"><p id="fry44o_389">Pour stocker des cha&icirc;nes de caract&egrave;res complexes.</p></li><li class="list__item" id="fry44o_386"><p id="fry44o_390">Pour modifier une valeur et d&eacute;clencher un nouveau rendu de l'interface.</p></li><li class="list__item" id="fry44o_387"><p id="fry44o_391">Pour stocker une valeur qui persiste entre les rendus sans d&eacute;clencher de nouveau rendu lors de sa modification.</p></li><li class="list__item" id="fry44o_388"><p id="fry44o_392"><code class="code" id="fry44o_393">useRef</code> est une ancienne version de <code class="code" id="fry44o_394">useState</code>.</p></li></ol><p id="fry44o_368"><span class="control" id="fry44o_395">3. Que r&eacute;sout principalement le hook <code class="code" id="fry44o_396">useContext</code>?</span></p><ol class="list _decimal" id="fry44o_369" type="1"><li class="list__item" id="fry44o_397"><p id="fry44o_401">Le probl&egrave;me des appels API qui &eacute;chouent.</p></li><li class="list__item" id="fry44o_398"><p id="fry44o_402">Le besoin de passer des props &agrave; travers de multiples niveaux de composants interm&eacute;diaires (prop drilling).</p></li><li class="list__item" id="fry44o_399"><p id="fry44o_403">La difficult&eacute; de styliser des composants React.</p></li><li class="list__item" id="fry44o_400"><p id="fry44o_404">La gestion des &eacute;v&eacute;nements du clavier.</p></li></ol></section><section class="chapter"><h3 id="questions-ouvertes" data-toc="questions-ouvertes">Questions Ouvertes</h3><p id="fry44o_405"><span class="control" id="fry44o_408">4. D&eacute;crivez une situation concr&egrave;te o&ugrave; vous devriez utiliser la fonction de nettoyage retourn&eacute;e par <code class="code" id="fry44o_409">useEffect</code>. Quel est le risque si vous ne le faites pas ?</span></p><p id="fry44o_406"><span class="control" id="fry44o_410">5. Vous avez un composant <code class="code" id="fry44o_411">Timer</code> qui affiche un compteur s'incr&eacute;mentant chaque seconde. Vous utilisez <code class="code" id="fry44o_412">setInterval</code> pour cela. Quel hook utiliseriez-vous pour stocker l'ID de l'intervalle afin de pouvoir l'arr&ecirc;ter plus tard avec <code class="code" id="fry44o_413">clearInterval</code>? Expliquez votre choix.</span></p></section></section><section class="chapter"><h2 id="conclusion-de-ce-module" data-toc="conclusion-de-ce-module">Conclusion de ce module</h2><p id="fry44o_414">Vous venez d'ajouter trois outils incroyablement puissants &agrave; votre arsenal de d&eacute;veloppeur React. Vous n'&ecirc;tes plus limit&eacute; &agrave; la simple cr&eacute;ation d'interfaces ; vous pouvez d&eacute;sormais orchestrer des logiques complexes.</p><p id="fry44o_415">Avec <code class="code" id="fry44o_417">useEffect</code>, vous ma&icirc;trisez le <span class="control" id="fry44o_418">cycle de vie</span> de vos composants et g&eacute;rez les <span class="control" id="fry44o_419">effets de bord</span>. Avec <code class="code" id="fry44o_420">useRef</code>, vous avez une porte d'entr&eacute;e vers le <span class="control" id="fry44o_421">DOM</span> et une &quot;poche secr&egrave;te&quot; pour vos donn&eacute;es persistantes. Et avec <code class="code" id="fry44o_422">useContext</code>, vous pouvez cr&eacute;er des <span class="control" id="fry44o_423">&eacute;tats globaux</span> partag&eacute;s pour des applications plus propres et plus maintenables.</p><p id="fry44o_416">Dans le prochain module, nous allons nous concentrer sur la mani&egrave;re d'afficher des donn&eacute;es de mani&egrave;re efficace et performante. Nous aborderons le rendu de listes, le rendu conditionnel, et nous introduirons des techniques d'optimisation pour que vos applications restent fluides et rapides, m&ecirc;me lorsqu'elles deviennent complexes.</p></section><section class="chapter"><h2 id="suggestions-de-projets-pour-pratiquer" data-toc="suggestions-de-projets-pour-pratiquer">Suggestions de projets pour pratiquer</h2><ol class="list _decimal" id="fry44o_424" type="1"><li class="list__item" id="fry44o_425"><p id="fry44o_428"><span class="control" id="fry44o_430">Niveau D&eacute;butant : Horloge en temps r&eacute;el</span></p><ul class="list _bullet" id="fry44o_429"><li class="list__item" id="fry44o_431"><p id="fry44o_433"><span class="control" id="fry44o_434">Description :</span> Affichez une horloge num&eacute;rique qui se met &agrave; jour toutes les secondes.</p></li><li class="list__item" id="fry44o_432"><p id="fry44o_435"><span class="control" id="fry44o_436">Piste technique :</span> Utilisez <code class="code" id="fry44o_437">useState</code> pour stocker l'heure actuelle. Utilisez <code class="code" id="fry44o_438">useEffect</code> avec un <code class="code" id="fry44o_439">setInterval</code> pour mettre &agrave; jour l'heure toutes les secondes. N'oubliez pas la fonction de nettoyage pour <code class="code" id="fry44o_440">clearInterval</code> au d&eacute;montage !</p></li></ul></li><li class="list__item" id="fry44o_426"><p id="fry44o_441"><span class="control" id="fry44o_443">Niveau Interm&eacute;diaire : D&eacute;tecteur de largeur de fen&ecirc;tre</span></p><ul class="list _bullet" id="fry44o_442"><li class="list__item" id="fry44o_444"><p id="fry44o_446"><span class="control" id="fry44o_447">Description :</span> Cr&eacute;ez un composant qui affiche la largeur actuelle de la fen&ecirc;tre du navigateur et se met &agrave; jour en temps r&eacute;el lorsque la fen&ecirc;tre est redimensionn&eacute;e.</p></li><li class="list__item" id="fry44o_445"><p id="fry44o_448"><span class="control" id="fry44o_449">Piste technique :</span> <code class="code" id="fry44o_450">useState</code> pour stocker la largeur. <code class="code" id="fry44o_451">useEffect</code> pour ajouter un &eacute;couteur d'&eacute;v&eacute;nement (<code class="code" id="fry44o_452">window.addEventListener('resize', ...)</code>). La fonction de nettoyage doit supprimer cet &eacute;couteur (<code class="code" id="fry44o_453">window.removeEventListener</code>).</p></li></ul></li><li class="list__item" id="fry44o_427"><p id="fry44o_454"><span class="control" id="fry44o_456">Niveau Avanc&eacute; : Formulaire avec auto-sauvegarde</span></p><ul class="list _bullet" id="fry44o_455"><li class="list__item" id="fry44o_457"><p id="fry44o_459"><span class="control" id="fry44o_460">Description :</span> Un formulaire avec plusieurs champs. D&egrave;s que l'utilisateur arr&ecirc;te de taper pendant 1 seconde, un message &quot;Sauvegarde en cours...&quot; puis &quot;Sauvegard&eacute; !&quot; appara&icirc;t.</p></li><li class="list__item" id="fry44o_458"><p id="fry44o_461"><span class="control" id="fry44o_462">Piste technique :</span> Un <code class="code" id="fry44o_463">useState</code> pour les donn&eacute;es du formulaire. Un <code class="code" id="fry44o_464">useEffect</code> qui observe ces donn&eacute;es. &Agrave; l'int&eacute;rieur, utilisez un <code class="code" id="fry44o_465">setTimeout</code> pour d&eacute;clencher la sauvegarde. La cl&eacute; est que la fonction de nettoyage de <code class="code" id="fry44o_466">useEffect</code> doit faire un <code class="code" id="fry44o_467">clearTimeout</code>. Ainsi, si l'utilisateur tape &agrave; nouveau, le timer pr&eacute;c&eacute;dent est annul&eacute; et un nouveau est lanc&eacute;. Utilisez <code class="code" id="fry44o_468">useRef</code> pour stocker l'ID du timeout.</p></li></ul></li></ol></section><div class="last-modified">21 novembre 2025</div><div data-feedback-placeholder="true"></div><div class="navigation-links _bottom"><a href="default-topic.html" class="navigation-links__prev">Module 1 : Les Fondamentaux de React</a><a href="003-module-03.html" class="navigation-links__next">Module 3 : Rendu Avanc&eacute; et Optimisation de la Performance</a></div></article><div id="disqus_thread"></div></div></section></main></div><script src="https://resources.jetbrains.com/writerside/apidoc/6.22.0-b776/app.js"></script></body></html>
