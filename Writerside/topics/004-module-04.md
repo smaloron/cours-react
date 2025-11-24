@@ -135,6 +135,7 @@ enfants.
 
 <tabs>
 <tab title="CartContext.js">
+
 ```javascript
 // src/contexts/CartContext.js
 import { createContext } from 'react';
@@ -142,8 +143,11 @@ import { createContext } from 'react';
 export const CartContext = createContext(null);
 
 ```
+
 </tab>
-<tab title="App.js (Provider & Reducer)">
+
+<tab title="App.js (Provider et Reducer)">
+
 ```javascript
 // src/App.js
 import React, { useReducer } from 'react';
@@ -292,17 +296,19 @@ title Flux de données avec Redux Toolkit
 actor User
 
 package "React Component" {
-  User -> (UI Element)
+  User -u--> (UI Element)
   (UI Element) -> "useDispatch()" : 1. Dispatch action
   "useSelector()" -> (UI Element) : 5. Re-renders with new state
 }
 
 package "Redux Store" {
-  "useDispatch()" -> "Action" : 2.
+  "useDispatch()" -u--> "Action" : 2.
   "Action" -> "Reducer" : 3.
   "Reducer" -> "State" : 4. Returns new state
   "State" -> "useSelector()" : Notifies component
 }
+
+
 
 @enduml
 ```
@@ -311,6 +317,7 @@ package "Redux Store" {
 
 <tabs>
 <tab title="features/counter/counterSlice.js">
+
 ```javascript
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -343,6 +350,7 @@ export default counterSlice.reducer;
 ```
 </tab>
 <tab title="app/store.js">
+
 ```javascript
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
@@ -421,6 +429,7 @@ root.render(
 
 <tabs>
 <tab title="features/theme/themeSlice.js">
+
 ```javascript
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -445,6 +454,7 @@ export default themeSlice.reducer;
 ```
 </tab>
 <tab title="app/store.js">
+
 ```javascript
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';

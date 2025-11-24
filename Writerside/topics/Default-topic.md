@@ -62,7 +62,8 @@ React est donc une **bibliothèque JavaScript** dont le but est de faciliter la 
 
 Avez-vous déjà acheté un kit de meubles à monter ? Le kit est un **framework** : il vous impose les pièces, les outils (
 la petite clé Allen !), et les étapes de montage. Vous ne pouvez pas dévier du plan. Des frameworks comme Angular
-fonctionnent un peu comme ça : ils vous donnent une structure très complète et opinionée pour toute votre application.
+fonctionnent un peu comme ça : ils vous donnent une structure très complète et dogmatique (opinionated) pour toute 
+votre application.
 
 React, c'est différent. C'est une **bibliothèque**. Imaginez que vous alliez dans un grand magasin de bricolage. Vous
 achetez une perceuse ultra-performante (React) pour une tâche précise : faire des trous (gérer l'interface utilisateur).
@@ -109,11 +110,71 @@ RealDOM -> User : Affiche l'UI mise à jour
 @enduml
 ```
 
-<activity title="Activité : Réflexion">
+<note title="Activité : Réflexion">
 <p>
 Pensez à une expérience passée où vous avez dû modifier une page web avec du JavaScript "vanilla" ou jQuery. Comment faisiez-vous pour mettre à jour un simple texte ou une couleur après un clic ? Décrivez les étapes. Comment le Virtual DOM aurait-il pu simplifier ce processus ?
 </p>
-</activity>
+</note>
+
+### Mise en Place de l'Environnement de Développement
+
+Passons à la pratique ! Pour commencer à "cuisiner" avec React, nous avons besoin d'une cuisine bien équipée. Notre principal outil sera **Vite**, un système de build qui rend le développement incroyablement rapide et agréable.
+
+<procedure title="Création de votre première application React avec Vite">
+
+1.  **Installez Node.js :** Si ce n'est pas déjà fait, téléchargez et installez la version LTS depuis [nodejs.org](https://nodejs.org/). Cela installera également `npm`, le gestionnaire de paquets de Node.js.
+
+2.  **Ouvrez votre terminal :** Placez-vous dans le dossier où vous souhaitez créer votre projet.
+
+3.  **Lancez la commande de création :**
+    ```bash
+    npm create vite@latest
+    ```
+4.  **Suivez les instructions :**
+    *   **Project name:** `ma-premiere-app-react` (ou le nom de votre choix).
+    *   **Select a framework:** Choisissez `React`.
+    *   **Select a variant:** Choisissez `JavaScript`.
+
+5.  **Naviguez dans le projet et installez les dépendances :**
+    ```bash
+    cd ma-premiere-app-react
+    npm install
+    ```
+6.  **Démarrez le serveur de développement :**
+    ```bash
+    npm run dev
+    ```
+
+</procedure>
+
+Bravo ! Votre navigateur devrait s'ouvrir sur une page affichant le logo de React. Vous avez un serveur de développement qui tourne et qui rafraîchira automatiquement la page à chaque modification de votre code (c'est le HMR - Hot Module Replacement).
+
+#### Exploration de la structure du projet
+
+Regardons ce que Vite a créé pour nous :
+
+```
+ma-premiere-app-react/
+├── node_modules/     # Les dépendances de votre projet
+├── public/           # Fichiers statiques (images, polices...)
+│   └── vite.svg
+├── src/              # Le CŒUR de votre application !
+│   ├── assets/       # Fichiers statiques utilisés par vos composants
+│   ├── App.css       # Le style du composant App
+│   ├── App.jsx       # Le composant racine de votre application
+│   ├── index.css     # Les styles globaux
+│   └── main.jsx      # Le point d'entrée de l'application
+├── .gitignore        # Fichiers à ignorer par Git
+├── index.html        # Le seul fichier HTML de votre application
+├── package.json      # Informations sur le projet et ses dépendances
+└── vite.config.js    # Fichier de configuration de Vite
+```
+
+Les deux fichiers les plus importants pour commencer sont :
+
+*   `src/main.jsx` : C'est ici que l'on dit à React "prends notre composant principal (`App`) et injecte-le dans la balise HTML qui a l'id `root`".
+*   `src/App.jsx` : C'est le premier composant que vous allez modifier. Considérez-le comme le point de départ de votre interface.
+
 
 ---
 
@@ -124,7 +185,11 @@ réutilisables, qui ont leur propre logique et leur propre apparence.
 
 <procedure title="L'analogie des briques LEGO">
 <p>
-Vous pouvez avoir une petite brique 2x2 rouge (un `Button`), une brique 2x8 bleue (un `Input`), et en les assemblant, vous créez un composant plus grand, comme une `SearchBar`. Ensuite, vous pouvez assembler votre `SearchBar` avec un `Logo` et un `Menu` pour créer un composant `Header`. L'avantage ? Votre `Button` est réutilisable partout dans votre application, et si vous le mettez à jour (par exemple, en arrondissant ses coins), il sera mis à jour partout où il est utilisé !
+Vous pouvez avoir une petite brique 2x2 rouge (un `Button`), une brique 2x8 bleue (un `Input`), 
+et en les assemblant, vous créez un composant plus grand, comme une `SearchBar`. 
+Ensuite, vous pouvez assembler votre `SearchBar` avec un `Logo` et un `Menu` pour créer un composant `Header`. 
+L'avantage ? Votre `Button` est réutilisable partout dans votre application, et si vous le mettez à jour 
+(par exemple, en arrondissant ses coins), il sera mis à jour partout où il est utilisé !
 </p>
 </procedure>
 
@@ -639,18 +704,23 @@ Une règle fondamentale avec le state de React : **ne jamais le modifier directe
 <p>
 Si votre état est un objet ou un tableau, ne faites jamais ceci :
 </p>
+
 <code-block lang="javascript">
-// MAUVAIS ❌
+
+// MAUVAIS
 const [user, setUser] = useState({ name: 'John', age: 30 });
 user.age = 31; // Mutation directe ! React ne le détectera pas.
 setUser(user);
 
-// BON ✅
+// BON
 const [user, setUser] = useState({ name: 'John', age: 30 });
 // On crée un NOUVEL objet en copiant les anciennes valeurs
 // et en surchargeant celle qui doit changer.
 setUser({ ...user, age: 31 });
+
 </code-block>
+
+
 <p>
 React compare les références des objets pour savoir s'il doit faire un nouveau rendu. Si vous modifiez l'objet existant, sa référence en mémoire ne change pas, et React pensera que rien n'a changé. En créant un nouvel objet, vous garantissez que React détectera le changement.
 </p>

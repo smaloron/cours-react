@@ -320,10 +320,12 @@ Utile pour les valeurs qui doivent "survivre" aux re-renders, mais dont le chang
 Parfait pour les identifiants de timers, les compteurs internes, etc.
 
 <warning title="useRef vs useState">
+
 *   Modifier `myRef.current` **ne provoque PAS** de nouveau rendu.
 *   Appeler `setState(...)` **provoque** un nouveau rendu.
 
 Choisissez `useRef` pour les données "silencieuses" et `useState` pour les données qui doivent être visibles dans l'UI.
+
 </warning>
 
 ### Exercice 7 : Compter le nombre de rendus
@@ -417,7 +419,7 @@ Imaginez un grand immeuble de bureaux. Le PDG (le composant `App`) veut communiq
 </p>
 </procedure>
 
-`useContext` permet de créer un "conduit" de données accessible par n'importe quel composant enfant, peu importe sa
+`useContext` permet de créer un "conduit" de données accessibles par n'importe quel composant enfant, peu importe sa
 profondeur dans l'arbre.
 
 Le processus se fait en 3 étapes :

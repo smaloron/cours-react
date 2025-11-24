@@ -231,8 +231,9 @@ La `key` est une prop spéciale que vous devez fournir pour chaque élément d'u
 monArray.map((item, index) => <li key={index}>...) 
 ```
 
-C'est une très 
-mauvaise pratique si la liste peut changer (ajout, suppression, réorganisation). Ne l'utilisez qu'en dernier recours pour des listes purement statiques.
+C'est une très
+mauvaise pratique si la liste peut changer (ajout, suppression, réorganisation). Ne l'utilisez qu'en dernier recours
+pour des listes purement statiques.
 </div>
 
 </warning>
@@ -499,10 +500,12 @@ const visibleItems = useMemo(() => {
 ```
 
 <warning title="N'optimisez pas prématurément !">
+
 Ces outils sont puissants, mais ils ont un coût (en mémoire et en complexité). Ne les utilisez pas partout. La règle d'or :
 1. Écrivez votre code de la manière la plus simple et lisible possible.
 2. Si vous constatez un problème de performance (utilisez les React DevTools !), identifiez le goulot d'étranglement.
 3. Appliquez ces optimisations de manière ciblée, là où elles sont nécessaires.
+
 </warning>
 
 ### Exercice 12 : Optimiser un composant enfant
