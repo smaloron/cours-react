@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rules SYSTEM "https://resources.jetbrains.com/writerside/1.0/redirection-rules.dtd">
+<rules>
+    <!-- format is as follows
+    <rule id="<unique id>">
+        <accepts>page.html</accepts>
+    </rule>
+    -->
+    <rule id="48de13d3">
+        <description>Created after removal of "Projet de Synthèse : "Quick Weather" - Votre Météo en un clin d'œil" from
+            React
+        </description>
+        <accepts>012-projet.html</accepts>
+    </rule>
+</rules>
