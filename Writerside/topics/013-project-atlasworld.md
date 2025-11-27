@@ -114,7 +114,7 @@ Voici les User Stories pour la réalisation du **Jour 1**.
 
 ---
 
-### 🚀 Extension Jour 2 : User Stories Avancées
+### Extension Jour 2 : User Stories Avancées
 
 Si le jour 1 est terminé, voici comment transformer le projet en application de qualité professionnelle.
 
@@ -157,7 +157,7 @@ Si le jour 1 est terminé, voici comment transformer le projet en application de
     *   [ ] Englober l'application dans le `ThemeProvider`.
     *   [ ] Consommer le contexte dans les composants pour appliquer les styles conditionnels.
 
-### 💡 Conseils pour réussir
+### Conseils pour réussir
 
 **Gestion des erreurs API :** L'API RestCountries est parfois lente. Pensez à gérer l'état de "Loading" pour que
    l'utilisateur sache qu'il se passe quelque chose.
